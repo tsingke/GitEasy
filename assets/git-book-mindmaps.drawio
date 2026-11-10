@@ -3497,7 +3497,7 @@
       </root>
     </mxGraphModel>
   </diagram>
-  <diagram id="chapter-14" name="第14章 仓库规模、依赖管理与多工作树">
+  <diagram id="chapter-14" name="第14章 仓库规模、依赖与工作树">
     <mxGraphModel dx="1800" dy="1100" grid="1" gridSize="10" page="1" pageWidth="1800" pageHeight="1100" adaptiveColors="auto">
       <root>
         <mxCell id="0" />
@@ -3505,7 +3505,7 @@
         <mxCell id="title" value="&lt;b&gt;第14章知识结构&lt;/b&gt;　按数据和协作特点选择工具" vertex="1" parent="1" style="text;align=left;strokeColor=none;fillColor=none;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=17;">
           <mxGeometry as="geometry" x="40" y="20" width="1700" height="60" />
         </mxCell>
-        <mxCell id="hub" value="仓库规模、依赖管理与多工作树" vertex="1" parent="1" style="rounded=1;arcSize=35;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=17;">
+        <mxCell id="hub" value="仓库规模、依赖与工作树" vertex="1" parent="1" style="rounded=1;arcSize=35;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=17;">
           <mxGeometry as="geometry" x="620" y="490" width="520" height="70" />
         </mxCell>
         <mxCell id="head-0" value="&lt;b&gt;先识别瓶颈&lt;/b&gt;" vertex="1" parent="1" style="rounded=1;arcSize=35;strokeColor=#155DA6;fillColor=#FAFAFA;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=17;">

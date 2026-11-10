@@ -191,16 +191,16 @@
       "seconds": 0.28
     },
     {
-      "route": "chapters/ch14-仓库规模、依赖管理与多工作树/examples/extension-14.sh",
+      "route": "chapters/ch14-仓库规模、依赖与工作树/examples/extension-14.sh",
       "passed": true,
       "exit_code": 0,
-      "seconds": 0.11
+      "seconds": 0.12
     },
     {
-      "route": "chapters/ch14-仓库规模、依赖管理与多工作树/examples/textbook-route.sh",
+      "route": "chapters/ch14-仓库规模、依赖与工作树/examples/textbook-route.sh",
       "passed": true,
       "exit_code": 0,
-      "seconds": 1.45
+      "seconds": 1.62
     },
     {
       "route": "chapters/ch15-自动化、安全与备份恢复/examples/extension-15-migration.sh",
