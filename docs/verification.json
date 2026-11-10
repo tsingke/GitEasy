@@ -1,0 +1,230 @@
+{
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "python": "3.14.2",
+  "git": "git version 2.56.0",
+  "scope": "offline teaching routes only; no platform authentication, PR review, LFS or production credentials",
+  "results": [
+    {
+      "route": "chapters/ch02-环境配置与仓库初始化/examples/extension-02.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.1
+    },
+    {
+      "route": "chapters/ch03-工作区、索引与提交/examples/extension-03-attributes.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "route": "chapters/ch03-工作区、索引与提交/examples/extension-03-ignore.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.07
+    },
+    {
+      "route": "chapters/ch03-工作区、索引与提交/examples/extension-03.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.12
+    },
+    {
+      "route": "chapters/ch04-历史查询与版本溯源/examples/extension-04-notes.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "route": "chapters/ch04-历史查询与版本溯源/examples/extension-04.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "route": "chapters/ch04-历史查询与版本溯源/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.38
+    },
+    {
+      "route": "chapters/ch05-分支与HEAD/examples/extension-05.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "route": "chapters/ch05-分支与HEAD/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.51
+    },
+    {
+      "route": "chapters/ch06-合并原理与冲突处理/examples/extension-06-rerere.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.2
+    },
+    {
+      "route": "chapters/ch06-合并原理与冲突处理/examples/extension-06.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "route": "chapters/ch06-合并原理与冲突处理/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 1.05
+    },
+    {
+      "route": "chapters/ch07-远程仓库与协作/examples/extension-07-refspec.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.22
+    },
+    {
+      "route": "chapters/ch07-远程仓库与协作/examples/extension-07.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.27
+    },
+    {
+      "route": "chapters/ch07-远程仓库与协作/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.73
+    },
+    {
+      "route": "chapters/ch08-变更撤销与版本恢复/examples/extension-08.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.12
+    },
+    {
+      "route": "chapters/ch08-变更撤销与版本恢复/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 1.33
+    },
+    {
+      "route": "chapters/ch09-对象模型与内容寻址/examples/extension-09-storage.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.18
+    },
+    {
+      "route": "chapters/ch09-对象模型与内容寻址/examples/extension-09.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.1
+    },
+    {
+      "route": "chapters/ch09-对象模型与内容寻址/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.41
+    },
+    {
+      "route": "chapters/ch10-引用管理与索引机制/examples/extension-10.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.1
+    },
+    {
+      "route": "chapters/ch10-引用管理与索引机制/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.43
+    },
+    {
+      "route": "chapters/ch11-变基、拣选与历史整理/examples/extension-11-onto.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "route": "chapters/ch11-变基、拣选与历史整理/examples/extension-11-patches.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.25
+    },
+    {
+      "route": "chapters/ch11-变基、拣选与历史整理/examples/extension-11-split.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.24
+    },
+    {
+      "route": "chapters/ch11-变基、拣选与历史整理/examples/extension-11.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "route": "chapters/ch11-变基、拣选与历史整理/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.76
+    },
+    {
+      "route": "chapters/ch12-版本标记、签名与发布/examples/extension-12.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "route": "chapters/ch12-版本标记、签名与发布/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.45
+    },
+    {
+      "route": "chapters/ch13-团队工作流与代码评审/examples/extension-13.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.09
+    },
+    {
+      "route": "chapters/ch13-团队工作流与代码评审/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.28
+    },
+    {
+      "route": "chapters/ch14-仓库规模、依赖管理与多工作树/examples/extension-14.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.11
+    },
+    {
+      "route": "chapters/ch14-仓库规模、依赖管理与多工作树/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 1.45
+    },
+    {
+      "route": "chapters/ch15-自动化、安全与备份恢复/examples/extension-15-migration.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.18
+    },
+    {
+      "route": "chapters/ch15-自动化、安全与备份恢复/examples/extension-15.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "route": "chapters/ch15-自动化、安全与备份恢复/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 3.02
+    },
+    {
+      "route": "chapters/ch16-综合项目实训/examples/textbook-route.sh",
+      "passed": true,
+      "exit_code": 0,
+      "seconds": 1.09
+    }
+  ]
+}

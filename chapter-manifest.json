@@ -1,0 +1,82 @@
+[
+  {
+    "chapter": 1,
+    "title": "版本控制与Git基础",
+    "folder": "ch01-版本控制与Git基础"
+  },
+  {
+    "chapter": 2,
+    "title": "环境配置与仓库初始化",
+    "folder": "ch02-环境配置与仓库初始化"
+  },
+  {
+    "chapter": 3,
+    "title": "工作区、索引与提交",
+    "folder": "ch03-工作区、索引与提交"
+  },
+  {
+    "chapter": 4,
+    "title": "历史查询与版本溯源",
+    "folder": "ch04-历史查询与版本溯源"
+  },
+  {
+    "chapter": 5,
+    "title": "分支与HEAD",
+    "folder": "ch05-分支与HEAD"
+  },
+  {
+    "chapter": 6,
+    "title": "合并原理与冲突处理",
+    "folder": "ch06-合并原理与冲突处理"
+  },
+  {
+    "chapter": 7,
+    "title": "远程仓库与协作",
+    "folder": "ch07-远程仓库与协作"
+  },
+  {
+    "chapter": 8,
+    "title": "变更撤销与版本恢复",
+    "folder": "ch08-变更撤销与版本恢复"
+  },
+  {
+    "chapter": 9,
+    "title": "对象模型与内容寻址",
+    "folder": "ch09-对象模型与内容寻址"
+  },
+  {
+    "chapter": 10,
+    "title": "引用管理与索引机制",
+    "folder": "ch10-引用管理与索引机制"
+  },
+  {
+    "chapter": 11,
+    "title": "变基、拣选与历史整理",
+    "folder": "ch11-变基、拣选与历史整理"
+  },
+  {
+    "chapter": 12,
+    "title": "版本标记、签名与发布",
+    "folder": "ch12-版本标记、签名与发布"
+  },
+  {
+    "chapter": 13,
+    "title": "团队工作流与代码评审",
+    "folder": "ch13-团队工作流与代码评审"
+  },
+  {
+    "chapter": 14,
+    "title": "仓库规模、依赖管理与多工作树",
+    "folder": "ch14-仓库规模、依赖管理与多工作树"
+  },
+  {
+    "chapter": 15,
+    "title": "自动化、安全与备份恢复",
+    "folder": "ch15-自动化、安全与备份恢复"
+  },
+  {
+    "chapter": 16,
+    "title": "综合项目实训",
+    "folder": "ch16-综合项目实训"
+  }
+]

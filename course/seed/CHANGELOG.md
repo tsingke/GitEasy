@@ -1,0 +1,3 @@
+# Changelog
+
+Initial course materials.
