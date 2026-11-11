@@ -1,0 +1,21 @@
+{
+  "passed": true,
+  "source": "actual lab17 cmdbox text, exact match with exported route",
+  "command_blocks": 19,
+  "platform": "macOS-27.2.1-arm64-arm-64bit-Mach-O",
+  "git": "git version 2.56.0",
+  "asserted": [
+    "core baseline build",
+    "parallel delivery and non-fast-forward rejection",
+    "content conflict stages and resolution",
+    "failing regression then correction",
+    "maintenance cherry-pick",
+    "autosquash",
+    "bisect regression boundary",
+    "worktree/candidate difference",
+    "bundle restoration",
+    "worktree maintenance"
+  ],
+  "online": "not executed by this offline route",
+  "Qt": "checked separately by core/GUI build and smoke test"
+}

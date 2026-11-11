@@ -1,0 +1,38 @@
+{
+  "project": "CampusCard",
+  "source": {
+    "projects/campus-card/include/campus/card_service.hpp": "e7e97ee65b373610856a83d451a5486f6bca827cba2c23554a47411557194748",
+    "projects/campus-card/src/card_service.cpp": "6b4ac5dce9eb3e1727dadcf5d3e34b0ad6aace488d6039d7e224fddcfda3f21e",
+    "projects/campus-card/src/main.cpp": "928d0d6fdaa7ca65c1e6a5843c2c2ffbf780b8bc5b3d37349518c7542e0d1c5e",
+    "projects/campus-card/gui/main.cpp": "9ea813bd80a05f39a9bb3cb6ab24bee9a3892f0273fd60cd2ca0e26cef45085b",
+    "projects/campus-card/tests/test_card_service.cpp": "14b526b202602ffe64537b01ba76a5e20ff64341f9057dcfde7f9f2d56ec6080"
+  },
+  "system": "macOS arm64",
+  "compiler": "Apple clang version 21.0.0 (clang-2100.4.1.1)",
+  "cmake": "cmake version 4.4.4",
+  "qt": "6.12.0",
+  "core_standard_flag": "-std=c++11",
+  "gui_standard_flag": "-std=c++17",
+  "domain_assertions": 34,
+  "tests": [
+    {
+      "name": "campus_domain",
+      "passed": true
+    },
+    {
+      "name": "campus_gui_smoke",
+      "passed": true
+    }
+  ],
+  "qt_smoke_scope": [
+    "open card",
+    "top up",
+    "pay",
+    "lost-card rejection without ledger mutation",
+    "reactivate and pay",
+    "table and model consistency"
+  ],
+  "real_payments": false,
+  "persistent_database": false,
+  "evidence": "Local CTest and direct campus_tests output; actual compiler flags read from generated flags.make"
+}

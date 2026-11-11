@@ -4,7 +4,7 @@ from pathlib import Path
 import json,re
 ROOT=Path(__file__).resolve().parents[1]
 chapters=json.loads((ROOT/'chapter-manifest.json').read_text())
-assert [x['chapter'] for x in chapters]==list(range(1,17))
+assert [x['chapter'] for x in chapters]==list(range(1,18))
 for ch in chapters:
     base=ROOT/'chapters'/ch['folder']
     assert (base/'README.md').is_file(),base
@@ -20,4 +20,4 @@ for p in ROOT.rglob('*'):
             target=(p.parent/link.split('#')[0]).resolve()
             if not target.exists():errors.append(f'{p.relative_to(ROOT)}: missing {link}')
 assert not errors,'\n'.join(errors)
-print(f'16 chapter folders and relative Markdown links passed')
+print(f'{len(chapters)} chapter folders and relative Markdown links passed')

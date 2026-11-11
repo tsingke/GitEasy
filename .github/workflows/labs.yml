@@ -4,6 +4,9 @@ on:
     branches: [main]
   pull_request:
   workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:
@@ -24,3 +27,6 @@ jobs:
         run: python3 tools/check_materials.py
       - name: Run isolated offline routes
         run: python3 tools/run_lab.py --all --output lab-results
+      - name: Record actual route summary
+        if: always()
+        run: python3 tools/summarize_ci.py lab-results/results.json
