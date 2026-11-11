@@ -29,20 +29,10 @@ cd ..
 
 cd team-a
 git switch -c feature/csv-currency
-python3 - <<'PY'
-from pathlib import Path
-p=Path('src/card_service.cpp');s=p.read_text()
-s=s.replace('balance_after,day\\n','balance_after,day,currency\\n')
-s=s.replace("<<','<<item.day<<'\\n';", "<<','<<item.day<<\",CNY\\n\";")
-p.write_text(s)
-p=Path('tests/test_card_service.cpp');s=p.read_text()
-token='    const auto before=service.history().size();'
-s=s.replace(token,'    check(service.exportCsv().find(",CNY\\n")!=std::string::npos,"CSV currency");\n'+token)
-p.write_text(s)
-PY
+python3 "$GITEASY_CAMPUS/tools/lab_scenario.py" currency
 cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
-git add src/card_service.cpp tests/test_card_service.cpp
+git add src/ledger_export.cpp tests/test_card_service.cpp tests/test_ledger_export.cpp
 git diff --cached --stat
 git commit -m 'feat: include currency in exported transactions'
 git push -u origin feature/csv-currency
@@ -50,10 +40,9 @@ cd ..
 
 cd team-b
 git switch -c feature/qt-console
-mkdir -p gui
-cp "$GITEASY_CAMPUS/gui/main.cpp" gui/main.cpp
+cp -R "$GITEASY_CAMPUS/gui" gui
 printf '\nQt console is enabled with CAMPUS_BUILD_GUI=ON.\n' >> README.md
-git add gui/main.cpp README.md
+git add gui README.md
 git diff --cached --stat
 git commit -m 'feat: add Qt campus card service console'
 git push -u origin feature/qt-console
@@ -125,7 +114,7 @@ grep -q 'FAIL blank holder name' build/regression-before.log
 python3 "$GITEASY_CAMPUS/tools/name_validation_patch.py" --implementation-only
 cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
-git add src/card_service.cpp tests/test_card_service.cpp
+git add src/card_holder.cpp tests/test_card_service.cpp
 git diff --cached --check
 git commit -m 'fix: reject whitespace-only holder identity'
 fix_commit=$(git rev-parse HEAD)
@@ -175,12 +164,7 @@ good_commit=$(git rev-parse HEAD)
 printf 'Investigation starts from a known passing baseline.\n' > docs/investigation.md
 git add docs/investigation.md
 git commit -m 'docs: record investigation baseline'
-python3 - <<'PY'
-from pathlib import Path
-p=Path('src/card_service.cpp');s=p.read_text()
-assert 'if(target.state!=CardState::Active)' in s
-p.write_text(s.replace('if(target.state!=CardState::Active)','if(false)'))
-PY
+python3 "$GITEASY_CAMPUS/tools/lab_scenario.py" disable-lost-check
 git add src/card_service.cpp
 git commit -m 'test: inject lost-card regression for bisect drill'
 bad_commit=$(git rev-parse HEAD)
@@ -197,10 +181,7 @@ git switch main
 cd ..
 
 cd team-a
-python3 - <<'PY'
-from pathlib import Path
-p=Path('src/card_service.cpp');p.write_text(p.read_text().replace('if(target.state!=CardState::Active)','if(false)'))
-PY
+python3 "$GITEASY_CAMPUS/tools/lab_scenario.py" disable-lost-check
 git add src/card_service.cpp
 git restore --source=HEAD --worktree -- src/card_service.cpp
 git status --short
@@ -239,7 +220,7 @@ git worktree remove ../maintenance-tree
 cd ..
 
 test -f team-a/gui/main.cpp
-grep -q 'currency' team-a/src/card_service.cpp
+grep -q 'currency' team-a/src/ledger_export.cpp
 grep -q 'north and south' team-a/docs/demo-policy.md
 test "$(git -C team-a rev-list --count main..feature/upgrade-guide)" = 1
 test -z "$(git -C team-a status --porcelain)"
