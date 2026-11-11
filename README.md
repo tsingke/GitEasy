@@ -51,7 +51,7 @@ python3 tools/run_lab.py --all --list
 
 ![工作区、索引与提交的知识结构](./assets/mindmaps/ch03.png)
 
-17张纵向复习导图按章节顺序以01–06编号模块呈现，采用无连线的扁平卡片与柔和配色；教材中不纳入图号，提供可编辑源文件。各章另有图解导读、82项状态与工程情境对照，精选30幅生成式插图；关系精度要求较高的图示使用矢量绘制。[Draw.io源文件](./assets/git-book-mindmaps.drawio)可继续编辑，图片用于快速浏览。
+17张纵向复习导图按章节顺序以01–06编号模块呈现，采用无连线的扁平卡片与柔和配色；教材中不纳入图号，提供可编辑源文件。各章另有图解导读、82项状态与工程情境对照，精选30幅生成式插图；关系精度要求较高的图示使用矢量绘制。[导图源文件](./assets/git-book-mindmaps.drawio)与[原理及工程图源](./assets/diagrams/README.md)可继续编辑，图片用于快速浏览。
 
 共38条可运行路线，包括新增的.git内部目录与链接工作树观察。主实验覆盖分支保护、增删冲突、双人交换、恢复矩阵、对象构造、变基、签名、依赖、钩子和综合交付；独立拓展覆盖换行属性、notes、rerere、refspec、打包、补丁和迁移。脚本将预期失败与最终验收区分，保留内容及历史断言。
 
@@ -68,7 +68,7 @@ cmake --build build-campus --parallel 2
 ctest --test-dir build-campus --output-on-failure
 ```
 
-从双人并行开发，到回归修复、维护移植、二分定位、候选验证和独立恢复，19个连续命令块共同形成完整演练。真实Issue、PR、评审与Release按第16、17章人工实践。[校园工程引入PR #1](https://github.com/tsingke/GitEasy/pull/1)可用于观察差异、提交和检查记录；作者自检不等于第三方批准。 [教材资源修订PR #2](https://github.com/tsingke/GitEasy/pull/2)记录本轮图解、习题与内部目录实验的同步。
+从双人并行开发，到回归修复、维护移植、二分定位、候选验证和独立恢复，19个连续命令块共同形成完整演练。真实Issue、PR、评审与Release按第16、17章人工实践。[校园工程引入PR #1](https://github.com/tsingke/GitEasy/pull/1)可用于观察差异、提交和检查记录；作者自检不等于第三方批准。 [教材资源修订PR #2](https://github.com/tsingke/GitEasy/pull/2)记录此前图解、习题与内部目录实验的同步。[企业工程与版式修订PR #3](https://github.com/tsingke/GitEasy/pull/3)连接本轮规划、模块实现、测试和配套资源。
 
 项目先提供[企业实施方案](./projects/campus-card/docs/enterprise-project-plan.md)、[任务迭代](./projects/campus-card/docs/iterations.md)、[45项技能矩阵](./projects/campus-card/docs/git-skill-matrix.md)与[交付验收](./projects/campus-card/docs/acceptance.md)，再进入连续演练。
 
@@ -83,6 +83,7 @@ python3 tools/run_lab.py --all
 
 [实际验证记录](./docs/verification.json)保存已执行环境和路线结果；[CI](https://github.com/tsingke/GitEasy/actions/workflows/labs.yml)提供独立Linux/macOS运行记录。核心项目的跨平台构建与Qt检查由[CampusCard工作流](https://github.com/tsingke/GitEasy/actions/workflows/campus.yml)分别记录。LFS服务、真实平台权限与人工评审不包含在离线通过结论中。
 
+- [教材前言](./docs/preface.md)
 - [学习与实验说明](./docs/learning-guide.md)
 - [贡献与勘误](./CONTRIBUTING.md)
 - [参考资料与原创说明](./docs/references.md)

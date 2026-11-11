@@ -1,0 +1,2474 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name="scenario-02-01 一次新提交前后的三份内容">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="观察位置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="提交之前" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="普通提交之后" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="HEAD中的内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="旧版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="新版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="索引候选" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="新版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="新版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="新版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="新版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-01 XY两列分别描述两组比较">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="状态列" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="比较对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="回答的问题" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="X列" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="HEAD与索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="候选相对上次提交怎样变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="Y列" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="索引与工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="候选之后还有哪些编辑" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-02 忽略规则与跟踪状态分开判断">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="路径状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="新增忽略规则" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="已有历史" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="未跟踪" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="影响常规发现与选择" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="尚无该路径的提交记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="已跟踪" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="不自动取消跟踪" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="旧快照继续保留" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-03 删除路径与仅停止跟踪">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="操作范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="索引中的路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="工作目录路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="删除并记录删除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="移除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="移除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="仅停止跟踪" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="移除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="保留" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-04 索引条目的四类关键字段">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="路径&#10;&#10;快照中使用的相对名称" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="模式&#10;&#10;普通文件、可执行文件等类型信息" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="对象标识&#10;&#10;候选内容所对应的对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="阶段&#10;&#10;普通条目为0；冲突时按来源区分" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-05 取消暂存与恢复文件的目标">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="任务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="写入目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="保留观察" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="取消暂存" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="工作文件仍可保留编辑" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="恢复工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="工作目录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="索引不一定随之改变" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-06 三种内容比较的起点与终点">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="查询意图" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="起点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="终点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="未暂存差异" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="已暂存差异" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="HEAD" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="相对上次提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="HEAD" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-07 重复暂存更新的是候选内容">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="时刻：首次暂存后 / 索引：第二版 / 工作文件：第二版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="时刻：继续编辑后 / 索引：第二版 / 工作文件：第三版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="时刻：再次暂存后 / 索引：第三版 / 工作文件：第三版" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-04-01 二分定位需要稳定的判定">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="输入或结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="含义" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="后续处理" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="已知好版本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="满足指定判定" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="作为一侧边界" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="已知坏版本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="不满足同一判定" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="作为另一侧边界" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="无法运行" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="不能据此判好坏" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="按协议跳过或修复环境" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-04-02 逐行线索与变更原因的调查">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="查询结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="进一步阅读" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="可以形成的结论" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="某行关联提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="完整补丁与说明" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="该次变化的上下文" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="路径相关历史" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="改名与筛选条件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="查询范围内的演进" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="关联讨论" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="需求与评审记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="变化的理由和约束" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-04-03 查询集合与文件比较分别选择">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="选择提交&#10;&#10;入口、排除集合和祖先关系" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="比较文件&#10;&#10;两份树或指定的比较基线" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="追查原因&#10;&#10;候选提交、补丁与上下文" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-05-01 分离HEAD上的实验需要建立入口">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="阶段：检出一个提交 / HEAD所指：直接指向提交 / 保存方式：可以观察与继续试验" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="260.75" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="阶段：形成新提交 / HEAD所指：直接指向新提交 / 保存方式：尚需安排长期入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="260.75" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="阶段：建立主题分支 / HEAD所指：新分支保存该提交 / 保存方式：以后可按名称返回" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="260.75" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-01 三种合并选项约束不同">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="选项或方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="允许快进时" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="已经分叉时" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="通常的合并" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="可以快进" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="按内容与历史整合" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="要求合并提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="形成显式连接" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="形成合并提交或暂停" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="仅允许快进" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="更新入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="拒绝分叉整合" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-02 当前分支决定整合的接收方向">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="位置：当前分支 / 职责：接收来源并保存整合结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="位置：来源入口 / 职责：指出需要接入的历史" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="位置：公共基线 / 职责：帮助识别两侧各自的变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-03 解决冲突分为内容与状态两步">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="处理阶段" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="出现冲突" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="保留待判断内容或标记" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="记录不同来源" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="编辑完成" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="形成预期结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="仍需记录解决" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="确认解决" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="保留结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="普通阶段条目进入候选" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-04 中止合并与忘记合并状态">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="动作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="整合状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="工作现场" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="中止" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="结束当前合并过程" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="尝试返回合并前状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="退出状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="不再保留当前合并管理状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="冲突内容和条目可能仍在" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="已经提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="不属于暂停中的过程" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="另按恢复策略处理" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-05 文本整合与业务验证分层进行">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="检查层次" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="检查内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="通过的边界" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="语法与文本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="冲突标记和可整合内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="不能证明接口约定一致" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="构建与接口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="类型、符号和调用关系" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="不能覆盖未测试行为" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="业务规则" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="输入、输出与不变量" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="结论限于已验证条件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-06 冲突解决材料应支持复查">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="来源&#10;&#10;当前、合入侧与基线版本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="决定&#10;&#10;采用、修改或删除内容的理由" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="结果&#10;&#10;最终候选与实际文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="证据&#10;&#10;检查命令、测试及结论" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-07 修改与删除冲突的两类业务决定">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="决定" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="文件结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="需要验证的依赖" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="保留并调整" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="继续存在" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="调用方与新增规则" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="接受删除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="不再存在" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="引用路径与替代实现" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-08 公共基线用于辨认变化">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="来源" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="相对基线的情况" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="整合时的意义" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="当前侧" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="保留或修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="辨认当前任务的变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="合入侧" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="保留或修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="辨认来源任务的变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="两侧结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="可能文本兼容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="仍需判断共同语义" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-07-01 抓取映射与推送映射分开阅读">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="方向" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="来源" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="抓取" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="另一仓库的引用" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="本地观察记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="推送" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="本地选定引用" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="另一仓库的目标引用" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-07-02 删除三个位置的名称分别进行">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="位置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="可能的操作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="不会自动完成" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="服务器分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="向服务器请求删除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="删除本地工作分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="本地观察记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="抓取时清理失效记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="删除本地工作分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="本地工作分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="按合入条件整理入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="删除服务器分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-07-03 协作失败沿通信与历史分层排查">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="地址与连通&#10;&#10;是否联系到预期服务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="身份与授权&#10;&#10;该身份是否可执行目标动作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="历史关系&#10;&#10;更新是否满足所需祖先条件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="项目规则&#10;&#10;检查、评审与分支约束是否满足" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-01 恢复操作的来源与目标">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="选择" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="来源" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="写入目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="恢复工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="默认索引或指定树" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="工作目录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="取消暂存" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="指定来源，常为HEAD" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="同时指定两层" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="明确选择的树" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="索引与工作目录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-02 hard模式可能影响阻挡目标的路径">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="受目标树管理&#10;&#10;按目标更新文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="未跟踪且阻挡目标路径&#10;&#10;可能被移除以完成写入" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="其他未跟踪内容&#10;&#10;不能由此概括全部处理结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-03 反向变化与整树恢复的区别">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="比较维度" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="追加纠错" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="恢复某棵旧树" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="保留历史" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="新提交接续已有记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="取决于所用操作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="作用内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="反向应用指定变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="以所选快照内容为目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="后续工作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="需要保留并检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="可能被目标内容替换" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-04 撤销合并后仍保留祖先事实">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="合并提交及父链&#10;&#10;仍是已有历史的一部分" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="工作内容&#10;&#10;按主线父项形成反向修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="再次合并判断&#10;&#10;仍依据提交祖先关系" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-05 修订最近提交保留旧新两种身份">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="记录：原提交 / 树与说明：原来选定的内容与字段 / 父项：原有父项" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="记录：替代提交 / 树与说明：修订后的内容或字段 / 父项：通常继续采用原父项" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-06 现场保存范围由选项决定">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="内容类别" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="通常默认" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="按选项扩展" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="已跟踪编辑" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="纳入保存范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="具体恢复仍看参数" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="未跟踪路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="通常不包含" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="可显式要求包含" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="忽略路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="通常不包含" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="需核对额外选项" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-07 应用冲突时保留记录并核对现场">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="阶段" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="工作现场" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="保存记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="应用之前" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="当前基线及其编辑" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="提供待应用内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="发生冲突" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="包含需要判断的结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="不能假定已删除" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="解决之后" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="按任务验证候选" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="确认无遗漏后再整理" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-08-08 先建立救援入口再继续恢复">
+    <mxGraphModel page="1" pageWidth="1230.0" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="步骤：读取本地日志 / 目的：定位可能的旧提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="步骤：查询候选内容 / 目的：确认是否为所需结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="步骤：建立保护名称 / 目的：保留后续访问入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="步骤：继续恢复 / 目的：按目标调整工作现场" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="920" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-01 对象标识的输入包含类型与长度">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="对象类型&#10;&#10;区分blob、tree、commit等正文语义" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="正文长度&#10;&#10;按实际字节数描述数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="分隔与正文&#10;&#10;以规定格式构成哈希输入" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-02 路径与文件内容分别保存">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="对象或条目：blob / 保存的信息：文件内容，不自带路径名" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="对象或条目：树条目 / 保存的信息：名称、模式和目标对象标识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="对象或条目：提交 / 保存的信息：根树、父项及提交元数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-03 沿对象连接逐层读取">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="查询层次：提交正文 / 下一步依据：取得根树标识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="查询层次：根树及子树 / 下一步依据：按路径取得条目标识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="查询层次：文件内容对象 / 下一步依据：读取目标文件字节" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-04 同一棵树可以对应不同提交">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="字段" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="提交甲" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="提交乙" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="根树" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="相同快照" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="相同快照" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="父项或元数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="原始取值" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="其中一项改变" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="提交标识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="对象甲的标识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="通常成为另一标识" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-05 构造对象不等于建立分支入口">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="构造结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="已经具备" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="尚需安排" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="写入blob" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="内容对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="路径与提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="形成tree" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="快照结构" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="父项与提交信息" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="形成commit" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="历史记录对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="便于访问的引用" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-06 可达性从保留入口沿连接判断">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="情况" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="含义" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="处理依据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="从引用可达" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="存在明确历史入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="保留并正常查询" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="暂不可达" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="当前入口不再指向该对象链" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="结合日志、时间及维护规则判断" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="对象损坏" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="数据或连接有异常" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="先保全再诊断" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-07 完整性、身份与内容责任分别验证">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="数据是否符合对象格式&#10;&#10;对象校验与连接检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="是否来自预期主体&#10;&#10;可信身份及签名材料" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="行为是否符合要求&#10;&#10;审查、构建与测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-10-01 脚本先验证名称再读取目标">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="解释输入&#10;&#10;名字是否明确且无歧义" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="验证目标&#10;&#10;是否存在并符合所需对象类型" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="执行动作&#10;&#10;参数与路径是否按预期分开" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-01 变基冲突需要结合当前重放步骤">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="当前侧&#10;&#10;已经形成的新基线与已重放结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="重放侧&#10;&#10;本次待应用提交的变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="共同来源&#10;&#10;用于三方处理的原有上下文" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-02 整理动作与提交身份变化">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="动作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="内容组织目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="检查重点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="调整次序" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="形成可理解的变化序列" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="依赖是否仍成立" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="合并修订" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="把关联变化集中说明" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="说明与实际差异一致" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="拆分提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="分成可独立理解的修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="每个候选是否完整" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-03 拣选带来变化但不接入原父链">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="观察维度" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="原提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="拣选结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="父项" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="来源父链" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="目标当前历史" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="变化" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="来源上下文中的差异" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="应用到目标后的结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="验证" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="来源曾做的检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="目标需重新检查依赖" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-04 共享历史整理需要两类约定">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="技术目标&#10;&#10;范围、父链、内容和保护入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="协作条件&#10;&#10;其他副本、维护分支与同步方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="验证材料&#10;&#10;整理前后差异和测试结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-05 清理历史与处置有效凭据分别完成">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="停止有效访问&#10;&#10;撤销或轮换已暴露凭据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="减少历史传播&#10;&#10;按约定清理所选历史及副本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="恢复协作&#10;&#10;验证迁移结果并通知授权参与者" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-06 重放前后的保护入口分别保存">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="位置：原主题末端 / 用途：对照旧变化与恢复起点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="位置：新基线 / 用途：明确重放接收位置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="位置：新主题末端 / 用途：查询新父链与验证结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-07 范围选择与新位置是不同参数">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="新基线&#10;&#10;变化从哪里继续" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="排除边界&#10;&#10;哪些旧历史不再重放" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="主题末端&#10;&#10;从哪个入口确定候选范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-12-01 发布入口与开发分支分别演进">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="位置：已发布标签 / 后续开发时的预期：按发布约定保留目标身份" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="位置：开发分支 / 后续开发时的预期：随新提交继续前进" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="位置：发布说明与产物 / 后续开发时的预期：关联相应标签和验证范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-13-01 合入前分别核对三类条件">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="内容满足需求&#10;&#10;需求、差异与验收结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="历史符合约定&#10;&#10;base、head和合入方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="过程规则满足&#10;&#10;检查、评审与权限记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-14-01 三种依赖组织的父仓库记录">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="父仓库记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="额外取得对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="submodule" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="子提交入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="子仓库历史与检出内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="subtree" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="普通目录中的文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="后续导入与回送按约定进行" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="LFS" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="小型指针文本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="外部大文件内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-14-02 规模问题先区分三项成本">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="取得历史&#10;&#10;传输的提交与对象范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="物化文件&#10;&#10;工作区路径与文件数量" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="保存数据&#10;&#10;对象表示、依赖与外部内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-15-01 本地反馈与服务端验收分开设置">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="环节" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="作用" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="限制" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="本地钩子" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="提前发现候选问题" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="受本地配置与调用方式影响" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="独立检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="验证指定输入版本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="覆盖范围由步骤与断言决定" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="团队规则" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="约束可接受的合入" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="需结合实际服务端设置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-15-02 入口恢复与工作现场恢复分别安排">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="先核对" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="再执行" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="找回提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="日志与对象内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="建立救援入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="找回未提交稿" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="其他保存位置与备份" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="独立还原并比较" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="重新交接" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="历史、文件和外部范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="在新位置验证恢复" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-16-01 从问题描述到可验收任务">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="触发条件&#10;&#10;卡片已挂失后发起新的消费请求" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="预期结果&#10;&#10;拒绝请求且余额与流水不变" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="验证方法&#10;&#10;检查异常类型与两项不变量" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="完成依据&#10;&#10;代码差异、测试和关联PR" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-01 需求、实现和验证形成对应">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="需求" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="实现位置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="验证对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="挂失拒绝新消费" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="服务与卡片状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="余额及流水不变" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="请求幂等" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="请求记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="合法重试不重复扣款" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="限额策略" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="持卡人策略" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="边界与拒绝路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c12" parent="1" vertex="1" value="流水交付" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="410" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c13" parent="1" vertex="1" value="导出接口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="410" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c14" parent="1" vertex="1" value="字段、顺序与金额" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="410" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-02 多态用于选择不同持卡人策略">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="调用者" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="统一接口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="不同实现" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="业务服务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="消费限额等策略查询" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="学生策略" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="业务服务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="同一抽象接口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="教职工策略" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-03 金额以最小货币单位参与计算">
+    <mxGraphModel page="1" pageWidth="1230.0" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="示意步骤：初始余额 / 金额／分：10000" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="示意步骤：消费20.00元 / 金额／分：扣除2000" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="示意步骤：成功后余额 / 金额／分：8000" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620" y="30" width="280" height="224" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="示意步骤：相同请求重试 / 金额／分：仍为8000" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="920" y="30" width="280" height="224" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-04 挂失与解挂只在明确状态间转换">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="原状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="操作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="正常" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="挂失" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="进入挂失状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="挂失" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="新消费请求" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="拒绝且保留业务数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="挂失" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="按规则解挂" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="恢复正常状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-05 构建目标保持业务与界面分层">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="目标" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="依赖重点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="验证目的" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="业务核心" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="C++11领域与服务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="规则可独立测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="命令行与测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="业务核心" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="无需界面即可回归" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="Qt界面" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="业务核心与Qt6" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="交互目标按C++17构建" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-06 界面交互与业务状态对应验证">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="操作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="观察位置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="拒绝时核对" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="充值与消费" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="余额及流水显示" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="保留先前业务状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="挂失与解挂" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="卡片状态显示" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="提示与实际状态一致" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="导出流水" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="输出文件内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="路径与错误提示清楚" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-07 并行开发先约定接口与验收">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="角色" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="独立修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="共同约定" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="开发者甲" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="主题一与相应测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="接口及数据格式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="开发者乙" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="主题二与相应测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="业务不变量" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="整合者" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="审查与整合结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="分支及发布规则" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-08 候选检查与工作目录检查分开">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="工作目录&#10;&#10;当前磁盘内容通过指定检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="索引构造的候选&#10;&#10;准备提交的内容通过指定检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="独立检出的提交&#10;&#10;记录下来的版本可被重新构建" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-09 真实PR对应明确的方向与版本">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="base&#10;&#10;接收仓库与目标分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="head&#10;&#10;贡献仓库与主题分支" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="版本&#10;&#10;提出变化时的提交身份" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="证据&#10;&#10;适用的检查与人工评审" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-10 维护修复需要重新验证目标上下文">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="定位问题&#10;&#10;判定稳定且版本边界明确" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="形成修复&#10;&#10;范围集中且原因可解释" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="移植维护线&#10;&#10;依赖与接口满足目标版本" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="再次发布&#10;&#10;标签、产物及测试对应" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-11 源码交付与历史交付分别验收">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="材料" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="包含的主要范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="独立验收" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="源码归档" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="所选版本文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="解包、构建与运行" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="历史包" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="选定Git历史及其前提" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="校验、导入与查询" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="交接清单" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="外部资料和平台记录" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="逐项确认取得条件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-12 独立克隆分别构建和核对">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="仓库位置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="已有数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="需要独立验证" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="协作中心" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="共享Git历史" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="提供约定的读写入口" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="工作现场甲" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="克隆与本地配置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="构建并运行测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="工作现场乙" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="另一个独立克隆" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="重新构建并核对状态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-13 竞争推送以后先取得服务器进展">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="推送被拒绝&#10;&#10;读取原因并保留自己的提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="抓取最新状态&#10;&#10;核对来源入口与祖先关系" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="整合并验证&#10;&#10;同时保留两项已验收修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="再次推送&#10;&#10;确认服务器目标确已更新" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-14 冲突解决保持双方有效需求">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="来源" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="提交的意图" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="最终验收" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="甲的修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="表达一项资料修订" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="相应需求继续满足" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="乙的修改" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="表达另一项修订" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="相应需求继续满足" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="共同结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="按约定形成一致内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="差异与测试共同核对" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-15 发布基线为回归调查提供入口">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="课程发布标签&#10;&#10;固定已交付的起点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="出现问题的版本&#10;&#10;提供可重复的失败条件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="修复提交&#10;&#10;集中说明原因与修正" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="回归测试&#10;&#10;防止相同条件再次失败" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-16 未共享提交按完整意图整理">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="整理前" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="整理动作" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="整理后核对" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="实现与后续补充" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="说明关联的fixup关系" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="变化是否合成完整提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="已有主题序列" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="在规定范围内重放" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="父链与提交说明" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="本地试验结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="完成独立测试" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="再决定何时共享" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-17-17 回归定位区分业务判定与运行异常">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="规则满足&#10;&#10;可以标记为好" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="同一规则不满足&#10;&#10;可以标记为坏" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="环境或构建异常&#10;&#10;按协议报告或跳过" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="定位结束&#10;&#10;恢复入口并记录证据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-01-01 编辑位置与命令位置需要核对">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="编辑器打开的目录&#10;&#10;界面当前组织的文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="终端当前目录&#10;&#10;相对路径解释的起点" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="Git仓库根目录&#10;&#10;项目管理边界的查询结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-02-02 初次操作失败的四类对象">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="找不到git程序&#10;&#10;安装与可执行搜索路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="找不到仓库&#10;&#10;当前目录与仓库根" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="提交身份缺失&#10;&#10;配置作用域与实际值" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="认证或授权失败&#10;&#10;通信身份与目标权限" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-03-08 属性规则与文件字节分别观察">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="路径规则&#10;&#10;哪些属性实际作用于该路径" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="工作文件&#10;&#10;当前编码及行尾字节" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="索引内容&#10;&#10;规范化后选入的候选" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="历史比较&#10;&#10;规范化与功能变化是否分开审阅" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-04-04 notes在独立入口中关联说明">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="原提交&#10;&#10;正文与标识保持不变" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="附加说明&#10;&#10;由notes相关引用组织" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="共享安排&#10;&#10;需要单独约定传送范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-06-09 重复冲突记录与本次验收分开">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="识别相似冲突&#10;&#10;利用已记录的冲突形态" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="复用解决内容&#10;&#10;提供已有处理结果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="核对候选&#10;&#10;检查本次索引与工作文件" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="执行测试&#10;&#10;判断当前上下文是否仍满足需求" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-07-04 远端旧值保护只约束更新条件">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="预期远端值&#10;&#10;入口是否仍符合本次预期" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="本地贡献范围&#10;&#10;是否保留需要的同伴成果" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="320.0" y="30" width="275.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="实际项目内容&#10;&#10;整合后的行为是否正确" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="620.0" y="30" width="275.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-09-08 两种索引服务于不同任务">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="文件或机制" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="对应数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="任务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="候选index" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="路径、模式、内容及阶段" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="形成下一次提交候选" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="pack索引" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="打包对象的位置等信息" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="定位包内对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="树对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="已记录的路径及对象连接" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="描述确定快照" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-11-08 补丁应用与邮件提交分别处理">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="主要输入" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="结果与后续检查" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="30" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="应用补丁" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c4" parent="1" vertex="1" value="选定的文本差异" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c5" parent="1" vertex="1" value="按参数改变内容并核对范围" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="125" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c6" parent="1" vertex="1" value="邮件式提交" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c7" parent="1" vertex="1" value="提交元信息和补丁" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c8" parent="1" vertex="1" value="形成提交并核对身份与父链" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="220" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c9" parent="1" vertex="1" value="接收验证" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="30" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c10" parent="1" vertex="1" value="目标依赖与环境" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="300" y="315" width="255" height="85" />
+        </mxCell>
+        <mxCell id="c11" parent="1" vertex="1" value="重新构建并检验业务" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="570" y="315" width="255" height="85" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-12-02 长期验证保留对象与信任材料">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="发布对象&#10;&#10;明确标签与提交身份" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="签名与公钥&#10;&#10;验证签名所需数据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="身份依据&#10;&#10;密钥与主体的可信关联" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="轮换说明&#10;&#10;适用时间及后续验证方式" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-13-02 评审意见从现象落实到验证">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="位置与条件&#10;&#10;在哪个版本及输入下出现" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="影响与理由&#10;&#10;为何影响需求或可维护性" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="建议与证据&#10;&#10;如何修改并验证" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="响应与状态&#10;&#10;采用、讨论或不采用的依据" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-15-03 仓库迁移列出四类交接范围">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="Git数据&#10;&#10;分支、标签及所需对象" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="外部内容&#10;&#10;LFS载荷与依赖仓库" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="平台资料&#10;&#10;Issue、PR、附件及文档" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="服务配置&#10;&#10;权限、自动化与访问设置" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="scenario-16-02 图形操作仍应回到三份内容核对">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c0" parent="1" vertex="1" value="文件状态区&#10;&#10;哪些路径存在候选或工作编辑" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F3F7FC;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c1" parent="1" vertex="1" value="差异预览&#10;&#10;当前实际比较哪两份内容" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F1F9F7;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="30" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c2" parent="1" vertex="1" value="提交历史图&#10;&#10;名称指向与父关系如何连接" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#F7F4FB;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="20.0" y="268" width="425.0" height="210" />
+        </mxCell>
+        <mxCell id="c3" parent="1" vertex="1" value="同步提示&#10;&#10;取得、整合与推送分别发生了什么" style="rounded=1;whiteSpace=wrap;html=0;fillColor=#FBF7F0;strokeColor=#A7BAC6;fontSize=17;">
+          <mxGeometry as="geometry" x="470.0" y="268" width="425.0" height="210" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

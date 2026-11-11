@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net">
+  <diagram name=".git文件夹层次" id="git-folder-tree">
+    <mxGraphModel page="1" pageWidth="1000" pageHeight="1400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="entry-0" value=".git/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-1" value="HEAD" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="100" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-1" value="" source="entry-0" target="entry-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-2" value="config" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="160" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-2" value="" source="entry-0" target="entry-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-3" value="index" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="220" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-3" value="" source="entry-0" target="entry-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-4" value="description" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="280" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-4" value="" source="entry-0" target="entry-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-5" value="hooks/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="340" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-5" value="" source="entry-0" target="entry-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-6" value="*.sample" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-6" value="" source="entry-5" target="entry-6" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-7" value="info/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="460" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-7" value="" source="entry-0" target="entry-7" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-8" value="exclude" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="520" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-8" value="" source="entry-7" target="entry-8" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-9" value="objects/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="580" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-9" value="" source="entry-0" target="entry-9" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-10" value="&lt;前两位&gt;/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="640" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-10" value="" source="entry-9" target="entry-10" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-11" value="&lt;其余标识字符&gt;" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="280" y="700" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-11" value="" source="entry-10" target="entry-11" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-12" value="info/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="760" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-12" value="" source="entry-9" target="entry-12" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-13" value="pack/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="820" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-13" value="" source="entry-9" target="entry-13" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-14" value="refs/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="880" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-14" value="" source="entry-0" target="entry-14" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-15" value="heads/main" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="940" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-15" value="" source="entry-14" target="entry-15" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-16" value="tags/layout-v1" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1000" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-16" value="" source="entry-14" target="entry-16" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-17" value="logs/" style="shape=folder;fillColor=#FFF1CB;strokeColor=#A66A08;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="120" y="1060" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-17" value="" source="entry-0" target="entry-17" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-18" value="HEAD" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1120" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-18" value="" source="entry-17" target="entry-18" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="entry-19" value="refs/heads/main" style="shape=document;fillColor=#F3F8FC;strokeColor=#155DA6;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="200" y="1180" width="250" height="45" as="geometry" />
+        </mxCell>
+        <mxCell id="path-19" value="" source="entry-17" target="entry-19" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=none;strokeColor=#A0B6C6;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="note-0" value="定位入口：HEAD关联当前位置；config提供仓库级配置。" style="rounded=1;fillColor=#F3F8FC;strokeColor=#CAD8E3;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="note-1" value="选择候选：index通过条目组织候选内容。读取使用Git查询接口。" style="rounded=1;fillColor=#F3F8FC;strokeColor=#CAD8E3;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="600" y="260" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="note-2" value="保存对象：objects按内容标识组织数据，目录名称与项目路径不同。" style="rounded=1;fillColor=#F3F8FC;strokeColor=#CAD8E3;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="600" y="480" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="note-3" value="提供名称：refs示意松散引用；打包或其他后端可改变保存形式。" style="rounded=1;fillColor=#F3F8FC;strokeColor=#CAD8E3;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="600" y="700" width="340" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="note-4" value="记录移动：logs保存已启用的本地引用日志，保留受配置和维护影响。" style="rounded=1;fillColor=#F3F8FC;strokeColor=#CAD8E3;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="600" y="920" width="340" height="130" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="关联工作树与公共目录" id="git-worktree-common">
+    <mxGraphModel page="1" pageWidth="1000" pageHeight="1400">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pointer" value="关联工作树/.git：gitdir: 路径" style="shape=folder;fillColor=#EEF7F7;strokeColor=#087F78;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="local" value="独立管理目录：HEAD、index、commondir" style="shape=folder;fillColor=#EEF7F7;strokeColor=#087F78;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="580" y="40" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="normal" value="主工作树/.git：常规管理目录" style="shape=folder;fillColor=#EEF7F7;strokeColor=#087F78;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="common" value="公共目录：objects、多数refs" style="shape=folder;fillColor=#EEF7F7;strokeColor=#087F78;html=1;whiteSpace=wrap;fontSize=17;" vertex="1" parent="1">
+          <mxGeometry x="580" y="400" width="300" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="link1" value="路径指向" source="pointer" target="local" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link2" value="公共目录" source="local" target="common" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="link3" value="同一管理位置" source="normal" target="common" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

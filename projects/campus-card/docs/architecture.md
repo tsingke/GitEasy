@@ -25,7 +25,7 @@ CLI和Qt窗口调用`CardService`；服务组合金额、日期、持卡人策�
 
 `CardHolder`定义类别和限额虚接口，`StudentHolder`、`StaffHolder`使用`override`提供不同策略。基类具有虚析构；`std::unique_ptr`与移动语义表达独占所有权。服务禁止复制，查询按值返回`CardView`，调用者不能绕过入口改余额。只读流水借用在服务继续写入时可能使既有迭代器失效。
 
-`enum class`区分状态与操作；`auto`、范围for和lambda用于遍历、排序及回调；`DayProvider`以`std::function`承接日期依赖。测试可以注入固定日期，普通运行使用系统日期。没有把C++14的`make_unique`写为C++11特性。
+`enum class`区分状态与操作；`auto`、范围for和lambda用于遍历、排序及回调；`DayProvider`以`std::function`承接日期依赖。测试可以注入固定日期，普通运行使用系统日期。使用引用捕获时，被引用对象的生命期必须覆盖服务的使用期；本例先构造日期变量，再构造服务，销毁顺序与之相反。没有把C++14的`make_unique`写为C++11特性。
 
 ## 不变量与测试
 

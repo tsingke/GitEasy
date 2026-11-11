@@ -232,5 +232,17 @@
       "exit_code": 0,
       "seconds": 30.6
     }
-  ]
+  ],
+  "verification_date": "2026-11-12",
+  "campus_project": {
+    "core_assertions": 72,
+    "core_ctest": 5,
+    "qt_enabled_ctest": 6,
+    "core_standard": "C++11",
+    "gui_standard": "C++17 / Qt 6",
+    "header_self_containment_checks": 6,
+    "git_skill_work_packages": 45,
+    "evidence": "Local core and Qt builds and tests; source hashes stored with textbook; CI provides platform-specific logs",
+    "scope": "in-memory teaching application; no real payments or external platform review claimed"
+  }
 }

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="enterprise-flow" name="enterprise-flow">
+    <mxGraphModel page="1" pageWidth="1000" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="n0" value="需求与验收" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="30" y="180" width="165" height="100" />
+        </mxCell>
+        <mxCell id="n1" value="模块与接口" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="225" y="180" width="165" height="100" />
+        </mxCell>
+        <mxCell id="e1" parent="1" edge="1" source="n0" target="n1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="n2" value="任务与评审" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="420" y="180" width="165" height="100" />
+        </mxCell>
+        <mxCell id="e2" parent="1" edge="1" source="n1" target="n2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="n3" value="检查与发布" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="615" y="180" width="165" height="100" />
+        </mxCell>
+        <mxCell id="e3" parent="1" edge="1" source="n2" target="n3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="n4" value="维护与恢复" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="810" y="180" width="165" height="100" />
+        </mxCell>
+        <mxCell id="e4" parent="1" edge="1" source="n3" target="n4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="multifile-architecture" name="multifile-architecture">
+    <mxGraphModel page="1" pageWidth="1000" pageHeight="650">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="cli" value="campus_cli&#10;命令行调用与示例" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#087F78;">
+          <mxGeometry as="geometry" x="35" y="50" width="430" height="85" />
+        </mxCell>
+        <mxCell id="qt" value="campus_widgets / campus_gui&#10;Qt输入、事件与视图" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#087F78;">
+          <mxGeometry as="geometry" x="535" y="50" width="430" height="85" />
+        </mxCell>
+        <mxCell id="service" value="campus_core: CardService&#10;账户状态、余额、限额、请求回执与一致性" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="35" y="245" width="930" height="100" />
+        </mxCell>
+        <mxCell id="cli-core" parent="1" edge="1" source="cli" target="service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="qt-core" parent="1" edge="1" source="qt" target="service" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="m0" value="money&#10;金额与上限" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#7350AC;">
+          <mxGeometry as="geometry" x="30" y="460" width="220" height="85" />
+        </mxCell>
+        <mxCell id="d0" parent="1" edge="1" source="service" target="m0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="m1" value="business_date&#10;日期与依赖" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#7350AC;">
+          <mxGeometry as="geometry" x="275" y="460" width="220" height="85" />
+        </mxCell>
+        <mxCell id="d1" parent="1" edge="1" source="service" target="m1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="m2" value="card_holder&#10;身份与策略" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#7350AC;">
+          <mxGeometry as="geometry" x="520" y="460" width="220" height="85" />
+        </mxCell>
+        <mxCell id="d2" parent="1" edge="1" source="service" target="m2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="m3" value="ledger_export&#10;流水报告" parent="1" vertex="1" style="rounded=1;arcSize=8;whiteSpace=wrap;html=0;fontSize=18;fillColor=#F6F9FC;strokeColor=#7350AC;">
+          <mxGeometry as="geometry" x="765" y="460" width="220" height="85" />
+        </mxCell>
+        <mxCell id="d3" parent="1" edge="1" source="service" target="m3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=block;strokeColor=#527D9B;strokeWidth=2;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
