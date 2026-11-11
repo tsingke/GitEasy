@@ -11,7 +11,10 @@
         <mxCell id="hub" value="第1章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="为什么需要版本控制" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="为什么需要版本控制" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -53,7 +56,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="版本与提交" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="版本与提交" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -95,7 +101,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="本地与分布式" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="本地与分布式" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -137,7 +146,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="Git 与托管平台" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="Git 与托管平台" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -179,7 +191,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="学习方法" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="学习方法" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -221,7 +236,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="课程实践" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="课程实践" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -277,7 +295,10 @@
         <mxCell id="hub" value="第2章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="环境检查" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="环境检查" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -319,7 +340,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="配置来源" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="配置来源" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -361,7 +385,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="提交身份" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="提交身份" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -403,7 +430,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="初始化与克隆" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="初始化与克隆" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -445,7 +475,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="编辑与文本" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="编辑与文本" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -487,7 +520,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="首次验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="首次验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -543,7 +579,10 @@
         <mxCell id="hub" value="第3章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="三份内容" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="三份内容" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -585,7 +624,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="状态读取" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="状态读取" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -627,7 +669,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="差异比较" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="差异比较" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -669,7 +714,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="准备提交" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="准备提交" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -711,7 +759,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="文件管理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="文件管理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -753,7 +804,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="恢复与自检" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="恢复与自检" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -809,7 +863,10 @@
         <mxCell id="hub" value="第4章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="提交浏览" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="提交浏览" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -851,7 +908,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="修订表达式" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="修订表达式" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -893,7 +953,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="内容追踪" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="内容追踪" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -935,7 +998,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="范围与差异" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="范围与差异" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -977,7 +1043,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="二分排错" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="二分排错" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -1019,7 +1088,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="证据组织" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="证据组织" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -1075,7 +1147,10 @@
         <mxCell id="hub" value="第5章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="分支本质" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="分支本质" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -1117,7 +1192,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="HEAD 的角色" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="HEAD 的角色" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -1159,7 +1237,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="创建与切换" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="创建与切换" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -1201,7 +1282,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="现场保护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="现场保护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -1243,7 +1327,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="命名与清理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="命名与清理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -1285,7 +1372,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="验证关系" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="验证关系" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -1341,7 +1431,10 @@
         <mxCell id="hub" value="第6章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="合并方向" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="合并方向" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -1383,7 +1476,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="快进与分叉" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="快进与分叉" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -1425,7 +1521,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="三方依据" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="三方依据" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -1467,7 +1566,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="冲突观察" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="冲突观察" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -1509,7 +1611,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="解决与退出" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="解决与退出" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -1551,7 +1656,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="团队习惯" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="团队习惯" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -1607,7 +1715,10 @@
         <mxCell id="hub" value="第7章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="远程关系" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="远程关系" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -1649,7 +1760,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="抓取与跟踪" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="抓取与跟踪" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -1691,7 +1805,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="上游与拉取" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="上游与拉取" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -1733,7 +1850,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="推送与拒绝" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="推送与拒绝" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -1775,7 +1895,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="GitHub 实践" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="GitHub 实践" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -1817,7 +1940,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="同步与诊断" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="同步与诊断" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -1873,7 +1999,10 @@
         <mxCell id="hub" value="第8章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="先判断对象" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="先判断对象" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -1915,7 +2044,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="restore 的边界" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="restore 的边界" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -1957,7 +2089,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="reset 的层次" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="reset 的层次" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -1999,7 +2134,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="revert 与 amend" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="revert 与 amend" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -2041,7 +2179,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="stash 的现场" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="stash 的现场" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -2083,7 +2224,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="reflog 与救援" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="reflog 与救援" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -2139,7 +2283,10 @@
         <mxCell id="hub" value="第9章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="对象与标识" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="对象与标识" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -2181,7 +2328,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="四类对象" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="四类对象" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -2223,7 +2373,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="从文件到提交" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="从文件到提交" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -2265,7 +2418,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="快照与复用" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="快照与复用" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -2307,7 +2463,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="完整性与可达性" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="完整性与可达性" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -2349,7 +2508,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="存储维护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="存储维护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -2405,7 +2567,10 @@
         <mxCell id="hub" value="第10章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="引用命名空间" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="引用命名空间" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -2447,7 +2612,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="符号引用" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="符号引用" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -2489,7 +2657,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="条件更新" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="条件更新" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -2531,7 +2702,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="索引条目" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="索引条目" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -2573,7 +2747,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="合并现场" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="合并现场" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -2615,7 +2792,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="谨慎使用底层命令" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="谨慎使用底层命令" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -2671,7 +2851,10 @@
         <mxCell id="hub" value="第11章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="重放模型" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="重放模型" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -2713,7 +2896,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="共享边界" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="共享边界" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -2755,7 +2941,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="冲突循环" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="冲突循环" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -2797,7 +2986,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="交互式整理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="交互式整理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -2839,7 +3031,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="拣选与补丁" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="拣选与补丁" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -2881,7 +3076,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="结果验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="结果验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -2937,7 +3135,10 @@
         <mxCell id="hub" value="第12章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="版本命名" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="版本命名" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -2979,7 +3180,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="两类标签" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="两类标签" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -3021,7 +3225,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="签名与验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="签名与验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -3063,7 +3270,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="发布准备" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="发布准备" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -3105,7 +3315,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="归档与交付" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="归档与交付" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -3147,7 +3360,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="发布后维护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="发布后维护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -3203,7 +3419,10 @@
         <mxCell id="hub" value="第13章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="任务边界" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="任务边界" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -3245,7 +3464,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="同步节奏" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="同步节奏" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -3287,7 +3509,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="评审材料" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="评审材料" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -3329,7 +3554,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="合入方式" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="合入方式" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -3371,7 +3599,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="开源协作" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="开源协作" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -3413,7 +3644,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="过程验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="过程验证" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -3469,7 +3703,10 @@
         <mxCell id="hub" value="第14章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="先识别瓶颈" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="先识别瓶颈" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -3511,7 +3748,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="大文件管理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="大文件管理" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -3553,7 +3793,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="浅克隆与部分克隆" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="浅克隆与部分克隆" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -3595,7 +3838,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="稀疏检出" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="稀疏检出" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -3637,7 +3883,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="依赖组织" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="依赖组织" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -3679,7 +3928,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="多工作树与单仓" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="多工作树与单仓" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -3735,7 +3987,10 @@
         <mxCell id="hub" value="第15章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="本地检查" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="本地检查" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -3777,7 +4032,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="持续集成" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="持续集成" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -3819,7 +4077,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="仓库规范" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="仓库规范" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -3861,7 +4122,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="凭据与安全" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="凭据与安全" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -3903,7 +4167,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="备份与恢复" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="备份与恢复" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -3945,7 +4212,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="维护与诊断" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="维护与诊断" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -4001,7 +4271,10 @@
         <mxCell id="hub" value="第16章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="身份与对象" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="身份与对象" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -4043,7 +4316,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="页面与获取" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="页面与获取" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -4085,7 +4361,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="需求与评审" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="需求与评审" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -4127,7 +4406,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="检查与发布" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="检查与发布" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -4169,7 +4451,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="规则与设置" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="规则与设置" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -4211,7 +4496,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="图形化工具" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="图形化工具" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">
@@ -4267,7 +4555,10 @@
         <mxCell id="hub" value="第17章&lt;br&gt;知识结构" vertex="1" parent="1" style="rounded=1;arcSize=30;align=center;fillColor=#F0F5FC;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="400" y="600" width="100" height="90" />
         </mxCell>
-        <mxCell id="head-0" value="业务与架构" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#155DA6;fontColor=#155DA6;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-0" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#155DA6;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-0" value="业务与架构" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#155DA6;strokeColor=#155DA6;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-0" source="hub" target="head-0" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=3;">
@@ -4309,7 +4600,10 @@
         <mxCell id="twig-0-5" source="head-0" target="leaf-0-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#155DA6;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-1" value="并行协作" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#087F78;fontColor=#087F78;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-1" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#087F78;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-1" value="并行协作" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#087F78;strokeColor=#087F78;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-1" source="hub" target="head-1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=3;">
@@ -4351,7 +4645,10 @@
         <mxCell id="twig-1-5" source="head-1" target="leaf-1-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#087F78;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-2" value="回归与维护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#7350AC;fontColor=#7350AC;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-2" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#7350AC;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="35" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-2" value="回归与维护" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#7350AC;strokeColor=#7350AC;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="40" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-2" source="hub" target="head-2" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=3;">
@@ -4393,7 +4690,10 @@
         <mxCell id="twig-2-5" source="head-2" target="leaf-2-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#7350AC;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-3" value="自动检查" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#007FAD;fontColor=#007FAD;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-3" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#007FAD;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="95" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-3" value="自动检查" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#007FAD;strokeColor=#007FAD;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="100" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-3" source="hub" target="head-3" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=3;">
@@ -4435,7 +4735,10 @@
         <mxCell id="twig-3-5" source="head-3" target="leaf-3-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#007FAD;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-4" value="GitHub工程" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#A66A08;fontColor=#A66A08;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-4" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#A66A08;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="450" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-4" value="GitHub工程" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#A66A08;strokeColor=#A66A08;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="455" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-4" source="hub" target="head-4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=3;">
@@ -4477,7 +4780,10 @@
         <mxCell id="twig-4-5" source="head-4" target="leaf-4-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#A66A08;strokeWidth=1;">
           <mxGeometry as="geometry" relative="1" />
         </mxCell>
-        <mxCell id="head-5" value="发布与交接" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#F7FAFD;strokeColor=#B55354;fontColor=#B55354;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+        <mxCell id="group-5" value="" vertex="1" parent="1" style="rounded=1;arcSize=8;fillColor=#F6F9FC;strokeColor=#B55354;;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
+          <mxGeometry as="geometry" x="525" y="805" width="345" height="325" />
+        </mxCell>
+        <mxCell id="head-5" value="发布与交接" vertex="1" parent="1" style="rounded=1;arcSize=25;align=center;fillColor=#B55354;strokeColor=#B55354;fontColor=#FFFFFF;html=1;whiteSpace=wrap;fontFamily=Helvetica;fontSize=15;">
           <mxGeometry as="geometry" x="530" y="810" width="330" height="45" />
         </mxCell>
         <mxCell id="branch-5" source="hub" target="head-5" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=1;curved=1;endArrow=none;strokeColor=#B55354;strokeWidth=3;">

@@ -46,3 +46,9 @@ python3 tools/run_lab.py --chapter 09
 [练习任务](./exercises.md)要求提交自己的结果与解释；辅导材料中的分析用于核对推理，不替代独立完成。
 
 [返回全书目录](../../README.md)
+
+## 图解与练习升级
+
+本章提供13道分层习题，最后一题为工程综合任务；[图解导读](./visual-guide.md)、[习题](./exercises.md)与[完整题意和解析](./answers.md)相互对应。
+
+新增[.git目录详解与链接工作树](./repository-layout.md)，配合独立实验观察二进制索引、打包引用和共享目录。
