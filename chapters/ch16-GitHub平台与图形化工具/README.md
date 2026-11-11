@@ -37,3 +37,7 @@
 [全部习题](exercises.md) · [逐题参考答案](answers.md)
 
 [返回全书目录](../../README.md)
+
+## 图解与练习升级
+
+本章提供13道分层习题，最后一题为工程综合任务；[图解导读](./visual-guide.md)、[习题](./exercises.md)与[完整题意和解析](./answers.md)相互对应。

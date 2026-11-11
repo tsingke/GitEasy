@@ -27,13 +27,35 @@ jobs:
       - name: Test core
         run: ctest --test-dir build-campus -C Release --output-on-failure
   qt-interface:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - name: Install Qt Widgets development components
-        run: sudo apt-get update && sudo apt-get install -y qt6-base-dev
+        run: |
+          # Use an isolated, signed Ubuntu mirror source after runner DNS failures.
+          CAMPUS_APT_SOURCE=/tmp/campus-ubuntu.sources
+          cat > "$CAMPUS_APT_SOURCE" <<'APT_SOURCES'
+          Types: deb
+          URIs: https://mirrors.tuna.tsinghua.edu.cn/ubuntu
+          Suites: noble noble-updates noble-security
+          Components: main restricted universe multiverse
+          Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+          APT_SOURCES
+          sudo mkdir -p /tmp/campus-apt-lists/partial
+          sudo chown _apt:root /tmp/campus-apt-lists/partial
+          CAMPUS_APT_OPTIONS=(
+            -o "Dir::Etc::sourcelist=$CAMPUS_APT_SOURCE"
+            -o Dir::Etc::sourceparts=-
+            -o Dir::State::lists=/tmp/campus-apt-lists
+            -o Acquire::Retries=0
+            -o Acquire::http::Timeout=30
+            -o Acquire::https::Timeout=30
+          )
+          sudo apt-get "${CAMPUS_APT_OPTIONS[@]}" update
+          sudo apt-get "${CAMPUS_APT_OPTIONS[@]}" install -y qt6-base-dev
       - name: Configure Qt interface
         run: cmake -S projects/campus-card -B build-campus-qt -DCAMPUS_BUILD_GUI=ON -DCMAKE_BUILD_TYPE=Release
       - name: Build interface

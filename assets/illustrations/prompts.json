@@ -1,0 +1,288 @@
+[
+  {
+    "chapter": 1,
+    "file": "assets/illustrations/ch01-gpt.png",
+    "caption": "文件修订、版本记录与历史查询",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A precise textbook illustration: three chronological revisions of the SAME course document, marked V1, V2, V3, displayed as three sheets above a horizontal sequence of three small commit circles A B C. Highlight small changed lines in teal and amber. Present recorded revisions and a current editable sheet as distinct objects. No graph arrows that could be mistaken for parent references.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 1,
+    "file": "assets/illustrations/ch01-complex-v2.png",
+    "caption": "项目交接的四类记录范围",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Four distinct flat illustration groups: working files, recorded Git history, external large files, platform discussions. Use project folders, commit circles, database and discussion documents respectively. Link them to a clear handover checklist, without implying that git clone copies everything. Labels only WORKTREE, GIT HISTORY, EXTERNAL DATA, PLATFORM RECORDS.",
+    "selected_revision_instructions": [
+      "Correct Git ancestry arrows to child-to-parent; preserve four recording scopes."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 2,
+    "file": "assets/illustrations/ch02-gpt.png",
+    "caption": "项目文件与Git管理信息的分工",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A realistic clean educational file-explorer cutaway. A project folder named course contains README.md, src, and a separate hidden folder .git. Enlarge .git in a magnified inset with HEAD, index, objects, refs. Clear folder tabs and document icons, visually separate working files from repository administration. Not a screenshot of a real operating system. Exact short ASCII labels only.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 2,
+    "file": "assets/illustrations/ch02-complex-v2.png",
+    "caption": "未诞生分支与首次提交后的对象连接",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Two parallel states BEFORE FIRST COMMIT and AFTER FIRST COMMIT. Before: HEAD card contains ref: refs/heads/main, with a dotted line toward a dashed empty target named main and label NO COMMIT. After: HEAD -> main -> commit A -> tree T -> blob B. HEAD is a file-like pointer, main a name tag, commit/tree/blob distinct objects. Do not show a commit in the before panel.",
+    "selected_revision_instructions": [
+      "Correct HEAD scope label to Current-worktree."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 3,
+    "file": "assets/illustrations/ch03-gpt.png",
+    "caption": "三份内容与各命令的写入目标",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Three comparable snapshot panels with exact headers HEAD, INDEX, WORKTREE. Each panel contains the SAME file notes.txt. HEAD shows line 1 v1; INDEX shows line 1 v2; WORKTREE shows line 1 v3. Place two explicitly labelled content-selection arrows: git add from WORKTREE toward INDEX, git commit from INDEX toward HEAD. No file physically travelling between folders; retain the sheets in all three panels.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 3,
+    "file": "assets/illustrations/ch03-complex.png",
+    "caption": "同一路径的部分暂存与候选内容",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Three side-by-side copies of the SAME source file labelled HEAD, INDEX, WORKTREE. The file has two independent edits: title changed on line 1, email changed on line 5. HEAD has both old; INDEX has new title and old email; WORKTREE has new title and new email. Color new title teal, new email amber. This is partial staging, not one file moving between folders. Labels short ASCII only.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 4,
+    "file": "assets/illustrations/ch04-gpt.png",
+    "caption": "从调查问题选择历史与内容查询",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. One version-history observation scene: a clean linear timeline of commit circles A B C D, with a magnifying lens focusing on C and two enlarged text sheets marked BEFORE and AFTER. The before sheet has a red highlighted deleted line, the after sheet has a green highlighted added line. Query and comparison only; no arrows suggesting modification of recorded history.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 4,
+    "file": "assets/illustrations/ch04-complex.png",
+    "caption": "git log中双点号与三点号范围的集合含义",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Two large readable Venn-diagram panels explicitly labelled git log A..B and git log A...B. In each panel circles A and B denote reachable commit sets. For A..B shade ONLY B-exclusive area; for A...B shade BOTH exclusive areas and leave intersection unshaded. Include small commit-dot symbols inside regions. No file-diff interpretation or time arrows.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 5,
+    "file": "assets/illustrations/ch05-gpt.png",
+    "caption": "共享祖先上的分支入口与HEAD",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Exact Git directed acyclic graph, with arrows toward parents: B -> A, C -> B, D -> B. A on left, B center, C upper right, D lower right. Label main pointing to C, topic pointing to D, HEAD pointing to topic. Use small labelled tag shapes for names and circular commit nodes. There must be no C -> D or D -> C arrow. Labels only A B C D main topic HEAD.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 5,
+    "file": "assets/illustrations/ch05-complex.png",
+    "caption": "分支切换时的覆盖检查与现场保护",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. A decision illustration for branch switching: current edited notes.txt and a target-version notes.txt. One path labelled NO OVERWRITE leads to KEEP EDIT; another path labelled WOULD OVERWRITE leads to STOP AND PRESERVE. Use actual folder/document/stop-sign shapes, not long prose. Show edits preserved on the first path and a protected current sheet on the second; never show unsaved edits magically stored in a branch.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 6,
+    "file": "assets/illustrations/ch06-gpt.png",
+    "caption": "公共基线与两侧独立修改的三方比较",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A three-way merge teaching illustration with one sheet BASE above two side-by-side sheets OURS and THEIRS, and a sheet RESULT below. BASE contains two gray lines titled title and email. OURS changes title in teal and keeps email gray; THEIRS keeps title gray and changes email in amber. RESULT contains the teal title and amber email. Connect BASE to OURS and THEIRS with thin explanatory arrows, and both to RESULT. These are content-comparison flow arrows, not commit parents.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 7,
+    "file": "assets/illustrations/ch07-gpt.png",
+    "caption": "两个仓库中的交换方向与引用位置",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Two developer workstations named A and B, each with a working folder and its own repository cylinder, connected to a central bare repository named ORIGIN. Show push as arrows from local repository toward ORIGIN, fetch as arrows from ORIGIN toward local repositories. Do not show the remote server writing directly into either workstation's working folder. Restrained flat technical illustration.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 8,
+    "file": "assets/illustrations/ch08-gpt.png",
+    "caption": "追加纠错与调整历史入口的不同结果",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Two clear parallel panels for a Git teaching book. Upper panel labelled REVERT: three old commit circles A B C remain and a NEW circle R is appended with arrow R -> C, C -> B, B -> A; a small main tag points to R. Lower panel labelled RESET: old chain A B C remains visible, with main pointing to B and C faded but still visible. Do not erase C or imply all work can always be recovered. Labels only REVERT RESET A B C R main.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 8,
+    "file": "assets/illustrations/ch08-complex-v2.png",
+    "caption": "reset三种模式对提交入口、索引和工作文件的影响",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. A 3-by-3 comparison grid with columns HEAD, INDEX, WORKTREE, rows reset --soft A, reset --mixed A, reset --hard A. Start state HEAD=B INDEX=C WORKTREE=D. Soft row A C D; mixed row A A D; hard row A A A. Present each cell as a colored document sheet, with exact single-letter versions. Caption header only RESET MODES. No claims about every untracked file.",
+    "selected_revision_instructions": [
+      "Retain correct reset matrix and replace incorrect commit-chain interpretation with separate content-state cards."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 9,
+    "file": "assets/illustrations/ch09-gpt.png",
+    "caption": "提交、树与文件内容对象的连接和复用",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Precise content-addressed object illustration: one commit C points to a tree T. Tree T has two paths first.txt and second.txt, both pointing to the SAME single blob B, illustrated as a text document with identical content. A third path notes.txt points to a different blob N. Do not duplicate blob B into two objects. Direction is commit to tree, tree entries to blob. Clear flat layered diagram with spacious layout.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 9,
+    "file": "assets/illustrations/ch09-complex.png",
+    "caption": "对象打包改变物理表示并保留逻辑身份",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Two storage panels BEFORE and AFTER. BEFORE shows loose objects as separate small compressed files marked B1 B2 T C. AFTER shows one large pack cylinder containing the same B1 B2 T C plus a separate index lookup card. Connect a stable reference main -> C above both. Packing changes physical representation but not identities or commit content. Symbolic labels only; no fake hashes or filesystem paths.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 10,
+    "file": "assets/illustrations/ch10-gpt-v2.png",
+    "caption": "冲突路径的三个来源及索引阶段",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A polished technical exploded view of an index entry for notes.txt during a merge conflict: three stacked, slightly offset sheets labelled STAGE 1 BASE, STAGE 2 OURS, STAGE 3 THEIRS. Beside them, one resolved sheet labelled STAGE 0 RESOLVED. Show that the three conflict entries are replaced by a selected resolved entry after git add, using one clearly labelled process arrow. This is not three physical directories.",
+    "selected_revision_instructions": [
+      "Edit only one text field in this Git index-stage textbook diagram: the STAGE 3 THEIRS sheet currently says 'blob: g7h8i9', which is not hexadecimal. Replace that exact line with 'blob: 778899'. Preserve all other text, colors, geometry, arrows, file names and stage numbers exactly. Use the same font and size. No other edits."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 10,
+    "file": "assets/illustrations/ch10-complex.png",
+    "caption": "带预期旧值的引用更新与并发拒绝",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Two actors A and B both read a shared ref value OLD. Actor A requests OLD -> NEW_A and succeeds. Actor B later requests OLD -> NEW_B and is rejected because current is NEW_A. Show one reference card at the end still NEW_A. Clearly depict compare-and-update, not content merging or branch checkout. Labels short: EXPECT OLD, CURRENT NEW_A, ACCEPT, REJECT.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 11,
+    "file": "assets/illustrations/ch11-gpt.png",
+    "caption": "主题变化的重放与新提交身份",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Two diagram panels BEFORE and AFTER. BEFORE: A <- B <- C on the main row and D points to B on a lower row, main points to C, topic points to D. AFTER: retain A <- B <- C and create D' pointing to C, main still points to C, topic points to D'. Old D remains faintly visible with its original parent B. All commit arrows point to parents. Labels only BEFORE AFTER A B C D D' main topic.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 11,
+    "file": "assets/illustrations/ch11-complex.png",
+    "caption": "范围变基中的新基线、排除边界与主题末端",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. A precise rebase --onto explanatory diagram with three marked roles NEW BASE, EXCLUDE, TOPIC. BEFORE: linear A <- B <- C <- D <- E, topic at E, exclude at C; a separate new base X descends from A. AFTER: X <- D' <- E', topic at E', old A B C D E retained faintly. Show only D and E replayed, never C. All commit arrows point to parents. Keep the two panels spacious.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 12,
+    "file": "assets/illustrations/ch12-gpt.png",
+    "caption": "版本标记、发布材料与验证记录",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A precise university-book illustration of release evidence: a tag card v1.0.0 points to commit C, commit C points to a source-tree document. Beside it are a signature document, a public-key card and a verification magnifier. Show signature verification as an evidence check, without lock icons or badges claiming the program is bug-free. Labels only v1.0.0 C SOURCE SIGNATURE KEY VERIFY.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 12,
+    "file": "assets/illustrations/ch12-complex.png",
+    "caption": "发布验证中相互独立的三类证据",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Three separate evidence lanes: CONTENT INTEGRITY with a document/checksum pair; KEY IDENTITY with public-key and identity-verification documents; SOFTWARE BEHAVIOR with test cases and running application. A bottom release checklist combines all three, but no arrow implying any one proves the other two. Use short labels, no claim of absolute security or bug-free software.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 13,
+    "file": "assets/illustrations/ch13-gpt.png",
+    "caption": "需求、主题修改、评审与验证的关联",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A software team collaboration diagram, using four professional flat work areas: ISSUE, BRANCH, PULL REQUEST, REVIEW. A branch contributes a small diff sheet to PULL REQUEST, REVIEW contains specific annotation markers and test checklists, then an approved change can enter MAIN. Human review and automated checks are visually separate. No fake GitHub screenshot, no personal names, no simplistic green-check-only quality claim.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 14,
+    "file": "assets/illustrations/ch14-gpt.png",
+    "caption": "共享对象库与独立工作树现场",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. Two separate working folders labelled MAIN WORKTREE and FIX WORKTREE, each containing its own HEAD and INDEX sheet, linked to one central shared OBJECTS cylinder. Show independent edited files in the two folders and common objects in the shared cylinder. Distinguish shared references from per-worktree HEAD. Clean architectural exploded view with folder shapes and no timeline arrows.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 14,
+    "file": "assets/illustrations/ch14-complex-v2.png",
+    "caption": "子模块提交入口与LFS外部内容指针",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. Two distinct panels. SUBMODULE: parent repository tree has a gitlink card pointing to a commit in a separate child repository. LFS: parent tree points to a small pointer text document, which identifies a separate large payload in an external store. Do not store the child's full files or LFS payload directly inside the parent Git object tree. Show access/availability as a separate requirement.",
+    "selected_revision_instructions": [
+      "Uniformly reduce and center all artwork, preserve all technical content, restore the complete right border and corners, and retain at least 64px clean white padding on every side. Never crop strokes, labels, arrowheads or shadows."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 15,
+    "file": "assets/illustrations/ch15-gpt.png",
+    "caption": "按恢复目标区分备份范围",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A professional data-preservation teaching illustration with four clearly separate groups: GIT HISTORY (commits and references), WORKING DRAFTS (uncommitted text), EXTERNAL FILES (large-file payload and dependency icons), PLATFORM DATA (issue and review documents). A backup checklist selects each group explicitly. Do not suggest that one git clone automatically contains all four groups. No credentials or real personal data.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 15,
+    "file": "assets/illustrations/ch15-complex-v2.png",
+    "caption": "增量bundle的前提与分步恢复",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. An instructional illustration: a FULL BASE bundle contains commits A B; an INCREMENTAL bundle contains C D and clearly lists prerequisite B. Restore destination without B shows WAIT / NEED BASE. Restore destination with A B accepts C D, resulting in A B C D. No suggestion that an incremental bundle alone is a full backup. Symbolic commit labels only.",
+    "selected_revision_instructions": [
+      "Use case: precise-object-edit. Edit this educational Git textbook diagram for technical accuracy. Reverse every COMMIT ANCESTRY arrow so that B points to A, C to B, D to C, in source, base and final history. Keep process arrows showing bundle transport unchanged. Full base includes A B; incremental includes C D with prerequisite B. Destination without B needs base; with B can accept incremental. Preserve the visual style. IMPORTANT FRAMING: the complete diagram, all four outer corners of every panel, every stroke, label, arrow and shadow must be fully inside the canvas, with at least 48 pixels of clean white safe margin on ALL four sides. Reduce the artwork uniformly to fit if necessary; never crop or truncate any corner or edge. High-resolution flat illustration, no watermark."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 16,
+    "file": "assets/illustrations/ch16-gpt.png",
+    "caption": "个人副本、本地修改与平台贡献过程",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A concept illustration, not a screenshot: a local repository cylinder, a contributor repository named FORK, an upstream repository named UPSTREAM, and a PULL REQUEST review sheet. Push arrow local -> FORK; proposed change arrow FORK -> PULL REQUEST -> UPSTREAM; sync arrow UPSTREAM -> FORK. Use neutral repository icons, without inventing a GitHub user interface or account name.",
+    "selected_revision_instructions": [],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 17,
+    "file": "assets/illustrations/ch17-gpt-v2.png",
+    "caption": "校园一卡通的领域对象、服务与界面分层",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case: scientific-educational. Asset type: original high-resolution color diagram for a Chinese university Git textbook. Wide 3:2 composition, white background, generous print margins. Crisp flat illustration, refined blue/teal/amber/violet palette, thin professional connectors, simple sans-serif ASCII labels, strong legibility at 140 mm print width. Accurate relationships are more important than decoration. No Chinese text, no title/banner, no watermark, no mouse cursor, no mock photo frame. A professional flat technical illustration of a campus-card teaching system. A Qt-style desktop view with a synthetic card and simple account rows at left, a central C++ domain service labelled CardService with student and staff card icons, and a separate TESTS area at right with success and rejection cases. Connect UI to domain service and tests to domain service. The domain service owns the balance and lost-card rule. No realistic bank card numbers, money payment network or production-security claims.",
+    "selected_revision_instructions": [
+      "Edit the supplied CampusCard architecture teaching diagram. Preserve the three-column layout, exact visual style, icons, all arrows and all business rules. Correct ONLY the C++ domain class and method labels to match the real project: change StudentCard to StudentHolder; StaffCard to StaffHolder; recharge() to topUp(); consume() to pay(); cancelLost() to reactivate(); keep reportLost() unchanged. These replacements apply to the center domain column's small class cards and method tags, with enough width to read the full names. Keep the left UI's ordinary English button labels and the right test descriptions unchanged. No new claims, no additional elements."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  },
+  {
+    "chapter": 17,
+    "file": "assets/illustrations/ch17-complex-v2.png",
+    "caption": "请求幂等、参数冲突与挂失拒绝的状态约束",
+    "generation_mode": "built-in image_gen",
+    "creation_prompt": "Use case scientific-educational. Create an original high-resolution 1536x1024 flat illustrated technical figure for a university Git textbook. Match the polished blue, teal, amber and violet diagram style of professional educational folder/document graphics. Pure white background, ample safe print margins, crisp dark outlines, legible sparse ASCII labels. Make complex relations concrete using appropriate folders, documents, tags, objects or state cards. Accuracy is essential. No Chinese prose, watermark, mouse cursor, photographic frame or fake application screenshot. A precise business-state illustration: card balance starts 100.00. Request R1 pays 20.00, balance becomes 80.00 with ONE transaction record. Retry SAME R1 and SAME parameters returns the ORIGINAL receipt, balance stays 80.00, record count stays ONE. Same R1 with amount 30.00 is rejected, balance stays 80.00. Separate a lost-card rejection callout that leaves balance and ledger unchanged. No real payment-network branding.",
+    "selected_revision_instructions": [
+      "Use case: precise-object-edit. Edit this educational Git textbook diagram for technical accuracy. In the fourth, lost-card rejection example ONLY, replace the incoming request ID R1 with a FRESH request ID R2, and replace any result/receipt request ID in that fourth example with R2. It must read R2 NEW REQUEST and LOST CARD / REJECT, balance 80.00, ledger ONE. Keep first R1 20.00 successful payment, identical R1 retry original receipt, conflicting R1 amount30 rejection unchanged. Reason: valid retry R1 returns original receipt even after card becomes lost; only a new request R2 is rejected for lost state. Preserve the visual style. IMPORTANT FRAMING: the complete diagram, all four outer corners of every panel, every stroke, label, arrow and shadow must be fully inside the canvas, with at least 48 pixels of clean white safe margin on ALL four sides. Reduce the artwork uniformly to fit if necessary; never crop or truncate any corner or edge. High-resolution flat illustration, no watermark."
+    ],
+    "framing": "full canvas, no crop; outer edges and four corners verified"
+  }
+]
