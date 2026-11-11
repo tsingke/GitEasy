@@ -35,6 +35,7 @@ int main() {
         check(service.cards().size() == 2, "two cards");
         rejects([&] { service.openStudent("S1", "duplicate", "Other"); }, "duplicate card");
         rejects([&] { service.openStudent("", "x", "Name"); }, "empty id");
+        rejects([&] { service.openStudent("   ", "blank-id", "Demo"); }, "blank card id accepted");
         rejects([&] { service.openStaff("T2", "x", ""); }, "empty holder");
         // CAMPUS_LAB_NAME_TEST_BEGIN
         rejects([&] { service.openStaff("T3", "x", "   "); }, "blank holder name");

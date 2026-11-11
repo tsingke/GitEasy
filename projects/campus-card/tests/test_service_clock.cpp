@@ -5,8 +5,6 @@ int main() {
         Checks check;
         std::string day = "2026-11-12";
         campus::CardService service([&day] { return day; });
-        check.rejects([&] { service.openStudent("   ", "blank-id", "Demo"); },
-                      "blank card id accepted");
         service.openStudent("S1", "student-1", "Demo");
         const auto first = service.topUp("S1", 10000, "R1");
         check.require(first.day == day, "topup must use injected date");
