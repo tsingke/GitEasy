@@ -76,7 +76,12 @@
   },
   {
     "chapter": 16,
-    "title": "综合项目实训",
-    "folder": "ch16-综合项目实训"
+    "title": "GitHub平台与图形化工具",
+    "folder": "ch16-GitHub平台与图形化工具"
+  },
+  {
+    "chapter": 17,
+    "title": "校园一卡通系统版本管理实训",
+    "folder": "ch17-校园一卡通系统版本管理实训"
   }
 ]

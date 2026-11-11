@@ -1,0 +1,42 @@
+name: CampusCard builds
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  core:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Configure core
+        run: cmake -S projects/campus-card -B build-campus -DCMAKE_BUILD_TYPE=Release
+      - name: Build core
+        run: cmake --build build-campus --config Release --parallel 2
+      - name: Test core
+        run: ctest --test-dir build-campus -C Release --output-on-failure
+  qt-interface:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          persist-credentials: false
+      - name: Install Qt Widgets development components
+        run: sudo apt-get update && sudo apt-get install -y qt6-base-dev
+      - name: Configure Qt interface
+        run: cmake -S projects/campus-card -B build-campus-qt -DCAMPUS_BUILD_GUI=ON -DCMAKE_BUILD_TYPE=Release
+      - name: Build interface
+        run: cmake --build build-campus-qt --parallel 2
+      - name: Test domain and button interactions
+        run: ctest --test-dir build-campus-qt --output-on-failure

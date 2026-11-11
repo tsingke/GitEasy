@@ -14,7 +14,7 @@ import time
 ROOT=Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser(description=__doc__)
 choice=parser.add_mutually_exclusive_group(required=True)
-choice.add_argument('--chapter',type=int,choices=range(1,17))
+choice.add_argument('--chapter',type=int,choices=range(1,18))
 choice.add_argument('--all',action='store_true')
 parser.add_argument('--list',action='store_true',help='show selected routes without executing')
 parser.add_argument('--output',type=Path,help='write logs and result JSON to this NEW directory')
@@ -42,11 +42,11 @@ for route in routes:
         env=os.environ.copy()
         env.update(GIT_CONFIG_NOSYSTEM='1',GIT_CONFIG_GLOBAL=os.devnull,GIT_TERMINAL_PROMPT='0',
                    GIT_EDITOR='true',GIT_MERGE_AUTOEDIT='no',LC_ALL='C',
-                   GITEASY_LAB_SANDBOX=sandbox,GITEASY_COURSE=str(ROOT/'course'))
+                   GITEASY_LAB_SANDBOX=sandbox,GITEASY_COURSE=str(ROOT/'course'),GITEASY_CAMPUS=str(ROOT/'projects/campus-card'))
         start=time.monotonic()
         try:
             result=subprocess.run([shutil.which('bash'),'-e',str(route)],cwd=sandbox,env=env,
-                                  text=True,capture_output=True,timeout=240)
+                                  text=True,capture_output=True,timeout=360)
             passed=result.returncode==0
             log=result.stdout+'\n'+result.stderr
             code=result.returncode
