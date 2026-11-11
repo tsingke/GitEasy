@@ -15,7 +15,7 @@ git diff --cached --stat
 git commit -m 'build: establish campus card core baseline'
 git push -u origin main
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 cd ..
 
@@ -40,7 +40,7 @@ token='    const auto before=service.history().size();'
 s=s.replace(token,'    check(service.exportCsv().find(",CNY\\n")!=std::string::npos,"CSV currency");\n'+token)
 p.write_text(s)
 PY
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 git add src/card_service.cpp tests/test_card_service.cpp
 git diff --cached --stat
@@ -73,7 +73,7 @@ git fetch origin
 git log --oneline --left-right main...origin/main
 git merge origin/main -m 'merge: integrate parallel deliveries'
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 git push origin main
 cd ..
@@ -117,11 +117,13 @@ git tag -a campus-v0.1.0 -m 'Campus core and Qt source teaching baseline'
 git push origin campus-v0.1.0
 git switch -c fix/nonblank-holder
 python3 "$GITEASY_CAMPUS/tools/name_validation_patch.py" --tests-only
-cmake --build build --parallel 2
-if ctest --test-dir build --output-on-failure; then exit 1; fi
+cmake --build build --clean-first --parallel 2
+if ctest --test-dir build --output-on-failure > build/regression-before.log 2>&1; then exit 1; fi
+cat build/regression-before.log
+grep -q 'FAIL blank holder name' build/regression-before.log
 
 python3 "$GITEASY_CAMPUS/tools/name_validation_patch.py" --implementation-only
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 git add src/card_service.cpp tests/test_card_service.cpp
 git diff --cached --check
@@ -140,7 +142,7 @@ git switch -c maintenance/0.1 campus-v0.1.0
 git cherry-pick "$fix_commit"
 git diff --name-only campus-v0.1.0..HEAD
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 python3 - <<'PYVERSION'
 from pathlib import Path
@@ -202,7 +204,7 @@ PY
 git add src/card_service.cpp
 git restore --source=HEAD --worktree -- src/card_service.cpp
 git status --short
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 if python3 tools/check_candidate.py; then exit 1; fi
 
@@ -221,7 +223,7 @@ git clone campus-history.bundle restored
 cd restored
 git switch -c verify/release campus-v0.1.1
 cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build --parallel 2
+cmake --build build --clean-first --parallel 2
 ctest --test-dir build --output-on-failure
 git describe --tags --exact-match
 git status --short
