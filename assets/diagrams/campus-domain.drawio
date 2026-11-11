@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="campus-domain" name="校园一卡通领域类关系">
+    <mxGraphModel page="1" pageWidth="1100" pageHeight="900" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="holder" value="CardHolder（抽象）&lt;br&gt;id / name（私有）&lt;br&gt;virtual category() / dailyLimit()&lt;br&gt;virtual destructor" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=14;fontSize=18;fillColor=#F5F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="390" y="60" width="300" height="130" />
+        </mxCell>
+        <mxCell id="student" value="StudentHolder&lt;br&gt;category() override&lt;br&gt;dailyLimit() = 50000" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=14;fontSize=18;fillColor=#F5F9FC;strokeColor=#087F78;">
+          <mxGeometry as="geometry" x="60" y="350" width="300" height="130" />
+        </mxCell>
+        <mxCell id="staff" value="StaffHolder&lt;br&gt;category() override&lt;br&gt;dailyLimit() = 100000" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=14;fontSize=18;fillColor=#F5F9FC;strokeColor=#7350AC;">
+          <mxGeometry as="geometry" x="720" y="350" width="300" height="130" />
+        </mxCell>
+        <mxCell id="service" value="CardService&lt;br&gt;规则 / 回执 / 流水" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=14;fontSize=18;fillColor=#F5F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="60" y="650" width="300" height="130" />
+        </mxCell>
+        <mxCell id="card" value="内部Card&lt;br&gt;余额 / 状态&lt;br&gt;unique_ptr&amp;lt;CardHolder&amp;gt;" vertex="1" parent="1" style="rounded=1;whiteSpace=wrap;html=1;align=left;spacing=14;fontSize=18;fillColor=#F5F9FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="720" y="650" width="300" height="130" />
+        </mxCell>
+        <mxCell id="s-parent" source="student" target="holder" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#155DA6;endArrow=block;endFill=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="t-parent" source="staff" target="holder" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#155DA6;endArrow=block;endFill=0;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="owns-card" source="service" target="card" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#155DA6;startArrow=diamond;startFill=1;endArrow=none;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="owns-holder" source="card" target="holder" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;strokeWidth=2;strokeColor=#155DA6;startArrow=diamond;startFill=1;endArrow=none;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

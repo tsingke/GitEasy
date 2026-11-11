@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-12",
+  "title": "Git版本控制原理与实践",
+  "author": "张庆科 编著",
+  "pages_with_answers": 530,
+  "student_pages": 461,
+  "pdf_sha256": "1dbcb01193b005f1f8fb2b929dfe300d040ae2b4a6b054f11ce5320a54c6b23c",
+  "preface_source_sha256": "71bc558d5f062e45bfa698bbb95a6471918997e1d44b50a15041ed9aee61442f",
+  "chapters": 17,
+  "questions_and_answers": 218,
+  "unnumbered_review_maps": 17,
+  "review_points": 612,
+  "numbered_figures": 251,
+  "tables": 32,
+  "source_excerpts": 3,
+  "generated_illustrations": 30,
+  "git_skill_work_packages": 45,
+  "core_assertions": 72,
+  "core_ctest": 5,
+  "qt_enabled_ctest": 6,
+  "textbook_use": "unpublished; study and exchange only; noncommercial; author retains rights; third-party materials under their original terms",
+  "code_license": "existing MIT",
+  "switches": {
+    "mindmaps": "on",
+    "answers": "on",
+    "teaching-guide": "off",
+    "synopsis": "off"
+  },
+  "scope": "Book PDF distributed with the manuscript; this repository supplies matching code, guidance, questions, diagrams and actual program image"
+}

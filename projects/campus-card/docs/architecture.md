@@ -1,11 +1,38 @@
-# 架构与C++知识对应
+# 多文件架构与C++能力对应
 
-业务核心不依赖Qt，`CardService`负责规则与一致性，`CardHolder`定义账户类别接口，`StudentHolder`与`StaffHolder`通过虚函数提供不同限额。界面只把输入转为业务调用，再读取`CardView`与`Transaction`更新表格。
+先读[企业项目实施方案](enterprise-project-plan.md)确定范围、模块和验收，再按[任务迭代](iterations.md)开发。设计决定保存在[架构决策记录](decisions.md)，不能只在口头讨论中保留。
 
-`Card`的余额与状态封装在服务内部，调用者不能直接赋值绕过规则。基类具有虚析构函数，`std::unique_ptr<CardHolder>`负责持有派生对象；移动语义把所有权交给服务。代码使用`enum class`防止不同枚举混用，使用`override`检查覆盖关系，使用`auto`、范围for、lambda和聚合初始化简化表达。没有把C++14的`make_unique`误写为C++11特性。
+## 依赖方向
 
-金额解析不先经过`double`。`parseMoney("12.30")`产生1230分，格式化输出12.30；拒绝负号、非数字、不完整小数和超过两位的小数。余额变动之前先检查边界，避免执行后才发现状态不合法。
+CLI和Qt窗口调用`CardService`；服务组合金额、日期、持卡人策略和流水报告模块。`campus_domain`保存基础实现，`campus_core`提供业务入口。基础头文件不包含Qt类型，核心与界面分别编译、分别验证。禁止通过包含`.cpp`拼接程序。
 
-服务先计算下一状态，再准备回执和索引；只有记录准备成功才更新余额。此处展示单进程内的异常处理思路，并不等于已经具备数据库事务、线程安全或跨进程持久性。
+| 文件 | 责任 |
+|---|---|
+| `include/campus/types.hpp` | 整数分、枚举、查询视图与回执 |
+| `money.hpp`、`src/money.cpp` | 十进制解析、格式化和金额边界 |
+| `business_date.hpp`、`src/business_date.cpp` | 日期校验、系统日期与可注入提供器 |
+| `card_holder.hpp`、`src/card_holder.cpp` | 身份封装、抽象接口与类别限额 |
+| `ledger_export.hpp`、`src/ledger_export.cpp` | CSV报告与字段转义 |
+| `card_service.hpp`、`src/card_service.cpp` | 余额、状态、限额、请求与一致性 |
+| `gui/campus_window.hpp/.cpp` | 输入、按钮、调用、反馈与刷新 |
+| `gui/main.cpp` | 应用与窗口组装 |
+| `gui/smoke_scenario.cpp` | 实际按钮与模型、表格的一致性 |
+| `tests/test_*.cpp` | 模块边界和业务集成的可执行判断 |
 
-Qt目标使用信号与lambda连接按钮。无需自定义`Q_OBJECT`类；使用Qt提供的对象与信号即可实现本例。Qt要求的C++标准只作用于GUI目标，领域目标仍按`-std=c++11`单独检查。
+表中的基础模块头文件均位于`include/campus/`。实现先包含自己的接口，使依赖明确而不依赖偶然的包含顺序。
+
+## C++11特性与真实职责
+
+`CardHolder`定义类别和限额虚接口，`StudentHolder`、`StaffHolder`使用`override`提供不同策略。基类具有虚析构；`std::unique_ptr`与移动语义表达独占所有权。服务禁止复制，查询按值返回`CardView`，调用者不能绕过入口改余额。只读流水借用在服务继续写入时可能使既有迭代器失效。
+
+`enum class`区分状态与操作；`auto`、范围for和lambda用于遍历、排序及回调；`DayProvider`以`std::function`承接日期依赖。测试可以注入固定日期，普通运行使用系统日期。使用引用捕获时，被引用对象的生命期必须覆盖服务的使用期；本例先构造日期变量，再构造服务，销毁顺序与之相反。没有把C++14的`make_unique`写为C++11特性。
+
+## 不变量与测试
+
+金额直接按字符解析为整数分。服务先校验并计算下一状态，再准备流水和回执；回执索引准备失败时撤回新流水，随后才更新余额。这说明单进程中的状态保护，不等价于数据库事务或线程安全。
+
+基础模块测试与服务集成测试共用正式库。核心按C++11构建，Qt6目标按C++17构建。Qt使用已有QObject信号和lambda连接，不需要自定义`Q_OBJECT`元对象。交互冒烟场景在独立实现文件中执行真实按钮，核对服务状态和视图。
+
+## 注释与变更
+
+注释解释单位、职责、所有权、失败效果和跨模块约定；统一格式由`.clang-format`说明。教学定位标记供脚本构造可复现输入，不参与业务逻辑。格式调整、功能实现和缺陷修复应分别说明意图，用需求、差异和测试保留判断依据。
