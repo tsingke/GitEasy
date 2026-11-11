@@ -68,7 +68,7 @@ cmake --build build-campus --parallel 2
 ctest --test-dir build-campus --output-on-failure
 ```
 
-从双人并行开发，到回归修复、维护移植、二分定位、候选验证和独立恢复，19个连续命令块共同形成完整演练。真实Issue、PR、评审与Release按第16、17章人工实践。[本轮实际PR #1](https://github.com/tsingke/GitEasy/pull/1)可用于观察差异、提交和检查记录；作者自检不等于第三方批准。
+从双人并行开发，到回归修复、维护移植、二分定位、候选验证和独立恢复，19个连续命令块共同形成完整演练。真实Issue、PR、评审与Release按第16、17章人工实践。[校园工程引入PR #1](https://github.com/tsingke/GitEasy/pull/1)可用于观察差异、提交和检查记录；作者自检不等于第三方批准。 [教材资源修订PR #2](https://github.com/tsingke/GitEasy/pull/2)记录本轮图解、习题与内部目录实验的同步。
 
 原有[文本资料种子](./course/README.md)与[补充综合任务](./supplementary/course-versioning/README.md)继续用于零基础和分层教学。
 
