@@ -8,7 +8,7 @@ M1,范围语义,比较主题分支和共同基线,log A..B; log A...B; diff A...
 M1,分支与HEAD,分离开发、检查旧版本,branch; switch; rev-parse,分支入口、HEAD与当前目录,连续演练
 M2,对象模型,解释同一头文件的复用,cat-file; hash-object; ls-tree,对象身份、树条目与父关系,章节专项
 M2,引用与索引阶段,定位名字并分析冲突来源,show-ref; symbolic-ref; ls-files --stage,符号引用及stage 1/2/3内容,连续演练与专项
-M2,条件更新,观察引用的并发保护,update-ref NEW OLD,预期旧值不符时拒绝,章节专项
+M2,条件更新,观察引用的并发保护,update-ref REF NEW_OID OLD_OID,预期旧值不符时拒绝,章节专项
 M3,并行功能,CSV与Qt分别实现并整合,merge; fetch; push,两项功能与组合测试均成立,连续演练
 M3,远程跟踪与上游,解释推送竞争和默认目标,remote; branch -vv; pull --ff-only,三处位置与通信方向,连续演练与专项
 M3,refspec,将评审分支映射到明确名称,fetch SOURCE:DEST; push SRC:DST,来源、目标及本地观察范围,章节专项
