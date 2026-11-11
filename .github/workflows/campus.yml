@@ -28,12 +28,15 @@ jobs:
         run: ctest --test-dir build-campus -C Release --output-on-failure
   qt-interface:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
         with:
           persist-credentials: false
       - name: Install Qt Widgets development components
-        run: sudo apt-get update && sudo apt-get install -y qt6-base-dev
+        run: |
+          sudo apt-get -o Acquire::Retries=0 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 update
+          sudo apt-get -o Acquire::Retries=0 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30 install -y qt6-base-dev
       - name: Configure Qt interface
         run: cmake -S projects/campus-card -B build-campus-qt -DCAMPUS_BUILD_GUI=ON -DCMAKE_BUILD_TYPE=Release
       - name: Build interface
