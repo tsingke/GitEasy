@@ -4,11 +4,11 @@
 
 [![Textbook labs](https://github.com/tsingke/GitEasy/actions/workflows/labs.yml/badge.svg)](https://github.com/tsingke/GitEasy/actions/workflows/labs.yml)
 [![CampusCard builds](https://github.com/tsingke/GitEasy/actions/workflows/campus.yml/badge.svg)](https://github.com/tsingke/GitEasy/actions/workflows/campus.yml)
-[![License: MIT](https://img.shields.io/badge/License-MIT-087F78.svg)](./LICENSE)
+[![Code: MIT](https://img.shields.io/badge/Code-MIT-087F78.svg)](./LICENSE)
 
 **从第一次提交，到能够解释、验证和交接的工程协作。**
 
-张庆科《Git版本控制原理与实践》配套教学项目。全书按基础、核心、进阶、实践四篇组织；本仓库提供17章辅导材料、218道分层习题与完整解析、原创知识结构图、可复现实验、分层练习和综合项目种子。无需平台账号即可完成离线实验。
+张庆科编著《Git版本控制原理与实践》配套教学项目。全书按基础、核心、进阶、实践四篇组织；本仓库提供17章辅导材料、218道分层习题与完整解析、原创知识结构图、可复现实验、分层练习和综合项目种子。无需平台账号即可完成离线实验。
 
 ## 快速开始
 
@@ -51,7 +51,7 @@ python3 tools/run_lab.py --all --list
 
 ![工作区、索引与提交的知识结构](./assets/mindmaps/ch03.png)
 
-17张纵向知识结构图分别对应章末复习，采用六色分支、扁平图标与可缩放源文件。各章另有图解导读、82项状态与工程情境对照，精选30幅生成式插图；关系精度要求较高的图示使用矢量绘制。[Draw.io源文件](./assets/git-book-mindmaps.drawio)可继续编辑，图片用于快速浏览。
+17张纵向复习导图按章节顺序以01–06编号模块呈现，采用无连线的扁平卡片与柔和配色；教材中不纳入图号，提供可编辑源文件。各章另有图解导读、82项状态与工程情境对照，精选30幅生成式插图；关系精度要求较高的图示使用矢量绘制。[Draw.io源文件](./assets/git-book-mindmaps.drawio)可继续编辑，图片用于快速浏览。
 
 共38条可运行路线，包括新增的.git内部目录与链接工作树观察。主实验覆盖分支保护、增删冲突、双人交换、恢复矩阵、对象构造、变基、签名、依赖、钩子和综合交付；独立拓展覆盖换行属性、notes、rerere、refspec、打包、补丁和迁移。脚本将预期失败与最终验收区分，保留内容及历史断言。
 
@@ -59,7 +59,7 @@ python3 tools/run_lab.py --all --list
 
 ![校园一卡通Qt界面](./assets/campus-qt.png)
 
-[完整项目](./projects/campus-card/README.md)包含开卡、充值、消费、挂失、解挂和流水导出。核心按C++11构建，Qt6界面目标按C++17构建；业务与界面分别验证。所有账户使用合成数据。
+[完整项目](./projects/campus-card/README.md)包含开卡、充值、消费、挂失、解挂和流水导出。金额、日期、持卡人、报告和服务按文件与库拆分，CLI与Qt共用服务；核心按C++11构建，Qt6界面目标按C++17构建。五组核心测试与实际按钮检查分别验收。所有账户使用合成数据。
 
 ```bash
 python3 tools/run_enterprise_lab.py
@@ -69,6 +69,8 @@ ctest --test-dir build-campus --output-on-failure
 ```
 
 从双人并行开发，到回归修复、维护移植、二分定位、候选验证和独立恢复，19个连续命令块共同形成完整演练。真实Issue、PR、评审与Release按第16、17章人工实践。[校园工程引入PR #1](https://github.com/tsingke/GitEasy/pull/1)可用于观察差异、提交和检查记录；作者自检不等于第三方批准。 [教材资源修订PR #2](https://github.com/tsingke/GitEasy/pull/2)记录本轮图解、习题与内部目录实验的同步。
+
+项目先提供[企业实施方案](./projects/campus-card/docs/enterprise-project-plan.md)、[任务迭代](./projects/campus-card/docs/iterations.md)、[45项技能矩阵](./projects/campus-card/docs/git-skill-matrix.md)与[交付验收](./projects/campus-card/docs/acceptance.md)，再进入连续演练。
 
 原有[文本资料种子](./course/README.md)与[补充综合任务](./supplementary/course-versioning/README.md)继续用于零基础和分层教学。
 
@@ -84,6 +86,9 @@ python3 tools/run_lab.py --all
 - [学习与实验说明](./docs/learning-guide.md)
 - [贡献与勘误](./CONTRIBUTING.md)
 - [参考资料与原创说明](./docs/references.md)
-- [MIT许可证](./LICENSE)
+- [程序代码MIT许可证](./LICENSE)
+- [教材使用与版权说明](./BOOK-USE.md)
 
 本项目关注可迁移的理解：明确状态，解释关系，选择合适操作，用证据验证结果。
+
+本教材尚未出版，仅供学习与交流，不得商用；教材文字、原创图表、习题解析及版式的著作权归作者所有。程序代码沿用现有MIT许可，第三方材料按原权利说明使用。勘误请通过本项目Issue提交可复现依据。

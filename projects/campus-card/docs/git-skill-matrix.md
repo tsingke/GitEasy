@@ -1,0 +1,53 @@
+# Git技能、项目任务与证据
+
+本表覆盖教材各章的核心与进阶主题，区分连续演练、专项实验和人工平台任务。范围明确到任务与证据，不将本地模拟写成线上评审，不宣称覆盖Git的每一个选项。
+
+| 阶段 | 知识模块 | 项目任务与操作 | 验收证据 | 实施方式 |
+|---|---|---|---|---|
+| M0 | 仓库与身份 | 建立校园项目基线：`init; config; clone` | 起点提交、配置来源及目录 | 连续演练 |
+| M0 | 忽略规则 | 排除构建产物与敏感数据：`status; check-ignore; .gitignore` | 被忽略与被跟踪路径的区别 | 章节专项 |
+| M0 | 文本属性 | 统一C++源文件换行规则：`check-attr; add --renormalize` | 属性来源、实际规范化差异 | 章节专项 |
+| M1 | 索引与部分暂存 | 分开业务修改和文档编辑：`add -p; diff --cached; commit` | 候选内容与提交树一致 | 章节专项 |
+| M1 | 历史查询 | 追溯余额或导出规则变化：`log; show; blame; grep` | 内容、提交及原因的对应 | 连续演练与专项 |
+| M1 | 范围语义 | 比较主题分支和共同基线：`log A..B; log A...B; diff A...B` | 区分提交集合与树差异 | 章节专项 |
+| M1 | 分支与HEAD | 分离开发、检查旧版本：`branch; switch; rev-parse` | 分支入口、HEAD与当前目录 | 连续演练 |
+| M2 | 对象模型 | 解释同一头文件的复用：`cat-file; hash-object; ls-tree` | 对象身份、树条目与父关系 | 章节专项 |
+| M2 | 引用与索引阶段 | 定位名字并分析冲突来源：`show-ref; symbolic-ref; ls-files --stage` | 符号引用及stage 1/2/3内容 | 连续演练与专项 |
+| M2 | 条件更新 | 观察引用的并发保护：`update-ref NEW OLD` | 预期旧值不符时拒绝 | 章节专项 |
+| M3 | 并行功能 | CSV与Qt分别实现并整合：`merge; fetch; push` | 两项功能与组合测试均成立 | 连续演练 |
+| M3 | 远程跟踪与上游 | 解释推送竞争和默认目标：`remote; branch -vv; pull --ff-only` | 三处位置与通信方向 | 连续演练与专项 |
+| M3 | refspec | 将评审分支映射到明确名称：`fetch SOURCE:DEST; push SRC:DST` | 来源、目标及本地观察范围 | 章节专项 |
+| M3 | 非快进拒绝 | 保留双方提交后重新整合：`push; fetch; log --left-right; merge` | 拒绝原因与合入后的父关系 | 连续演练 |
+| M3 | 内容冲突 | 服务点政策分歧的业务决定：`status; ls-files -u; add; commit` | 冲突阶段、最终需求及测试 | 连续演练 |
+| M3 | 合并策略 | 比较普通合并、压缩与线性整理：`merge --no-ff; merge --squash; rebase` | 内容相同与历史关系的区别 | 章节专项 |
+| M3 | 复用冲突处理 | 记录并复核重复冲突解法：`rerere; diff` | 建议结果仍经人工和测试复核 | 章节专项 |
+| M4 | 现场保留 | 任务切换前保存未完成工作：`stash; apply; pop; drop` | 保存范围、冲突后保留记录 | 章节专项 |
+| M4 | 路径恢复 | 修正候选并保留工作区编辑：`restore --staged; restore --source` | 来源、目标及两类差异 | 连续演练 |
+| M4 | 共享历史纠错 | 撤销错误发布功能：`revert; revert -m` | 抵消提交、主父选择和后续依赖 | 章节专项 |
+| M4 | 私有入口调整 | 在隔离副本比较重置层次：`reset --soft; --mixed; --hard` | 引用、索引、工作区分别验证 | 章节专项 |
+| M4 | 救援与可达性 | 失去分支名后建立保护入口：`reflog; branch; fsck` | 先保存可达入口再验证内容 | 章节专项 |
+| M4 | 回归定位 | 查明挂失保护被绕过的提交：`bisect run; bisect log; reset` | 首个失败提交与可重复判定 | 连续演练 |
+| M4 | 候选检查 | 构造工作区通过但索引失败：`checkout-index; diff --cached` | 实际候选构建及修正结果 | 连续演练 |
+| M5 | 私有历史整理 | 把补充测试归入同一工作意图：`commit --fixup; rebase -i --autosquash` | 整理前后提交与最终内容 | 连续演练 |
+| M5 | 范围重放 | 迁移依赖已经变化的主题：`rebase --onto; range-diff` | 新基线、排除边界与主题末端 | 章节专项 |
+| M5 | 补丁交换 | 在受限网络下传递修复：`format-patch; am; apply --check` | 补丁内容、作者与应用结果 | 章节专项 |
+| M6 | 维护回移 | 把姓名修复移到发布线：`cherry-pick; show` | 适用范围、修复及回归测试 | 连续演练 |
+| M6 | 多工作树 | 并行检查主线和维护版本：`worktree add; list; remove` | 独立目录与共享对象 | 连续演练 |
+| M6 | 标签与版本 | 固定验收通过的交付来源：`tag -a; describe; rev-parse` | 标签对象与准确提交 | 连续演练 |
+| M6 | 签名与信任 | 验证发布来源与密钥信任：`tag -s; verify-tag; verify-commit` | 对象验证和信任依据分别记录 | 章节专项 |
+| M6 | 归档与恢复 | 交付源码并验证独立备份：`archive; bundle create; verify; clone` | 恢复后标签、内容与构建 | 连续演练 |
+| M6 | 存储维护 | 区别打包、回收和安全删除：`count-objects; gc; repack; fsck` | 逻辑身份与物理存储的区别 | 章节专项 |
+| M7 | 需求与规划 | 从任务卡形成可验收Issue：`Issue; milestone; task list` | 真实需求、依赖和验收链接 | 人工GitHub实践 |
+| M7 | PR与评审 | 提交跨分支或fork贡献：`fork; PR; review; merge` | base/head、意见、响应和合入 | 人工GitHub实践 |
+| M7 | 认证与权限 | 用授权身份访问学习仓库：`SSH; HTTPS; credential helper` | 身份、权限与凭据保管 | 人工平台实践 |
+| M7 | CI与治理 | 核心和Qt分别检查目标提交：`Actions; rules; required checks` | 实际提交、任务与检查结果 | 实际CI与人工设置 |
+| M7 | 发布与展示 | 关联标签、说明及构建产物：`Release; README; documentation` | 真实来源和构建说明 | 人工GitHub实践 |
+| 专题 | 大文件 | 为界面素材规划外部内容：`LFS track; status; fetch` | 指针、实际内容与外部备份 | 专项；外部服务另验 |
+| 专题 | 依赖管理 | 比较独立组件的引入方式：`submodule; subtree` | 固定提交、来源及更新责任 | 章节专项 |
+| 专题 | 克隆范围 | 降低大仓库的获取成本：`clone --depth; --filter; sparse-checkout` | 历史、对象、工作区范围区别 | 章节专项 |
+| 专题 | 钩子 | 在本地提前检查候选：`hooks; core.hooksPath` | 检查对象、拒绝与绕过边界 | 章节专项 |
+| 专题 | 附注与迁移 | 补充评审依据并迁移引用：`notes; push --mirror` | 附注引用与迁移目标范围 | 章节专项 |
+| 专题 | 凭据与历史清理 | 在隔离副本演练泄露处理：`revoke; filter-repo; credential` | 先失效凭据再处理历史传播 | 专项；仅合成敏感数据 |
+| 专题 | 图形化工具 | 用客户端复现同一Git任务：`客户端的暂存、历史、分支与远程操作` | 与命令行状态和父关系对照 | 第16章人工实践 |
+
+连续路线：从GitEasy根目录执行`python3 tools/run_enterprise_lab.py`。专项实验：使用各章README和`python3 tools/run_lab.py --all --list`定位现有路线。人工平台任务由学习者在自己的仓库或获得授权的课程仓库中完成。
