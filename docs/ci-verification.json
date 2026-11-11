@@ -1,0 +1,66 @@
+{
+  "headRefOid": "d76ec589cd9d65d329832c477168b58b6d579071",
+  "statusCheckRollup": [
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-11-11T08:55:43Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tsingke/GitEasy/actions/runs/42990882053/job/130423182550",
+      "name": "core (ubuntu-latest)",
+      "startedAt": "2026-11-11T08:55:31Z",
+      "status": "COMPLETED",
+      "workflowName": "CampusCard builds"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-11-11T08:56:27Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tsingke/GitEasy/actions/runs/42990881907/job/130423182076",
+      "name": "offline-labs (ubuntu-latest)",
+      "startedAt": "2026-11-11T08:55:32Z",
+      "status": "COMPLETED",
+      "workflowName": "Textbook labs"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-11-11T08:55:44Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tsingke/GitEasy/actions/runs/42990882053/job/130423182345",
+      "name": "core (macos-latest)",
+      "startedAt": "2026-11-11T08:55:31Z",
+      "status": "COMPLETED",
+      "workflowName": "CampusCard builds"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-11-11T08:56:14Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tsingke/GitEasy/actions/runs/42990881907/job/130423181833",
+      "name": "offline-labs (macos-latest)",
+      "startedAt": "2026-11-11T08:55:31Z",
+      "status": "COMPLETED",
+      "workflowName": "Textbook labs"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-11-11T08:56:07Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tsingke/GitEasy/actions/runs/42990882053/job/130423182377",
+      "name": "core (windows-latest)",
+      "startedAt": "2026-11-11T08:55:32Z",
+      "status": "COMPLETED",
+      "workflowName": "CampusCard builds"
+    },
+    {
+      "__typename": "CheckRun",
+      "completedAt": "2026-11-11T08:56:12Z",
+      "conclusion": "SUCCESS",
+      "detailsUrl": "https://github.com/tsingke/GitEasy/actions/runs/42990882053/job/130423182080",
+      "name": "qt-interface",
+      "startedAt": "2026-11-11T08:55:31Z",
+      "status": "COMPLETED",
+      "workflowName": "CampusCard builds"
+    }
+  ],
+  "url": "https://github.com/tsingke/GitEasy/pull/1"
+}
