@@ -1,0 +1,3451 @@
+{
+  "book_pdf_sha256": "0acb67ddfc1e21bae3a239bae8c7875d90a75a67ab54ebd9ee556f6b54d3935c",
+  "chapters": 17,
+  "questions": 218,
+  "figures": 251,
+  "command_entries": 124,
+  "search_sections": 798,
+  "source_files": {
+    "chapters/chapter01.tex": "25ed6d76e108eb07014fef2692ad6d4dc5badfb41119ca2be84df640029dbd6a",
+    "chapters/reading-preparation.tex": "b6af6b55177b97cbd439c4f3fed87cbbd0f2ea33c71a56711569678ecca2b1ca",
+    "chapters/diagrams/current-directory-paths.tex": "1d86e859be211a221c62ac13576e40f7ecebad61ed8688a3513a2a3c8c32e281",
+    "chapters/scenarios/scenario-01-01.tex": "c6a2f637d2c88f7eb5cb2097ae229c066e0b8368654f232bb4a15745b00cce44",
+    "chapters/illustrations/ch01-a.tex": "639b2ebceb7de7bbe4f89f04f98446bc7a288b27b2daed9fe618fcb78abd0102",
+    "chapters/diagrams/ch01-01.tex": "ca3e61a1f6d903ece250cf3ad133dd3a44c288af12bc06b7e43654c1bd9a9e25",
+    "chapters/diagrams/ch01-02.tex": "d6400146e6a80426aa9f726a98ac945f91b45d289a7d6e08c5d45cc2ca9de5cd",
+    "chapters/diagrams/ch01-04.tex": "4d7eff71b70ca17b39025e35b0d377014b2af65be9674fae17bd166fffbd0b9a",
+    "chapters/diagrams/ch01-05.tex": "badef25655a80b175d72cef80eca81eea324c8986d5d089c1603090a69ff9fdf",
+    "chapters/diagrams/ch01-06.tex": "727931a0af89376b67af25c38110453fcb7b9cdac7812b45acfa7071b381640e",
+    "chapters/illustrations/ch01-b.tex": "5e7cb663704a9f6cb84bbc8062607e00abfcf82913d52b3bbd3a128608caf9f8",
+    "chapters/deepening/ch01.tex": "f8385206202ab0bd3212ccd1bfc7f7ce85e7c4eb9fb3a06549b5fcfd5c0d753c",
+    "chapters/chapter02.tex": "8cb21b88b8f105e7539e01aa068bcf02d2a47a12bf24ad9fb7e049e320e0ca4d",
+    "chapters/illustrations/ch02-a.tex": "059a8f06cb48ab9d792890c60b7440b2fbf349bc71516539aa7e3565d38202f0",
+    "chapters/diagrams/ch02-02.tex": "228e12a97f88dbd43eea1cb9caaceb963b3cb38fc4c15bef6ca74ec03b265a79",
+    "chapters/illustrations/ch02-b.tex": "04f634d8087584f02f648af6106d7cb4c5cc70315bde1fe47db9530de1def238",
+    "chapters/diagrams/ch02-03.tex": "4114df2e59f1f4ec121400f4a9ca19ff939cd99ea3a95935eeea34d048958f9b",
+    "chapters/scenarios/scenario-02-01.tex": "94b63d4ff2fe23a2d9b1bc84de3f780a14d37383fe6428bfe4d4b18e862f77ce",
+    "chapters/diagrams/ch02-05.tex": "891bb4137f8477e831d7d13c2d9df766b30df3437fab12771c45cd899aea8b86",
+    "chapters/diagrams/ch02-06.tex": "8fe2459694706df9bda7f57d73c61ff3a473943417e41ebb054fcd6c1b31cea8",
+    "chapters/diagrams/ch02-07.tex": "6a2e0402efcac365289e4de460e3099092ada527db474f82a44ee33cac9e7806",
+    "chapters/deepening/ch02.tex": "d854ec4d00f086ae3fb2d4a76565265f1a2480c36469eff679b43ac97125a703",
+    "chapters/scenarios/scenario-02-02.tex": "7702a5e961d8247c364f5644687f032f99933e94f0f929cd6432586babe489f4",
+    "chapters/deepening/ch02-interface.tex": "be142b12f829ee807959638698daf32b5278c86b74c51dc3ce1715e48e38be67",
+    "chapters/chapter03.tex": "4a7361b3cb3ffbb36e4b6131a8c73034affc45b811b5fbb141ba935a22426661",
+    "chapters/illustrations/ch03-a.tex": "aa29908e9393404db76df83100d90c902a182397834c173d2eb07a21f37ac637",
+    "chapters/diagrams/ch03-01.tex": "a25d71c2201624e5d970e16d6ef5bf9a546f42e1c2b3286df9ae5d8035317cdf",
+    "chapters/diagrams/ch03-03.tex": "db72b4d469814543b0ff32557845a64d6d5068ad12c4fe9641705550f40164cd",
+    "chapters/scenarios/scenario-03-06.tex": "67dfd629c6e3ae16fd030c966338092dd3058788e03d0f6d9de539e7ffaab660",
+    "chapters/diagrams/three-diff-boundaries.tex": "b876ad43b6df68d230b5773475177948632066e5803693419ff3532ef2565f53",
+    "chapters/diagrams/ch03-04.tex": "c2bad9f47ae177b2d6c15bf5bcda442d80c64e568e9da9e383724707d464c1c1",
+    "chapters/scenarios/scenario-03-01.tex": "70a816452fdf724fd88398cf2a24b70f7a441949e5ef364442af2bc04a971cc8",
+    "chapters/illustrations/ch03-b.tex": "f9de1fe877877e86c38580ec8e421a42a3609af8cd1167701cdff11e414bdc4f",
+    "chapters/diagrams/ch03-06.tex": "13d01a23cc9584aada244dba3ac819c8858df49ed795604d9b437ae7ef2086d1",
+    "chapters/scenarios/scenario-03-05.tex": "f81252e0aa238fb39f8cd014daa619cc38202662809b546b761d25e1e50fc711",
+    "chapters/diagrams/ch03-07.tex": "b5270b7353850c275108328a006e94c254689ae41774a2a4ebabc157fc5d1f96",
+    "chapters/scenarios/scenario-03-04.tex": "b7e30022c051243e9171b9b2d595ea3dca6a45caef4c0277dcdd289e6707536b",
+    "chapters/deepening/ch03.tex": "d6920d4db2c38b916b45d5850c328e33a02c8e136bcf57494e4ca9049e06518a",
+    "chapters/scenarios/scenario-03-07.tex": "2b9eec65bcff5b1c6e863d1f0624b7f0e0244833f4390fbd8c0539be684910a0",
+    "chapters/scenarios/scenario-03-02.tex": "a452a2576e2fbdc0e530308072c6197c746726e820966c88ac7bdef98d70aa5c",
+    "chapters/deepening/ch03-attributes.tex": "98c55be36c9814f9e6b51d04477e23558a41ec5505be8994e9c1f60cf2cfb384",
+    "chapters/scenarios/scenario-03-08.tex": "76d05a9935d5e2d49bf5f8bba921fc0a4af08e29b5e75ba849ed65d05ef20a55",
+    "chapters/deepening/ch03-ignore.tex": "08c05468d329892c1da59f3724f5c9d5afc5a0fc426321132164b1705056f323",
+    "chapters/scenarios/scenario-03-03.tex": "fec20988221a0b7354dedd56b2aafeaa9481b8a86a3f2d8b78d7b29151787b7b",
+    "chapters/chapter04.tex": "29c5342e9eb7c8f1cb3c099418cf335364b1be94e5c2263cc1a56494ccf76049",
+    "chapters/illustrations/ch04-a.tex": "2a83f94891953d110ed4a850f8db556db2800e41ed3f77ecef4a9eb1b20956ce",
+    "chapters/diagrams/ch04-02.tex": "1ba6c8fc10f97507aa7e6700e5d741316b343cf6bfb8934ffe6f66dd4ecaba69",
+    "chapters/illustrations/ch04-b.tex": "f4526686bd3cb16740343ff00e9ba7990cdee703f989061e54a2486601db6fd6",
+    "chapters/diagrams/ch04-03.tex": "a4c5588286ba4ba280efaf942d4f4aefcc4f32c98ecc2f64b9ea4aaf5469cd39",
+    "chapters/diagrams/ch04-04.tex": "5990e950ce7ccf9d44da118164d551b1e3190c3e49829d70e4bd2abe855647aa",
+    "chapters/diagrams/ch04-06.tex": "a84fdcf89eaed83f38206baf8b261c217e070d69bbcff25373bca294b80bd8c7",
+    "chapters/scenarios/scenario-04-01.tex": "20cbdce91f51a984b541d834af3ddb7549ca76a87ca54f1f0424b8e516d6b658",
+    "chapters/scenarios/scenario-04-03.tex": "d65835f2c125e20e8a970b7bbd937ee9d0250b2e16a5d78ee1590b9e44276467",
+    "chapters/diagrams/ch04-07.tex": "f6bd77adf79bf8383041f847e930fc8a10ec5d696bec5577b4ab085a6132c428",
+    "chapters/deepening/ch04.tex": "318fb940be0b0ea690dd02980fa8ee777a05aa5319fe7dd41030f544a5dc30e9",
+    "chapters/scenarios/scenario-04-02.tex": "008422db6e024297268418fa3e6dcf205c15f32fdf7ee07933a7f501d034c3d6",
+    "chapters/deepening/ch04-notes.tex": "0f9c800424748b5fc115b2fc7cd0e6d2bac410ad22efbaf8569ac474cf5a9a6d",
+    "chapters/scenarios/scenario-04-04.tex": "843ca25b03dcca77eb7b3acdd76f15a8082273ffbd01dc9817abebba3acab42c",
+    "chapters/chapter05.tex": "fe4017d6972a1e79c9c2be824b9c2f83ee7e61244de99231eff431759463809a",
+    "chapters/illustrations/ch05-a.tex": "8312cdd0e4b3aa942462dce2ca38f2b82af2d27e41e38db6951542207faa0409",
+    "chapters/diagrams/ch05-02.tex": "a3b29da822ee4c16a8fb06db96e114ba76cedf39230499396ac6eddf39f37d81",
+    "chapters/diagrams/ch05-03.tex": "0454e493948dfb5fdf5baa700a036244a425266f332010074a000bc006fb7a07",
+    "chapters/illustrations/ch05-b.tex": "6b19bb56396ba1d10a80d54b0dfef159da45220c5b7fbdc0fc773ffd2f41dae1",
+    "chapters/diagrams/ch05-05.tex": "3a84bc59e1f1648daf8959aa0dbbf6f3020cca9a729bdcc9c59f4bea06c662f2",
+    "chapters/diagrams/ch05-06.tex": "299031964a8dcbf6430db48a46d4a11d7c820ef36b8827bf55c04cde62c1d5be",
+    "chapters/scenarios/scenario-05-01.tex": "d627cf59db10622b0a3ea6276a598ab31daee63d844489aa0cd147ff2cbcfa53",
+    "chapters/diagrams/ch05-07.tex": "f15e281ef98bd7a5f293128a8382a87aa2a51fdc80d358c169a3d4be408a0191",
+    "chapters/lab05.tex": "71a0d3117ab25ae05c04ca8359461781b3c70957e0a2b6f5b50bfb331cdd2d5b",
+    "chapters/deepening/ch05.tex": "92ee09820f87d35c0bef1360f334765abdf8f12ec8a7f9385a37e05831cccf27",
+    "chapters/chapter06.tex": "7ee20a7068d1547d7177523e304f04548338e95ba6fff2beddf02d10ada7e466",
+    "chapters/scenarios/scenario-06-02.tex": "80d21173157f9412efa3faf47669d1db20c37c36ae84369b951aa6d47594815b",
+    "chapters/diagrams/ch06-02.tex": "b2102f200bfbf8257c679df080dbad82ed29a20fd595cd99cf3fed7a80c32b80",
+    "chapters/scenarios/scenario-06-01.tex": "fac3352cd779e7109647b367647ecc3dfac0ae4bbc4d86b9f2f4b6f28526a5fc",
+    "chapters/illustrations/ch06-a.tex": "4d8781cb092a467b60e6dd8fe576f25c217803baeaf8d7c28e3bc4eef016331d",
+    "chapters/scenarios/scenario-06-08.tex": "36391d1278e3a4b81e649c1533d3c181d475d21a3551ee427f973ee1bdfd09cb",
+    "chapters/diagrams/ch06-03.tex": "fe99711a2925d58ad2837e5ac9b77883d1e2e42db446a053cc9d766b9c243a61",
+    "chapters/lab06.tex": "4ba4d2fb18a2a8c3a2949a8c0bd1a7b8ac6ef131bacd657d590d61298a797eb7",
+    "chapters/diagrams/ch06-04.tex": "c53b29bb32ca2d12a6945e85d3db11fbc2eccdcbefe2ecdbc668e470058688f3",
+    "chapters/scenarios/scenario-06-03.tex": "f8e68777755d560f73cd2b63463827a9455760229e2712c6145e84f5f232f2b1",
+    "chapters/illustrations/ch06-b.tex": "f928c60334eb024ba861dcb11f02948d97ef916ba4ab72958c0625acfd666dc7",
+    "chapters/illustrations/native-6.tex": "1ab0785d55133308b1994c7d714e43856a36831eca551731915c50fb9718cbe9",
+    "chapters/diagrams/ch06-05.tex": "7bf8f8631d813d55ccb52a4e4f5f89ea4133aabe8df011abb895d9d9ac377db4",
+    "chapters/scenarios/scenario-06-07.tex": "6fd9932ec301eb3f5a039fe5658c5e9a6b23bf75f48e7ff1128e6492bca22174",
+    "chapters/diagrams/ch06-06.tex": "2ff09c5579391573822d0ab453a5884ddecc2b2b02557baacc52501cd94a80e1",
+    "chapters/scenarios/scenario-06-04.tex": "b033eb73a67fb6320683dd5c560d14c9e44faccb69e59268706b52e6a77e28f1",
+    "chapters/diagrams/ch06-07.tex": "3f212684e29be695258f6f3bf49dc4a98d0c61f5efb78a7b9b0d8eefeaaf1c3e",
+    "chapters/deepening/ch06.tex": "c61c2d2323a7d18a778d3fea3f58d6d8148ca402559f948d19e1ea59a379a8c7",
+    "chapters/scenarios/scenario-06-05.tex": "793eaaa12cefc071e06c75a7f16e8c559cd7065067478664a9c5a2fc1e78e709",
+    "chapters/scenarios/scenario-06-06.tex": "59d288bd7ff68d35eefa16fef389009d218f63e7d3117df207328dbd2e3b30c6",
+    "chapters/deepening/ch06-rerere.tex": "adbafab9f6b127a5aa34d692de25ab52607f3b335a10435d56f3a14c289bccc5",
+    "chapters/scenarios/scenario-06-09.tex": "da1a2591b20212cea33c008251280ec54207cf3ae57735b737fe9e0b9f2995c4",
+    "chapters/chapter07.tex": "7ae6c988e50055c019d5a1a4ca8be9f5d718828e209b2000bff4093c5e63d366",
+    "chapters/diagrams/ch07-01.tex": "1a33acb250b2b48a12e53064329b8d8a65cfd520278e84f4b3ef6273eaf7f8bc",
+    "chapters/illustrations/ch07-a.tex": "d3a7e1eb555771b5c25653accdfb8be94fa4fe8fc2352460f1cc488cec6fbd51",
+    "chapters/diagrams/ch07-02.tex": "33ab6edcef707a3b671b33d2d298aefbb0b41e9b84d68973afc2d8550ad19774",
+    "chapters/lab07.tex": "83f02bae229ec2ff520097bd48d489ef9bf04c135c024afe20e4c2567d709db1",
+    "chapters/illustrations/ch07-b.tex": "57ace2d64f11191dd7d7e64a88d518c6ac3e86367a79ed059705ee6cb56a19e1",
+    "chapters/illustrations/native-7.tex": "e38886afc8869fb4f100fd44091c687dfcc43c18069298a7122c22e01b9dad28",
+    "chapters/diagrams/ch07-04.tex": "5e80653688aaafd4facc1f453b5464db9b827ffb4cea97381228a9c27059bc9c",
+    "chapters/diagrams/ch07-05.tex": "19009fb0d8597dc32f0ad02af05064a33442f1ca7928925d1a141f482ef1fd5d",
+    "chapters/diagrams/ch07-06.tex": "ce6dd5bced1bfd0653d2141377a1d149c1fc27fcf83d0e3dfa7010cc4d1a7a4b",
+    "chapters/scenarios/scenario-07-02.tex": "791464212454c7644d9e23b616adc854d2f713bac45c5ba32a02a4c193f7e988",
+    "chapters/diagrams/ch07-07.tex": "37e974182164742e1b4f019b5451a0a8f3fad94297716567e40dd12e8c32e13b",
+    "chapters/deepening/ch07.tex": "8cba41d614d7eb59ce65d97a769a6a7fa6c065a95120e7f9b2d38c2ef1b1a5a1",
+    "chapters/scenarios/scenario-07-04.tex": "d357fd3422b06e309c277cb6e9b3dcd0af01c36a947187a2e703307064bf539e",
+    "chapters/scenarios/scenario-07-03.tex": "54bfca136059d70f127e51e3fd418428796285dee7b41f67c15e1128c467de52",
+    "chapters/deepening/ch07-refspec.tex": "913ac884e0a01bfdda7206ea59d91ff0cd083156ab2ecaa6298a4b03fac34e14",
+    "chapters/scenarios/scenario-07-01.tex": "fe5616a56136f32109c1c4fded1fc93cb10db27727c5d43f747d06fa36a002c0",
+    "chapters/chapter08.tex": "e59636d8b8ab1cf0f10658014e6d50a4a42757562c3a3736105f82975d4d61ba",
+    "chapters/illustrations/ch08-a.tex": "faa2440f54ba18f48d01b36606993d424b302cf92e13dc454a1ba92c3b21dfaa",
+    "chapters/scenarios/scenario-08-01.tex": "e4b80a36aaba70e498169f3cca1985132bd6c1a3e4ddd259b6f6818845d7f006",
+    "chapters/diagrams/ch08-02.tex": "611a770a229ea29d163ac35ef03062d7e7e769a41c6bd3bd563c22365ccf9308",
+    "chapters/illustrations/ch08-b.tex": "d74ecf39896d5865d4ab899288b2a20820fbd83db559cca9c755bf2d0bae862a",
+    "chapters/diagrams/ch08-03.tex": "85da7d8f0dea6b7c68401a7be477353d868006196a4e1437db28c8bb48dd379e",
+    "chapters/scenarios/scenario-08-02.tex": "6397120d4e492c846839fa4938b99651f3943d6dad1f8633cb59b47bfeddba72",
+    "chapters/lab08.tex": "bcf763d5ef61b789a373a01aecf9049fe85c61b700f4812eeb5ce1aff3d502ab",
+    "chapters/diagrams/ch08-04.tex": "2c2ee4e8a42c19beaf4a00c919cd49f9e883c17d2aa2e4e9ae5ced5fc5b69eb7",
+    "chapters/diagrams/ch08-05.tex": "4bf15b6aeed9e6a046c1331f5f22135279ee60d4a23d927000e061a1be4572db",
+    "chapters/scenarios/scenario-08-04.tex": "47302b404478b2aec89cb52d2e18b3d6707ebbd6cf2dba93afa5b7d57a167605",
+    "chapters/diagrams/ch08-06.tex": "09a2ed7c822b4e85325479b5d575b2d997f6f63855e5964800075aab4d721a22",
+    "chapters/scenarios/scenario-08-05.tex": "07857729fd9483e71ba90dc7b4a2b939b77d7591d9e2cf8b79feea5851eeda15",
+    "chapters/diagrams/ch08-07.tex": "27c8d47a7b14c64ca7d8b4c14cacb285fd6f93fe4ecd73f746237122612aef77",
+    "chapters/scenarios/scenario-08-06.tex": "c2aa77296779d9f7ea12184c06426236f27a956b4ca030650f541bf8f9c6b3e4",
+    "chapters/scenarios/scenario-08-07.tex": "480dc8064f3368c8bc7830b735315f455e077d123bb068e85aadc64857fc8373",
+    "chapters/scenarios/scenario-08-08.tex": "f8950534350c5406159035d14ced12d201e88c1ca4a3a15f832e21295367e3d8",
+    "chapters/deepening/ch08.tex": "78f89333bf20657bc7fd9df27280f0afca2bf3b33d72bff9a015ee27c8f6679a",
+    "chapters/scenarios/scenario-08-03.tex": "96f08c287802a8257b26d35eb46d2b40ca56bf8ed64b7d087d2019cdb88a39e2",
+    "chapters/chapter09.tex": "370295a8026896ed5b69c761fd1e4217c31313c714d1ef9a2c48671366f008f4",
+    "chapters/diagrams/ch09-01.tex": "b13a6913f714ed35e86ec95f54a393f335fd2d987d3faed5515d191545f6d51f",
+    "chapters/scenarios/scenario-09-01.tex": "3b0f847576d23d241d704c8dc1b14bc506ae4096aeb9b6121a33bd6f28dd70db",
+    "chapters/illustrations/ch09-a.tex": "5f946ca12c4dac6148fe6a8ff03faa7c0882c0cd2027c88dfd59f99b2645eecc",
+    "chapters/diagrams/ch09-02.tex": "2757d0daf1dc7f86a5274dd6120862d1feaa357c89bee3c573658155309aeb2e",
+    "chapters/repository-layout.tex": "b193dace49212d2f33959de30693303d7bb606975af9d2b356b3c89d12c6b577",
+    "chapters/diagrams/git-layout-tree.tex": "61379201113e8c7d472163b746b8535e11e23d6fb6b5602c56198f4f463b9880",
+    "chapters/diagrams/gitdir-common.tex": "80e0d1dd5738333a1aa8757946a44c315c88f8da5140f9de0178338baa15bf31",
+    "chapters/scenarios/scenario-09-03.tex": "6b4b08bc2f982675551444aa26e1d8e3b46e672dba462352ad407879e15f9379",
+    "chapters/diagrams/ch09-04.tex": "2a214ef724cded177588c75a0365e3dbb4d58f37f20cf6adaf7a7d5de3ae44d6",
+    "chapters/scenarios/scenario-09-04.tex": "a8ce7123204b74d41e8519db8d3f8f068a6f0a079d03c26200aa41423a53ee08",
+    "chapters/diagrams/ch09-05.tex": "010d0f3b6206b755a13cb9d4e7578b5a1fb47cc290baef949891d84a9852ed17",
+    "chapters/scenarios/scenario-09-05.tex": "32e059a5f21ed4c557a013981ead7414e021b1c31691dc2ff4e3fa27b4fc670d",
+    "chapters/illustrations/ch09-b.tex": "c5f9bd337fd68bdd6a6606585b7cdc767f475f3c2b5510c1d83db9a47db7f4d7",
+    "chapters/diagrams/ch09-06.tex": "e7bc8b80cc49c7f958d14ab2c9e099fe0cf7ebb29ec6352c68d494045810b9f1",
+    "chapters/diagrams/ch09-07.tex": "e01541ef90e3fb5831a55113ad5a44a198a169b88b4d2004aa7e3c34497026c7",
+    "chapters/scenarios/scenario-09-07.tex": "1171bb5e2adf994b17f37c918b6c31fa806f5ebbb03dee938f8bffad520870c5",
+    "chapters/deepening/ch09.tex": "b2ff7928a281c45dff58c172c1430ba960d3683eb3b406e6996c19b8458f756d",
+    "chapters/scenarios/scenario-09-02.tex": "4e53b0ee26217bc644afaa854b9a5d3993c0c4b030225d1173ebdab6fffe9ae2",
+    "chapters/scenarios/scenario-09-06.tex": "414d602471b97aee133a81bc40df0ef2dac2e47f65d51e225cd6c54bb512480a",
+    "chapters/deepening/ch09-storage.tex": "9b77b8a3b8215e962a24aec1d692dee3fed5ddc64010c781a80527d4ec490a18",
+    "chapters/scenarios/scenario-09-08.tex": "00e82614ace0e4a87f9623e1701cca74a8ec3af4c45dea093ef4658c34ee3803",
+    "chapters/chapter10.tex": "36d495d2eb2e8b8918dc3a171b483c0b5e4948c315719353c5b9598e710d642e",
+    "chapters/diagrams/ch10-01.tex": "7d2b6146cff3d8abbe89ada51b22cac8ba0f9ffe38d2adc6290e014bb7a48fd3",
+    "chapters/illustrations/ch10-b.tex": "a62a2a26e379ae44b93eb854259cfbf4127e4f93e08b410993268911185b77c2",
+    "chapters/diagrams/ch10-02.tex": "156d72e7f6bfe4525ab799bf0c197dd09268bf03adc5d4efc201e7c8d4a8afe0",
+    "chapters/diagrams/ch10-03.tex": "9be0bba9eeff0a8d3cf730ecc8840c9f0ba42b438a3209a90d43ee7066b20906",
+    "chapters/illustrations/ch10-a.tex": "b3961722e73a535ef59fdd0186939a40899232955ef844d503373d334c4badd5",
+    "chapters/diagrams/ch10-05.tex": "63fd074bc63ff38f2590cd2603b98672d81ae1f14ad22cdbdd49f3451c38b246",
+    "chapters/diagrams/ch10-06.tex": "2f3bcd4e3e0626bbf6efe9697b89c0d610a7a9e2b7283afbebf137a3cede99c3",
+    "chapters/diagrams/ch10-07.tex": "b2e470028be5d225e02d7f9973768a3bb0d930ea091e22e5b8de377444eaeb2d",
+    "chapters/deepening/ch10.tex": "595e867c1f9fb63c3c0ca163d46d3005a89363a798f61b190dd54f9a9a6c97ee",
+    "chapters/scenarios/scenario-10-01.tex": "b6ea22d2a0ba25240b204cf0496d33fffebaf7fc475e196108d70ee1a0161122",
+    "chapters/chapter11.tex": "574547bd8460a5dc9fd843e46e292a11ca129c0761f957a3483c88b47d33e5f5",
+    "chapters/illustrations/ch11-a.tex": "9efbcd9a72b1c9dece589b4a168d6f08228862cafe2ff3c208f997177755dd79",
+    "chapters/diagrams/ch11-01.tex": "738be8f38229a6f1171139fe622dd3b301c96f091a2faee6956912be5f9beda0",
+    "chapters/scenarios/scenario-11-06.tex": "734f207cd9980696510d4663eb7c3aed0a7bc78e16991ec2ce973b9a00f0af3d",
+    "chapters/diagrams/ch11-03.tex": "0104369a85ba182658a14472b7913ff0fb135fd39558d5b848c868d198bf7d76",
+    "chapters/scenarios/scenario-11-01.tex": "0c4fbc6b1718f5b68b78670d58daad6d4ad4203153c8c4942113748e0b1e6e5c",
+    "chapters/diagrams/ch11-04.tex": "77d624f6403be47915e1293d0904ac274cf15924e4ca0337ffa04dc9ce137c9e",
+    "chapters/illustrations/ch11-b.tex": "0bbeff2c9538ad1eb6695a57e2c38f0e00d4f0ccfd240a5c5f7291b1a13f335e",
+    "chapters/diagrams/ch11-05.tex": "4ea8adf2a6a80dd10a19ae3659d937a810f266d52b6be6549f3b7a2bc209de27",
+    "chapters/diagrams/ch11-06.tex": "979587e59159f15d6c0eec00d5fa7b30172c5e707d8055009ed95df0ac619bf4",
+    "chapters/scenarios/scenario-11-04.tex": "b07996030ed98a7a93d44cfee7e9aafef28ccfc7ef587d9264d3e1e62cfb22ec",
+    "chapters/diagrams/ch11-07.tex": "deffc5ff33214868de34cf1d9e773fa6e6f68b9eeec7ea2fd1bbbe478b1cf235",
+    "chapters/scenarios/scenario-11-05.tex": "d45874dbe7c01ccbc213f156c452c5e46a0aaf9bd44f9c328dbd9e793e7e3ffa",
+    "chapters/deepening/ch11.tex": "6d965fe0c028a74b5fb6e4b8282cd7c6fa0daff17667cb7224234c3e66e60d71",
+    "chapters/scenarios/scenario-11-03.tex": "8972354388f1b20cb527bb271fc30e1f98408b65e96ca4af5ec02a2adb4e8848",
+    "chapters/deepening/ch11-patches.tex": "8937f4d9963ac4c1305e9c71689d7290957bd6e0e8f0188b667ca3014d121d3b",
+    "chapters/scenarios/scenario-11-08.tex": "a50d1d15a27f271f1a6cbeb52efe95f66ec14fbb1d84123ee393a42b8197f932",
+    "chapters/deepening/ch11-onto.tex": "9b141cdce5d70aec4393ace131988c92e2ccbca608e9ad6e2d28344fdb805e17",
+    "chapters/scenarios/scenario-11-07.tex": "7d18240e0d0af3f6ecbbd3f180af95041de065d446b8d880e0897deaa39130ba",
+    "chapters/deepening/ch11-split.tex": "31bd1527559360b95233879ea3718413c26b32426d6da3fa7f64be576cdfae6c",
+    "chapters/scenarios/scenario-11-02.tex": "aea2169bd1c6473f5230645b6eaacabbc4dd1568c5205ed0a589cf37d2801b66",
+    "chapters/chapter12.tex": "1f0eb3effae8c57c788e5fa5731327892aca65aede87c4fb11c7bb9436ace8d8",
+    "chapters/illustrations/ch12-a.tex": "0d3c895574caeecf07e8130d30c7ccc8dd40b585e874e7218a43c3d86ffc7105",
+    "chapters/diagrams/ch12-01.tex": "6729340ffd902307dcbe7d4354786c9de17a4ade601ac00cbdc252ef456b882f",
+    "chapters/diagrams/ch12-03.tex": "2affb98e28faed7dbd5195eb84d4c2ef4410066d66a5e0d70b6d2f7dfe07adca",
+    "chapters/illustrations/ch12-b.tex": "0c7413a830e08bc700d7ffb00d641572566d71ac70481db2824ebc26f6e8a127",
+    "chapters/diagrams/ch12-04.tex": "1e8aed06e48c10e7dbe39e18645de88e5e22e60af8d669e743f61f0c6965d819",
+    "chapters/diagrams/ch12-05.tex": "ae2ba95bf77c24e3bcae10fc8e3df581a18c625213260ae76e0346b3fc339618",
+    "chapters/deepening/ch12.tex": "b08c4a0b6c4afc5641bbbfbd1735f9441504edd1302d908e32afcc22f7b75740",
+    "chapters/scenarios/scenario-12-01.tex": "ed02e3fa31f417fc042030c7529f978b94fd5ece20d3c4b1297630273090b71d",
+    "chapters/scenarios/scenario-12-02.tex": "79117524be143055a9bb90977f2e87d4d4b43b251f292eaa6f825e99346d4fcd",
+    "chapters/chapter13.tex": "2cc76f5a73c5c2a11d4cd491032e43d3271d3c4e68114324a2209d01de48d24a",
+    "chapters/diagrams/ch13-02.tex": "50ae695a2d410aec95aec14eb6ba1c91fff2bb42e252d7047fcc67ce64e1cc92",
+    "chapters/diagrams/ch13-03.tex": "253a9961d0ecea1793766867f486e8639a2977e0856edd14e613e7b32eb9faef",
+    "chapters/illustrations/ch13-a.tex": "10fba7b36087d8294aeafbb2f8f23a15b660c3bbd1f7124eac27ed48e6463917",
+    "chapters/diagrams/ch13-04.tex": "cf42f5a8cac9d7128195fe60a68ded6b18781c9587a96e0fab82e68c41e27b0c",
+    "chapters/diagrams/ch13-05.tex": "33f940010d86f2ab804fb590e04b1b046252d408372b7c1ac0ad1cc6bd0bf65a",
+    "chapters/illustrations/ch13-b.tex": "fd90ce9c931a9a2140faf6e2a5ce21e0965cf98e8cde801e386735668fec1de5",
+    "chapters/illustrations/native-13.tex": "3c8b44bd977e3f315efe8c5d84f3e7ace3972e0a4f3805e8998ad01ea6c71c6c",
+    "chapters/diagrams/ch13-06.tex": "bf81ce31df10235b475e442076c1f87c358e2c950be52c2af24bd6365504d4d0",
+    "chapters/diagrams/ch13-07.tex": "942827831e43746c5d5e1fc57c101111bcbe175af2f0c79b02634e0ec06c17ff",
+    "chapters/deepening/ch13.tex": "b051e4c7f966e09db54618c75ee1bb5234722bc4af8dda38002d46d421622f17",
+    "chapters/scenarios/scenario-13-02.tex": "06ce78379720b25a756a330b285857518b4d1549ad91b51795f64f661fe07e87",
+    "chapters/deepening/ch13-github.tex": "a9524fdd2f3669172dc99e319cbb9893c229735c6e04824487e39f325a665461",
+    "chapters/scenarios/scenario-13-01.tex": "058d7afe1b1a76d5c5d55cd921788fe988deb028aa0b2b9748fc2333ce5c17a9",
+    "chapters/chapter14.tex": "5897a8b016dd51728fbe49030c50e73aaf5ca8a845ca00b0ee349f94f474e588",
+    "chapters/diagrams/ch14-01.tex": "e014bcb6000aa37aa15b71814779ee6501d88174342a2bb04991941e36dceb45",
+    "chapters/diagrams/ch14-02.tex": "cafb25507ff630ade252e151d63e59cdccadd811245e30899791dcdb0d249cc9",
+    "chapters/diagrams/ch14-03.tex": "6f0614ee0d596aa7fe0df878d61f1b36199a820017bc91c619acd95a0900913c",
+    "chapters/illustrations/ch14-b.tex": "683dea6b7213dc3e9e9a563a6f561a76cba0ad067f426f99f7020c896e90718f",
+    "chapters/diagrams/ch14-04.tex": "a56a281046efc7801eb5dda2e7660fccde8ce602b46330444ab0ce35b1d6cc9f",
+    "chapters/scenarios/scenario-14-01.tex": "3996a3209b1fd57eb33e48700437fd3ace3dfa1c367a795bb016d1a9e90026d7",
+    "chapters/illustrations/ch14-a.tex": "093a275d9a092325a342896c0db451b420f0880e55f584677f85368ab173f3df",
+    "chapters/diagrams/ch14-06.tex": "59640e33013c12be45045a658acaae1e6cdbecb2805de4e39dbb8cce6ab8972f",
+    "chapters/scenarios/scenario-14-02.tex": "3e204e1e709259c166182956bf33a68e6f76a0d323bbf0d2f319e7507531d9b4",
+    "chapters/deepening/ch14.tex": "5873f89db119e1486b2b1ee7cfd9078fe27436fae33ec296a8be998ec038ff18",
+    "chapters/chapter15.tex": "63229a81ef0894ccce75bce444eef10acaf7ca0e445bd55081c9a9e927ce32db",
+    "chapters/diagrams/ch15-01.tex": "fcb09c90cabfbffc22d5bc7a47fd39243feef6a599513fc09060cca4c0acd73c",
+    "chapters/scenarios/scenario-15-01.tex": "11473341ba798b75411499844972572cd26f74971ab1f44172ee2981ef728707",
+    "chapters/diagrams/ch15-03.tex": "584043cc256b4b3732b313931abf2b03c8b00ba0712bd862312a0b339340829d",
+    "chapters/diagrams/ch15-04.tex": "d1b70a286c9246f1193b0e19bb5cacfd5b553dc394a6eaf7d98038265d7dc1d2",
+    "chapters/diagrams/ch15-05.tex": "78511b5ee92c932e56bf9afdba44dd95ddd6c4d247feea749a227e8893e36e35",
+    "chapters/diagrams/ch15-06.tex": "195949d492f98d6ec0018cfda0aec2709fca7434e78911bd8323c703a85d36e2",
+    "chapters/illustrations/ch15-b.tex": "be9cd6771945d0cf81d89f52db63f8f5fd62d33ad665e1a7e1e21e66e9cef4b2",
+    "chapters/illustrations/ch15-a.tex": "648b01112baab8928e737494990d56389b59a2ab142f79a4d96c82acb4a9ba52",
+    "chapters/deepening/ch15.tex": "2ff45d22175f09cc9388d4986c139cd58f143582736986fb769313b47d99b630",
+    "chapters/scenarios/scenario-15-02.tex": "4967e3138a677b895bee54f2d39d6ef4b9172ff8554da57e925e27be021399c3",
+    "chapters/deepening/ch15-migration.tex": "8768a9ab69be7fb610626be9f55f8f6813b74b8c4b4721b879bb0d6a357f58d0",
+    "chapters/scenarios/scenario-15-03.tex": "a3c248ebf82cc87df6dd68b9dc02acc18ddb2f4461f2afb5dc6101ff9b44f401",
+    "chapters/chapter16.tex": "5393049cb9c393d311beb56af4c966dc3069c0d5ce1d3961f969c304d905d81d",
+    "chapters/diagrams/ch16-02.tex": "293dc85679aaf1e77038188ad24ea457b433193c647a683e97152491bf8b97e4",
+    "chapters/illustrations/ch16-a.tex": "9daa16882d18744e8bfe444e049c5f59089678b9c1cd60c85f591fd71e12fa09",
+    "chapters/diagrams/ch16-04.tex": "0827f837ce53e7759dacd07a175fe6214462ddf995cf530bff6a53ea19b12ab3",
+    "chapters/scenarios/scenario-16-01.tex": "b032ae94a6d0339410ea5c40247c6e727a256776652504fd88e716dd073caaea",
+    "chapters/diagrams/ch16-06.tex": "1c579709eaf4194d31988ec7c51808a5be8185f2e1dbfa319d29c36dd6d2e704",
+    "chapters/illustrations/ch16-b.tex": "fd78d46ce6a2e1435748bb17236ddad664e63dc572d11e4c38b17b079b3d4c1a",
+    "chapters/illustrations/native-16.tex": "6090411152c536e4d678cdfe3f9ba9ca9858eb7f7ba4008ac78a3dcca504709b",
+    "chapters/diagrams/ch16-07.tex": "01cfa2fff8c2634cc04ad5d7c9d1ecb4bfb108bd4cc10d36570ebe72304481f3",
+    "chapters/diagrams/ch16-09.tex": "994ffa4c4d94d7c3cf2cf0c8527b439393056c822e8569e30da6bed6e92f1b38",
+    "chapters/diagrams/ch16-10.tex": "6611a7d301715cd363852f1db93ae68b3bac76332417df9d40c3085577391019",
+    "chapters/scenarios/scenario-16-02.tex": "f65f875e980f1cea2bd51792e7e6ff27b2884cdea947a0364b6db44d57568a3f",
+    "chapters/chapter17.tex": "11dca3904cef21a88bc8dd3d0d2726fd389b1a55411fdc54799ee2ec0f3c4ae5",
+    "chapters/scenarios/scenario-17-01.tex": "bdd65c206959679943b9d04f450d264039d234ac1dce748256208ac471c1147d",
+    "chapters/campus-enterprise-plan.tex": "aea6a6ee7b87a866654cc40edb3cc662cefa317df00663cff1b1280c529aa629",
+    "chapters/project-figures/enterprise-flow.tex": "55869ed5377d3fd7849a5cbcaca0eb571c0b21a482e193b3ad74ba913a3ad64f",
+    "chapters/diagrams/ch17-02.tex": "dee17fcb09059e02f3fab58a48bf8a3804525901be1484539c3fca2288799563",
+    "chapters/scenarios/scenario-17-05.tex": "a54b271e8478faf9ada2c15c8c2a3db10160cab3d270f4483d456e5e544cf34b",
+    "chapters/campus-multifile.tex": "825078794f6a06d58549fe0a3655b66a7175510eb25da56b0f9c2356c3386a4f",
+    "chapters/project-figures/multifile-architecture.tex": "35c262ef6211a1eb72cc77504a652dcf47d5404864bab3467c243ea1587d2a71",
+    "chapters/illustrations/ch17-a.tex": "58af071ab2528a048e369d39e7ae2743e55386678f44c18a442f049f4ed68199",
+    "chapters/diagrams/ch17-03.tex": "d05311e7b92562783ffa5119d581631a07a5c60d30b2e45056522729c5d566da",
+    "chapters/scenarios/scenario-17-02.tex": "6f3d5bf6a73cf0b4526b778d19dcff0dcb8cef21903f6652e69db82bafbfe7da",
+    "chapters/illustrations/ch17-b.tex": "9270e51f5ae383c92d97cdc74a170339ded749d40462e6be589219abac6cefb0",
+    "chapters/diagrams/ch17-04.tex": "b617b7397ec5606a83793df8b77e8da6b613964f917ef59906d62c4d1fe2e315",
+    "chapters/scenarios/scenario-17-03.tex": "dc014fcf4ff4b5b18d0930a56fb9524f1249942fabe0e4cbdf7e7309f6a53b49",
+    "chapters/scenarios/scenario-17-04.tex": "f705e9c2a884c975ef3fc4064b7fb539a769afdc232209ad0100a14905456761",
+    "chapters/diagrams/ch17-05.tex": "a51fd793f0a2a19b94593a1e62853e5b4d7deff45875c1db515810a22853f178",
+    "chapters/scenarios/scenario-17-06.tex": "ed09aaf17cd5b9a0527d93e3d409bfe28f1c7b24a80e3466bdb4f01215aceaca",
+    "chapters/lab17.tex": "290349455808685abc886833ea7d9d2ffca8d36569195484c83a72b1e2f10aa7",
+    "chapters/scenarios/scenario-17-12.tex": "2692c7d070120b5103462a833c9ad8d006088ca0fd9fe13adcc9f7e032733df8",
+    "chapters/scenarios/scenario-17-07.tex": "4a6e47150d520598a2ec103095bda6e3da7c19855adc4075406ce88171435cdd",
+    "chapters/scenarios/scenario-17-13.tex": "f2916b32ddfe8854ca1fee2476bbfbf6eb0530bffc771817aa5e8ee151469a5f",
+    "chapters/scenarios/scenario-17-14.tex": "cba7401ab328bd72e080abf6a0424c0ce1785b70a15278c67d4dec732972c38c",
+    "chapters/scenarios/scenario-17-15.tex": "d2e7b0be7222d524a537067b7e0657bcbd7a836501c13fbb003516f5da295235",
+    "chapters/scenarios/scenario-17-10.tex": "46250c7f7b928367864f82fa6ff62aabb03987e023a9cd3bab7ae5ba87883e43",
+    "chapters/scenarios/scenario-17-16.tex": "391470c3192fc353279695a2ac4b4a8ca295986ecd42d5181c66a65f3e3ff3b4",
+    "chapters/scenarios/scenario-17-17.tex": "ac29bda24033e71539aa8a723fc71601c2f06810e4fb821e7c0055c7496aa426",
+    "chapters/scenarios/scenario-17-08.tex": "7d13619060802af1a756443243d81093403687645c18dbe6260df85d61b2937f",
+    "chapters/scenarios/scenario-17-11.tex": "20c78926b10459daef597eda6a0d8eb8cdeec1a8600b7b5f2a96166c562c8a11",
+    "chapters/diagrams/ch17-07.tex": "4a8d1d662365cc4e36c24b5d1cdfccfd15e041228b84212d13bfa98df2523d6d",
+    "chapters/scenarios/scenario-17-09.tex": "f44e5d4c8a49c814e7ffaf7ed83ca0c98ad26a931cced00f3bfe61382844b453",
+    "chapters/diagrams/ch17-08.tex": "37c827179e2855d1b3539ab11b1dbb139e780d9ad5f82271bf1533105d023f32",
+    "chapters/preface.tex": "37c4b86a75d3e0cef9a8b157f7e4e57774ea0928fbbf9f93dba6bd66880414f5",
+    "chapters/appendix_b.tex": "c50d9f9151b8cf2b4b9540cda373daf32a31ba44ba397841469348eda43111fa",
+    "chapters/appendix_c.tex": "dbb866f40632e9d9aac7b1e9d7ef4e18395d9555377cb5768f887789607b89b6",
+    "chapters/appendix_d.tex": "954c5a462861e818b0a1f829840ce4e9b91c970afc8d0483b650b16cdf2cee60",
+    "chapters/appendix_e.tex": "6c2e40a731c9d97993d6ad5b6298df8fadae95cbb83c87848b57d4a6a7b27ccb"
+  },
+  "figure_crops": [
+    {
+      "label": "figure:reading-preparation-1",
+      "number": "1.1",
+      "caption": "当前目录决定相对路径从哪里开始解释",
+      "page": 17,
+      "clip": [
+        64.62699890136719,
+        485.1899108886719,
+        474.01129150390625,
+        598.2039794921875
+      ],
+      "image": "figure-1-1.webp"
+    },
+    {
+      "label": "fig:scenario-01-01",
+      "number": "1.2",
+      "caption": "编辑位置与命令位置需要核对",
+      "page": 18,
+      "clip": [
+        59.03199768066406,
+        413.52001953125,
+        451.20806884765625,
+        512.56005859375
+      ],
+      "image": "figure-1-2.webp"
+    },
+    {
+      "label": "fig:visual-01-a",
+      "number": "1.3",
+      "caption": "文件修订、版本记录与历史查询",
+      "page": 20,
+      "sources": [
+        "assets/ai-illustrations/ch01-gpt.png"
+      ],
+      "image": "figure-1-3.webp"
+    },
+    {
+      "label": "fig:principle-ch01-01",
+      "number": "1.4",
+      "caption": "从副本到可解释历史（沿连线依次阅读操作及检查步骤）",
+      "page": 20,
+      "clip": [
+        76.79000091552734,
+        436.11199951171875,
+        433.44232177734375,
+        487.4019775390625
+      ],
+      "image": "figure-1-4.webp"
+    },
+    {
+      "label": "fig:principle-ch01-02",
+      "number": "1.5",
+      "caption": "集中保存与仓库交换（每行对照一组条件与解释）",
+      "page": 22,
+      "clip": [
+        49.111000061035156,
+        54.363677978515625,
+        461.1297302246094,
+        173.24635314941406
+      ],
+      "image": "figure-1-5.webp"
+    },
+    {
+      "label": "fig:vcs-organization",
+      "number": "1.6",
+      "caption": "协作拓扑与本地历史能力是需要分别说明的维度",
+      "page": 22,
+      "clip": [
+        60.56083679199219,
+        506.26715087890625,
+        449.6788330078125,
+        605.199951171875
+      ],
+      "image": "figure-1-6.webp"
+    },
+    {
+      "label": "fig:principle-ch01-04",
+      "number": "1.7",
+      "caption": "快照语义与物理表示（每行对照一组条件与解释）",
+      "page": 23,
+      "clip": [
+        63.28400421142578,
+        474.84967041015625,
+        475.302734375,
+        593.7323608398438
+      ],
+      "image": "figure-1-7.webp"
+    },
+    {
+      "label": "fig:principle-ch01-05",
+      "number": "1.8",
+      "caption": "对象与名字的职责（箭头表示所说明的对象或访问关系）",
+      "page": 24,
+      "clip": [
+        59.03282165527344,
+        469.2008972167969,
+        451.2092590332031,
+        531.6201171875
+      ],
+      "image": "figure-1-8.webp"
+    },
+    {
+      "label": "fig:git-basic-model",
+      "number": "1.9",
+      "caption": "历史关系保存在对象中，名称提供当前可解析的入口",
+      "page": 25,
+      "clip": [
+        126.11691284179688,
+        215.86456298828125,
+        412.4695739746094,
+        299.5439453125
+      ],
+      "image": "figure-1-9.webp"
+    },
+    {
+      "label": "fig:principle-ch01-06",
+      "number": "1.10",
+      "caption": "候选选择形成提交（沿连线依次阅读操作及检查步骤）",
+      "page": 25,
+      "clip": [
+        90.96299743652344,
+        575.073974609375,
+        447.6153259277344,
+        626.35498046875
+      ],
+      "image": "figure-1-10.webp"
+    },
+    {
+      "label": "fig:visual-01-b",
+      "number": "1.11",
+      "caption": "项目交接的四类记录范围",
+      "page": 26,
+      "sources": [
+        "assets/ai-illustrations/ch01-complex-v2.png"
+      ],
+      "image": "figure-1-11.webp"
+    },
+    {
+      "label": "fig:visual-02-a",
+      "number": "2.1",
+      "caption": "项目文件与Git管理信息的分工",
+      "page": 35,
+      "sources": [
+        "assets/ai-illustrations/ch02-gpt.png"
+      ],
+      "image": "figure-2-1.webp"
+    },
+    {
+      "label": "fig:principle-ch02-02",
+      "number": "2.2",
+      "caption": "项目目录与管理入口（箭头表示所说明的对象或访问关系）",
+      "page": 35,
+      "clip": [
+        73.20582580566406,
+        317.50189208984375,
+        465.38226318359375,
+        379.9211120605469
+      ],
+      "image": "figure-2-2.webp"
+    },
+    {
+      "label": "fig:lab02-directory",
+      "number": "2.3",
+      "caption": "普通仓库中，工作文件与 Git 管理数据承担不同职责",
+      "page": 36,
+      "clip": [
+        132.73098754882812,
+        209.6742706298828,
+        377.5050048828125,
+        300.2105407714844
+      ],
+      "image": "figure-2-3.webp"
+    },
+    {
+      "label": "fig:visual-02-b",
+      "number": "2.4",
+      "caption": "未诞生分支与首次提交后的对象连接",
+      "page": 38,
+      "sources": [
+        "assets/ai-illustrations/ch02-complex-v2.png"
+      ],
+      "image": "figure-2-4.webp"
+    },
+    {
+      "label": "fig:principle-ch02-03",
+      "number": "2.5",
+      "caption": "根提交建立的条件（沿连线依次阅读操作及检查步骤）",
+      "page": 38,
+      "clip": [
+        81.72100067138672,
+        327.99798583984375,
+        442.2830505371094,
+        379.2879638671875
+      ],
+      "image": "figure-2-5.webp"
+    },
+    {
+      "label": "fig:lab02-first-cycle",
+      "number": "2.6",
+      "caption": "从文件存在到进入历史，需要经过明确的选择与提交",
+      "page": 39,
+      "clip": [
+        101.5504150390625,
+        544.9496459960938,
+        437.03460693359375,
+        587.2964477539062
+      ],
+      "image": "figure-2-6.webp"
+    },
+    {
+      "label": "fig:scenario-02-01",
+      "number": "2.7",
+      "caption": "一次新提交前后的三份内容",
+      "page": 41,
+      "clip": [
+        74.62300109863281,
+        54.563358306884766,
+        463.96441650390625,
+        196.1233673095703
+      ],
+      "image": "figure-2-7.webp"
+    },
+    {
+      "label": "fig:principle-ch02-05",
+      "number": "2.8",
+      "caption": "忽略与停止跟踪（每行对照一组条件与解释）",
+      "page": 41,
+      "clip": [
+        63.28400421142578,
+        452.2126770019531,
+        475.302734375,
+        571.0953369140625
+      ],
+      "image": "figure-2-8.webp"
+    },
+    {
+      "label": "fig:principle-ch02-06",
+      "number": "2.9",
+      "caption": "克隆取得的范围（沿连线依次阅读操作及检查步骤）",
+      "page": 42,
+      "clip": [
+        63.97200012207031,
+        477.947998046875,
+        442.2830505371094,
+        529.238037109375
+      ],
+      "image": "figure-2-9.webp"
+    },
+    {
+      "label": "fig:principle-ch02-07",
+      "number": "2.10",
+      "caption": "初次失败的诊断顺序（沿连线依次阅读操作及检查步骤）",
+      "page": 43,
+      "clip": [
+        90.96299743652344,
+        336.82598876953125,
+        456.4570617675781,
+        388.115966796875
+      ],
+      "image": "figure-2-10.webp"
+    },
+    {
+      "label": "fig:scenario-02-02",
+      "number": "2.11",
+      "caption": "初次操作失败的四类对象",
+      "page": 46,
+      "clip": [
+        59.03199768066406,
+        310.95599365234375,
+        451.20806884765625,
+        506.37469482421875
+      ],
+      "image": "figure-2-11.webp"
+    },
+    {
+      "label": "fig:visual-03-a",
+      "number": "3.1",
+      "caption": "三份内容与各命令的写入目标",
+      "page": 53,
+      "sources": [
+        "assets/ai-illustrations/ch03-gpt.png"
+      ],
+      "image": "figure-3-1.webp"
+    },
+    {
+      "label": "fig:principle-ch03-01",
+      "number": "3.2",
+      "caption": "分别观察三份内容（沿连线依次阅读操作及检查步骤）",
+      "page": 53,
+      "clip": [
+        70.89800262451172,
+        324.1709899902344,
+        460.44122314453125,
+        376.052490234375
+      ],
+      "image": "figure-3-2.webp"
+    },
+    {
+      "label": "fig:three-state-model",
+      "number": "3.3",
+      "caption": "三份状态模型：箭头表示日常命令更新目标状态的概念方向",
+      "page": 53,
+      "clip": [
+        87.37713623046875,
+        462.10455322265625,
+        451.2081298828125,
+        512.9555053710938
+      ],
+      "image": "figure-3-3.webp"
+    },
+    {
+      "label": "fig:principle-ch03-03",
+      "number": "3.4",
+      "caption": "三种差异的比较边界（每行对照一组条件与解释）",
+      "page": 57,
+      "clip": [
+        63.28400421142578,
+        54.363677978515625,
+        475.302734375,
+        173.24635314941406
+      ],
+      "image": "figure-3-4.webp"
+    },
+    {
+      "label": "fig:scenario-03-06",
+      "number": "3.5",
+      "caption": "三种内容比较的起点与终点",
+      "page": 57,
+      "clip": [
+        74.62300109863281,
+        398.96435546875,
+        463.96441650390625,
+        540.5243530273438
+      ],
+      "image": "figure-3-5.webp"
+    },
+    {
+      "label": "fig:three-diff-boundaries",
+      "number": "3.6",
+      "caption": "提交第二行之前，三种比较分别观察不同的内容边界",
+      "page": 58,
+      "clip": [
+        53.362998962402344,
+        57.05432891845703,
+        456.87774658203125,
+        208.97036743164062
+      ],
+      "image": "figure-3-6.webp"
+    },
+    {
+      "label": "fig:principle-ch03-04",
+      "number": "3.7",
+      "caption": "短状态的两列（每行对照一组条件与解释）",
+      "page": 59,
+      "clip": [
+        63.28400421142578,
+        54.363677978515625,
+        475.302734375,
+        173.24635314941406
+      ],
+      "image": "figure-3-7.webp"
+    },
+    {
+      "label": "fig:scenario-03-01",
+      "number": "3.8",
+      "caption": "XY两列分别描述两组比较",
+      "page": 59,
+      "clip": [
+        74.62300109863281,
+        284.73236083984375,
+        463.96441650390625,
+        392.2763671875
+      ],
+      "image": "figure-3-8.webp"
+    },
+    {
+      "label": "fig:visual-03-b",
+      "number": "3.9",
+      "caption": "同一路径的部分暂存与候选内容",
+      "page": 60,
+      "sources": [
+        "assets/ai-illustrations/ch03-complex.png"
+      ],
+      "image": "figure-3-9.webp"
+    },
+    {
+      "label": "fig:principle-ch03-06",
+      "number": "3.10",
+      "caption": "恢复时明确写入目标（每行对照一组条件与解释）",
+      "page": 62,
+      "clip": [
+        49.111000061035156,
+        54.363677978515625,
+        461.1297302246094,
+        173.24635314941406
+      ],
+      "image": "figure-3-10.webp"
+    },
+    {
+      "label": "fig:scenario-03-05",
+      "number": "3.11",
+      "caption": "取消暂存与恢复文件的目标",
+      "page": 62,
+      "clip": [
+        60.44999694824219,
+        493.8223571777344,
+        449.79144287109375,
+        601.3663330078125
+      ],
+      "image": "figure-3-11.webp"
+    },
+    {
+      "label": "fig:principle-ch03-07",
+      "number": "3.12",
+      "caption": "路径存在的不同条件（每行对照一组条件与解释）",
+      "page": 63,
+      "clip": [
+        63.28400421142578,
+        416.0396728515625,
+        475.302734375,
+        534.92236328125
+      ],
+      "image": "figure-3-12.webp"
+    },
+    {
+      "label": "fig:scenario-03-04",
+      "number": "3.13",
+      "caption": "索引条目的四类关键字段",
+      "page": 65,
+      "clip": [
+        73.20600128173828,
+        192.00601196289062,
+        465.3820495605469,
+        387.4247131347656
+      ],
+      "image": "figure-3-13.webp"
+    },
+    {
+      "label": "fig:scenario-03-07",
+      "number": "3.14",
+      "caption": "重复暂存更新的是候选内容",
+      "page": 66,
+      "clip": [
+        61.866661071777344,
+        172.97265625,
+        448.3734130859375,
+        277.6820068359375
+      ],
+      "image": "figure-3-14.webp"
+    },
+    {
+      "label": "fig:scenario-03-02",
+      "number": "3.15",
+      "caption": "忽略规则与跟踪状态分开判断",
+      "page": 68,
+      "clip": [
+        60.44999694824219,
+        488.9603576660156,
+        449.79144287109375,
+        596.5043334960938
+      ],
+      "image": "figure-3-15.webp"
+    },
+    {
+      "label": "fig:scenario-03-08",
+      "number": "3.16",
+      "caption": "属性规则与文件字节分别观察",
+      "page": 71,
+      "clip": [
+        73.20600128173828,
+        54.5880126953125,
+        465.3820495605469,
+        250.0067138671875
+      ],
+      "image": "figure-3-16.webp"
+    },
+    {
+      "label": "fig:scenario-03-03",
+      "number": "3.17",
+      "caption": "删除路径与仅停止跟踪",
+      "page": 74,
+      "clip": [
+        60.44999694824219,
+        54.563358306884766,
+        449.79144287109375,
+        162.10736083984375
+      ],
+      "image": "figure-3-17.webp"
+    },
+    {
+      "label": "fig:visual-04-a",
+      "number": "4.1",
+      "caption": "从调查问题选择历史与内容查询",
+      "page": 78,
+      "sources": [
+        "assets/ai-illustrations/ch04-gpt.png"
+      ],
+      "image": "figure-4-1.webp"
+    },
+    {
+      "label": "fig:principle-ch04-02",
+      "number": "4.2",
+      "caption": "日志查询的三个约束（沿连线依次阅读操作及检查步骤）",
+      "page": 79,
+      "clip": [
+        90.96299743652344,
+        203.99998474121094,
+        447.6153259277344,
+        255.34397888183594
+      ],
+      "image": "figure-4-2.webp"
+    },
+    {
+      "label": "fig:visual-04-b",
+      "number": "4.3",
+      "caption": "git log中双点号与三点号范围的集合含义",
+      "page": 80,
+      "sources": [
+        "assets/ai-illustrations/ch04-complex.png"
+      ],
+      "image": "figure-4-3.webp"
+    },
+    {
+      "label": "fig:principle-ch04-03",
+      "number": "4.4",
+      "caption": "集合差与树差异（每行对照一组条件与解释）",
+      "page": 80,
+      "clip": [
+        49.111000061035156,
+        487.6946716308594,
+        461.1297302246094,
+        606.5773315429688
+      ],
+      "image": "figure-4-4.webp"
+    },
+    {
+      "label": "fig:rev-notation",
+      "number": "4.5",
+      "caption": "修订记号选择父链，箭头从子提交指向父提交",
+      "page": 81,
+      "clip": [
+        139.39498901367188,
+        98.42933654785156,
+        402.4913330078125,
+        204.17901611328125
+      ],
+      "image": "figure-4-5.webp"
+    },
+    {
+      "label": "fig:principle-ch04-04",
+      "number": "4.6",
+      "caption": "逐行线索继续调查（沿连线依次阅读操作及检查步骤）",
+      "page": 82,
+      "clip": [
+        74.06099700927734,
+        54.56298828125,
+        438.0279846191406,
+        106.45349884033203
+      ],
+      "image": "figure-4-6.webp"
+    },
+    {
+      "label": "fig:principle-ch04-06",
+      "number": "4.7",
+      "caption": "二分依赖稳定判定（沿连线依次阅读操作及检查步骤）",
+      "page": 85,
+      "clip": [
+        90.96299743652344,
+        385.135986328125,
+        447.6153259277344,
+        436.3809814453125
+      ],
+      "image": "figure-4-7.webp"
+    },
+    {
+      "label": "fig:scenario-04-01",
+      "number": "4.8",
+      "caption": "二分定位需要稳定的判定",
+      "page": 86,
+      "clip": [
+        60.44999694824219,
+        153.11134338378906,
+        449.79144287109375,
+        294.6713562011719
+      ],
+      "image": "figure-4-8.webp"
+    },
+    {
+      "label": "fig:scenario-04-03",
+      "number": "4.9",
+      "caption": "查询集合与文件比较分别选择",
+      "page": 88,
+      "clip": [
+        59.03199768066406,
+        114.42501831054688,
+        451.20806884765625,
+        213.46502685546875
+      ],
+      "image": "figure-4-9.webp"
+    },
+    {
+      "label": "fig:principle-ch04-07",
+      "number": "4.10",
+      "caption": "分叉后的两侧独有（每行对照一组条件与解释）",
+      "page": 88,
+      "clip": [
+        49.111000061035156,
+        233.57168579101562,
+        461.1297302246094,
+        352.454345703125
+      ],
+      "image": "figure-4-10.webp"
+    },
+    {
+      "label": "fig:guide-04-diagnosis",
+      "number": "4.11",
+      "caption": "从问题到可验证历史证据的查询路径",
+      "page": 88,
+      "clip": [
+        71.89956665039062,
+        485.89398193359375,
+        438.3399658203125,
+        533.5160522460938
+      ],
+      "image": "figure-4-11.webp"
+    },
+    {
+      "label": "fig:scenario-04-02",
+      "number": "4.12",
+      "caption": "逐行线索与变更原因的调查",
+      "page": 90,
+      "clip": [
+        60.44999694824219,
+        54.563358306884766,
+        449.79144287109375,
+        196.1233673095703
+      ],
+      "image": "figure-4-12.webp"
+    },
+    {
+      "label": "fig:scenario-04-04",
+      "number": "4.13",
+      "caption": "notes在独立入口中关联说明",
+      "page": 93,
+      "clip": [
+        73.20600128173828,
+        432.114013671875,
+        465.3820495605469,
+        531.154052734375
+      ],
+      "image": "figure-4-13.webp"
+    },
+    {
+      "label": "fig:visual-05-a",
+      "number": "5.1",
+      "caption": "共享祖先上的分支入口与HEAD",
+      "page": 99,
+      "sources": [
+        "assets/ai-illustrations/ch05-gpt.png"
+      ],
+      "image": "figure-5-1.webp"
+    },
+    {
+      "label": "fig:principle-ch05-02",
+      "number": "5.2",
+      "caption": "两个名字可以共用历史（箭头表示所说明的对象或访问关系）",
+      "page": 99,
+      "clip": [
+        73.20582580566406,
+        528.5789184570312,
+        465.38226318359375,
+        585.0990600585938
+      ],
+      "image": "figure-5-2.webp"
+    },
+    {
+      "label": "fig:branch-divergence",
+      "number": "5.3",
+      "caption": "分支名称提供入口，提交父关系保存历史",
+      "page": 100,
+      "clip": [
+        114.09758758544922,
+        76.51448059082031,
+        396.1425476074219,
+        178.9385528564453
+      ],
+      "image": "figure-5-3.webp"
+    },
+    {
+      "label": "fig:principle-ch05-03",
+      "number": "5.4",
+      "caption": "普通HEAD的间接关系（箭头表示所说明的对象或访问关系）",
+      "page": 100,
+      "clip": [
+        59.03282165527344,
+        474.61090087890625,
+        451.2092590332031,
+        531.131103515625
+      ],
+      "image": "figure-5-4.webp"
+    },
+    {
+      "label": "fig:head-forms",
+      "number": "5.5",
+      "caption": "HEAD 可通过分支或直接定位提交",
+      "page": 101,
+      "clip": [
+        154.2519989013672,
+        54.56243896484375,
+        384.3330078125,
+        197.40101623535156
+      ],
+      "image": "figure-5-5.webp"
+    },
+    {
+      "label": "fig:visual-05-b",
+      "number": "5.6",
+      "caption": "分支切换时的覆盖检查与现场保护",
+      "page": 103,
+      "sources": [
+        "assets/ai-illustrations/ch05-complex.png"
+      ],
+      "image": "figure-5-6.webp"
+    },
+    {
+      "label": "fig:principle-ch05-05",
+      "number": "5.7",
+      "caption": "切换先检查覆盖条件（沿连线依次阅读操作及检查步骤）",
+      "page": 104,
+      "clip": [
+        67.9489974975586,
+        54.56298828125,
+        438.0279846191406,
+        105.84398651123047
+      ],
+      "image": "figure-5-7.webp"
+    },
+    {
+      "label": "fig:principle-ch05-06",
+      "number": "5.8",
+      "caption": "建立入口与切换入口（每行对照一组条件与解释）",
+      "page": 106,
+      "clip": [
+        49.111000061035156,
+        523.5116577148438,
+        461.1297302246094,
+        642.3943481445312
+      ],
+      "image": "figure-5-8.webp"
+    },
+    {
+      "label": "fig:scenario-05-01",
+      "number": "5.9",
+      "caption": "分离HEAD上的实验需要建立入口",
+      "page": 107,
+      "clip": [
+        76.04066467285156,
+        307.53668212890625,
+        462.54742431640625,
+        427.1280212402344
+      ],
+      "image": "figure-5-9.webp"
+    },
+    {
+      "label": "fig:principle-ch05-07",
+      "number": "5.10",
+      "caption": "分离提交的保留方法（沿连线依次阅读操作及检查步骤）",
+      "page": 107,
+      "clip": [
+        86.38500213623047,
+        449.2829895019531,
+        456.4570617675781,
+        500.5639953613281
+      ],
+      "image": "figure-5-10.webp"
+    },
+    {
+      "label": "fig:branch-switch-check",
+      "number": "5.11",
+      "caption": "切换之前先识别任务与需要保留的内容",
+      "page": 112,
+      "clip": [
+        76.15118408203125,
+        267.5584716796875,
+        434.0875244140625,
+        315.0455322265625
+      ],
+      "image": "figure-5-11.webp"
+    },
+    {
+      "label": "fig:branch-shared-baseline",
+      "number": "5.12",
+      "caption": "分支共享基线并独立前进：细线箭头为名称关系，粗线箭头为父引用",
+      "page": 115,
+      "clip": [
+        83.34480285644531,
+        95.33465576171875,
+        455.2430419921875,
+        225.0586395263672
+      ],
+      "image": "figure-5-12.webp"
+    },
+    {
+      "label": "fig:scenario-06-02",
+      "number": "6.1",
+      "caption": "当前分支决定整合的接收方向",
+      "page": 120,
+      "clip": [
+        61.866661071777344,
+        115.35966491699219,
+        448.3734130859375,
+        220.0690155029297
+      ],
+      "image": "figure-6-1.webp"
+    },
+    {
+      "label": "fig:merge-forms",
+      "number": "6.2",
+      "caption": "快进复用已有历史，分叉整合通常建立新的历史连接",
+      "page": 121,
+      "clip": [
+        103.56219482421875,
+        83.84394836425781,
+        435.02435302734375,
+        257.135009765625
+      ],
+      "image": "figure-6-2.webp"
+    },
+    {
+      "label": "fig:principle-ch06-02",
+      "number": "6.3",
+      "caption": "快进与合并节点（每行对照一组条件与解释）",
+      "page": 121,
+      "clip": [
+        63.28400421142578,
+        268.0806579589844,
+        475.302734375,
+        386.96331787109375
+      ],
+      "image": "figure-6-3.webp"
+    },
+    {
+      "label": "fig:scenario-06-01",
+      "number": "6.4",
+      "caption": "三种合并选项约束不同",
+      "page": 123,
+      "clip": [
+        74.62300109863281,
+        54.563358306884766,
+        463.96441650390625,
+        196.1233673095703
+      ],
+      "image": "figure-6-4.webp"
+    },
+    {
+      "label": "fig:visual-06-a",
+      "number": "6.5",
+      "caption": "公共基线与两侧独立修改的三方比较",
+      "page": 125,
+      "sources": [
+        "assets/ai-illustrations/ch06-gpt.png"
+      ],
+      "image": "figure-6-5.webp"
+    },
+    {
+      "label": "fig:scenario-06-08",
+      "number": "6.6",
+      "caption": "公共基线用于辨认变化",
+      "page": 125,
+      "clip": [
+        74.62300109863281,
+        477.6683654785156,
+        463.96441650390625,
+        619.2283935546875
+      ],
+      "image": "figure-6-6.webp"
+    },
+    {
+      "label": "fig:principle-ch06-03",
+      "number": "6.7",
+      "caption": "三方变化需要基线（沿连线依次阅读操作及检查步骤）",
+      "page": 126,
+      "clip": [
+        67.9489974975586,
+        54.56298828125,
+        442.2830505371094,
+        105.85298156738281
+      ],
+      "image": "figure-6-7.webp"
+    },
+    {
+      "label": "fig:merge-three-inputs",
+      "number": "6.8",
+      "caption": "三方信息帮助识别双方修改，最终需求仍由人判断",
+      "page": 126,
+      "clip": [
+        103.07936096191406,
+        201.24085998535156,
+        407.1566162109375,
+        362.1826477050781
+      ],
+      "image": "figure-6-8.webp"
+    },
+    {
+      "label": "fig:principle-ch06-04",
+      "number": "6.9",
+      "caption": "文本冲突到完整结果（沿连线依次阅读操作及检查步骤）",
+      "page": 129,
+      "clip": [
+        82.12300109863281,
+        541.1510009765625,
+        452.20098876953125,
+        592.4590454101562
+      ],
+      "image": "figure-6-9.webp"
+    },
+    {
+      "label": "fig:scenario-06-03",
+      "number": "6.10",
+      "caption": "解决冲突分为内容与状态两步",
+      "page": 130,
+      "clip": [
+        60.44999694824219,
+        415.4393615722656,
+        449.79144287109375,
+        556.9993896484375
+      ],
+      "image": "figure-6-10.webp"
+    },
+    {
+      "label": "fig:visual-06-b",
+      "number": "6.11",
+      "caption": "不同冲突类型中的并列索引阶段",
+      "page": 132,
+      "clip": [
+        62.95207214355469,
+        54.71113586425781,
+        443.7913513183594,
+        252.39501953125
+      ],
+      "image": "figure-6-11.webp"
+    },
+    {
+      "label": "fig:principle-ch06-05",
+      "number": "6.12",
+      "caption": "缺失阶段的正常来源（每行对照一组条件与解释）",
+      "page": 132,
+      "clip": [
+        49.111000061035156,
+        266.58868408203125,
+        461.1297302246094,
+        385.47137451171875
+      ],
+      "image": "figure-6-12.webp"
+    },
+    {
+      "label": "fig:scenario-06-07",
+      "number": "6.13",
+      "caption": "修改与删除冲突的两类业务决定",
+      "page": 133,
+      "clip": [
+        74.62300109863281,
+        283.2713623046875,
+        463.96441650390625,
+        390.81536865234375
+      ],
+      "image": "figure-6-13.webp"
+    },
+    {
+      "label": "fig:principle-ch06-06",
+      "number": "6.14",
+      "caption": "退出管理与恢复现场（每行对照一组条件与解释）",
+      "page": 135,
+      "clip": [
+        63.28400421142578,
+        381.2936706542969,
+        475.302734375,
+        500.17633056640625
+      ],
+      "image": "figure-6-14.webp"
+    },
+    {
+      "label": "fig:scenario-06-04",
+      "number": "6.15",
+      "caption": "中止合并与忘记合并状态",
+      "page": 136,
+      "clip": [
+        60.44999694824219,
+        95.41435241699219,
+        449.79144287109375,
+        236.974365234375
+      ],
+      "image": "figure-6-15.webp"
+    },
+    {
+      "label": "fig:principle-ch06-07",
+      "number": "6.16",
+      "caption": "自动文本成功后的检查（沿连线依次阅读操作及检查步骤）",
+      "page": 137,
+      "clip": [
+        86.38500213623047,
+        368.2289733886719,
+        456.4570617675781,
+        419.5369567871094
+      ],
+      "image": "figure-6-16.webp"
+    },
+    {
+      "label": "fig:merge-resolution-flow",
+      "number": "6.17",
+      "caption": "冲突处理要同时覆盖工具状态、需求决定与最终证据",
+      "page": 140,
+      "clip": [
+        64.81282806396484,
+        373.4504089355469,
+        445.42645263671875,
+        431.6476135253906
+      ],
+      "image": "figure-6-17.webp"
+    },
+    {
+      "label": "fig:scenario-06-05",
+      "number": "6.18",
+      "caption": "文本整合与业务验证分层进行",
+      "page": 142,
+      "clip": [
+        60.44999694824219,
+        134.2113494873047,
+        449.79144287109375,
+        275.7713623046875
+      ],
+      "image": "figure-6-18.webp"
+    },
+    {
+      "label": "fig:scenario-06-06",
+      "number": "6.19",
+      "caption": "冲突解决材料应支持复查",
+      "page": 144,
+      "clip": [
+        59.03199768066406,
+        323.61199951171875,
+        451.20806884765625,
+        519.0307006835938
+      ],
+      "image": "figure-6-19.webp"
+    },
+    {
+      "label": "fig:scenario-06-09",
+      "number": "6.20",
+      "caption": "重复冲突记录与本次验收分开",
+      "page": 147,
+      "clip": [
+        73.20600128173828,
+        54.5880126953125,
+        465.3820495605469,
+        250.0067138671875
+      ],
+      "image": "figure-6-20.webp"
+    },
+    {
+      "label": "fig:principle-ch07-01",
+      "number": "7.1",
+      "caption": "远程名称与实际仓库（每行对照一组条件与解释）",
+      "page": 152,
+      "clip": [
+        49.111000061035156,
+        54.363677978515625,
+        461.1297302246094,
+        173.24635314941406
+      ],
+      "image": "figure-7-1.webp"
+    },
+    {
+      "label": "fig:visual-07-a",
+      "number": "7.2",
+      "caption": "两个仓库中的交换方向与引用位置",
+      "page": 153,
+      "sources": [
+        "assets/ai-illustrations/ch07-gpt.png"
+      ],
+      "image": "figure-7-2.webp"
+    },
+    {
+      "label": "fig:principle-ch07-02",
+      "number": "7.3",
+      "caption": "远程协作的三个位置（沿连线依次阅读操作及检查步骤）",
+      "page": 153,
+      "clip": [
+        85.30000305175781,
+        339.78399658203125,
+        447.6153259277344,
+        391.7554931640625
+      ],
+      "image": "figure-7-3.webp"
+    },
+    {
+      "label": "fig:remote-tracking",
+      "number": "7.4",
+      "caption": "跟踪信息、当前开发入口与中心分支分别存在",
+      "page": 154,
+      "clip": [
+        90.32514953613281,
+        54.56224822998047,
+        419.91455078125,
+        167.07154846191406
+      ],
+      "image": "figure-7-4.webp"
+    },
+    {
+      "label": "fig:visual-07-b",
+      "number": "7.5",
+      "caption": "抓取前后服务器分支与两类本地引用",
+      "page": 157,
+      "clip": [
+        71.45689392089844,
+        54.71052551269531,
+        463.63385009765625,
+        244.46080017089844
+      ],
+      "image": "figure-7-5.webp"
+    },
+    {
+      "label": "fig:principle-ch07-04",
+      "number": "7.6",
+      "caption": "上游与推送分别配置（每行对照一组条件与解释）",
+      "page": 158,
+      "clip": [
+        49.111000061035156,
+        140.0166778564453,
+        461.1297302246094,
+        258.89935302734375
+      ],
+      "image": "figure-7-6.webp"
+    },
+    {
+      "label": "fig:principle-ch07-05",
+      "number": "7.7",
+      "caption": "异名推送需要明确映射（沿连线依次阅读操作及检查步骤）",
+      "page": 158,
+      "clip": [
+        76.79000091552734,
+        592.0700073242188,
+        442.2830505371094,
+        643.4490356445312
+      ],
+      "image": "figure-7-7.webp"
+    },
+    {
+      "label": "fig:principle-ch07-06",
+      "number": "7.8",
+      "caption": "删除入口与清理记录（每行对照一组条件与解释）",
+      "page": 161,
+      "clip": [
+        63.28400421142578,
+        245.76266479492188,
+        475.302734375,
+        364.64532470703125
+      ],
+      "image": "figure-7-8.webp"
+    },
+    {
+      "label": "fig:scenario-07-02",
+      "number": "7.9",
+      "caption": "删除三个位置的名称分别进行",
+      "page": 161,
+      "clip": [
+        74.62300109863281,
+        463.0733642578125,
+        463.96441650390625,
+        604.6333618164062
+      ],
+      "image": "figure-7-9.webp"
+    },
+    {
+      "label": "fig:principle-ch07-07",
+      "number": "7.10",
+      "caption": "从本地中心迁移平台（沿连线依次阅读操作及检查步骤）",
+      "page": 163,
+      "clip": [
+        82.12300109863281,
+        406.7829895019531,
+        456.4570617675781,
+        458.7275085449219
+      ],
+      "image": "figure-7-10.webp"
+    },
+    {
+      "label": "fig:remote-diagnosis",
+      "number": "7.11",
+      "caption": "把通信、授权和历史关系分开诊断",
+      "page": 165,
+      "clip": [
+        91.74253845214844,
+        210.75392150878906,
+        446.8442077636719,
+        268.9421081542969
+      ],
+      "image": "figure-7-11.webp"
+    },
+    {
+      "label": "fig:scenario-07-04",
+      "number": "7.12",
+      "caption": "远端旧值保护只约束更新条件",
+      "page": 166,
+      "clip": [
+        59.03199768066406,
+        465.280029296875,
+        451.20806884765625,
+        564.320068359375
+      ],
+      "image": "figure-7-12.webp"
+    },
+    {
+      "label": "fig:scenario-07-03",
+      "number": "7.13",
+      "caption": "协作失败沿通信与历史分层排查",
+      "page": 169,
+      "clip": [
+        73.20600128173828,
+        54.5880126953125,
+        465.3820495605469,
+        250.0067138671875
+      ],
+      "image": "figure-7-13.webp"
+    },
+    {
+      "label": "fig:scenario-07-01",
+      "number": "7.14",
+      "caption": "抓取映射与推送映射分开阅读",
+      "page": 170,
+      "clip": [
+        60.44999694824219,
+        160.08534240722656,
+        449.79144287109375,
+        267.62933349609375
+      ],
+      "image": "figure-7-14.webp"
+    },
+    {
+      "label": "fig:visual-08-a",
+      "number": "8.1",
+      "caption": "追加纠错与调整历史入口的不同结果",
+      "page": 176,
+      "sources": [
+        "assets/ai-illustrations/ch08-gpt.png"
+      ],
+      "image": "figure-8-1.webp"
+    },
+    {
+      "label": "fig:scenario-08-01",
+      "number": "8.2",
+      "caption": "恢复操作的来源与目标",
+      "page": 177,
+      "clip": [
+        74.62300109863281,
+        451.34136962890625,
+        463.96441650390625,
+        592.9013671875
+      ],
+      "image": "figure-8-2.webp"
+    },
+    {
+      "label": "fig:principle-ch08-02",
+      "number": "8.3",
+      "caption": "restore的来源与目标（每行对照一组条件与解释）",
+      "page": 178,
+      "clip": [
+        49.111000061035156,
+        54.363677978515625,
+        461.1297302246094,
+        173.24635314941406
+      ],
+      "image": "figure-8-3.webp"
+    },
+    {
+      "label": "fig:visual-08-b",
+      "number": "8.4",
+      "caption": "reset三种模式对提交入口、索引和工作文件的影响",
+      "page": 180,
+      "sources": [
+        "assets/ai-illustrations/ch08-complex-v2.png"
+      ],
+      "image": "figure-8-4.webp"
+    },
+    {
+      "label": "fig:principle-ch08-03",
+      "number": "8.5",
+      "caption": "reset模式的层次（每行对照一组条件与解释）",
+      "page": 180,
+      "clip": [
+        49.111000061035156,
+        327.7986755371094,
+        461.1297302246094,
+        446.68133544921875
+      ],
+      "image": "figure-8-5.webp"
+    },
+    {
+      "label": "fig:scenario-08-02",
+      "number": "8.6",
+      "caption": "hard模式可能影响阻挡目标的路径",
+      "page": 181,
+      "clip": [
+        73.20600128173828,
+        76.5400161743164,
+        465.3820495605469,
+        175.58001708984375
+      ],
+      "image": "figure-8-6.webp"
+    },
+    {
+      "label": "fig:rescue-path",
+      "number": "8.7",
+      "caption": "先保留证据，再选择恢复动作",
+      "page": 185,
+      "clip": [
+        105.32528686523438,
+        387.67547607421875,
+        433.2613220214844,
+        435.6485595703125
+      ],
+      "image": "figure-8-7.webp"
+    },
+    {
+      "label": "fig:principle-ch08-04",
+      "number": "8.8",
+      "caption": "追加纠错保留已有历史（沿连线依次阅读操作及检查步骤）",
+      "page": 185,
+      "clip": [
+        82.12300109863281,
+        556.2689819335938,
+        456.4570617675781,
+        607.5769653320312
+      ],
+      "image": "figure-8-8.webp"
+    },
+    {
+      "label": "fig:principle-ch08-05",
+      "number": "8.9",
+      "caption": "撤销合并仍保留祖先关系（箭头表示本例历史可达关系，不要求相邻直接父项）",
+      "page": 186,
+      "clip": [
+        59.03282165527344,
+        331.18292236328125,
+        451.2092590332031,
+        387.703125
+      ],
+      "image": "figure-8-9.webp"
+    },
+    {
+      "label": "fig:scenario-08-04",
+      "number": "8.10",
+      "caption": "撤销合并后仍保留祖先事实",
+      "page": 186,
+      "clip": [
+        59.03199768066406,
+        486.3550109863281,
+        451.20806884765625,
+        585.39501953125
+      ],
+      "image": "figure-8-10.webp"
+    },
+    {
+      "label": "fig:principle-ch08-06",
+      "number": "8.11",
+      "caption": "amend替代与旧对象（每行对照一组条件与解释）",
+      "page": 189,
+      "clip": [
+        63.28400421142578,
+        54.363677978515625,
+        475.302734375,
+        173.24635314941406
+      ],
+      "image": "figure-8-11.webp"
+    },
+    {
+      "label": "fig:scenario-08-05",
+      "number": "8.12",
+      "caption": "修订最近提交保留旧新两种身份",
+      "page": 189,
+      "clip": [
+        76.04066467285156,
+        184.24066162109375,
+        462.54742431640625,
+        288.95001220703125
+      ],
+      "image": "figure-8-12.webp"
+    },
+    {
+      "label": "fig:principle-ch08-07",
+      "number": "8.13",
+      "caption": "stash应用后的核对（沿连线依次阅读操作及检查步骤）",
+      "page": 190,
+      "clip": [
+        76.79000091552734,
+        549.9029541015625,
+        446.2682189941406,
+        601.1839599609375
+      ],
+      "image": "figure-8-13.webp"
+    },
+    {
+      "label": "fig:scenario-08-06",
+      "number": "8.14",
+      "caption": "现场保存范围由选项决定",
+      "page": 192,
+      "clip": [
+        60.44999694824219,
+        218.47134399414062,
+        449.79144287109375,
+        360.0313720703125
+      ],
+      "image": "figure-8-14.webp"
+    },
+    {
+      "label": "fig:scenario-08-07",
+      "number": "8.15",
+      "caption": "应用冲突时保留记录并核对现场",
+      "page": 193,
+      "clip": [
+        74.62300109863281,
+        259.9673767089844,
+        463.96441650390625,
+        401.5273742675781
+      ],
+      "image": "figure-8-15.webp"
+    },
+    {
+      "label": "fig:scenario-08-08",
+      "number": "8.16",
+      "caption": "先建立救援入口再继续恢复",
+      "page": 195,
+      "clip": [
+        76.04066467285156,
+        232.8936767578125,
+        462.54742431640625,
+        337.60302734375
+      ],
+      "image": "figure-8-16.webp"
+    },
+    {
+      "label": "fig:scenario-08-03",
+      "number": "8.17",
+      "caption": "反向变化与整树恢复的区别",
+      "page": 198,
+      "clip": [
+        60.44999694824219,
+        337.9413757324219,
+        449.79144287109375,
+        479.5013732910156
+      ],
+      "image": "figure-8-17.webp"
+    },
+    {
+      "label": "fig:principle-ch09-01",
+      "number": "9.1",
+      "caption": "内容寻址的输入（沿连线依次阅读操作及检查步骤）",
+      "page": 204,
+      "clip": [
+        76.79000091552734,
+        462.97998046875,
+        442.2830505371094,
+        514.2789306640625
+      ],
+      "image": "figure-9-1.webp"
+    },
+    {
+      "label": "fig:scenario-09-01",
+      "number": "9.2",
+      "caption": "对象标识的输入包含类型与长度",
+      "page": 205,
+      "clip": [
+        73.20600128173828,
+        54.5880126953125,
+        465.3820495605469,
+        153.62802124023438
+      ],
+      "image": "figure-9-2.webp"
+    },
+    {
+      "label": "fig:visual-09-a",
+      "number": "9.3",
+      "caption": "提交、树与文件内容对象的连接和复用",
+      "page": 206,
+      "sources": [
+        "assets/ai-illustrations/ch09-gpt.png"
+      ],
+      "image": "figure-9-3.webp"
+    },
+    {
+      "label": "fig:principle-ch09-02",
+      "number": "9.4",
+      "caption": "对象逐层连接项目（箭头表示所说明的对象或访问关系）",
+      "page": 206,
+      "clip": [
+        59.03282165527344,
+        284.5919189453125,
+        451.2092590332031,
+        341.11212158203125
+      ],
+      "image": "figure-9-4.webp"
+    },
+    {
+      "label": "fig:git-layout-tree",
+      "number": "9.5",
+      "caption": "常规管理目录的文件夹层次：files引用后端示意，按需出现的其他条目另见正文",
+      "page": 208,
+      "clip": [
+        61.202003479003906,
+        201.11659240722656,
+        445.7395935058594,
+        517.4771728515625
+      ],
+      "image": "figure-9-5.webp"
+    },
+    {
+      "label": "fig:gitdir-common",
+      "number": "9.6",
+      "caption": "关联工作树的独立管理数据与公共数据：连线表示路径解析关系",
+      "page": 212,
+      "clip": [
+        68.99674987792969,
+        54.56217956542969,
+        441.2434387207031,
+        235.8078155517578
+      ],
+      "image": "figure-9-6.webp"
+    },
+    {
+      "label": "fig:scenario-09-03",
+      "number": "9.7",
+      "caption": "沿对象连接逐层读取",
+      "page": 213,
+      "clip": [
+        76.04066467285156,
+        469.421630859375,
+        462.54742431640625,
+        574.1309814453125
+      ],
+      "image": "figure-9-7.webp"
+    },
+    {
+      "label": "fig:object-graph",
+      "number": "9.8",
+      "caption": "新快照既可以引用新对象，也可以复用已有内容",
+      "page": 215,
+      "clip": [
+        119.03987121582031,
+        339.13995361328125,
+        419.545166015625,
+        432.47100830078125
+      ],
+      "image": "figure-9-8.webp"
+    },
+    {
+      "label": "fig:principle-ch09-04",
+      "number": "9.9",
+      "caption": "相同树不等于相同提交（每行对照一组条件与解释）",
+      "page": 216,
+      "clip": [
+        49.111000061035156,
+        54.363677978515625,
+        461.1297302246094,
+        173.24635314941406
+      ],
+      "image": "figure-9-9.webp"
+    },
+    {
+      "label": "fig:scenario-09-04",
+      "number": "9.10",
+      "caption": "同一棵树可以对应不同提交",
+      "page": 216,
+      "clip": [
+        60.44999694824219,
+        184.19235229492188,
+        449.79144287109375,
+        325.75238037109375
+      ],
+      "image": "figure-9-10.webp"
+    },
+    {
+      "label": "fig:principle-ch09-05",
+      "number": "9.11",
+      "caption": "底层构造的分工（沿连线依次阅读操作及检查步骤）",
+      "page": 217,
+      "clip": [
+        86.38500213623047,
+        145.59597778320312,
+        456.4570617675781,
+        196.8409881591797
+      ],
+      "image": "figure-9-11.webp"
+    },
+    {
+      "label": "fig:scenario-09-05",
+      "number": "9.12",
+      "caption": "构造对象不等于建立分支入口",
+      "page": 218,
+      "clip": [
+        60.44999694824219,
+        210.80734252929688,
+        449.79144287109375,
+        352.36737060546875
+      ],
+      "image": "figure-9-12.webp"
+    },
+    {
+      "label": "fig:visual-09-b",
+      "number": "9.13",
+      "caption": "对象打包改变物理表示并保留逻辑身份",
+      "page": 220,
+      "sources": [
+        "assets/ai-illustrations/ch09-complex.png"
+      ],
+      "image": "figure-9-13.webp"
+    },
+    {
+      "label": "fig:principle-ch09-06",
+      "number": "9.14",
+      "caption": "逻辑对象与物理保存（每行对照一组条件与解释）",
+      "page": 220,
+      "clip": [
+        49.111000061035156,
+        327.7986755371094,
+        461.1297302246094,
+        446.68133544921875
+      ],
+      "image": "figure-9-14.webp"
+    },
+    {
+      "label": "fig:principle-ch09-07",
+      "number": "9.15",
+      "caption": "恢复能力受保留条件影响（沿连线依次阅读操作及检查步骤）",
+      "page": 221,
+      "clip": [
+        90.96299743652344,
+        366.1999816894531,
+        460.44122314453125,
+        417.4899597167969
+      ],
+      "image": "figure-9-15.webp"
+    },
+    {
+      "label": "fig:scenario-09-07",
+      "number": "9.16",
+      "caption": "完整性、身份与内容责任分别验证",
+      "page": 222,
+      "clip": [
+        59.03199768066406,
+        309.53802490234375,
+        451.20806884765625,
+        408.5780334472656
+      ],
+      "image": "figure-9-16.webp"
+    },
+    {
+      "label": "fig:scenario-09-02",
+      "number": "9.17",
+      "caption": "路径与文件内容分别保存",
+      "page": 223,
+      "clip": [
+        76.04066467285156,
+        442.7396240234375,
+        462.54742431640625,
+        547.448974609375
+      ],
+      "image": "figure-9-17.webp"
+    },
+    {
+      "label": "fig:scenario-09-06",
+      "number": "9.18",
+      "caption": "可达性从保留入口沿连接判断",
+      "page": 225,
+      "clip": [
+        74.62300109863281,
+        442.65435791015625,
+        463.96441650390625,
+        585.6317138671875
+      ],
+      "image": "figure-9-18.webp"
+    },
+    {
+      "label": "fig:scenario-09-08",
+      "number": "9.19",
+      "caption": "两种索引服务于不同任务",
+      "page": 228,
+      "clip": [
+        60.44999694824219,
+        177.24334716796875,
+        449.79144287109375,
+        318.8033447265625
+      ],
+      "image": "figure-9-19.webp"
+    },
+    {
+      "label": "fig:principle-ch10-01",
+      "number": "10.1",
+      "caption": "名字使对象可定位（箭头表示所说明的对象或访问关系）",
+      "page": 232,
+      "clip": [
+        59.03282165527344,
+        465.95989990234375,
+        451.2092590332031,
+        528.3790893554688
+      ],
+      "image": "figure-10-1.webp"
+    },
+    {
+      "label": "fig:visual-10-b",
+      "number": "10.2",
+      "caption": "带预期旧值的引用更新与并发拒绝",
+      "page": 234,
+      "sources": [
+        "assets/ai-illustrations/ch10-complex.png"
+      ],
+      "image": "figure-10-2.webp"
+    },
+    {
+      "label": "fig:principle-ch10-02",
+      "number": "10.3",
+      "caption": "带旧值条件的更新（沿连线依次阅读操作及检查步骤）",
+      "page": 234,
+      "clip": [
+        67.9489974975586,
+        327.99798583984375,
+        446.2682189941406,
+        379.2879638671875
+      ],
+      "image": "figure-10-3.webp"
+    },
+    {
+      "label": "fig:principle-ch10-03",
+      "number": "10.4",
+      "caption": "HEAD观察不能一概而论（每行对照一组条件与解释）",
+      "page": 236,
+      "clip": [
+        49.111000061035156,
+        431.5356750488281,
+        461.1297302246094,
+        550.4183349609375
+      ],
+      "image": "figure-10-4.webp"
+    },
+    {
+      "label": "fig:head-observation",
+      "number": "10.5",
+      "caption": "HEAD 的三种观察情境",
+      "page": 237,
+      "clip": [
+        88.90785217285156,
+        355.61566162109375,
+        449.67889404296875,
+        442.9988098144531
+      ],
+      "image": "figure-10-5.webp"
+    },
+    {
+      "label": "fig:visual-10-a",
+      "number": "10.6",
+      "caption": "冲突路径的三个来源及索引阶段",
+      "page": 239,
+      "sources": [
+        "assets/ai-illustrations/ch10-gpt-v2.png"
+      ],
+      "image": "figure-10-6.webp"
+    },
+    {
+      "label": "fig:principle-ch10-05",
+      "number": "10.7",
+      "caption": "索引确定候选树（沿连线依次阅读操作及检查步骤）",
+      "page": 239,
+      "clip": [
+        86.38500213623047,
+        284.59197998046875,
+        447.6153259277344,
+        335.83697509765625
+      ],
+      "image": "figure-10-7.webp"
+    },
+    {
+      "label": "fig:principle-ch10-06",
+      "number": "10.8",
+      "caption": "冲突阶段与解决结果（每行对照一组条件与解释）",
+      "page": 240,
+      "clip": [
+        49.111000061035156,
+        387.08868408203125,
+        461.1297302246094,
+        505.97137451171875
+      ],
+      "image": "figure-10-8.webp"
+    },
+    {
+      "label": "fig:stage-to-result",
+      "number": "10.9",
+      "caption": "冲突来源经过明确决策形成正常候选条目",
+      "page": 242,
+      "clip": [
+        113.22019958496094,
+        197.63194274902344,
+        397.0177001953125,
+        347.7691345214844
+      ],
+      "image": "figure-10-9.webp"
+    },
+    {
+      "label": "fig:principle-ch10-07",
+      "number": "10.10",
+      "caption": "双亲结构与业务内容（每行对照一组条件与解释）",
+      "page": 243,
+      "clip": [
+        63.28400421142578,
+        311.3296813964844,
+        475.302734375,
+        430.21234130859375
+      ],
+      "image": "figure-10-10.webp"
+    },
+    {
+      "label": "fig:scenario-10-01",
+      "number": "10.11",
+      "caption": "脚本先验证名称再读取目标",
+      "page": 247,
+      "clip": [
+        73.20600128173828,
+        527.844970703125,
+        465.3820495605469,
+        626.885009765625
+      ],
+      "image": "figure-10-11.webp"
+    },
+    {
+      "label": "fig:visual-11-a",
+      "number": "11.1",
+      "caption": "主题变化的重放与新提交身份",
+      "page": 251,
+      "sources": [
+        "assets/ai-illustrations/ch11-gpt.png"
+      ],
+      "image": "figure-11-1.webp"
+    },
+    {
+      "label": "fig:principle-ch11-01",
+      "number": "11.2",
+      "caption": "重放保留意图改变关系（每行对照一组条件与解释）",
+      "page": 252,
+      "clip": [
+        49.111000061035156,
+        112.3466796875,
+        461.1297302246094,
+        231.22935485839844
+      ],
+      "image": "figure-11-2.webp"
+    },
+    {
+      "label": "fig:scenario-11-06",
+      "number": "11.3",
+      "caption": "重放前后的保护入口分别保存",
+      "page": 252,
+      "clip": [
+        61.866661071777344,
+        402.61767578125,
+        448.3734130859375,
+        507.3270263671875
+      ],
+      "image": "figure-11-3.webp"
+    },
+    {
+      "label": "fig:rebase",
+      "number": "11.4",
+      "caption": "变基通过新父关系组织被选中的变化",
+      "page": 252,
+      "clip": [
+        78.87360382080078,
+        525.7953491210938,
+        431.36602783203125,
+        628.0440063476562
+      ],
+      "image": "figure-11-4.webp"
+    },
+    {
+      "label": "fig:principle-ch11-03",
+      "number": "11.5",
+      "caption": "重放冲突的角色辨认（沿连线依次阅读操作及检查步骤）",
+      "page": 255,
+      "clip": [
+        82.12300109863281,
+        145.87998962402344,
+        452.20098876953125,
+        197.1339874267578
+      ],
+      "image": "figure-11-5.webp"
+    },
+    {
+      "label": "fig:scenario-11-01",
+      "number": "11.6",
+      "caption": "变基冲突需要结合当前重放步骤",
+      "page": 256,
+      "clip": [
+        59.03199768066406,
+        411.10601806640625,
+        451.20806884765625,
+        510.1460266113281
+      ],
+      "image": "figure-11-6.webp"
+    },
+    {
+      "label": "fig:principle-ch11-04",
+      "number": "11.7",
+      "caption": "交互整理关注意图（沿连线依次阅读操作及检查步骤）",
+      "page": 258,
+      "clip": [
+        67.9489974975586,
+        54.56298828125,
+        442.2830505371094,
+        105.87097930908203
+      ],
+      "image": "figure-11-7.webp"
+    },
+    {
+      "label": "fig:visual-11-b",
+      "number": "11.8",
+      "caption": "范围变基中的新基线、排除边界与主题末端",
+      "page": 260,
+      "sources": [
+        "assets/ai-illustrations/ch11-complex.png"
+      ],
+      "image": "figure-11-8.webp"
+    },
+    {
+      "label": "fig:principle-ch11-05",
+      "number": "11.9",
+      "caption": "onto明确三件事（沿连线依次阅读操作及检查步骤）",
+      "page": 261,
+      "clip": [
+        95.89399719238281,
+        54.56298828125,
+        456.4570617675781,
+        105.78998565673828
+      ],
+      "image": "figure-11-9.webp"
+    },
+    {
+      "label": "fig:principle-ch11-06",
+      "number": "11.10",
+      "caption": "定向移植的判断（沿连线依次阅读操作及检查步骤）",
+      "page": 261,
+      "clip": [
+        82.12300109863281,
+        318.05999755859375,
+        452.20098876953125,
+        369.36798095703125
+      ],
+      "image": "figure-11-10.webp"
+    },
+    {
+      "label": "fig:scenario-11-04",
+      "number": "11.11",
+      "caption": "共享历史整理需要两类约定",
+      "page": 263,
+      "clip": [
+        73.20600128173828,
+        76.5400161743164,
+        465.3820495605469,
+        175.58001708984375
+      ],
+      "image": "figure-11-11.webp"
+    },
+    {
+      "label": "fig:principle-ch11-07",
+      "number": "11.12",
+      "caption": "整合策略与团队约束（每行对照一组条件与解释）",
+      "page": 263,
+      "clip": [
+        63.28400421142578,
+        197.50967407226562,
+        475.302734375,
+        316.392333984375
+      ],
+      "image": "figure-11-12.webp"
+    },
+    {
+      "label": "fig:scenario-11-05",
+      "number": "11.13",
+      "caption": "清理历史与处置有效凭据分别完成",
+      "page": 264,
+      "clip": [
+        59.03199768066406,
+        54.5880126953125,
+        451.20806884765625,
+        153.62802124023438
+      ],
+      "image": "figure-11-13.webp"
+    },
+    {
+      "label": "fig:guide-11-rewrite-proof",
+      "number": "11.14",
+      "caption": "历史整理需要内容证据和关系证据",
+      "page": 264,
+      "clip": [
+        71.89984130859375,
+        265.3384704589844,
+        438.34014892578125,
+        312.7715148925781
+      ],
+      "image": "figure-11-14.webp"
+    },
+    {
+      "label": "fig:scenario-11-03",
+      "number": "11.15",
+      "caption": "拣选带来变化但不接入原父链",
+      "page": 265,
+      "clip": [
+        74.62300109863281,
+        54.563358306884766,
+        463.96441650390625,
+        196.1233673095703
+      ],
+      "image": "figure-11-15.webp"
+    },
+    {
+      "label": "fig:scenario-11-08",
+      "number": "11.16",
+      "caption": "补丁应用与邮件提交分别处理",
+      "page": 269,
+      "clip": [
+        74.62300109863281,
+        159.99034118652344,
+        463.96441650390625,
+        301.55035400390625
+      ],
+      "image": "figure-11-16.webp"
+    },
+    {
+      "label": "fig:scenario-11-07",
+      "number": "11.17",
+      "caption": "范围选择与新位置是不同参数",
+      "page": 272,
+      "clip": [
+        59.03199768066406,
+        179.010009765625,
+        451.20806884765625,
+        278.0500183105469
+      ],
+      "image": "figure-11-17.webp"
+    },
+    {
+      "label": "fig:scenario-11-02",
+      "number": "11.18",
+      "caption": "整理动作与提交身份变化",
+      "page": 274,
+      "clip": [
+        60.44999694824219,
+        367.28936767578125,
+        449.79144287109375,
+        508.849365234375
+      ],
+      "image": "figure-11-18.webp"
+    },
+    {
+      "label": "fig:visual-12-a",
+      "number": "12.1",
+      "caption": "版本标记、发布材料与验证记录",
+      "page": 278,
+      "sources": [
+        "assets/ai-illustrations/ch12-gpt.png"
+      ],
+      "image": "figure-12-1.webp"
+    },
+    {
+      "label": "fig:principle-ch12-01",
+      "number": "12.2",
+      "caption": "标签位置与开发推进（每行对照一组条件与解释）",
+      "page": 279,
+      "clip": [
+        63.28400421142578,
+        114.18867492675781,
+        475.302734375,
+        233.07135009765625
+      ],
+      "image": "figure-12-2.webp"
+    },
+    {
+      "label": "fig:tag-types",
+      "number": "12.3",
+      "caption": "发布标签直接或经由标签对象定位提交",
+      "page": 279,
+      "clip": [
+        128.592529296875,
+        449.4103088378906,
+        409.9923095703125,
+        581.0096435546875
+      ],
+      "image": "figure-12-3.webp"
+    },
+    {
+      "label": "fig:principle-ch12-03",
+      "number": "12.4",
+      "caption": "版本号需要契约支持（沿连线依次阅读操作及检查步骤）",
+      "page": 282,
+      "clip": [
+        67.9489974975586,
+        211.06898498535156,
+        442.2830505371094,
+        262.3049621582031
+      ],
+      "image": "figure-12-4.webp"
+    },
+    {
+      "label": "fig:visual-12-b",
+      "number": "12.5",
+      "caption": "发布验证中相互独立的三类证据",
+      "page": 283,
+      "sources": [
+        "assets/ai-illustrations/ch12-complex.png"
+      ],
+      "image": "figure-12-5.webp"
+    },
+    {
+      "label": "fig:principle-ch12-04",
+      "number": "12.6",
+      "caption": "签名与可信结论分层（沿连线依次阅读操作及检查步骤）",
+      "page": 283,
+      "clip": [
+        82.12300109863281,
+        488.0299987792969,
+        447.6153259277344,
+        539.4089965820312
+      ],
+      "image": "figure-12-6.webp"
+    },
+    {
+      "label": "fig:principle-ch12-05",
+      "number": "12.7",
+      "caption": "可追溯发布的组成（沿连线依次阅读操作及检查步骤）",
+      "page": 286,
+      "clip": [
+        67.9489974975586,
+        229.96897888183594,
+        438.0279846191406,
+        281.25897216796875
+      ],
+      "image": "figure-12-7.webp"
+    },
+    {
+      "label": "fig:guide-12-release-proof",
+      "number": "12.8",
+      "caption": "发布需要把源码、制作过程与分发成果对应起来",
+      "page": 286,
+      "clip": [
+        71.89956665039062,
+        345.01800537109375,
+        438.3399658203125,
+        392.46002197265625
+      ],
+      "image": "figure-12-8.webp"
+    },
+    {
+      "label": "fig:scenario-12-01",
+      "number": "12.9",
+      "caption": "发布入口与开发分支分别演进",
+      "page": 289,
+      "clip": [
+        76.04066467285156,
+        250.4986572265625,
+        462.54742431640625,
+        355.2080078125
+      ],
+      "image": "figure-12-9.webp"
+    },
+    {
+      "label": "fig:scenario-12-02",
+      "number": "12.10",
+      "caption": "长期验证保留对象与信任材料",
+      "page": 290,
+      "clip": [
+        59.03199768066406,
+        54.5880126953125,
+        451.20806884765625,
+        250.0067138671875
+      ],
+      "image": "figure-12-10.webp"
+    },
+    {
+      "label": "fig:githubflow",
+      "number": "13.1",
+      "caption": "短任务分支工作流以明确验收连接修改与交付",
+      "page": 296,
+      "clip": [
+        66.23023223876953,
+        233.33798217773438,
+        444.0090026855469,
+        280.7080383300781
+      ],
+      "image": "figure-13-1.webp"
+    },
+    {
+      "label": "fig:gitflow",
+      "number": "13.2",
+      "caption": "多版本工作流需要安排发布与修复的同步责任",
+      "page": 296,
+      "clip": [
+        76.15118408203125,
+        440.7254638671875,
+        434.0875244140625,
+        538.02197265625
+      ],
+      "image": "figure-13-2.webp"
+    },
+    {
+      "label": "fig:principle-ch13-02",
+      "number": "13.3",
+      "caption": "按约束选择流程（沿连线依次阅读操作及检查步骤）",
+      "page": 297,
+      "clip": [
+        90.96299743652344,
+        396.760986328125,
+        464.1623229980469,
+        448.0419616699219
+      ],
+      "image": "figure-13-3.webp"
+    },
+    {
+      "label": "fig:principle-ch13-03",
+      "number": "13.4",
+      "caption": "平台副本与本地别名（每行对照一组条件与解释）",
+      "page": 298,
+      "clip": [
+        49.111000061035156,
+        54.363677978515625,
+        461.1297302246094,
+        173.24635314941406
+      ],
+      "image": "figure-13-4.webp"
+    },
+    {
+      "label": "fig:visual-13-a",
+      "number": "13.5",
+      "caption": "需求、主题修改、评审与验证的关联",
+      "page": 299,
+      "sources": [
+        "assets/ai-illustrations/ch13-gpt.png"
+      ],
+      "image": "figure-13-5.webp"
+    },
+    {
+      "label": "fig:principle-ch13-04",
+      "number": "13.6",
+      "caption": "把需求转为可评审变化（沿连线依次阅读操作及检查步骤）",
+      "page": 299,
+      "clip": [
+        86.38500213623047,
+        284.59197998046875,
+        459.0721130371094,
+        336.5724792480469
+      ],
+      "image": "figure-13-6.webp"
+    },
+    {
+      "label": "fig:principle-ch13-05",
+      "number": "13.7",
+      "caption": "具体评审推动改进（沿连线依次阅读操作及检查步骤）",
+      "page": 300,
+      "clip": [
+        76.79000091552734,
+        76.5889892578125,
+        442.2830505371094,
+        127.84297943115234
+      ],
+      "image": "figure-13-7.webp"
+    },
+    {
+      "label": "fig:visual-13-b",
+      "number": "13.8",
+      "caption": "同一分叉起点上的合并、压缩合并与变基",
+      "page": 301,
+      "clip": [
+        70.03936767578125,
+        95.04530334472656,
+        465.05072021484375,
+        280.2740173339844
+      ],
+      "image": "figure-13-8.webp"
+    },
+    {
+      "label": "fig:principle-ch13-06",
+      "number": "13.9",
+      "caption": "合入方式分别验收（每行对照一组条件与解释）",
+      "page": 301,
+      "clip": [
+        63.28400421142578,
+        304.3306884765625,
+        475.302734375,
+        423.21337890625
+      ],
+      "image": "figure-13-9.webp"
+    },
+    {
+      "label": "fig:principle-ch13-07",
+      "number": "13.10",
+      "caption": "规则需要允许和拒绝验证（沿连线依次阅读操作及检查步骤）",
+      "page": 304,
+      "clip": [
+        67.9489974975586,
+        330.0989990234375,
+        442.2830505371094,
+        381.3799743652344
+      ],
+      "image": "figure-13-10.webp"
+    },
+    {
+      "label": "fig:scenario-13-02",
+      "number": "13.11",
+      "caption": "评审意见从现象落实到验证",
+      "page": 305,
+      "clip": [
+        73.20600128173828,
+        342.5270080566406,
+        465.3820495605469,
+        537.9456787109375
+      ],
+      "image": "figure-13-11.webp"
+    },
+    {
+      "label": "fig:scenario-13-01",
+      "number": "13.12",
+      "caption": "合入前分别核对三类条件",
+      "page": 310,
+      "clip": [
+        59.03199768066406,
+        152.57701110839844,
+        451.20806884765625,
+        251.6170196533203
+      ],
+      "image": "figure-13-12.webp"
+    },
+    {
+      "label": "fig:principle-ch14-01",
+      "number": "14.1",
+      "caption": "规模问题的三种成本（每行对照一组条件与解释）",
+      "page": 314,
+      "clip": [
+        49.111000061035156,
+        446.6836853027344,
+        461.1297302246094,
+        565.5663452148438
+      ],
+      "image": "figure-14-1.webp"
+    },
+    {
+      "label": "fig:guide-14-scale-axis",
+      "number": "14.2",
+      "caption": "规模优化需要分别考虑历史、对象与工作区",
+      "page": 315,
+      "clip": [
+        84.65550231933594,
+        76.51441955566406,
+        453.93048095703125,
+        134.6756134033203
+      ],
+      "image": "figure-14-2.webp"
+    },
+    {
+      "label": "fig:principle-ch14-02",
+      "number": "14.3",
+      "caption": "范围机制不能互称（每行对照一组条件与解释）",
+      "page": 315,
+      "clip": [
+        63.28400421142578,
+        487.8456726074219,
+        475.302734375,
+        606.7283325195312
+      ],
+      "image": "figure-14-3.webp"
+    },
+    {
+      "label": "fig:principle-ch14-03",
+      "number": "14.4",
+      "caption": "LFS的两层内容（箭头表示所说明的对象或访问关系）",
+      "page": 319,
+      "clip": [
+        73.20582580566406,
+        54.562896728515625,
+        465.38226318359375,
+        116.98211669921875
+      ],
+      "image": "figure-14-4.webp"
+    },
+    {
+      "label": "fig:visual-14-b",
+      "number": "14.5",
+      "caption": "子模块提交入口与LFS外部内容指针",
+      "page": 320,
+      "sources": [
+        "assets/ai-illustrations/ch14-complex-v2.png"
+      ],
+      "image": "figure-14-5.webp"
+    },
+    {
+      "label": "fig:principle-ch14-04",
+      "number": "14.6",
+      "caption": "父树固定子仓库位置（箭头表示所说明的对象或访问关系）",
+      "page": 320,
+      "clip": [
+        59.03282165527344,
+        549.3508911132812,
+        451.2092590332031,
+        611.7700805664062
+      ],
+      "image": "figure-14-6.webp"
+    },
+    {
+      "label": "fig:scenario-14-01",
+      "number": "14.7",
+      "caption": "三种依赖组织的父仓库记录",
+      "page": 323,
+      "clip": [
+        74.62300109863281,
+        449.307373046875,
+        463.96441650390625,
+        590.8673706054688
+      ],
+      "image": "figure-14-7.webp"
+    },
+    {
+      "label": "fig:visual-14-a",
+      "number": "14.8",
+      "caption": "共享对象库与独立工作树现场",
+      "page": 325,
+      "sources": [
+        "assets/ai-illustrations/ch14-gpt.png"
+      ],
+      "image": "figure-14-8.webp"
+    },
+    {
+      "label": "fig:guide-14-worktree-sharing",
+      "number": "14.9",
+      "caption": "多工作树有独立现场，也有共享数据",
+      "page": 325,
+      "clip": [
+        88.90780639648438,
+        444.4473876953125,
+        449.6786804199219,
+        543.1290283203125
+      ],
+      "image": "figure-14-9.webp"
+    },
+    {
+      "label": "fig:principle-ch14-06",
+      "number": "14.10",
+      "caption": "工作树共享与独立（每行对照一组条件与解释）",
+      "page": 326,
+      "clip": [
+        49.111000061035156,
+        368.6606750488281,
+        461.1297302246094,
+        487.5433349609375
+      ],
+      "image": "figure-14-10.webp"
+    },
+    {
+      "label": "fig:scenario-14-02",
+      "number": "14.11",
+      "caption": "规模问题先区分三项成本",
+      "page": 328,
+      "clip": [
+        59.03199768066406,
+        54.5880126953125,
+        451.20806884765625,
+        153.62802124023438
+      ],
+      "image": "figure-14-11.webp"
+    },
+    {
+      "label": "fig:principle-ch15-01",
+      "number": "15.1",
+      "caption": "自动检查必须明确对象（沿连线依次阅读操作及检查步骤）",
+      "page": 334,
+      "clip": [
+        67.9489974975586,
+        446.8659973144531,
+        446.2682189941406,
+        498.2099914550781
+      ],
+      "image": "figure-15-1.webp"
+    },
+    {
+      "label": "fig:guide-15-check-target",
+      "number": "15.2",
+      "caption": "检查必须说明它读取的是哪一份内容",
+      "page": 334,
+      "clip": [
+        76.15118408203125,
+        580.7529907226562,
+        434.0875244140625,
+        628.1589965820312
+      ],
+      "image": "figure-15-2.webp"
+    },
+    {
+      "label": "fig:scenario-15-01",
+      "number": "15.3",
+      "caption": "本地反馈与服务端验收分开设置",
+      "page": 335,
+      "clip": [
+        74.62300109863281,
+        384.0843505859375,
+        463.96441650390625,
+        525.6443481445312
+      ],
+      "image": "figure-15-3.webp"
+    },
+    {
+      "label": "fig:principle-ch15-03",
+      "number": "15.4",
+      "caption": "工作文件通过与索引失败（每行对照一组条件与解释）",
+      "page": 336,
+      "clip": [
+        49.111000061035156,
+        145.65066528320312,
+        461.1297302246094,
+        264.5333251953125
+      ],
+      "image": "figure-15-4.webp"
+    },
+    {
+      "label": "fig:principle-ch15-04",
+      "number": "15.5",
+      "caption": "CI验证的因果链（沿连线依次阅读操作及检查步骤）",
+      "page": 338,
+      "clip": [
+        72.21199798583984,
+        249.864990234375,
+        442.2830505371094,
+        301.208984375
+      ],
+      "image": "figure-15-5.webp"
+    },
+    {
+      "label": "fig:principle-ch15-05",
+      "number": "15.6",
+      "caption": "凭据事件的三类处理（沿连线依次阅读操作及检查步骤）",
+      "page": 340,
+      "clip": [
+        63.97200012207031,
+        211.06898498535156,
+        438.0279846191406,
+        262.3769836425781
+      ],
+      "image": "figure-15-6.webp"
+    },
+    {
+      "label": "fig:principle-ch15-06",
+      "number": "15.7",
+      "caption": "恢复先保全再判断（沿连线依次阅读操作及检查步骤）",
+      "page": 341,
+      "clip": [
+        82.12300109863281,
+        210.9149932861328,
+        460.44122314453125,
+        262.2229919433594
+      ],
+      "image": "figure-15-7.webp"
+    },
+    {
+      "label": "fig:guide-15-recovery-order",
+      "number": "15.8",
+      "caption": "恢复前保全现场，恢复后验证成果",
+      "page": 341,
+      "clip": [
+        86.07257080078125,
+        363.3669128417969,
+        452.5129699707031,
+        421.5371398925781
+      ],
+      "image": "figure-15-8.webp"
+    },
+    {
+      "label": "fig:visual-15-b",
+      "number": "15.9",
+      "caption": "增量bundle的前提与分步恢复",
+      "page": 343,
+      "sources": [
+        "assets/ai-illustrations/ch15-complex-v2.png"
+      ],
+      "image": "figure-15-9.webp"
+    },
+    {
+      "label": "fig:visual-15-a",
+      "number": "15.10",
+      "caption": "按恢复目标区分备份范围",
+      "page": 346,
+      "sources": [
+        "assets/ai-illustrations/ch15-gpt.png"
+      ],
+      "image": "figure-15-10.webp"
+    },
+    {
+      "label": "fig:scenario-15-02",
+      "number": "15.11",
+      "caption": "入口恢复与工作现场恢复分别安排",
+      "page": 348,
+      "clip": [
+        60.44999694824219,
+        305.5413513183594,
+        449.79144287109375,
+        447.1013488769531
+      ],
+      "image": "figure-15-11.webp"
+    },
+    {
+      "label": "fig:scenario-15-03",
+      "number": "15.12",
+      "caption": "仓库迁移列出四类交接范围",
+      "page": 351,
+      "clip": [
+        73.20600128173828,
+        234.45401000976562,
+        465.3820495605469,
+        429.8727111816406
+      ],
+      "image": "figure-15-12.webp"
+    },
+    {
+      "label": "fig:github-profile",
+      "number": "16.1",
+      "caption": "作者GitHub主页的资料与置顶项目（2026年11月11日截取，页面随身份与时间变化）",
+      "page": 356,
+      "sources": [
+        "assets/screenshots/github-profile-detail.pdf"
+      ],
+      "image": "figure-16-1.webp"
+    },
+    {
+      "label": "fig:principle-ch16-02",
+      "number": "16.2",
+      "caption": "身份验证有不同通道（每行对照一组条件与解释）",
+      "page": 357,
+      "clip": [
+        63.28400421142578,
+        54.363677978515625,
+        475.302734375,
+        173.24635314941406
+      ],
+      "image": "figure-16-2.webp"
+    },
+    {
+      "label": "fig:github-code",
+      "number": "16.3",
+      "caption": "GitEasy仓库首页：分支、文件、提交与协作导航（实际截图中的仓库为私有，访问需要相应权限）",
+      "page": 359,
+      "sources": [
+        "assets/screenshots/github-code-nav.pdf",
+        "assets/screenshots/github-code-detail.pdf"
+      ],
+      "image": "figure-16-3.webp"
+    },
+    {
+      "label": "fig:visual-16-a",
+      "number": "16.4",
+      "caption": "个人副本、本地修改与平台贡献过程",
+      "page": 360,
+      "sources": [
+        "assets/ai-illustrations/ch16-gpt.png"
+      ],
+      "image": "figure-16-4.webp"
+    },
+    {
+      "label": "fig:principle-ch16-04",
+      "number": "16.5",
+      "caption": "按起点建立个人实践（沿连线依次阅读操作及检查步骤）",
+      "page": 360,
+      "clip": [
+        60.250999450683594,
+        444.406982421875,
+        442.2830505371094,
+        495.8309631347656
+      ],
+      "image": "figure-16-5.webp"
+    },
+    {
+      "label": "fig:scenario-16-01",
+      "number": "16.6",
+      "caption": "从问题描述到可验收任务",
+      "page": 362,
+      "clip": [
+        59.03199768066406,
+        179.010009765625,
+        451.20806884765625,
+        374.4287109375
+      ],
+      "image": "figure-16-6.webp"
+    },
+    {
+      "label": "fig:principle-ch16-06",
+      "number": "16.7",
+      "caption": "PR组织完整贡献（沿连线依次阅读操作及检查步骤）",
+      "page": 363,
+      "clip": [
+        75.13999938964844,
+        145.83499145507812,
+        456.4570617675781,
+        197.73451232910156
+      ],
+      "image": "figure-16-7.webp"
+    },
+    {
+      "label": "fig:github-pull-list",
+      "number": "16.8",
+      "caption": "拉取请求列表、查询条件与创建入口（2026年11月11日15:46的历史局部，首个PR尚未建立）",
+      "page": 363,
+      "sources": [
+        "assets/screenshots/github-pull-list-detail.pdf"
+      ],
+      "image": "figure-16-8.webp"
+    },
+    {
+      "label": "fig:visual-16-b",
+      "number": "16.9",
+      "caption": "提交前进后检查证据的版本对应关系",
+      "page": 365,
+      "clip": [
+        69.96507263183594,
+        54.711151123046875,
+        464.9772033691406,
+        187.8848876953125
+      ],
+      "image": "figure-16-9.webp"
+    },
+    {
+      "label": "fig:principle-ch16-07",
+      "number": "16.10",
+      "caption": "Actions从事件到证据（沿连线依次阅读操作及检查步骤）",
+      "page": 365,
+      "clip": [
+        90.96299743652344,
+        199.03099060058594,
+        460.44122314453125,
+        250.3300018310547
+      ],
+      "image": "figure-16-10.webp"
+    },
+    {
+      "label": "fig:github-actions",
+      "number": "16.11",
+      "caption": "GitEasy实际Actions运行：提交标识、状态、矩阵与日志入口",
+      "page": 365,
+      "sources": [
+        "assets/screenshots/github-actions-title.pdf",
+        "assets/screenshots/github-actions-status.pdf",
+        "assets/screenshots/github-actions-jobs.pdf"
+      ],
+      "image": "figure-16-11.webp"
+    },
+    {
+      "label": "fig:principle-ch16-09",
+      "number": "16.12",
+      "caption": "设置先明确作用对象（沿连线依次阅读操作及检查步骤）",
+      "page": 367,
+      "clip": [
+        86.38500213623047,
+        332.4389953613281,
+        456.4570617675781,
+        383.7200012207031
+      ],
+      "image": "figure-16-12.webp"
+    },
+    {
+      "label": "fig:principle-ch16-10",
+      "number": "16.13",
+      "caption": "界面与命令共同验证（沿连线依次阅读操作及检查步骤）",
+      "page": 368,
+      "clip": [
+        67.9489974975586,
+        387.88299560546875,
+        442.2830505371094,
+        439.83648681640625
+      ],
+      "image": "figure-16-13.webp"
+    },
+    {
+      "label": "fig:scenario-16-02",
+      "number": "16.14",
+      "caption": "图形操作仍应回到三份内容核对",
+      "page": 372,
+      "clip": [
+        59.03199768066406,
+        54.5880126953125,
+        451.20806884765625,
+        250.0067138671875
+      ],
+      "image": "figure-16-14.webp"
+    },
+    {
+      "label": "fig:scenario-17-01",
+      "number": "17.1",
+      "caption": "需求、实现和验证形成对应",
+      "page": 379,
+      "clip": [
+        74.62300109863281,
+        330.41436767578125,
+        463.96441650390625,
+        505.9903564453125
+      ],
+      "image": "figure-17-1.webp"
+    },
+    {
+      "label": "fig:campus-enterprise-flow",
+      "number": "17.2",
+      "caption": "需求、设计、开发与交付相互衔接的研发过程",
+      "page": 380,
+      "clip": [
+        54.78017807006836,
+        268.5235900878906,
+        455.4605712890625,
+        327.8784484863281
+      ],
+      "image": "figure-17-2.webp"
+    },
+    {
+      "label": "fig:principle-ch17-02",
+      "number": "17.3",
+      "caption": "工程分层支持并行（沿连线依次阅读操作及检查步骤）",
+      "page": 382,
+      "clip": [
+        63.97200012207031,
+        383.1609802246094,
+        446.2682189941406,
+        435.1684875488281
+      ],
+      "image": "figure-17-3.webp"
+    },
+    {
+      "label": "fig:scenario-17-05",
+      "number": "17.4",
+      "caption": "构建目标保持业务与界面分层",
+      "page": 383,
+      "clip": [
+        74.62300109863281,
+        54.563358306884766,
+        463.96441650390625,
+        196.1233673095703
+      ],
+      "image": "figure-17-4.webp"
+    },
+    {
+      "label": "fig:campus-multifile",
+      "number": "17.5",
+      "caption": "多文件工程的依赖方向：入口调用服务，服务组合独立基础模块",
+      "page": 383,
+      "clip": [
+        68.95346069335938,
+        407.8414306640625,
+        469.63397216796875,
+        641.8167724609375
+      ],
+      "image": "figure-17-5.webp"
+    },
+    {
+      "label": "fig:visual-17-a",
+      "number": "17.6",
+      "caption": "校园一卡通的领域对象、服务与界面分层",
+      "page": 386,
+      "sources": [
+        "assets/ai-illustrations/ch17-gpt-v2.png"
+      ],
+      "image": "figure-17-6.webp"
+    },
+    {
+      "label": "fig:principle-ch17-03",
+      "number": "17.7",
+      "caption": "多态服务的调用关系（箭头表示所说明的对象或访问关系）",
+      "page": 386,
+      "clip": [
+        59.03282165527344,
+        547.4889526367188,
+        451.2092590332031,
+        604.0090942382812
+      ],
+      "image": "figure-17-7.webp"
+    },
+    {
+      "label": "fig:scenario-17-02",
+      "number": "17.8",
+      "caption": "多态用于选择不同持卡人策略",
+      "page": 387,
+      "clip": [
+        74.62300109863281,
+        236.6813507080078,
+        463.96441650390625,
+        344.225341796875
+      ],
+      "image": "figure-17-8.webp"
+    },
+    {
+      "label": "fig:campus-classes",
+      "number": "17.9",
+      "caption": "校园项目的领域类关系：空心三角表示继承，实心菱形表示独占组合",
+      "page": 388,
+      "clip": [
+        54.7056999206543,
+        54.70928955078125,
+        455.3860778808594,
+        384.18243408203125
+      ],
+      "image": "figure-17-9.webp"
+    },
+    {
+      "label": "fig:visual-17-b",
+      "number": "17.10",
+      "caption": "请求幂等、参数冲突与挂失拒绝的状态约束",
+      "page": 390,
+      "sources": [
+        "assets/ai-illustrations/ch17-complex-v2.png"
+      ],
+      "image": "figure-17-10.webp"
+    },
+    {
+      "label": "fig:principle-ch17-04",
+      "number": "17.11",
+      "caption": "消费业务的不变量（沿连线依次阅读操作及检查步骤）",
+      "page": 390,
+      "clip": [
+        72.21199798583984,
+        327.99798583984375,
+        446.2682189941406,
+        379.30596923828125
+      ],
+      "image": "figure-17-11.webp"
+    },
+    {
+      "label": "fig:scenario-17-03",
+      "number": "17.12",
+      "caption": "金额以最小货币单位参与计算",
+      "page": 390,
+      "clip": [
+        61.866661071777344,
+        394.3206787109375,
+        448.3734130859375,
+        499.030029296875
+      ],
+      "image": "figure-17-12.webp"
+    },
+    {
+      "label": "fig:scenario-17-04",
+      "number": "17.13",
+      "caption": "挂失与解挂只在明确状态间转换",
+      "page": 391,
+      "clip": [
+        74.62300109863281,
+        264.516357421875,
+        463.96441650390625,
+        406.07635498046875
+      ],
+      "image": "figure-17-13.webp"
+    },
+    {
+      "label": "fig:principle-ch17-05",
+      "number": "17.14",
+      "caption": "Qt界面不是另一套账本（沿连线依次阅读操作及检查步骤）",
+      "page": 392,
+      "clip": [
+        76.79000091552734,
+        54.56298828125,
+        446.2682189941406,
+        105.906982421875
+      ],
+      "image": "figure-17-14.webp"
+    },
+    {
+      "label": "fig:scenario-17-06",
+      "number": "17.15",
+      "caption": "界面交互与业务状态对应验证",
+      "page": 392,
+      "clip": [
+        60.44999694824219,
+        361.75537109375,
+        449.79144287109375,
+        503.31536865234375
+      ],
+      "image": "figure-17-15.webp"
+    },
+    {
+      "label": "fig:campus-qt",
+      "number": "17.16",
+      "caption": "校园一卡通Qt界面的实际运行结果（合成数据，程序导出视图）",
+      "page": 393,
+      "sources": [
+        "assets/screenshots/campus-qt-20261112.png"
+      ],
+      "image": "figure-17-16.webp"
+    },
+    {
+      "label": "fig:scenario-17-12",
+      "number": "17.17",
+      "caption": "独立克隆分别构建和核对",
+      "page": 395,
+      "clip": [
+        74.62300109863281,
+        285.8873596191406,
+        463.96441650390625,
+        427.4473571777344
+      ],
+      "image": "figure-17-17.webp"
+    },
+    {
+      "label": "fig:scenario-17-07",
+      "number": "17.18",
+      "caption": "并行开发先约定接口与验收",
+      "page": 397,
+      "clip": [
+        74.62300109863281,
+        54.563358306884766,
+        463.96441650390625,
+        196.1233673095703
+      ],
+      "image": "figure-17-18.webp"
+    },
+    {
+      "label": "fig:scenario-17-13",
+      "number": "17.19",
+      "caption": "竞争推送以后先取得服务器进展",
+      "page": 398,
+      "clip": [
+        59.03199768066406,
+        447.7950134277344,
+        451.20806884765625,
+        643.2137451171875
+      ],
+      "image": "figure-17-19.webp"
+    },
+    {
+      "label": "fig:scenario-17-14",
+      "number": "17.20",
+      "caption": "冲突解决保持双方有效需求",
+      "page": 400,
+      "clip": [
+        60.44999694824219,
+        265.8253479003906,
+        449.79144287109375,
+        407.3853454589844
+      ],
+      "image": "figure-17-20.webp"
+    },
+    {
+      "label": "fig:scenario-17-15",
+      "number": "17.21",
+      "caption": "发布基线为回归调查提供入口",
+      "page": 402,
+      "clip": [
+        59.03199768066406,
+        350.0340270996094,
+        451.20806884765625,
+        545.4527587890625
+      ],
+      "image": "figure-17-21.webp"
+    },
+    {
+      "label": "fig:scenario-17-10",
+      "number": "17.22",
+      "caption": "维护修复需要重新验证目标上下文",
+      "page": 404,
+      "clip": [
+        59.03199768066406,
+        331.1340026855469,
+        451.20806884765625,
+        526.552734375
+      ],
+      "image": "figure-17-22.webp"
+    },
+    {
+      "label": "fig:scenario-17-16",
+      "number": "17.23",
+      "caption": "未共享提交按完整意图整理",
+      "page": 406,
+      "clip": [
+        60.44999694824219,
+        54.563358306884766,
+        449.79144287109375,
+        196.1233673095703
+      ],
+      "image": "figure-17-23.webp"
+    },
+    {
+      "label": "fig:scenario-17-17",
+      "number": "17.24",
+      "caption": "回归定位区分业务判定与运行异常",
+      "page": 407,
+      "clip": [
+        73.20600128173828,
+        284.83001708984375,
+        465.3820495605469,
+        480.24871826171875
+      ],
+      "image": "figure-17-24.webp"
+    },
+    {
+      "label": "fig:scenario-17-08",
+      "number": "17.25",
+      "caption": "候选检查与工作目录检查分开",
+      "page": 409,
+      "clip": [
+        73.20600128173828,
+        160.11001586914062,
+        465.3820495605469,
+        259.1500244140625
+      ],
+      "image": "figure-17-25.webp"
+    },
+    {
+      "label": "fig:scenario-17-11",
+      "number": "17.26",
+      "caption": "源码交付与历史交付分别验收",
+      "page": 410,
+      "clip": [
+        60.44999694824219,
+        488.9403381347656,
+        449.79144287109375,
+        630.5003662109375
+      ],
+      "image": "figure-17-26.webp"
+    },
+    {
+      "label": "fig:principle-ch17-07",
+      "number": "17.27",
+      "caption": "本地模型进入真实平台（沿连线依次阅读操作及检查步骤）",
+      "page": 412,
+      "clip": [
+        63.97200012207031,
+        311.52899169921875,
+        442.2830505371094,
+        363.4284973144531
+      ],
+      "image": "figure-17-27.webp"
+    },
+    {
+      "label": "fig:scenario-17-09",
+      "number": "17.28",
+      "caption": "真实PR对应明确的方向与版本",
+      "page": 413,
+      "clip": [
+        73.20600128173828,
+        54.5880126953125,
+        465.3820495605469,
+        250.0067138671875
+      ],
+      "image": "figure-17-28.webp"
+    },
+    {
+      "label": "fig:principle-ch17-08",
+      "number": "17.29",
+      "caption": "交接能在新目录继续（沿连线依次阅读操作及检查步骤）",
+      "page": 414,
+      "clip": [
+        76.79000091552734,
+        144.8149871826172,
+        446.2682189941406,
+        196.12298583984375
+      ],
+      "image": "figure-17-29.webp"
+    }
+  ],
+  "scope": "Complete chapter prose and authored command blocks; diagram images exported from verified manuscript PDF; exercise answers and command reference from source data. Figures retain book numbering. Web layout is independent of print pagination."
+}

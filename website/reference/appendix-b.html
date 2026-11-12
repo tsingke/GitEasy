@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>配置、别名与检查模板 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="appendix-b" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><header class="chapter-header"><div class="section-kicker">APPENDIX B</div><h1>配置、别名与检查模板</h1></header><article class="prose">
+<span id="app:templates"></span>
+<p>模板是理解和调整配置的起点，不是应当整份覆盖到个人环境中的标准答案。本附录优先使用仓库局部配置，区分只读别名、行为选择和检查程序。团队规则应由协作约定支持；个人工具偏好不应无意改变共享项目的工作方式。</p>
+<h2 id="appendix-section-1">最小配置与生效来源</h2>
+<p>配置模板应从项目所需的最少信息开始。先判断某个值是否必须、应作用于哪个仓库，再查询实际生效来源，能够减少多台机器、多个账户之间的隐含差异。</p>
+<h3 id="appendix-section-2">学习仓库使用独立身份</h3>
+<p>在新建练习仓库中配置姓名和邮箱，有助于避免影响其他工作。下列占位身份使用无效示例域名，不代表真实平台账号。命令应在已经初始化的练习仓库根目录执行。</p>
+<div class="code-block"><div class="code-bar"><span>查询并设置仓库局部身份</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git config --local user.name "Git Learner"
+git config --local user.email "learner@example.invalid"
+git config --show-origin --get user.name
+git config --show-origin --get user.email</code></pre></div>
+<p>配置查询的作用是确认 Git 实际读取到什么。配置值还可能来自系统、用户、条件包含和命令上下文；环境也可能提供作者或提交者信息。因此，排查具体提交时还应读取对象元数据，不能仅凭当前配置反推过去提交使用的值。</p>
+<h3 id="appendix-section-3">文本形式便于审阅，但路径不宜硬编码</h3>
+<p>下面给出一个有意保持简短的配置片段。可通过 <code>git config</code> 逐项设置，或在理解实际配置位置后编辑。不要假设所有仓库都把管理目录保存为工作区中的普通 <code>.git</code> 目录。</p>
+<div class="code-block" id="file:gitconfig-full"><div class="code-bar"><span>局部配置片段示例</span><button class="copy-code">复制</button></div><pre><code>[user]
+    name = Git Learner
+    email = learner@example.invalid
+[alias]
+    st = status --short --branch
+    graph = log --oneline --graph --decorate --all
+    last = log -1 --stat</code></pre></div>
+<p>该片段没有预设 pull 的整合方式，也没有统一启用性能优化或换行转换。省略这些选择，是为了让使用者先理解需求再配置，而非因为这些功能不重要。第 <a class="book-ref" href="../chapters/07.html#ch:lookup-07">7</a> 章、第 <a class="book-ref" href="../chapters/11.html#ch:lookup-11">11</a> 章与第 <a class="book-ref" href="../chapters/14.html#ch:lookup-14">14</a> 章分别提供判断背景。</p>
+<h2 id="appendix-section-4">只读别名与行为性别名</h2>
+<p>别名既可以缩短查询，也可能封装会改变现场的操作。采用模板时先区分这两类能力，再检查参数、路径和失败条件，避免简写名称掩盖实际作用范围。</p>
+<h3 id="appendix-section-5">别名缩短输入，不改变知识前提</h3>
+<p><code>st</code>、<code>graph</code> 和 <code>last</code> 只组织查询输出，适合作为个人便捷入口。使用时仍应知道各选项显示什么，例如 <code>--all</code> 扩展观察入口，不代表能够显示本地尚未取得的服务器历史。</p>
+<div class="code-block" id="file:alias-set"><div class="code-bar"><span>适合查询的别名片段</span><button class="copy-code">复制</button></div><pre><code>[alias]
+    branches = branch -vv
+    staged = diff --cached
+    recent = for-each-ref --count=10 --sort=-committerdate --format='%(refname:short)' refs/heads</code></pre></div>
+<p>不宜把高影响动作命名成含混的快捷词。例如 <code>discard</code> 未说明覆盖范围，<code>uncommit</code> 未说明保留索引与草稿的方式。若团队确需行为性别名，应明确展开命令、前置条件和恢复方法，不能让缩写遮蔽影响。</p>
+<h3 id="appendix-section-6">不要让别名承担项目规则</h3>
+<p>个人别名不会自动随仓库传播。若项目依赖一套检查或构建步骤，应提供版本化脚本与文档，而非要求所有成员猜测作者的个人快捷配置。脚本也应记录输入对象、失败含义和工具前提。</p>
+<h2 id="appendix-section-7">客户端钩子的安装与范围</h2>
+<p>钩子把检查接入本地操作，但源码存在、已经安装和实际强制执行是不同事实。下面分别说明安装方式、检查输入和可能被绕过的边界。</p>
+<h3 id="appendix-section-8">选择可版本化的钩子目录</h3>
+<p>常见钩子可以放在默认管理目录，也可以通过 <code>core.hooksPath</code> 指定。团队若选择仓库内目录，需要明确安装动作：文件纳入版本控制，不代表新克隆已自动启用该配置。以下命令仅展示显式安装方式。</p>
+<div class="code-block"><div class="code-bar"><span>为当前仓库指定钩子目录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir -p .githooks
+git config --local core.hooksPath .githooks
+git config --show-origin --get core.hooksPath</code></pre></div>
+<p>安装前应审阅钩子内容及其来源。钩子是可以执行程序的机制，不是纯文本说明。客户端钩子还可能被绕过，不能作为服务器接收规则的唯一依据。跨平台项目应检查解释器、执行权限和工具路径。</p>
+<h3 id="appendix-section-9">pre-commit检查候选内容</h3>
+<p>本书第 <a class="book-ref" href="../chapters/15.html#ch:lookup-15">15</a> 章的课程检查器明确区分工作区与索引模式。下面的钩子假设项目已经把该检查器保存为 <code>tools/check_course.py</code>，并具有对应五份资料。检查前先定位仓库根目录，避免相对路径依赖当前子目录。</p>
+<div class="code-block" id="file:hook-precommit"><div class="code-bar"><span>pre-commit：调用已暂存内容检查</span><button class="copy-code">复制</button></div><pre><code>#!/bin/sh
+set -eu
+root=$(git rev-parse --show-toplevel)
+cd "$root"
+python3 tools/check_course.py --repo . --index
+git diff --cached --check</code></pre></div>
+<p>两个检查分别承担资料规则与部分空白问题检查，任一失败都会中止。它们不验证全部业务要求，也不保证未跟踪文件符合规则。若检查器不在项目中，应先完成分发和路径调整，不能只复制钩子就期待工作。</p>
+<h3 id="appendix-section-10">commit-msg检查示例与规范的区别</h3>
+<p>提交说明可以采用项目约定，但简化检查必须明确自己的范围。下面的示例只接受一组类型、可选作用域、可选破坏性标记和非空摘要；它不是完整的 Conventional Commits 解析器，不检查正文、尾部或全部语义约束<span class="citation" data-cites="conventionalcommits">(Conventional Commits 2020)</span>。</p>
+<div class="code-block" id="file:hook-commitmsg"><div class="code-bar"><span>commit-msg：受限的首行教学检查</span><button class="copy-code">复制</button></div><pre><code>#!/usr/bin/env python3
+from pathlib import Path
+import re
+import sys
+
+message = Path(sys.argv[1]).read_text(encoding='utf-8')
+lines = message.splitlines()
+first = lines[0] if lines else ''
+pattern = r'(feat|fix|docs|refactor|test|chore)(\([^()\r\n]+\))?!?: \S[^\r\n]*'
+if re.fullmatch(pattern, first) is None:
+    print('Expected: type(scope): nonempty summary', file=sys.stderr)
+    sys.exit(1)</code></pre></div>
+<p>使用者应按项目需要决定是否允许其他类型、合并提交说明、撤销说明或工具自动生成的内容。规则过窄会造成不必要的阻断，规则过宽则可能只提供形式上的一致。检查说明必须与实际实现一致。</p>
+<h3 id="appendix-section-11">pre-push应调用真实项目检查入口</h3>
+<p>推送前可以运行项目的固定检查命令，但不应无条件假设所有项目都有 <code>make test</code>。检查脚本若只读取当前工作区，也不能证明所有即将推送的提交均已通过。高要求项目可能需要在独立检出环境中验证指定版本。</p>
+<div class="code-block" id="file:hook-prepush"><div class="code-bar"><span>pre-push：调用项目自行提供的检查</span><button class="copy-code">复制</button></div><pre><code>#!/bin/sh
+set -eu
+root=$(git rev-parse --show-toplevel)
+cd "$root"
+# The project must provide and document this entry point.
+python3 tools/project_check.py</code></pre></div>
+<p>上述 <code>project_check.py</code> 是需要项目自行实现的接口占位，不是本教材已经提供的通用检查器。选择部署前应确认文件存在、范围明确且失败能给出可理解提示。需要依据本次推送引用判断时，还应处理 pre-push 提供的参数与标准输入，不能把当前工作区等同于全部推送对象。</p>
+<h2 id="appendix-section-12">模板采用前的验证</h2>
+<p>一份模板只有在自己的环境和项目条件下得到验证，才适合作为长期约定。验证同时覆盖正常输入、预期拒绝和对既有现场的影响，而不只观察一次成功输出。</p>
+<h3 id="appendix-section-13">正例、反例与边界例</h3>
+<p>至少准备一个应通过的输入、一个应拒绝的输入，以及一个容易混淆的边界。候选检查的边界例可以是“工作区已修正但索引未更新”；说明检查的边界例可以是“有类型但摘要为空”；推送检查的边界例则应包含工作区与目标提交不一致的情况。</p>
+<p>验证结果应记录工具版本和实际退出状态。不能仅因脚本打印了“通过”就认定成功，也不能把日志中出现预期拒绝当作整条实验失败。自动运行与人工阅读分别检查机制和可理解性。</p>
+<h3 id="appendix-section-14">逐项启用与回退</h3>
+<p>新规则可先在任务分支试用，再向成员解释安装与修复方式。若规则导致误判，应定位检查逻辑和输入范围，而非长期要求成员绕过。回退配置也应明确恢复到哪个值，避免覆盖其他工具原有设置。</p>
+<p>团队协作中的最终接收约束，应由适当的服务端机制与持续集成共同支撑。客户端钩子提供及时反馈，文档提供规则解释，评审判断内容合理性，三者各有职责。掌握这些边界，比收集大量未经验证的模板更有价值。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-conventionalcommits" role="listitem">
+Conventional Commits. 2020. <em>Conventional Commits 1.0.0</em>. <a class="uri" href="https://www.conventionalcommits.org/">Https://www.conventionalcommits.org/</a>.
+</div>
+</div>
+</article></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">附录目录</div><a href="#appendix-section-1">最小配置与生效来源</a><a href="#appendix-section-4">只读别名与行为性别名</a><a href="#appendix-section-7">客户端钩子的安装与范围</a><a href="#appendix-section-12">模板采用前的验证</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

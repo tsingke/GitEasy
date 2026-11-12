@@ -1,14 +1,44 @@
-<p align="center"><img src="assets/book-cover.png" width="240" alt="Git版本控制原理与实践封面"></p>
+<p align="center"><img src="assets/website-overview.png" width="1200" alt="GitEasy网页教材：章节导航、图文阅读与学习路径"></p>
 
 # GitEasy · Git版本控制原理与实践
 
 [![Textbook labs](https://github.com/tsingke/GitEasy/actions/workflows/labs.yml/badge.svg)](https://github.com/tsingke/GitEasy/actions/workflows/labs.yml)
 [![CampusCard builds](https://github.com/tsingke/GitEasy/actions/workflows/campus.yml/badge.svg)](https://github.com/tsingke/GitEasy/actions/workflows/campus.yml)
+[![Learning website](https://github.com/tsingke/GitEasy/actions/workflows/pages.yml/badge.svg)](https://github.com/tsingke/GitEasy/actions/workflows/pages.yml)
 [![Code: MIT](https://img.shields.io/badge/Code-MIT-087F78.svg)](./LICENSE)
 
 **从第一次提交，到能够解释、验证和交接的工程协作。**
 
 张庆科编著《Git版本控制原理与实践》配套教学项目。全书按基础、核心、进阶、实践四篇组织；本仓库提供17章辅导材料、218道分层习题与完整解析、原创知识结构图、可复现实验、分层练习和综合项目种子。无需平台账号即可完成离线实验。
+
+## 阅读 · 理解 · 实践
+
+**一本教材，三种学习方式。** 完整网页阅读帮助建立概念，终端实验让状态变化可以验证，校园一卡通项目连接团队协作与工程交付。
+
+| 网页教材 | 可复现实验 | 工程实训 |
+|---|---|---|
+| 17章正文、251幅编号图、218道习题与解析 | 38条隔离路线，观察文件、索引、引用和历史 | C++11核心与Qt6界面，需求到发布的完整流程 |
+| 章节导航、全文搜索、高清图放大、明暗主题 | 先预测结果，再操作与验收，区分预期失败 | 模块化、多文件、分支、评审、回归与恢复 |
+| 124项命令用法速查，学习进度保存在本机 | 无需在线平台账号即可完成离线部分 | 45项Git技能任务及连续协作演练 |
+
+[在线学习](https://tsingke.github.io/GitEasy/) · [本地网页入口](./website/index.html) · [网站维护与Pages发布](./docs/website-development.md) · [命令速查源码](./website/reference/commands.html) · [前言与阅读说明](./docs/preface.md)
+
+```bash
+# 在GitEasy根目录启动网页，打开 http://localhost:8000
+python3 -m http.server 8000 --directory website
+```
+
+也可直接打开`website/index.html`。网站无需后端或CDN，正文与导航可直接阅读；搜索、状态实验和本地学习记录由浏览器运行。GitHub仓库中的HTML链接用于查看源文件，网页效果请本地预览或访问已部署的Pages。
+
+网页目录已兼容GitHub项目站点的`/GitEasy/`子路径，发布地址为`https://tsingke.github.io/GitEasy/`。仓库已按作者授权公开，站点通过[Pages工作流](https://github.com/tsingke/GitEasy/actions/workflows/pages.yml)检查与部署，具体状态以工作流记录为准。
+
+<details>
+<summary><b>查看网页章节阅读与移动端效果</b></summary>
+
+<p><img src="assets/website-chapter.png" width="900" alt="章节阅读界面：正文、代码、节内导航"></p>
+<p><img src="assets/website-mobile.png" width="290" alt="GitEasy手机阅读布局"></p>
+
+</details>
 
 ## 快速开始
 
@@ -21,7 +51,7 @@ python3 tools/run_lab.py --chapter 02
 python3 tools/run_lab.py --all --list
 ```
 
-克隆需要当前仓库的读取权限；没有访问权限的课程读者可使用随书资源包或授权教学副本。
+GitEasy现为公开仓库，可直接克隆；离线环境也可使用随书资源包或授权教学副本。
 
 运行器在临时目录建立练习仓库，结束后清理现场，日志另存到证据目录。所有路线只访问本地仓库。手工学习请先阅读本章说明，预测状态再逐块操作。
 
@@ -49,7 +79,7 @@ python3 tools/run_lab.py --all --list
 
 ## 看得见，也能验证
 
-![工作区、索引与提交的知识结构](./assets/mindmaps/ch03.png)
+<p align="center"><img src="assets/mindmaps/ch03.png" width="560" alt="工作区、索引与提交的知识结构"></p>
 
 17张纵向复习导图按章节顺序以01–06编号模块呈现，采用无连线的扁平卡片与柔和配色；教材中不纳入图号，提供可编辑源文件。各章另有图解导读、82项状态与工程情境对照，精选30幅生成式插图；关系精度要求较高的图示使用矢量绘制。[导图源文件](./assets/git-book-mindmaps.drawio)与[原理及工程图源](./assets/diagrams/README.md)可继续编辑，图片用于快速浏览。
 
@@ -57,7 +87,9 @@ python3 tools/run_lab.py --all --list
 
 ## 校园一卡通工程实训
 
-![校园一卡通Qt界面](./assets/campus-qt.png)
+<p align="center"><img src="assets/campus-qt.png" width="920" alt="校园一卡通Qt界面与合成教学账户"></p>
+
+![校园一卡通模块架构](./assets/campus-architecture.png)
 
 [完整项目](./projects/campus-card/README.md)包含开卡、充值、消费、挂失、解挂和流水导出。金额、日期、持卡人、报告和服务按文件与库拆分，CLI与Qt共用服务；核心按C++11构建，Qt6界面目标按C++17构建。五组核心测试与实际按钮检查分别验收。所有账户使用合成数据。
 

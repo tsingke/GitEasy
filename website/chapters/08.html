@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>变更撤销与版本恢复 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="8" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>核心篇<span>/</span>第08章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 08 · 核心篇</div><h1>变更撤销与版本恢复</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 54 分钟</span><span>14 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-08"></span>
+<p>“撤销刚才的修改”还不是一个完整需求。希望取回文件、重新组织提交、抵消已经公开的改动，或临时收起未完成工作，所需操作各不相同。若没有说明要保留什么，同一个“撤销”词语可能指向完全不同的结果。</p>
+<p>本章以工作区、索引、提交和共享历史为判断依据，先建立恢复目标，再做独立对照实验。对能够找回的提交，先建立保护入口再调整工作位置；对从未保存的编辑，则明确工具能力的边界。</p>
+<p><strong>学习目标：</strong>根据来源和目标选择 restore；解释三种 reset 模式及路径形式；区分移动入口与追加抵消提交；正确理解合并撤销和 amend 的父关系；保存、应用并处理 stash 冲突；利用本地引用日志建立救援分支。</p>
+<p>先列出保留目标，再观察三份内容；通过独立副本比较 reset，随后学习追加纠错、修订最近提交与暂存现场，最后建立恢复证据链。</p>
+<h2 id="h2-1">恢复之前先回答四个问题</h2>
+<p>恢复操作的选择取决于需要保留的历史和希望改动的范围。图 <a class="book-ref" href="../chapters/08.html#fig:visual-08-a">8.1</a> 把追加纠错提交与移动历史入口并列，提醒读者分别观察对象、名称和工作现场。执行前应先确认目标内容仍可取得，并建立必要的保护入口。</p>
+<figure id="fig:visual-08-a"><button aria-label="放大图8.1：追加纠错与调整历史入口的不同结果" class="zoom-image"><img alt="图8.1 追加纠错与调整历史入口的不同结果" height="1024" loading="lazy" src="../assets/figure-8-1.webp" width="1536"/></button><figcaption><b>图 8.1</b> 追加纠错与调整历史入口的不同结果</figcaption></figure>
+<p>第一，错误位于哪里：未暂存编辑、索引候选内容、已经记录的提交，还是已经被他人使用的历史？第二，要从哪里取回内容：索引、当前提交、另一个明确提交，还是独立备份？第三，希望保留什么：当前草稿、既有提交、他人的分支，还是原来的提交拆分？第四，怎样验证结果：文件内容、索引内容、父关系和目标引用分别应是什么？</p>
+<p>这些问题先于命令选择。例如“取消暂存”通常只需要把索引恢复为基线，不要求丢弃工作文件；“撤回错误功能”可能要求保留完整审计历史，并追加一条抵消变更。二者都可以被口头称作撤销，但操作对象不同。表<a class="book-ref" href="../chapters/08.html#tab:undo-map">8.1</a>给出常见入口。表中方法是需要结合条件采用的选择，不是看到某个错误关键词就无条件执行的配方。</p>
+<div class="table-scroll" id="tab:undo-map" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 8.1</b> 按恢复目标选择工具</caption><tr><th colspan="1">目标</th><th colspan="1">首先考虑的操作与检查</th></tr><tr><td colspan="1">取消误暂存</td><td colspan="1">restore 的 staged 目标；保留工作区，再检查两类 diff。</td></tr><tr><td colspan="1">恢复某路径的内容</td><td colspan="1">明确来源及工作区／索引目标；覆盖前保全仍需保留的编辑。</td></tr><tr><td colspan="1">重新组织私有提交</td><td colspan="1">评估 reset 或 amend；先记录旧入口，区分提交内容与当前草稿。</td></tr><tr><td colspan="1">抵消共享改动</td><td colspan="1">通常追加 revert；检查后续依赖和冲突，不要求删除原有记录。</td></tr><tr><td colspan="1">临时离开未完成工作</td><td colspan="1">stash 或临时分支提交；明确是否包含未跟踪、忽略内容和索引边界。</td></tr><tr><td colspan="1">找回失去入口的提交</td><td colspan="1">查询可用日志与对象，先创建救援引用，再验证和恢复。</td></tr></table></div></div>
+<h3 id="h3-1">保护引用只保护已经记录的对象</h3>
+<p>给当前提交建立标签或分支，可以保留返回该提交的入口，但不会保存此后尚未进入对象的工作区编辑。一个干净的提交入口和一份未完成草稿，可能需要分别保护。</p>
+<p>对不确定的现场，先记录状态、差异和当前引用，必要时把草稿复制到仓库外的独立位置。不要刚发现问题就运行清理或强制覆盖操作。恢复的第一步是尽量保留证据，而非让 status 尽快变成干净。</p>
+<h2 id="h2-2">实验一：restore 的来源与目标</h2>
+<h3 id="h3-2">准备可辨认的两次提交</h3>
+<p>实验使用 A、B、C、D 四个文本值，分别表示旧提交、新提交、暂存内容和后续工作区编辑。字母是观察标记，不是 Git 自动分配的状态编号。从新的父目录执行：</p>
+<div class="code-block"><div class="code-bar"><span>建立后续对照实验的源仓库</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab08-reset-source
+cd lab08-reset-source
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Version: A\n' &gt; state.txt
+printf 'Original tracked content\n' &gt; obstacle.txt
+git add state.txt obstacle.txt
+git commit -m "docs: record version A"
+git tag reset-base
+printf 'Version: B\n' &gt; state.txt
+git rm obstacle.txt
+git add state.txt
+git commit -m "docs: advance to version B"
+git tag reset-tip</code></pre></div>
+<p>reset-base 指向 A，reset-tip 指向 B。第二次提交还删除了 obstacle.txt，后面用它观察 hard 模式对阻挡目标路径的未跟踪文件的影响。现在源仓库停在 B，工作区干净（图 <a class="book-ref" href="../chapters/08.html#fig:principle-ch08-02">8.3</a> ）。</p>
+<p>恢复之前应把来源写在一侧，把将要覆盖的目标写在另一侧（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-01">8.2</a> ）。显式选择两层时，检查也应覆盖两层，避免用单项diff解释全部结果。</p>
+<figure id="fig:scenario-08-01"><button aria-label="放大图8.2：恢复操作的来源与目标" class="zoom-image"><img alt="图8.2 恢复操作的来源与目标" height="425" loading="lazy" src="../assets/figure-8-2.webp" width="1169"/></button><figcaption><b>图 8.2</b> 恢复操作的来源与目标</figcaption></figure>
+<figure id="fig:principle-ch08-02"><button aria-label="放大图8.3：restore的来源与目标（每行对照一组条件与解释）" class="zoom-image"><img alt="图8.3 restore的来源与目标（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-8-3.webp" width="1237"/></button><figcaption><b>图 8.3</b> restore的来源与目标（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-3">取消暂存不会自动抹掉工作文件</h3>
+<div class="code-block"><div class="code-bar"><span>让三个层次具有不同内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Version: C\n' &gt; state.txt
+git add state.txt
+printf 'Version: D\n' &gt; state.txt
+git show HEAD:state.txt
+git show :state.txt
+cat state.txt
+git diff --cached
+git diff
+cp state.txt ../draft08-saved.txt
+git restore --staged -- state.txt
+git show :state.txt
+cat state.txt</code></pre></div>
+<p>执行取消暂存之前，HEAD 为 B，索引为 C，工作文件为 D；之后索引回到 B，工作文件仍为 D。取消的是“下一次提交采用 C”这份候选状态，而非把 D 搬到别的目录，也不是删除所有历史对象。</p>
+<p>没有显式 source 时，restore 的普通工作区恢复通常以索引为来源；指定 staged 目标时，默认来源则为 HEAD。因此，同一条命令的目标选项会影响默认来源，初学阶段应有意识地说出“从谁恢复到谁”。</p>
+<h3 id="h3-4">只恢复工作区与显式指定旧来源</h3>
+<div class="code-block"><div class="code-bar"><span>比较工作区恢复与旧版本取回</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git restore -- state.txt
+cat state.txt
+git restore --source=reset-base --worktree -- state.txt
+git show HEAD:state.txt
+git show :state.txt
+cat state.txt
+git restore --source=HEAD --worktree -- state.txt
+git status --short</code></pre></div>
+<p>第一条用索引中的 B 覆盖工作文件，D 不再存在于该工作路径中；实验已经在仓库外保留 D。随后从 reset-base 取回 A，只写工作区，因此 HEAD 与索引仍为 B，文件则为 A。这种用法适合从历史中取回指定内容，而不必切换整个项目。最后一条恢复操作把工作文件重新设为 HEAD 中的 B，源仓库回到干净状态。restore 以路径内容恢复为职责，不把当前分支移动到 reset-base。</p>
+<h2 id="h2-3">实验二：三个独立副本比较 reset</h2>
+<h3 id="h3-5">先区分整提交形式与路径形式</h3>
+<p>比较reset模式时，需要为三份内容设置可以辨认的起点。图 <a class="book-ref" href="../chapters/08.html#fig:visual-08-b">8.4</a> 以B表示当前提交中的文件内容，以C、D表示索引和工作文件中的内容，A表示目标提交内容。soft只调整提交入口，mixed进一步重置索引，hard还更新相应工作文件；图中省略未跟踪路径及冲突等特殊条件。</p>
+<figure id="fig:visual-08-b"><button aria-label="放大图8.4：reset三种模式对提交入口、索引和工作文件的影响" class="zoom-image"><img alt="图8.4 reset三种模式对提交入口、索引和工作文件的影响" height="1024" loading="lazy" src="../assets/figure-8-4.webp" width="1536"/></button><figcaption><b>图 8.4</b> reset三种模式对提交入口、索引和工作文件的影响</figcaption></figure>
+<p>本节的 <code>git reset --soft &lt;commit&gt;</code> 等整提交形式，把当前分支位置调整到目标提交，并按模式处理索引和工作区。在分离 HEAD 状态下，则调整 HEAD 的直接位置。本节始终在普通分支 main 上操作（图 <a class="book-ref" href="../chapters/08.html#fig:principle-ch08-03">8.5</a> ）。</p>
+<figure id="fig:principle-ch08-03"><button aria-label="放大图8.5：reset模式的层次（每行对照一组条件与解释）" class="zoom-image"><img alt="图8.5 reset模式的层次（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-8-5.webp" width="1237"/></button><figcaption><b>图 8.5</b> reset模式的层次（每行对照一组条件与解释）</figcaption></figure>
+<p>另有带路径的 reset 形式，主要更新所选路径的索引，不按这里的整提交模型移动分支。不能把包含路径的命令也套进“所有 reset 都移动 HEAD”的定义。一般路径取消暂存可优先用目的更明确的 restore 表达。表<a class="book-ref" href="../chapters/08.html#tab:reset-modes">8.2</a>只描述本节整提交形式的三个常用模式，不包含所有 reset 选项和冲突状态处理规则。</p>
+<div class="table-scroll" id="tab:reset-modes" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 8.2</b> 整提交 reset 的常用模式</caption><tr><th colspan="1">模式</th><th colspan="1">当前分支入口</th><th colspan="1">索引</th><th colspan="1">工作区</th></tr><tr><td colspan="1"><code>--soft</code></td><td colspan="1">调整到目标</td><td colspan="1">保留原状态</td><td colspan="1">保留原状态</td></tr><tr><td colspan="1"><code>--mixed</code></td><td colspan="1">调整到目标</td><td colspan="1">重置为目标树</td><td colspan="1">保留工作文件</td></tr><tr><td colspan="1"><code>--hard</code></td><td colspan="1">调整到目标</td><td colspan="1">重置为目标树</td><td colspan="1">按目标更新跟踪内容；阻挡写入的未跟踪路径也可能被覆盖或删除</td></tr></table></div></div>
+<h3 id="h3-6">soft：把提交入口后移，保留候选与编辑</h3>
+<p>下面三个实验分别克隆同一源仓库，彼此独立。不要在同一个分支上连续执行三个向后一步的 reset 来比较模式，那样每一步的起点已经不同。</p>
+<p>hard模式的风险不只涉及目前跟踪的文件（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-02">8.6</a> ）。若未跟踪路径阻挡目标版本的写入，也需要事先保全；不要把它与专门清理未跟踪内容的命令混为一谈。</p>
+<figure id="fig:scenario-08-02"><button aria-label="放大图8.6：hard模式可能影响阻挡目标的路径" class="zoom-image"><img alt="图8.6 hard模式可能影响阻挡目标的路径" height="298" loading="lazy" src="../assets/figure-8-6.webp" width="1178"/></button><figcaption><b>图 8.6</b> hard模式可能影响阻挡目标的路径</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>在独立副本中观察 soft</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+git clone lab08-reset-source lab08-soft
+cd lab08-soft
+printf 'Version: C\n' &gt; state.txt
+git add state.txt
+printf 'Version: D\n' &gt; state.txt
+git reset --soft reset-base
+git show HEAD:state.txt
+git show :state.txt
+cat state.txt
+git status --short
+git diff --cached -- state.txt
+git diff -- state.txt</code></pre></div>
+<p>结果应为 HEAD 中 A、索引中 C、工作文件中 D。原来提交 B 不再是本地 main 的端点，但 reset-tip 标签仍提供入口；即使没有标签，对象是否仍在也需要结合日志和维护条件判断，而非把 reset 等同于立即删除对象。soft 可以用于重新组织私有提交，但不会自动把改错的业务内容改正确。本例 C 和 D 是否应保留，仍要由任务决定。</p>
+<h3 id="h3-7">mixed：索引回到目标，编辑留在工作区</h3>
+<div class="code-block"><div class="code-bar"><span>在另一个副本中观察 mixed</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+git clone lab08-reset-source lab08-mixed
+cd lab08-mixed
+printf 'Version: C\n' &gt; state.txt
+git add state.txt
+printf 'Version: D\n' &gt; state.txt
+git reset --mixed reset-base
+git show HEAD:state.txt
+git show :state.txt
+cat state.txt
+git status --short</code></pre></div>
+<p>结果应为 A、A、D。索引中的 C 被目标树替换，D 仍留在工作区。因为 A 中还有 obstacle.txt，而 B 删除了它，索引也重新列入这个路径，但工作区没有该文件，因此还会看到相应未暂存删除。应按整棵目标树解释结果，不能只观察一个文件就概括整个仓库。mixed 是常见的默认模式，但“默认”不表示无需检查。它同样会移动当前分支入口，并替换索引候选内容。</p>
+<h3 id="h3-8">hard：更新工作文件，也可能影响未跟踪阻挡路径</h3>
+<p>在第三个副本中，先为即将被覆盖的未跟踪 obstacle.txt 保存独立副本。scratch.txt 与目标树没有路径冲突，用来对照 hard 与“删除所有未跟踪文件”的区别。</p>
+<div class="code-block"><div class="code-bar"><span>验证 hard 的实际覆盖范围</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+git clone lab08-reset-source lab08-hard
+cd lab08-hard
+printf 'Version: C\n' &gt; state.txt
+git add state.txt
+printf 'Version: D\n' &gt; state.txt
+printf 'Temporary untracked note\n' &gt; obstacle.txt
+printf 'Unrelated untracked draft\n' &gt; scratch.txt
+cp obstacle.txt ../obstacle08-saved.txt
+git reset --hard reset-base
+git show HEAD:state.txt
+git show :state.txt
+cat state.txt
+cat obstacle.txt
+cat scratch.txt
+git status --short</code></pre></div>
+<p>state.txt 的三个位置都变成 A；obstacle.txt 被目标提交中的已跟踪内容替换；无关的 scratch.txt 仍在并保持未跟踪。这说明两个同样重要的边界：hard 不是清理全部未跟踪文件的命令，但不能因此认为它绝不影响任何未跟踪内容。</p>
+<p>从未提交、未另行保存的编辑，不能指望 reflog 取回。即使某份内容曾进入对象数据库，也不代表存在稳定可识别的恢复入口。因此，执行覆盖操作之前应先保护内容，而非执行之后再赌对象是否仍然存在。</p>
+<h2 id="h2-4">实验三：保留历史并追加纠错</h2>
+<p>现在回到父目录，开展独立的房间安排实验。该实验比较两类恢复任务：重新组织私有提交，以及在历史中留下纠错记录。</p>
+<div class="code-block"><div class="code-bar"><span>离开 reset 对照副本</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..</code></pre></div>
+<h2 id="h2-5">引导实验：同一错误的两种修正目标</h2>
+<p>“撤销最后一次修改”并不是完整需求。你可能希望重新组织尚未共享的提交，也可能希望在公开历史中留下纠错记录。先写出要保留什么，再选工具，能够避免名称相似却效果不同的命令混用。</p>
+<div class="code-block"><div class="code-bar"><span>准备一个可以重复观察的错误提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab08
+cd lab08
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: record room"
+printf 'Room: A999\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: change room by mistake"
+git tag mistake08
+git branch saved08</code></pre></div>
+<p>标签 mistake08 和分支 saved08 都指向错误提交，作为实验中的明确保留点。它们保存提交引用，不保存日后尚未提交的任意编辑。本例从干净状态开始，便于单独比较撤销命令；真实项目必须另外处理当前工作文件。</p>
+<div class="code-block"><div class="code-bar"><span>方案一：保留编辑，重新组织最近提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git reset --soft HEAD~1
+git diff --cached
+git show HEAD:room.txt
+cat room.txt</code></pre></div>
+<p>此时 HEAD 回到 A101 的提交，但索引与工作文件仍是 A999，因此 cached diff 能看到错误改动。soft 没有替你修正业务内容，仅撤下最近提交，让候选变化重新等待组织。你需要编辑正确内容、重新 add，再创建合适的提交。</p>
+<p>为了比较另一种目标，切到已保存的错误版本所在分支。下面的 restore 会把候选内容与工作文件恢复为 HEAD；在本实验中，这是有意丢弃那份已由 saved08 保留的编辑。不要把这条复原命令直接搬到有未保存工作的项目。</p>
+<div class="code-block"><div class="code-bar"><span>方案二：保留既有历史并追加纠错记录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git restore --source=HEAD --staged --worktree -- room.txt
+git switch saved08
+git revert --no-edit mistake08
+git log --oneline -3
+git show HEAD:room.txt</code></pre></div>
+<p>新提交中的文件应恢复为 A101，但错误提交仍在它的祖先历史中。revert 的作用是增加一条反向变更，并非不移动任何引用：创建新提交后，当前分支照常前进。公开共享的历史通常优先采用这种追加纠错的方式。</p>
+<h3 id="h3-9">恢复之前先创建救援引用</h3>
+<p>如果误移动了分支，reflog 可以帮助寻找本地曾经记录的提交。找到候选后，先用 branch 创建 rescued 名称，再用 show 检查内容与父关系。这比立即 hard reset 当前工作目录更容易保留现场。reflog 是本地日志，不会随普通 clone 转移，也不是从未保存编辑的备份。图<a class="book-ref" href="../chapters/08.html#fig:rescue-path">8.7</a>区分了识别、保留与恢复三个步骤。能找到标识不等于已经确认目标正确，创建名字也不等于已经决定替换当前分支；分开执行可以在每一步检查证据。</p>
+<figure id="fig:rescue-path"><button aria-label="放大图8.7：先保留证据，再选择恢复动作" class="zoom-image"><img alt="图8.7 先保留证据，再选择恢复动作" height="144" loading="lazy" src="../assets/figure-8-7.webp" width="985"/></button><figcaption><b>图 8.7</b> 先保留证据，再选择恢复动作</figcaption></figure>
+<h3 id="h3-10">revert 抵消改动，不删除祖先关系</h3>
+<p>revert 计算指定提交所引入的改动，并尝试在当前位置应用相应抵消变化，然后创建新提交。当前分支会照常前进；“不改写既有历史”不是“不移动任何引用”。错误提交仍可通过父关系追溯（图 <a class="book-ref" href="../chapters/08.html#fig:principle-ch08-04">8.8</a> ）。</p>
+<figure id="fig:principle-ch08-04"><button aria-label="放大图8.8：追加纠错保留已有历史（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图8.8 追加纠错保留已有历史（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-8-8.webp" width="1124"/></button><figcaption><b>图 8.8</b> 追加纠错保留已有历史（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>如果错误提交之后还有其他工作，revert 不会无条件把整棵树恢复为错误提交之前的状态。它尝试抵消所选改动，同时保留其他工作；依赖和文本上下文发生变化时，也可能冲突。解决时要重新检查当前需求，而非把旧逆向补丁当作绝对正确的答案。</p>
+<p>需要先检查抵消结果时，可以使用 <code>--no-commit</code>，再审查暂存内容并决定提交方式。多个相关抵消还要考虑依赖与顺序。不要把一串互相依赖的提交按任意顺序撤销。</p>
+<h2 id="h2-6">实验四：撤销合并以后，再次合并会怎样</h2>
+<p>撤销合并产生新的内容变化，却不会自动抹去原来已经记录的祖先关系。因此再次合并同一主题时，Git对“已经包含”的判断可能与直觉不同。下面同时检查文件与可达关系，再讨论如何重新引入需要的变化。</p>
+<h3 id="h3-11">主线父项用于解释需要抵消的变化</h3>
+<p>合并提交有多个父提交，revert 必须知道以哪一个父项作为比较主线。<code>-m 1</code> 表示相对第一父理解合并引入的变化并抵消，不是“保证整棵当前树回到第一父”。如果合并之后还存在其他修改，结果还要考虑这些修改（图 <a class="book-ref" href="../chapters/08.html#fig:principle-ch08-05">8.9</a> ）。</p>
+<figure id="fig:principle-ch08-05"><button aria-label="放大图8.9：撤销合并仍保留祖先关系（箭头表示本例历史可达关系，不要求相邻直接父项）" class="zoom-image"><img alt="图8.9 撤销合并仍保留祖先关系（箭头表示本例历史可达关系，不要求相邻直接父项）" height="171" loading="lazy" src="../assets/figure-8-9.webp" width="1177"/></button><figcaption><b>图 8.9</b> 撤销合并仍保留祖先关系（箭头表示本例历史可达关系，不要求相邻直接父项）</figcaption></figure>
+<p>下面创建一个真正分叉的合并，然后立即撤销。因为没有夹入后续工作，文件结果容易与主线父项对照。</p>
+<p>撤销合并主要纠正内容，不会抹除原合并的历史连接（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-04">8.10</a> ）。再次引入同一主题时，需要同时考虑已有祖先关系与当前内容，而非只重复先前的合并命令。</p>
+<figure id="fig:scenario-08-04"><button aria-label="放大图8.10：撤销合并后仍保留祖先事实" class="zoom-image"><img alt="图8.10 撤销合并后仍保留祖先事实" height="298" loading="lazy" src="../assets/figure-8-10.webp" width="1177"/></button><figcaption><b>图 8.10</b> 撤销合并后仍保留祖先事实</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>建立带有任务文件的合并</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab08-merge
+cd lab08-merge
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Course baseline\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish baseline"
+git switch -c topic
+printf 'Feature exercise\n' &gt; feature.txt
+git add feature.txt
+git commit -m "docs: add feature exercise"
+git switch main
+printf 'Main schedule\n' &gt; schedule.txt
+git add schedule.txt
+git commit -m "docs: add main schedule"
+git merge --no-ff topic -m "merge: integrate feature exercise"
+git tag merged08
+git rev-list --parents -n 1 merged08
+git diff 'merged08^1' merged08</code></pre></div>
+<p>相对第一父，本次合并增加 feature.txt。相对第二父，还会看到主线独有的 schedule.txt。主线父项决定“这次整合带来什么”的观察角度，不能凭想要保留哪个作者来选择数字。</p>
+<div class="code-block"><div class="code-bar"><span>抵消合并，再检查重复合并</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git revert --no-edit -m 1 merged08
+git tag undone08
+git ls-tree --name-only HEAD
+git merge topic
+git merge --no-ff topic
+git merge-base --is-ancestor topic HEAD</code></pre></div>
+<p>撤销后 feature.txt 不在当前树中，schedule.txt 保留。但 topic 仍是 HEAD 的祖先；两次 merge 都不会因为文件被抵消就重新应用旧工作，<code>--no-ff</code> 也不是强制重新播放已包含提交的开关。Git 判断是否已经包含一个来源，依据历史可达关系，而非当前目录里是否还能看到该来源的每个文件。这是合并撤销最需要理解的一点。</p>
+<h3 id="h3-12">重新引入需要明确新的决定</h3>
+<p>若团队确认原整合现在应恢复，可以考虑抵消那次抵消，并处理当前上下文；若需求已经改变，也可能需要新的修复提交和新的评审。不能一概说“给旧分支再补一个提交，就会自动恢复曾被撤销的全部内容”。本实验选择恢复原整合，因此撤销 undone08：</p>
+<div class="code-block"><div class="code-bar"><span>重新引入已确认需要的整合内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git revert --no-edit undone08
+cat feature.txt
+cat schedule.txt
+git log --graph --oneline --all</code></pre></div>
+<p>feature.txt 重新出现，历史同时保留原合并、撤销与恢复三个决定。真实项目还需验证当前依赖和测试，不应仅凭文件名重新出现就完成验收。</p>
+<h2 id="h2-7">实验五：amend 替换最近提交的候选版本</h2>
+<h3 id="h3-13">新提交通常沿用旧提交的父项</h3>
+<p>amend 用当前索引准备一份替代提交，并按选项处理提交说明等元数据。对普通非合并提交，替代提交的父项通常沿用被替代提交的父项，<strong>不是以被替代提交本身作为父项再追加一代</strong>。否则它就仅普通追加提交，无法表达“替换最近这一次”的效果（图 <a class="book-ref" href="../chapters/08.html#fig:principle-ch08-06">8.11</a> ）。</p>
+<figure id="fig:principle-ch08-06"><button aria-label="放大图8.11：amend替代与旧对象（每行对照一组条件与解释）" class="zoom-image"><img alt="图8.11 amend替代与旧对象（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-8-11.webp" width="1237"/></button><figcaption><b>图 8.11</b> amend替代与旧对象（每行对照一组条件与解释）</figcaption></figure>
+<p>旧提交是否变成不可达，取决于是否还有标签、其他分支和日志等入口；不能一律说 amend 后旧提交立即成为悬空对象。下面刻意保留一个标签，便于观察旧新两种版本。</p>
+<p>amend构造替代提交，名称入口随之更新（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-05">8.12</a> ）。旧对象与新对象应分别查询；说明未改变并不表示提交身份未改变，保留旧入口也不代表它仍是当前分支末端。</p>
+<figure id="fig:scenario-08-05"><button aria-label="放大图8.12：修订最近提交保留旧新两种身份" class="zoom-image"><img alt="图8.12 修订最近提交保留旧新两种身份" height="315" loading="lazy" src="../assets/figure-8-12.webp" width="1160"/></button><figcaption><b>图 8.12</b> 修订最近提交保留旧新两种身份</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>补入遗漏文件并比较父关系</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab08-amend
+cd lab08-amend
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Base material\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish base"
+printf 'Lesson material\n' &gt; lesson.txt
+git add lesson.txt
+git commit -m "docs: add lesson material"
+git tag before-amend
+printf 'Exercise material\n' &gt; exercise.txt
+git add exercise.txt
+git commit --amend --no-edit
+git rev-parse before-amend HEAD
+git rev-parse 'before-amend^' 'HEAD^'
+git show --stat before-amend
+git show --stat HEAD</code></pre></div>
+<p>旧新提交因树内容不同而具有不同标识，两个父标识则应相同。旧提交只增加 lesson.txt，替代提交同时增加 lesson.txt 与 exercise.txt。<code>--no-edit</code> 保留说明文本，不表示不改变提交对象。</p>
+<h3 id="h3-14">修改说明也要检查当前索引</h3>
+<p>amend 同样会使用准备提交的索引内容。若只想改说明，却忘记已有其他暂存文件，就可能把无关改动一并纳入替代提交。因此先检查状态和暂存差异，再执行修改。</p>
+<div class="code-block"><div class="code-bar"><span>在确认索引后修订提交说明</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git status --short
+git diff --cached
+git commit --amend -m "docs: add lesson and exercise materials"
+git log --oneline -2</code></pre></div>
+<p>是否适合 amend 取决于历史是否已被依赖以及团队约定，而非仅凭“最近一次提交”判断。补充一个公开修复提交，往往比要求所有协作者重新适配旧标识更清楚。</p>
+<h2 id="h2-8">实验六：stash 保存范围与应用冲突</h2>
+<h3 id="h3-15">临时收起工作需要说明包含哪些文件</h3>
+<p>stash 可以记录工作区与索引的相关状态，便于临时恢复较干净的工作环境。默认主要处理跟踪内容；<code>-u</code> 还包含未跟踪文件，但通常不包含被忽略的内容；<code>-a</code> 则进一步包含忽略内容，使用前应确认不会收集大量缓存或不适合放入对象库的文件（图 <a class="book-ref" href="../chapters/08.html#fig:principle-ch08-07">8.13</a> ）。</p>
+<figure id="fig:principle-ch08-07"><button aria-label="放大图8.13：stash应用后的核对（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图8.13 stash应用后的核对（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-8-13.webp" width="1109"/></button><figcaption><b>图 8.13</b> stash应用后的核对（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>stash 由 Git 对象、相关引用与日志维护，并不是仓库外的独立独立备份。它适合短期现场管理，不替代长期分支提交或可靠备份。默认 push 也不是删除所有 ignored 文件的清理操作。</p>
+<div class="code-block"><div class="code-bar"><span>保存暂存内容、后续编辑与未跟踪草稿</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab08-stash
+cd lab08-stash
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '*.cache\n' &gt; .gitignore
+printf 'Line: base\n' &gt; state.txt
+git add .gitignore state.txt
+git commit -m "docs: establish stash baseline"
+printf 'Line: staged\n' &gt; state.txt
+git add state.txt
+printf 'Line: working\n' &gt; state.txt
+printf 'Untracked plan\n' &gt; draft.txt
+printf 'Disposable cache\n' &gt; build.cache
+git stash push -u -m "lesson draft with staged boundary"
+git stash list
+git stash show --stat --include-untracked 'stash@{0}'
+git status --short
+cat build.cache</code></pre></div>
+<p>跟踪文件恢复到基线，未跟踪草稿被本次 stash 收起，被忽略的 build.cache 仍在。因此，status 干净不表示目录只剩下已提交文件；还可能存在忽略内容。</p>
+<h3 id="h3-16">apply 保留记录，索引边界需要额外考虑</h3>
+<div class="code-block"><div class="code-bar"><span>尝试恢复原来的索引边界</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git stash apply --index 'stash@{0}'
+git show :state.txt
+cat state.txt
+cat draft.txt
+git status --short
+git stash list
+git stash drop 'stash@{0}'</code></pre></div>
+<p>本例应恢复索引中的 staged 和工作区中的 working，并取回 draft.txt。<code>--index</code> 请求恢复原来的索引状态；它也可能因当前现场或冲突条件而失败，不能把原暂存边界的复现当成所有情况下都能完成的保证。</p>
+<p>stash的保存范围不是项目目录的无条件完整副本（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-06">8.14</a> ）。保存前先列出需要保护的内容，保存后再核对记录；外部资源与平台资料也应另行安排。</p>
+<figure id="fig:scenario-08-06"><button aria-label="放大图8.14：现场保存范围由选项决定" class="zoom-image"><img alt="图8.14 现场保存范围由选项决定" height="426" loading="lazy" src="../assets/figure-8-14.webp" width="1169"/></button><figcaption><b>图 8.14</b> 现场保存范围由选项决定</figcaption></figure>
+<p>apply 后记录仍在。确认内容取回后，本实验主动 drop 该记录；drop 不会把刚取回的工作文件同时删掉。若仍不确定恢复是否完整，应先保留记录，或建立更明确的分支成果。</p>
+<h3 id="h3-17">pop 冲突时，记录通常会保留</h3>
+<p>先把取回的草稿再次收起，再在当前分支提交另一种内容，构造同一位置的分歧。</p>
+<div class="code-block"><div class="code-bar"><span>制造一次 stash 应用冲突</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git stash push -u -m "local plan before upstream change"
+printf 'Line: upstream\n' &gt; state.txt
+git add state.txt
+git commit -m "docs: record another accepted wording"
+git stash pop 'stash@{0}'
+git status --short
+git ls-files -u
+git stash list</code></pre></div>
+<p>pop <strong>预期冲突</strong>。记录没有像成功应用时那样被自动丢弃，应先核对列表，不要立即反复 pop。这里也不能把标记两侧机械理解成永久固定的“我的”和“别人的”；应结合当前基线和保存时的编辑理解。</p>
+<p>stash 应用冲突不等同于一次正在进行的普通分支合并。不能未经检查就执行 merge 的继续或中止命令。先保护现场，再根据需要编辑、暂存和提交，或者选择明确的路径恢复方案。</p>
+<p>应用保存的现场可能产生内容冲突（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-07">8.15</a> ）。出现冲突时应先检查工作文件和保存列表，再决定后续操作，避免重复应用或过早删除唯一的保存入口。</p>
+<figure id="fig:scenario-08-07"><button aria-label="放大图8.15：应用冲突时保留记录并核对现场" class="zoom-image"><img alt="图8.15 应用冲突时保留记录并核对现场" height="426" loading="lazy" src="../assets/figure-8-15.webp" width="1169"/></button><figcaption><b>图 8.15</b> 应用冲突时保留记录并核对现场</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>解决保存现场与当前内容之间的分歧</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Line: combined after review\n' &gt; state.txt
+git add state.txt draft.txt
+git diff --cached --check
+git diff --cached
+git ls-files -u
+git commit -m "docs: reconcile current wording and saved plan"
+git stash drop 'stash@{0}'
+git stash list
+git status --short</code></pre></div>
+<p>先确认最终内容和提交，再删除已经不需要的 stash。若在冲突尚未处理时 drop，仅减少一个恢复入口，不会让冲突自动解决。</p>
+<h3 id="h3-18">其他现场组织方法</h3>
+<p><code>--keep-index</code> 可以在保存其他编辑时保留已暂存部分，便于单独检查准备提交的内容；<code>--staged</code> 则选择保存暂存改动。它们处理的范围不同，初次使用应在小仓库中观察工作区与索引的结果，而非把选项名称当作完整语义。</p>
+<p>对需要长期保留、多人共享或明确评审的工作，临时分支提交通常比堆积很多 stash 更易管理。临时成果仍应避免包含凭据和不适宜入库的数据。第 14 章的多工作树还提供另一种并行编辑现场的组织方式。</p>
+<h2 id="h2-9">实验七：利用本地日志先建立救援入口</h2>
+<span id="sec:reflog"></span>
+<h3 id="h3-19">日志记录位置变化，不保存任意编辑</h3>
+<p>reflog 记录本地相应引用曾经的位置及操作说明。哪些引用拥有日志、日志保留多久，受仓库类型、配置和维护策略影响。它不记录所有可能发生的文件变化，也不会随普通 clone 把另一台机器的本地日志一并传来。</p>
+<p>普通工作仓库的 HEAD 日志常能帮助找到切换、提交和重置前的位置。删除分支时，不应假设该分支自己的日志仍完整存在；可以结合 HEAD 或其他仍可用的入口寻找候选对象。</p>
+<div class="code-block"><div class="code-bar"><span>删除任务分支后检查可用日志</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab08-rescue
+cd lab08-rescue
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Recovery baseline\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish recovery baseline"
+git switch -c task
+printf 'Recover this committed plan\n' &gt; plan.txt
+git add plan.txt
+git commit -m "docs: record recoverable plan"
+git switch main
+git branch -D task
+git reflog --oneline HEAD</code></pre></div>
+<p>刚才的 checkout／switch 记录使 HEAD 日志仍包含任务端点。真实恢复应阅读日志并逐个检查候选，不能永远假设“倒数第二条就是正确版本”。本实验没有其他移动，因此下面的 HEAD 第 1 条历史位置恰好是要恢复的提交。</p>
+<p>日志中的位置序号会随新操作变化，恢复前应核对提交标识和内容（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-08">8.16</a> ）。先建立保护入口，可以减少后续查询或切换使目标失去明确名称的风险。</p>
+<figure id="fig:scenario-08-08"><button aria-label="放大图8.16：先建立救援入口再继续恢复" class="zoom-image"><img alt="图8.16 先建立救援入口再继续恢复" height="315" loading="lazy" src="../assets/figure-8-16.webp" width="1160"/></button><figcaption><b>图 8.16</b> 先建立救援入口再继续恢复</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>读取候选、建立入口并验证文件</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>RESCUE08=$(git rev-parse 'HEAD@{1}')
+git show --stat "$RESCUE08"
+git branch rescued "$RESCUE08"
+git show rescued:plan.txt
+git log --oneline main..rescued
+git status --short</code></pre></div>
+<p>变量 RESCUE08 仅保存本实验刚查询的标识，便于后续命令使用。创建 rescued 没有覆盖 main 的工作文件，也没有决定最终采用哪种整合方式；它先把候选提交保留下来，留出继续检查的余地。图<a class="book-ref" href="../chapters/08.html#fig:rescue-path">8.7</a>将恢复分成识别、保留与验证：能找到标识，仍需检查它是否包含需要的计划；建立名字，也不等于已经决定替换当前分支。</p>
+<h3 id="h3-20">恢复能力有条件，不作永久保证</h3>
+<p>日志条目可能到期，不可达对象可能在相应维护条件下清理；即使查到旧标识，对象也未必仍可读取。固定的默认期限不能当作每个仓库的恢复承诺。不要为验证“能不能救回”而在真实工作库提前执行清理。</p>
+<p>reflog 也不能找回从未进入 Git 对象或独立备份的工作区内容。编辑器本地历史、文件系统快照和其他副本可能提供额外线索，但那是其他机制。第 15 章会建立包含独立备份与恢复演练的完整方案。</p>
+<h2 id="h2-10">共享历史中的恢复决策</h2>
+<span id="sec:pushed"></span>
+<p>已发布历史可能被同伴分支、标签、构建与外部记录引用。替换这些入口会要求依赖者重新判断旧新关系。因此，普通共享纠错通常优先选择追加修复或 revert，让新决定可以被顺序获取与评审。</p>
+<p>这是一项协作约束，不应简化为“私有分支怎样改都安全，公开分支任何情况下都不能改”。私有分支也可能有未保护草稿；敏感信息事故则可能需要在撤销凭据之后协调历史清理。方案应由真实依赖关系、权限和团队规则决定。</p>
+<p><code>--force-with-lease</code> 为强制更新增加预期值检查，但不能判断替换后的内容是否正确，也不能替代沟通。后台抓取可能改变隐含的跟踪预期值；重要操作应理解显式预期值与服务器保护规则的作用。教材不会把某一个强制选项称为无条件安全。</p>
+<p>处理密钥泄露时，删除当前文件或追加 revert 都不能让旧凭据重新变得安全。应先撤销或轮换凭据，再处理历史、外部副本和缓存；也不能指望要求同伴简单重克隆就能删除所有已经流出的副本。</p>
+<h2 id="h2-11">纠错决策：先保留什么，再选择命令</h2>
+<p>恢复命令看起来相近，实际影响的层次与历史不同。先列出需要保留的文件、候选和共享关系，再选择动作，能够使纠错目标清楚且便于验收。</p>
+<h3 id="h3-21">恢复目标必须具体</h3>
+<p>“回到昨天”至少可能表示三种任务：查看昨天提交中的文件；让当前工作文件恢复为某一状态；在共享历史中撤销昨天引入的一项变化。三者的输入、影响范围和协作后果都不同。选择命令前，先把目标改写为“保留哪些现有成果，改变哪些状态”。</p>
+<p>例如错误只在未提交的工作文件中，而已暂存内容仍然正确，应优先考虑从索引恢复特定路径。若错误提交已经被其他成员使用，则通常应讨论追加修正，而非直接移动公共分支。若仅需要取出旧文件的一段内容，可以先查看或导出，再作局部编辑，不必让整个项目退回旧位置。</p>
+<h3 id="h3-22">把草稿与历史分别保全</h3>
+<p>恢复操作经常围绕提交对象展开，但现场还可能包含未跟踪文件、索引中的候选和编辑器尚未保存的内容。提交级备份入口不能覆盖这些全部状态。应根据现场分别保存必要草稿，并记录当前分支、提交和操作状态。</p>
+<p>对重要项目，先复制现场或创建可信副本，再在副本上调查，会降低继续写入造成的干扰。保全不等于随意执行清理命令；清理可能删除恢复所需对象或工作文件。是否能恢复，应由实际存在的对象和副本决定。</p>
+<h2 id="h2-12">实验拓展：撤销错误，保留后续正确变化</h2>
+<p>本实验建立三个提交：基线、错误的地点调整、正确的阅读说明。目标是撤销地点调整，同时保留后续阅读说明，并让公共历史仍可追溯。</p>
+<div class="code-block"><div class="code-bar"><span>建立包含错误和后续成果的历史</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir correction08
+cd correction08
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: establish the course room"
+printf 'Room: Wrong\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: change the room incorrectly"
+BAD08=$(git rev-parse HEAD)
+printf 'Read the staged diff before committing.\n' &gt; guide.txt
+git add guide.txt
+git commit -m "docs: add the review guide"
+git revert --no-edit "$BAD08"</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>证明错误被撤销，而后续成果与历史仍保留</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git log -4 --oneline
+git show HEAD:room.txt
+git show HEAD:guide.txt
+git merge-base --is-ancestor "$BAD08" HEAD
+test "$(git rev-list --count HEAD)" = 4
+grep -q 'Room: A101' room.txt
+grep -q 'Read the staged diff' guide.txt
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>结果有四项提交。错误提交仍是当前历史的祖先，说明撤销没有删除它；新增提交抵消其内容变化，阅读说明则继续存在。若把分支直接移回基线，后续正确成果的入口也会受到影响，因此不能把两种做法视为等价。</p>
+<p>revert围绕指定提交的变化形成反向修改（图 <a class="book-ref" href="../chapters/08.html#fig:scenario-08-03">8.17</a> ）。若后来已有其他工作，应检查反向变化与这些工作的关系，不能把它等同于无条件回到某次旧快照。</p>
+<figure id="fig:scenario-08-03"><button aria-label="放大图8.17：反向变化与整树恢复的区别" class="zoom-image"><img alt="图8.17 反向变化与整树恢复的区别" height="426" loading="lazy" src="../assets/figure-8-17.webp" width="1169"/></button><figcaption><b>图 8.17</b> 反向变化与整树恢复的区别</figcaption></figure>
+<h2 id="h2-13">恢复线索的可信度与生命周期</h2>
+<p>日志、对象标识和其他副本提供不同强度的线索，也受保留与可访问条件限制。恢复之前既要寻找候选，也要核对其内容与来源是否符合任务。</p>
+<h3 id="h3-23">reflog 是本地线索，而非永久保险</h3>
+<p>reflog 记录某些本地引用的更新，可为误移动后的定位提供帮助。但不同仓库的记录可能不同，记录也有保留与过期条件。新克隆通常不能取得另一台计算机的全部本地 reflog，因此应尽早调查，不应将它作为唯一备份。</p>
+<p>找到疑似目标后，应先核对文件内容、父关系和提交说明，再建立清晰的保存入口。短标识或时间描述可能不足以唯一定位，特别是在多条相近历史并存时。保存入口以后，再决定怎样把成果整合回正常工作线。</p>
+<h3 id="h3-24">没有进入 Git 的内容可能无法由 Git 找回</h3>
+<p>如果某段编辑从未暂存、提交或以其他方式写入 Git 对象库，Git 不一定保存过它。此时应检查编辑器历史、系统备份或其他副本。即使发现不可达对象，也需要判断对象类型和内容，不能承诺每次误删都有完整恢复路线。</p>
+<p>本章强调恢复边界，是为了帮助读者建立日常保全习惯。及时形成有意义的提交、定期验证备份、对高影响操作先明确范围，比事后依赖偶然线索更可靠。</p>
+<h2 id="h2-14">迁移练习：为三种现场分别制定方案</h2>
+<p>现场甲：只有工作区出现误改；现场乙：本地提交错误且尚未分享；现场丙：共享分支已包含错误，另有成员继续开发。请分别说明保留目标、查询证据和纠错策略。答案应写出为什么适用，而不仅列出命令名称。</p>
+<p>参考分析：甲重点是选择正确内容来源与路径；乙允许在保全后整理本地历史，但仍须保留需要的草稿；丙需要考虑其他成员依赖，通常优先追加修正并完成协作说明。若错误涉及凭据，三种现场都应先处理凭据有效性，再讨论历史呈现。</p>
+<h2 id="h2-15">本章小结</h2>
+<p>restore 根据来源与目标恢复路径内容；整提交 reset 调整入口并按模式处理索引和工作区；revert 追加抵消改动而保留历史连接；amend 创建最近提交的替代版本。选择工具之前，应先说明哪些内容和关系必须保留。</p>
+<p>stash 是有范围和冲突条件的现场管理工具，reflog 是有保留边界的本地位置日志。二者都不能代替独立备份，也不能让所有未提交编辑自动获得永久恢复能力。</p>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-16">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:8.1"><summary><span class="difficulty">应用</span><b>8.1</b><span>为“取消误暂存”和“恢复旧文件内容”分别说明来源、目标及需要保留的内容。为什么二者不能仅用“撤销”概括？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 恢复来源 / 写入目标 / 保留要求</p><p>取消误暂存通常以HEAD内容更新索引并保留工作编辑；恢复旧文件则选定历史来源并写工作区或索引。必须分别说明来源、目标和需要保留的内容。“撤销”不能表达这三项条件。</p><p>在执行前用简短状态表分别记录HEAD、索引和磁盘内容，再圈出允许变化的一栏。这个步骤把含混的“撤销”转成可检查任务。执行后按同一表比较，能够发现命令是否写入了错误层。</p></div></details><details class="exercise" id="ex:8.2"><summary><span class="difficulty">应用</span><b>8.2</b><span>在 HEAD 为 B、索引为 C、工作区为 D 时，对目标 A 执行三个模式的 reset，分别写出三层内容；使用独立副本验证。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · reset模式 / 引用 / 索引与工作区</p><p>在本题整提交模式及受跟踪范围内，soft后为HEAD=A、索引=C、工作区=D；mixed后为A、A、D；hard后为A、A、A。独立副本还应核对未跟踪路径等边界，不能把矩阵延伸成全部磁盘文件的保证。</p><p>应让三个独立副本具有相同起始内容，再分别应用模式，避免前一次操作改变后一次实验条件。报告同时保留旧入口和最终三层查询；仅展示status无法完整说明文件具体变成了什么。</p></div></details><details class="exercise" id="ex:8.3"><summary><span class="difficulty">基础</span><b>8.3</b><span>解释 mixed 实验中 obstacle.txt 为什么表现为未暂存删除。hard 实验又为什么覆盖 obstacle.txt，却保留 scratch.txt？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 受跟踪覆盖 / 未跟踪文件 / 路径障碍</p><p>mixed只重置索引，目标中存在而工作区缺少的路径会表现为未暂存删除。hard检出目标受跟踪路径时可覆盖挡路的obstacle，其他无关scratch可能保留。结论来自本例路径关系，不是“hard必删全部未跟踪文件”。</p><p>需要核对目标提交是否拥有同名受跟踪路径，以及未跟踪文件是否妨碍写入。无关草稿可能保留，阻挡目标路径的内容却可能受影响。这个条件差异解释了不能从一个保留例子推导所有未跟踪内容都安全。</p></div></details><details class="exercise" id="ex:8.4"><summary><span class="difficulty">应用</span><b>8.4</b><span>带路径的 reset 与本节整提交 reset 有何不同？给出一个不移动分支的索引恢复需求。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 路径reset / 候选恢复 / 引用位置</p><p>带路径reset用于选择性恢复索引条目，通常不移动当前分支。需求例如取消某个文件的暂存并保留工作编辑，可使用与HEAD比较的索引恢复；应把它与移动整条当前分支的reset区分。</p><p>可先记录当前分支的提交标识，只对一条路径调整索引，再验证分支位置保持原值、该路径候选发生变化。整提交形式与路径形式应分开阅读参数，避免把“reset必然移动HEAD”写成统一规则。</p></div></details><details class="exercise" id="ex:8.5"><summary><span class="difficulty">应用</span><b>8.5</b><span>为什么 revert 一个旧提交不等于无条件恢复到它的父提交整棵树？设计带有后续独立工作的例子。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 反向变更 / 后续依赖 / 共享历史</p><p>revert计算指定变化的反向并应用到当前状态，后续独立工作可以保留，也可能出现冲突。例如先增加标题，再增加联系信息；撤销标题修改不意味着必须删除后来独立加入的联系信息。</p><p>构造后续独立修改并确认其在revert后继续存在，再增加依赖旧改动的情况观察冲突。处理时依据当前需求确定结果，不能把旧父提交的整树当作唯一目标。完成后保留新增纠错提交以便追溯。</p></div></details><details class="exercise" id="ex:8.6"><summary><span class="difficulty">应用</span><b>8.6</b><span>撤销合并后，topic 仍是 HEAD 的祖先说明什么？为什么增加 <code>--no-ff</code> 也不能强制重新应用已经包含的旧提交？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 合并撤销 / 主线选择 / 历史可达性</p><p>原合并关系仍在历史中，topic作为祖先已经被包含；revert只追加内容变化。--no-ff不要求对已包含历史重新播放补丁。需要重新引入时分析是否撤销原撤销或形成新修改，并核对业务结果。</p><p>撤销抵消的是所选主线比较下的内容变化，已有祖先关系仍然存在。若需要重新引入功能，可评估撤销该次纠错或形成新的修复提交；具体方案应重新测试依赖和最终内容，避免重复应用旧提交的错误预期。</p></div></details><details class="exercise" id="ex:8.7"><summary><span class="difficulty">应用</span><b>8.7</b><span>画出 amend 前后的父关系，解释旧提交是否仍可达需要检查哪些入口。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · amend / 替代对象 / 共享依赖</p><p>amend通常创建替代提交并沿用原提交的父关系，然后移动当前入口。旧提交是否仍可达取决于其他分支、标签、日志等入口；不能因为main已移动就说对象立即删除，也不能承诺永久保留。</p><p>应同时画出旧提交与替代提交，它们可能具有相同父项但不同树或元数据。继续沿新提交开发时，相关后继将连接新的标识。旧对象是否还能访问，需另查保护名称、日志与维护条件。</p></div></details><details class="exercise" id="ex:8.8"><summary><span class="difficulty">基础</span><b>8.8</b><span>比较 stash 的默认、未跟踪扩展和忽略扩展范围。为什么 status 干净不能证明目录中不存在其他文件？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · stash范围 / 未跟踪 / 忽略文件</p><p>默认stash主要保存受跟踪的选定现场，-u扩展到未跟踪文件，-a还可纳入忽略内容，具体选项另有范围。普通status可能不显示忽略文件，所以干净状态不能证明目录没有其他资料。</p><p>建立三类文件分别观察默认保存与扩展选项的效果，再读取保存记录和磁盘。目录看似干净不能说明所有文件都进入stash；恢复前后还应核对候选是否按要求重建，以及冲突时记录是否仍保留。</p></div></details><details class="exercise" id="ex:8.9"><summary><span class="difficulty">应用</span><b>8.9</b><span>复现 pop 冲突，记录 stash 列表、索引阶段和工作文件。解释何时可以删除保存记录。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · pop冲突 / 现场核对 / 记录清理</p><p>pop应用冲突时记录通常保留，工作文件与索引可能仍待解决。核对stash list、未合并阶段和文件内容，完成解决并确认所需资料已另行保全以后，再显式删除对应记录，避免按记忆序号误删。</p><p>冲突后先检查实际文件和未合并条目，再查看stash列表。待解决结果已确认并形成适当保护以后，再决定是否删除保存记录。删除记录不会替代冲突解决，也不能证明业务内容已经完整。</p></div></details><details class="exercise" id="ex:8.10"><summary><span class="difficulty">应用</span><b>8.10</b><span>在救援实验中加入一次额外分支切换，再尝试使用原来的日志序号。解释为什么实际救援必须检查候选内容。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · reflog序号 / 完整标识 / 救援入口</p><p>额外切换会增加日志记录，使HEAD@{1}等序号指向不同事件。应阅读日志与候选提交的树、说明和父关系，先建保护入口再恢复；固定序号不代表跨操作稳定身份。</p><p>加入额外操作以后，相同序号可能指向不同记录。实际救援应检查提交说明、时间、树和父关系，选中正确对象后保存完整标识，并尽早建立独立名称，减少后续操作对查找过程的影响。</p></div></details><details class="exercise" id="ex:8.11"><summary><span class="difficulty">应用</span><b>8.11</b><span>设计一份恢复报告，列出初始现场、保全步骤、候选依据、最终命令和验证结果；明确哪些编辑从未被 Git 保存。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 恢复报告 / 草稿范围 / 独立验证</p><p>报告按现场、保全、候选、操作和验收组织。列出原分支、索引、工作编辑和未跟踪文件，说明候选来自何种记录；核对恢复后内容和入口，并明确从未保存到Git的编辑不在可证明恢复范围。</p><p>报告应列出哪些内容来自提交、索引、stash或外部副本，哪些内容没有可靠来源。恢复后从新位置核对关键文件，必要时构建测试。对尚不能恢复的编辑如实登记，不以状态干净替代恢复完整性。</p></div></details><details class="exercise" id="ex:8.12"><summary><span class="difficulty">应用</span><b>8.12</b><span>根据目标提交是否含同名路径，分析硬重置可能怎样影响未跟踪文件。为“保留全部实验草稿并恢复指定已跟踪路径”制定方案，说明操作前的保全、来源选择、写入目标及操作后验证。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 恢复范围 / 未跟踪文件 / 清理风险</p><p>先列出受跟踪、未跟踪与被忽略资料，保全仍需保留的草稿，再选择指定路径的明确来源和目标。硬重置会使相关已跟踪状态回到目标，也可能处理妨碍目标写入的路径，不能从无关草稿保留的例子推出全部未跟踪内容都安全。</p><p>若只需恢复一个路径，应优先评估较小范围的操作。完成后分别读取目标文件和草稿清单，确认候选是否按需求改变。不要把status干净当作草稿已被备份或全部恢复成功。</p></div></details><details class="exercise" id="ex:8.13"><summary><span class="difficulty">应用</span><b>8.13</b><span>比较默认stash、包含未跟踪或忽略内容的选项，以及keep-index和staged相关选择。设计一个应用后冲突的现场，说明哪些记录应保留，何时可以drop，如何证明候选与工作文件符合原定目标。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · stash选项 / 索引 / 冲突现场</p><p>使用相互独立的练习目录，分别建立已暂存编辑、未暂存编辑、未跟踪及忽略文件，再观察各选项实际保存和保留的范围。keep-index与staged面向不同选择，不能按字面推断二者等价。</p><p>发生应用冲突以后，读取保存列表、索引阶段和文件，先完成符合需求的解决，并按要求恢复候选，再建立必要保护。只有确认所需内容已完整保留后才考虑drop。删除一个保存入口不会自动清除冲突或证明测试已经通过。</p></div></details><details class="exercise" id="ex:8.14"><summary><span class="difficulty">综合</span><b>8.14</b><span>某公开主线错误合入功能，随后已有独立修复与文档提交；团队要求保留协作者历史，并计划修正后重新引入功能。请比较revert、reset与amend的适用性，解释撤销合并后的祖先关系，设计重新引入与草稿保全方案，并给出可检查的恢复报告。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 公开纠错 / 合并撤销 / 恢复证据</p><p>公开主线通常通过新增纠错提交保留既有关系；reset或amend若改写已经被依赖的入口，会增加协作者迁移责任，不能只按命令方便选择。撤销合并要明确主线比较，结果可抵消内容但不移除原祖先，因而再次合并同一来源通常不会重新应用旧变化。</p><p>重新引入时应评估撤销纠错或形成新的修复路线，结合当前依赖测试最终业务。操作前保护未提交草稿，操作后核对独立修复与文档仍在，并记录旧入口、新提交、最终文件及测试结果。对于从未被保存的编辑，应单列来源或缺失情况，不能用历史查询承诺找回。</p><p>建议为当前共享末端建立保护记录，保全工作草稿，再从合并提交的父项确认主线方向。追加撤销提交后验证独立修复和文档仍满足要求，并保留该次反向变化的说明。重新引入功能可按团队约定撤销先前的撤销，或形成包含必要修正的新变化；两条路线均须检查现有祖先关系和实际树差异。报告列出恢复前后提交、所保留成果、验证用例及独立取得结果，避免用重写公共入口省略协调。</p></div></details></section><section id="mindmap"><h2 id="review-17">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第8章复习导图" class="zoom-image"><img alt="第8章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-08.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="8">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="07.html"><small>← 上一章</small>远程仓库与协作</a><a href="09.html"><small>下一章 →</small>对象模型与内容寻址</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">恢复之前先回答四个问题</a><a href="#h2-2">实验一：restore 的来源与目标</a><a href="#h2-3">实验二：三个独立副本比较 reset</a><a href="#h2-4">实验三：保留历史并追加纠错</a><a href="#h2-5">引导实验：同一错误的两种修正目标</a><a href="#h2-6">实验四：撤销合并以后，再次合并会怎样</a><a href="#h2-7">实验五：amend 替换最近提交的候选版本</a><a href="#h2-8">实验六：stash 保存范围与应用冲突</a><a href="#h2-9">实验七：利用本地日志先建立救援入口</a><a href="#h2-10">共享历史中的恢复决策</a><a href="#h2-11">纠错决策：先保留什么，再选择命令</a><a href="#h2-12">实验拓展：撤销错误，保留后续正确变化</a><a href="#h2-13">恢复线索的可信度与生命周期</a><a href="#h2-14">迁移练习：为三种现场分别制定方案</a><a href="#h2-15">本章小结</a><a href="#review-16">本章习题与解析</a><a href="#review-17">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>
