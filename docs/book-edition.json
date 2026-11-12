@@ -4,14 +4,14 @@
   "author": "张庆科 编著",
   "pages_with_answers": 530,
   "student_pages": 461,
-  "pdf_sha256": "1dbcb01193b005f1f8fb2b929dfe300d040ae2b4a6b054f11ce5320a54c6b23c",
-  "preface_source_sha256": "71bc558d5f062e45bfa698bbb95a6471918997e1d44b50a15041ed9aee61442f",
+  "pdf_sha256": "0acb67ddfc1e21bae3a239bae8c7875d90a75a67ab54ebd9ee556f6b54d3935c",
+  "preface_source_sha256": "37c4b86a75d3e0cef9a8b157f7e4e57774ea0928fbbf9f93dba6bd66880414f5",
   "chapters": 17,
   "questions_and_answers": 218,
   "unnumbered_review_maps": 17,
   "review_points": 612,
   "numbered_figures": 251,
-  "tables": 32,
+  "tables": 33,
   "source_excerpts": 3,
   "generated_illustrations": 30,
   "git_skill_work_packages": 45,
@@ -26,5 +26,21 @@
     "teaching-guide": "off",
     "synopsis": "off"
   },
-  "scope": "Book PDF distributed with the manuscript; this repository supplies matching code, guidance, questions, diagrams and actual program image"
+  "scope": "Book PDF distributed with the manuscript; this repository supplies matching code, guidance, questions, diagrams and actual program image",
+  "native_editable_pages": 204,
+  "watermark": {
+    "default": "off",
+    "sharing_copy_provided": true,
+    "configurable": [
+      "text",
+      "size",
+      "angle",
+      "opacity",
+      "color",
+      "x",
+      "y",
+      "scope"
+    ]
+  },
+  "client_comparison_tables": 2
 }

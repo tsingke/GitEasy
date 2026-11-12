@@ -1003,7 +1003,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="scenario-08-08 先建立救援入口再继续恢复">
-    <mxGraphModel page="1" pageWidth="1230.0" pageHeight="650">
+    <mxGraphModel page="1" pageWidth="1230" pageHeight="650">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1704,7 +1704,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="scenario-17-03 金额以最小货币单位参与计算">
-    <mxGraphModel page="1" pageWidth="1230.0" pageHeight="650">
+    <mxGraphModel page="1" pageWidth="1230" pageHeight="650">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />

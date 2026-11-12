@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="current-directory-paths" name="图1.1 当前目录与相对路径">
+    <mxGraphModel page="1" pageWidth="900" pageHeight="450" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="home" value="用户主目录" parent="1" vertex="1" style="shape=folder;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F0F6FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
+        </mxCell>
+        <mxCell id="study" value="git-study：当前目录" parent="1" vertex="1" style="shape=folder;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F0F6FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="220" y="160" width="140" height="60" />
+        </mxCell>
+        <mxCell id="notes" value="notes.txt" parent="1" vertex="1" style="shape=document;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F0F6FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="400" y="280" width="140" height="60" />
+        </mxCell>
+        <mxCell id="pwd" value="pwd：确认当前目录&#10;用户主目录/git-study" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F0F6FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="580" y="40" width="220" height="80" />
+        </mxCell>
+        <mxCell id="relative" value="notes.txt定位当前目录内的文件&#10;../指向上一级目录" parent="1" vertex="1" style="rounded=1;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F0F6FC;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" x="580" y="280" width="220" height="80" />
+        </mxCell>
+        <mxCell id="contains0" parent="1" edge="1" source="home" target="study" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=none;strokeColor=#91ADC6;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="contains1" parent="1" edge="1" source="study" target="notes" style="edgeStyle=orthogonalEdgeStyle;rounded=0;endArrow=none;strokeColor=#91ADC6;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
