@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /GitEasy/
+Sitemap: https://tsingke.github.io/GitEasy/sitemap.xml

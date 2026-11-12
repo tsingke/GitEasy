@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="{{DESCRIPTION}}"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>{{TITLE}} · GitEasy</title>
+<link rel="icon" href="{{PREFIX}}assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="{{PREFIX}}style.css">
+<script src="{{PREFIX}}search-data.js" defer></script><script src="{{PREFIX}}app.js" defer></script>
+</head>
+<body data-page="{{PAGE}}" data-prefix="{{PREFIX}}">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="{{PREFIX}}index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav>{{NAV}}</nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1">{{CONTENT}}</main><aside class="page-toc" aria-label="本页目录">{{TOC}}<a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="{{PREFIX}}index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>自动化、安全与备份恢复 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="15" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>实践篇<span>/</span>第15章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 15 · 实践篇</div><h1>自动化、安全与备份恢复</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 45 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-15"></span>
+<p>个人可以靠记忆完成一次检查，团队需要把检查对象、触发时机和失败处理写清楚。项目还需要考虑凭据误提交、分支丢失和副本损坏。本章以“先定义要保护什么，再验证机制是否有效”为线索，连接自动检查与恢复演练。</p>
+<p><strong>学习目标：</strong>能部署并验证索引检查钩子；能区分本地检查、CI 与服务端合入规则；能说明凭据处置的先后关系；能先保存现场再建立救援入口；能验证全量与增量 bundle 的恢复，并列出未被 Git 历史覆盖的数据。</p>
+<p>检查对象 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 钩子实验 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> CI 的目标与权限 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 凭据事件 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 引用救援 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 对象损坏判断 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 备份恢复与演练。</p>
+<h2 id="h2-1">自动化首先需要明确输入与判定</h2>
+<p>“运行测试”还不够具体。测试读取工作区还是索引？比较两个提交还是检查整棵树？失败代表内容不合要求，还是依赖没有安装？规则若不回答这些问题，成功和失败都难以解释（图 <a class="book-ref" href="../chapters/15.html#fig:principle-ch15-01">15.1</a> ）。</p>
+<figure id="fig:principle-ch15-01"><button aria-label="放大图15.1：自动检查必须明确对象（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图15.1 自动检查必须明确对象（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-15-1.webp" width="1136"/></button><figcaption><b>图 15.1</b> 自动检查必须明确对象（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>图<a class="book-ref" href="../chapters/15.html#fig:guide-15-check-target">15.2</a>列出三种常见对象。提交前检查通常关注索引候选，编辑器检查常关注工作区，CI 常检查明确检出的提交树。三者可能相同，也可能因部分暂存、临时修复或平台合并引用而不同。</p>
+<figure id="fig:guide-15-check-target"><button aria-label="放大图15.2：检查必须说明它读取的是哪一份内容" class="zoom-image"><img alt="图15.2 检查必须说明它读取的是哪一份内容" height="143" loading="lazy" src="../assets/figure-15-2.webp" width="1075"/></button><figcaption><b>图 15.2</b> 检查必须说明它读取的是哪一份内容</figcaption></figure>
+<p>一个常见错误是钩子读取工作区，但 commit 使用索引：人已经把文件修好，却尚未重新 add，工作区测试通过，错误候选仍会入库。另一个错误是在干净 CI 检出后只检查 cached diff；索引与 HEAD 没有差异，命令可能什么也没有检查。</p>
+<p>可靠规则要有正例与反例，至少验证一次正确输入通过，一次故意错误被拒绝，修复后再次通过。检查器还应输出失败路径与原因，避免只显示一个不知来源的非零状态。</p>
+<h2 id="h2-2">Git 钩子与本地反馈</h2>
+<p>钩子是在指定 Git 事件前后运行的程序。常见 pre-commit 在创建提交前检查，commit-msg 检查提交说明，pre-push 在推送前执行；服务端的接收钩子还可以参与推送接收判断。各钩子的参数、工作目录和能否拒绝操作并不完全相同，应按本机文档核对。</p>
+<p>常见仓库默认从 Git 管理目录的 hooks 位置读取钩子，也可用 core.hooksPath 指定目录。工作树和其他仓库形式不一定具有普通的 .git 目录，通用工具应通过 Git 查询位置，而非处处拼接 .git/hooks。</p>
+<p>本地钩子有利于缩短反馈时间，但不能单独充当团队的强制验收机制（图 <a class="book-ref" href="../chapters/15.html#fig:scenario-15-01">15.3</a> ）。服务端检查应针对明确输入重新执行，并保留结果。</p>
+<figure id="fig:scenario-15-01"><button aria-label="放大图15.3：本地反馈与服务端验收分开设置" class="zoom-image"><img alt="图15.3 本地反馈与服务端验收分开设置" height="425" loading="lazy" src="../assets/figure-15-3.webp" width="1169"/></button><figcaption><b>图 15.3</b> 本地反馈与服务端验收分开设置</figcaption></figure>
+<p>客户端钩子有助于及时反馈，但不是无法绕过的安全边界。pre-commit 和 commit-msg 可被适用的 <code>--no-verify</code> 跳过，用户也能修改本地配置。CI、平台规则与服务端接收机制是不同层次的系统，不能直接称为同一类钩子的别名。</p>
+<h2 id="h2-3">完整实验一：检查候选，验证拒绝与绕过</h2>
+<p>本实验使用随书 course/tools/check_course.py，需要 Python 3.9 及以后版本。先把 COURSE_RESOURCE 的路径换成实际本地分发目录。它不是作者线上仓库必定已经存在的路径。全部操作在新的 lab15-checks 中进行，不更改全局配置（图 <a class="book-ref" href="../chapters/15.html#fig:principle-ch15-03">15.4</a> ）。</p>
+<figure id="fig:principle-ch15-03"><button aria-label="放大图15.4：工作文件通过与索引失败（每行对照一组条件与解释）" class="zoom-image"><img alt="图15.4 工作文件通过与索引失败（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-15-4.webp" width="1237"/></button><figcaption><b>图 15.4</b> 工作文件通过与索引失败（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-1">创建资料与可分发的钩子文件</h3>
+<div class="code-block"><div class="code-bar"><span>复制资料种子并建立本地检查规则</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>COURSE_RESOURCE="/path/to/GitEasy/course"
+python3 "$COURSE_RESOURCE/tools/init_course.py" lab15-checks
+cd lab15-checks
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+mkdir tools .githooks
+cp "$COURSE_RESOURCE/tools/check_course.py" tools/check_course.py
+printf '%s\n' '#!/bin/sh' 'exec python3 tools/check_course.py --repo . --index' &gt; .githooks/pre-commit
+chmod +x .githooks/pre-commit
+git config core.hooksPath .githooks
+git add .
+git commit -m "docs: establish checked course material"
+git config --show-origin --get core.hooksPath</code></pre></div>
+<p>钩子文件与检查器在版本控制目录中，可以随 clone 传递；core.hooksPath 这项本地配置不会因为文件存在而自动启用。新的协作者仍需按项目说明安装或配置。自动执行仓库取得的脚本也需要先审阅来源与行为，不应不经阅读直接启用陌生代码。</p>
+<p>钩子通过 exec 返回检查器退出状态：程序成功返回 0，失败返回非零，Git 据此拒绝本次提交。它只检查约定的必需文档与未合并条目，不会替项目验证全部业务语义。</p>
+<h3 id="h3-2">在工作区已经修复时，候选仍可能失败</h3>
+<div class="code-block"><div class="code-bar"><span>制造两份 README 内容并尝试提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cp README.md ../readme15-original.md
+sed '1s/^# //' ../readme15-original.md &gt; README.md
+git add README.md
+cp ../readme15-original.md README.md
+python3 tools/check_course.py --repo .
+git diff --cached -- README.md
+git commit -m "docs: demonstrate an invalid staged title"</code></pre></div>
+<p>最后一条预期被钩子拒绝。工作区首行以井号开头，索引首行没有，因而二者结论不同。提交没有创建，但编辑与暂存状态仍保留。拒绝不是“自动撤销所有操作”，应继续查看 status 与差异。</p>
+<h3 id="h3-3">验证客户端规则确实可以绕过</h3>
+<p>以下仅在教学仓库演示，不作为实际协作建议。绕过后会故意创建一个错误提交，再通过后继提交修正，便于证明本地规则不是强制边界。</p>
+<div class="code-block"><div class="code-bar"><span>绕过客户端检查并追加正确修复</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git -c core.hooksPath=/dev/null commit -m "demo: bypass local hook with invalid candidate"
+git show HEAD:README.md
+git add README.md
+git commit -m "docs: restore a valid course title"
+git show HEAD:README.md
+git status --short</code></pre></div>
+<p>-c 对该次 Git 调用临时覆盖配置，原仓库的 core.hooksPath 仍保留。示例使用类 Unix 环境的 /dev/null；跨平台课程应按环境选择等效的禁用演示，不把系统路径作为项目协议。</p>
+<p>修复后当前内容正确，错误提交仍在历史中。若检查要求“所有祖先都从未出现过不合规范的标题”，那么只检查当前树还不够。这也说明检查策略要和目标一致：检查发布版本、检查每一项提交和扫描全部历史是不同任务。</p>
+<h2 id="h2-4">CI：明确检出的版本和执行权限</h2>
+<p>持续集成把项目的检查放到可重复环境中，在规定事件触发后运行。对于 Git，最重要的输入是哪个提交被检出。push 主线、PR 来源头和平台构造的合并结果可能是不同对象；检查报告应保存实际 HEAD，而不只保存分支名称（图 <a class="book-ref" href="../chapters/15.html#fig:principle-ch15-04">15.5</a> ）。</p>
+<figure id="fig:principle-ch15-04"><button aria-label="放大图15.5：CI验证的因果链（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图15.5 CI验证的因果链（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-15-5.webp" width="1111"/></button><figcaption><b>图 15.5</b> CI验证的因果链（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>GitHub 的常规 pull_request 事件对可合并 PR 使用合并引用，默认检出因此可以测试模拟合并结果。若显式指定来源头，则测试对象相应改变。其他事件或平台有不同语义，应核对事件文档，不能推断所有 CI 都默认测试同一个位置<span class="citation" data-cites="githubactions">(GitHub 2026)</span>。</p>
+<h3 id="h3-4">一个明确范围的课程检查工作流</h3>
+<p>下面配置适用于实验仓库根目录已经有 tools/check_course.py 与五份必需资料的情形。文件放入 .github/workflows/course-check.yml。它检查检出内容，不执行历史差异查询，因此浅检出即可满足这个实例；需要 merge-base、完整日志或 describe 时，应另行准备相应历史和标签。</p>
+<div class="code-block" id="file:workflow"><div class="code-bar"><span>课程资料检查工作流：本地提供、线上待运行</span><button class="copy-code">复制</button></div><pre><code>name: Course check
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  course-documents:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 1
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0
+        with:
+          python-version: '3.13'
+      - name: Record checked source
+        run: git rev-parse HEAD
+      - name: Check course documents
+        run: python3 tools/check_course.py --repo .</code></pre></div>
+<p>两个动作固定到核对时的 v7 对应完整提交，以减少名称移动造成的变化；更新时应重新审阅来源、功能与 runner 要求<span class="citation" data-cites="actionscheckout actionssetuppython">(GitHub Actions 2026a, 2026b)</span>。示例没有宣称已在作者 GitHub 账户运行。实际启用还取决于仓库设置、平台额度、runner 条件及项目路径。</p>
+<p>配置不需要推送令牌或部署凭据。工作流执行的是当前检出的检查器，因此它适合常规协作反馈；如果贡献者能随意修改检查器，组织级强制要求还需要可信规则来源与相应保护设置。不能把一份可任意修改的脚本当作完整防护方案。</p>
+<h3 id="h3-5">检查、合入规则与部署分别承担什么</h3>
+<p>检查程序判定约定条件，平台记录检查结果，合入规则决定哪些结果是合入前提。配置时要核对规则覆盖的分支、检查名称、更新后是否需要重新评审以及谁可以绕过。具体功能和权限会随平台版本与套餐变化，应在实际环境确认。</p>
+<p>部署进一步把成果提供给使用者，需要独立的目标与权限管理。来自外部 fork 的代码应以适合其信任级别的权限运行。不能为获取密钥而随意改用更高权限事件，再执行不可信的 PR 代码。</p>
+<p>产物可以保存在制品系统、发布附件或项目约定的位置，是否进入 Git 由项目需求决定。不能把“所有生成文件绝不能提交”当成普遍规则：网页发布源码、锁文件或教学生成示例都有可能需要版本控制。应区分可再生大型产物、必要分发文件与维护成本。</p>
+<h2 id="h2-5">凭据误提交：先消除有效访问，再减少传播</h2>
+<p>凭据包括访问令牌、私钥、数据库口令等。把它写进文件再删除，不能保证它从 Git 历史、远端副本、日志和缓存中消失。即便从未 push，本机备份、同步目录或共享日志也可能扩大暴露范围，处置需根据实际传播判断（图 <a class="book-ref" href="../chapters/15.html#fig:principle-ch15-05">15.6</a> ）。</p>
+<figure id="fig:principle-ch15-05"><button aria-label="放大图15.6：凭据事件的三类处理（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图15.6 凭据事件的三类处理（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-15-6.webp" width="1124"/></button><figcaption><b>图 15.6</b> 凭据事件的三类处理（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>一旦可能被未授权主体取得，首要任务是撤销、禁用或轮换有效凭据，并确认依赖服务使用新凭据继续工作。这个动作由凭据提供方的系统完成，不是通过 Git 改名或删文件完成。然后检查权限范围、访问记录与相关影响，保存必要证据。</p>
+<p>历史清理是后续减少扩散的工作，应先保存调查所需记录，再在隔离副本中规划路径、引用与协作迁移。第 11 章的重写工具可能参与其中，平台缓存、旧克隆、LFS 存储和下载制品还需要分别处理。强推完成不等于全部副本都已删除。</p>
+<h3 id="h3-6">检测工具能做什么</h3>
+<p>模式扫描和专用工具有助于发现疑似凭据，但既有误报，也有漏报。依赖扫描工具时，应确认版本、运行范围和退出状态：扫描当前文件、暂存变化、提交范围和全部历史分别覆盖不同风险。工具命令会演进，不应把旧版本参数永久当作通用接口。</p>
+<p>本书只用明显假数据演练，例如标注为 DEMO_TOKEN_NOT_VALID 的字符串，且不要求上传到公开仓库。练习报告应说明“模拟失效确认”，不能假称已经在真实提供方撤销不存在的密钥。</p>
+<h3 id="h3-7">一个假凭据事件的复盘</h3>
+<p>教学情境：贡献者在配置示例中写入假令牌，随后删除文件并提交，认为问题已解决。评审者用历史 show 仍能读到旧内容，说明删除当前文件只改变新树。</p>
+<p>合理复盘依次记录：哪些位置曾保存它、实际是否具有访问能力、需要联系哪个凭据系统、哪些副本需协调、历史清理如何验证、日后如何避免再写入。对真实事件，先处理有效访问；对假数据实验，则把步骤和责任说明清楚，不执行无关账户变更。</p>
+<h2 id="h2-6">恢复的第一步是保全现场</h2>
+<p>发现分支消失、对象报错或文件丢失时，先停止无目的清理与覆盖。记录当前路径、版本、错误、分支与引用；保存尚存工作文件和必要仓库副本。不要为了“看看能否修好”先运行强制重置、立即回收对象或重复克隆覆盖原目录（图 <a class="book-ref" href="../chapters/15.html#fig:principle-ch15-06">15.7</a> ）。</p>
+<figure id="fig:principle-ch15-06"><button aria-label="放大图15.7：恢复先保全再判断（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图15.7 恢复先保全再判断（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-15-7.webp" width="1136"/></button><figcaption><b>图 15.7</b> 恢复先保全再判断（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>恢复要先判断缺少哪一层：引用名称、对象数据、工作区编辑，还是平台议题与权限。Git 历史只能恢复已经进入对象库且仍能取得的数据；未提交文件、外部 LFS 内容和平台记录各有自己的保存途径。图<a class="book-ref" href="../chapters/15.html#fig:guide-15-recovery-order">15.8</a>给出过程顺序。保全、识别、恢复、核验之间需要明确记录，避免一次尝试把后续可用线索也改变。</p>
+<figure id="fig:guide-15-recovery-order"><button aria-label="放大图15.8：恢复前保全现场，恢复后验证成果" class="zoom-image"><img alt="图15.8 恢复前保全现场，恢复后验证成果" height="175" loading="lazy" src="../assets/figure-15-8.webp" width="1100"/></button><figcaption><b>图 15.8</b> 恢复前保全现场，恢复后验证成果</figcaption></figure>
+<h2 id="h2-7">完整实验二：删除名称以后重建入口</h2>
+<p>在前面的 lab15-checks 中继续。先创建一个独立任务提交，再返回 main 删除任务分支。为了让实验可以校验，先用变量记下目标；真实排查时应从现存引用、HEAD reflog 或其他副本寻找对应标识。</p>
+<div class="code-block"><div class="code-bar"><span>模拟任务分支名称被误删</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c task/recovery
+printf '# Recovery task\n\nPreserve this explanation.\n' &gt; docs/recovery.md
+git add docs/recovery.md
+git commit -m "docs: explain a recovery task"
+LOST15=$(git rev-parse HEAD)
+git switch main
+git branch -D task/recovery
+git reflog --all --format='%h %gs'</code></pre></div>
+<p>删除分支可能同时删除该分支自身的 reflog，不能保证总能用已经消失的分支名称查询记录。本例还可以从 HEAD 的切换与提交记录找到线索。reflog 是本地、有限保留的记录，不是服务端永久审计日志。</p>
+<div class="code-block"><div class="code-bar"><span>先检查目标，再建立救援分支</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git show --stat "$LOST15"
+git show "$LOST15":docs/recovery.md
+git branch rescued/recovery "$LOST15"
+git log --oneline rescued/recovery -3
+git show rescued/recovery:docs/recovery.md</code></pre></div>
+<p>建立救援分支不会自动把任务合入 main，也不会更改当前工作区。它先给确认过的对象建立稳定入口，随后才能决定继续开发、拣选还是合并。恢复与整合是两个独立决定。</p>
+<h3 id="h3-8">远端误覆盖的处理</h3>
+<p>若远端引用被错误更新，先在本机和协作者副本寻找旧位置。远程跟踪引用的 reflog 只有在本机记录过相应变化且仍保留时才有帮助；平台是否提供可访问的服务端 reflog 不能一概假定。</p>
+<p>找到目标后，优先以不同的救援分支发布，核对内容并与维护者协调，再决定主线如何恢复。直接把猜测标识强推到 main，可能覆盖事故之后新增的工作。恢复共享历史必须同时考虑现在的协作者状态。</p>
+<h3 id="h3-9">对象损坏与可用副本</h3>
+<p>fsck 可以检查对象与连通性，但不能从任意摘要推导出已经不存在的原始内容。若缺失对象仍存在于可信备份或同伴完整克隆中，可能从该来源重建；若所有副本都缺失，内容寻址本身不能创造数据。</p>
+<p>在新目录验证备份与可达历史，保留原损坏仓库。浅克隆、部分克隆和普通 CI 临时检出可能只持有部分所需对象，不能默认任何一个 clone 都等于完整备份。底层手工复制对象应由了解存储格式的人操作，普通恢复先使用正常传输与独立克隆路线。</p>
+<h2 id="h2-8">完整实验三：全量与增量 bundle</h2>
+<p>增量历史包依赖接收端已经具有指定前提。图 <a class="book-ref" href="../chapters/15.html#fig:visual-15-b">15.9</a> 中，包含C、D的增量包要求接收仓库已有B及其所需祖先；缺少B时，应先取得基础包。图中的箭头分别表示提交父关系与材料传递过程，增量包不能单独充当完整备份。</p>
+<figure id="fig:visual-15-b"><button aria-label="放大图15.9：增量bundle的前提与分步恢复" class="zoom-image"><img alt="图15.9 增量bundle的前提与分步恢复" height="1024" loading="lazy" src="../assets/figure-15-9.webp" width="1536"/></button><figcaption><b>图 15.9</b> 增量bundle的前提与分步恢复</figcaption></figure>
+<p>bundle 将选定引用和需要传输的对象组织为文件，可用于离线交换。全量 bundle 能在没有对象前提的新环境建立相应副本；增量 bundle 可以只携带某个已知基线之后的对象，因此接收端必须已有它要求的前提。</p>
+<h3 id="h3-10">建立全量副本并验证恢复</h3>
+<div class="code-block"><div class="code-bar"><span>保存引用历史并在新目录恢复</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git tag backup-base
+printf 'Uncommitted draft; keep separately.\n' &gt; draft.txt
+git bundle create ../course-full15.bundle --all
+git bundle verify ../course-full15.bundle
+git clone ../course-full15.bundle ../restored15
+git -C ../restored15 log --oneline --all</code></pre></div>
+<p>检查时需要注意克隆建立分支名称的方式：普通 clone 通常只创建一个检出的本地分支，其他来源分支放在远程跟踪命名空间。为明确读取来源中的救援分支，下面使用它在恢复仓库中的实际名称。</p>
+<div class="code-block"><div class="code-bar"><span>按恢复副本中的引用名称检查内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git -C ../restored15 show origin/rescued/recovery:docs/recovery.md
+git -C ../restored15 rev-parse backup-base
+test ! -e ../restored15/draft.txt</code></pre></div>
+<p>未提交的 draft 没有进入对象引用所代表的版本，恢复副本中不应出现它。原工作区仍保有该文件，应单独保存。Git 历史备份不等于工作目录备份，这一反例比口头声明更容易检查。</p>
+<h3 id="h3-11">生成一个带基线前提的增量</h3>
+<div class="code-block"><div class="code-bar"><span>基线之后增加资料并生成增量文件</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf '\nBackup restoration has been exercised.\n' &gt;&gt; CHANGELOG.md
+git add CHANGELOG.md
+git commit -m "docs: record the restoration exercise"
+git bundle create ../course-increment15.bundle backup-base..main
+git -C ../restored15 bundle verify ../course-increment15.bundle
+git -C ../restored15 fetch ../course-increment15.bundle main:refs/remotes/transfer/main
+git -C ../restored15 merge --ff-only refs/remotes/transfer/main
+git -C ../restored15 fsck --full</code></pre></div>
+<p>恢复仓库已经具有 backup-base，因此可以验证并取得增量。fetch 指定了新的 transfer/main 入口，merge 再让恢复副本的当前分支快进。两步分开，便于观察“对象与引用取得”和“工作分支整合”的区别。</p>
+<p>若把增量直接交给一份全空仓库，通常不能像全量文件那样独立 clone。增量设计必须记录前提标识，并保证全量基线及各增量链可用。文件按日期排好不等于前提已经满足。</p>
+<div class="code-block"><div class="code-bar"><span>核对恢复位置并单独保存工作区草稿</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git rev-parse main
+git -C ../restored15 rev-parse main
+git diff main refs/tags/backup-base -- CHANGELOG.md
+mv draft.txt ../draft15-saved.txt
+git status --short</code></pre></div>
+<p>两个 main 应指向同一提交；变更记录应显示新增恢复说明；原仓库状态应回到干净。草稿被保存在 Git 仓库外，不会因当前状态干净就失去它的独立保存责任。</p>
+<h2 id="h2-9">备份策略应列出范围与恢复目标</h2>
+<p>表<a class="book-ref" href="../chapters/15.html#tab:backup-coverage">15.1</a>把几类数据分开。团队可以使用镜像、bundle、文件备份与平台导出等组合，但需要标明各自责任。镜像若自动同步删除和错误强推，也可能很快变成同样错误的副本，因此还需要保留历史版本与独立存储策略。</p>
+<div class="table-scroll" id="tab:backup-coverage" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 15.1</b> 常见数据的备份覆盖需要分别确认</caption><tr><th colspan="1">数据</th><th colspan="1">核对内容</th></tr><tr><td colspan="1">普通 Git 历史与引用</td><td colspan="1">选取哪些引用，所需对象是否齐全，能否新建副本</td></tr><tr><td colspan="1">未提交编辑与未跟踪文件</td><td colspan="1">是否有独立文件备份，能否恢复最近编辑</td></tr><tr><td colspan="1">LFS 内容</td><td colspan="1">指针之外的实际内容是否在可恢复存储中</td></tr><tr><td colspan="1">子模块</td><td colspan="1">各子仓库与固定提交是否仍可取得</td></tr><tr><td colspan="1">配置、钩子与凭据</td><td colspan="1">哪些应分发，哪些需受控独立保管</td></tr><tr><td colspan="1">平台议题、评审、权限</td><td colspan="1">是否另行导出或有平台恢复方案</td></tr></table></div></div>
+<p>备份清单应对应实际恢复目标。图 <a class="book-ref" href="../chapters/15.html#fig:visual-15-a">15.10</a> 将Git历史、工作现场、外部内容和平台资料分开列出；只保存其中一类，不能替代其余范围。备份完成后，还需要在独立位置执行恢复并检查关键内容，才能评价交付的可恢复性。</p>
+<figure id="fig:visual-15-a"><button aria-label="放大图15.10：按恢复目标区分备份范围" class="zoom-image"><img alt="图15.10 按恢复目标区分备份范围" height="1024" loading="lazy" src="../assets/figure-15-10.webp" width="1536"/></button><figcaption><b>图 15.10</b> 按恢复目标区分备份范围</figcaption></figure>
+<p>恢复点目标描述可容忍丢失多少时间范围内的新增数据，恢复时间目标描述希望多快恢复可用服务。课程小组不一定使用复杂系统，但也应回答“今天下午的工作是否会丢”“明天上课前能否重新分发资料”。这能帮助选择备份频率和演练范围。</p>
+<p>一次演练至少检查：在独立目录取得副本、核对关键提交与标签、读取核心文件、运行项目检查、记录耗时和缺口。检查日志存在哪里、谁负责发现失败、何时重新演练，也应明确。</p>
+<h2 id="h2-10">自动化案例：检查应当绑定哪一份内容</h2>
+<p>检查只有对应拟交付的输入才具有证明价值。本节用工作区与候选不同的情境，说明如何明确来源，并设计能够识别错误输入的断言。</p>
+<h3 id="h3-12">同名文件可能存在三份状态</h3>
+<p>作者把错误标题暂存以后，又在工作区修正，但尚未重新暂存。若提交前检查只读工作文件，它可能通过，而下一次提交仍包含错误候选。缺陷来自检查输入与拟提交版本不一致；仅调整正则严格程度无法校正读取来源。</p>
+<p>本地提交检查应明确读取索引还是工作区；CI 则应说明检出哪个提交以及是否包含合并候选。检查结果的价值取决于它与将要接收的内容之间的对应关系。不能只写“已测试”，而不说明测试对象。</p>
+<h3 id="h3-13">失败应当可解释</h3>
+<p>自动化报告应指明文件、规则和修复方向。只返回非零状态能阻止继续，却不足以帮助初学者改正。另一方面，报告也不应输出令牌、私钥或完整环境变量。工程可诊断性来自有选择的证据，而非无差别打印。</p>
+<h2 id="h2-11">实验拓展：从备份恢复并证明范围</h2>
+<p>本独立实验创建一个完整 bundle，并在备份以后保留一份未提交草稿。恢复时核对提交内容，同时证明草稿没有自动进入备份。</p>
+<div class="code-block"><div class="code-bar"><span>生成备份，并明确未提交内容的边界</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir backup15
+cd backup15
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Backup exercise\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the backup exercise"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: record the room"
+SAVED15=$(git rev-parse main)
+printf 'Uncommitted planning notes\n' &gt; draft.txt
+git bundle create ../full15.bundle --all
+git bundle verify ../full15.bundle
+cp draft.txt ../draft15-preserved.txt
+cd ..
+git clone full15.bundle restored15-extra</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>在独立副本中核对历史与文件</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>test "$(git -C restored15-extra rev-parse main)" = "$SAVED15"
+git -C restored15-extra fsck --full
+grep -q 'Room: A101' restored15-extra/room.txt
+test ! -e restored15-extra/draft.txt
+test -f draft15-preserved.txt
+test -z "$(git -C restored15-extra status --porcelain)"</code></pre></div>
+<p>恢复成功的结论应限定为：bundle 中的相关对象和引用能够在新目录中重建，所核对的提交与文件一致。它没有包含未提交草稿、平台评审数据或其他外部资源。草稿之所以仍在，是因为实验另行复制，而非因为 Git 备份自动覆盖了整个现场。</p>
+<p>删除名称后可能仍能找回对象，未提交草稿则需要其他保存来源（图 <a class="book-ref" href="../chapters/15.html#fig:scenario-15-02">15.11</a> ）。恢复方案应说明每类资料的来源，避免把一种成功推广为全部现场均已恢复。</p>
+<figure id="fig:scenario-15-02"><button aria-label="放大图15.11：入口恢复与工作现场恢复分别安排" class="zoom-image"><img alt="图15.11 入口恢复与工作现场恢复分别安排" height="426" loading="lazy" src="../assets/figure-15-11.webp" width="1169"/></button><figcaption><b>图 15.11</b> 入口恢复与工作现场恢复分别安排</figcaption></figure>
+<h2 id="h2-12">事件处置中的顺序与责任</h2>
+<p>技术事件同时涉及保全、访问控制、历史传播与协作沟通。先区分各项责任和证据，再安排处置顺序，避免一条历史命令被误当作完整解决方案。</p>
+<h3 id="h3-14">凭据泄露先处理访问能力</h3>
+<p>有效凭据一旦进入可能被传播的位置，应优先撤销或轮换，核对实际访问与使用范围。只删除当前文件或改写历史，不能使已取得的凭据自动失效。历史清理服务于减少继续暴露与传播，不能替代权限处置。</p>
+<p>处置报告应区分确认事实与待调查范围。不要为了复现泄露而把真实凭据复制到实验或日志中；教学应使用无效占位内容。涉及外部服务时，还要依据服务方机制检查会话、授权和相关自动化。</p>
+<h3 id="h3-15">恢复演练要有验收目标</h3>
+<p>“备份文件存在”与“能够恢复业务”之间还隔着完整性、依赖、权限和时间成本。演练应从空目录或独立环境开始，按固定步骤重建，再验证关键任务。记录实际耗时和缺失材料，才有依据改进策略。</p>
+<p>恢复目标可以分为需要保留到哪个时间点，以及允许多长时间恢复可用。两项目标影响备份频率、介质和演练方式。教学项目也应以具体任务表达，例如“恢复最近一次已发布课程资料，并能重新运行检查”，而非笼统要求“绝不丢失”。</p>
+<h2 id="h2-13">迁移练习：为课程仓库制定交接清单</h2>
+<p>请列出代码与资料、外部数据、依赖、密钥配置、平台设置和未提交草稿分别如何交接。参考分析应说明每项内容的保存位置、访问条件、验证方式和负责角色。密钥不应以普通项目附件方式转交；可以重新授权时，应优先采用可追踪的授权流程。</p>
+<p>清单的价值在于揭示仓库之外的依赖。若某项资料只能在原作者个人目录中找到，说明交付尚有缺口；若恢复只能由原作者口头指导完成，说明步骤还不足以独立复现。</p>
+<h2 id="h2-14">仓库迁移：把数据、平台资料与服务配置分开</h2>
+<h3 id="h3-16">迁移范围与接收条件</h3>
+<p>团队从一项托管服务迁移到另一项服务时，修改远端地址仅访问配置变化。完整迁移还需要考虑分支、标签、外部大文件、子模块地址、需求单、评审、自动化、部署密钥和访问规则。普通 Git 数据交换只能覆盖其中一部分。</p>
+<p>迁移计划应先列清单，再为每类内容选择导出、复制、重新配置或归档方式。尤其是外部对象与平台元数据，不能因为主仓库克隆成功就假定已经迁移。正式切换前还应安排写入冻结窗口或明确增量同步方式，避免新旧两端同时前进却无人负责整合。</p>
+<h3 id="h3-17">独立实验：在空目标中验证镜像范围</h3>
+<p>镜像操作会涉及广泛引用，适合在完全独立、明确为空的目标中学习。以下全部路径均为新建教学仓库。实验先创建主线、任务分支与附注标签，再镜像到另一裸仓库，并比较公开引用。</p>
+<div class="code-block"><div class="code-bar"><span>准备源仓库与空目标</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir migration15
+cd migration15
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Migration exercise\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the migration exercise"
+git branch feature/guide
+git tag -a course-v1.0.0 -m "First migration checkpoint"
+cd ..
+git clone --mirror migration15 migration15-mirror.git
+git init --bare --initial-branch=main migration15-target.git
+git -C migration15-mirror.git push --mirror ../migration15-target.git</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>比较源与目标的引用，并从目标重新取得内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git -C migration15 for-each-ref \
+  --format='%(refname) %(objectname)' refs/heads refs/tags &gt; source15-refs.txt
+git --git-dir=migration15-target.git for-each-ref \
+  --format='%(refname) %(objectname)' refs/heads refs/tags &gt; target15-refs.txt
+cmp source15-refs.txt target15-refs.txt
+git clone migration15-target.git migration15-reader
+git -C migration15-reader fsck --full
+git -C migration15-reader show course-v1.0.0:README.md</code></pre></div>
+<p>比较的是实验指定的分支与标签引用，不是平台的一切数据。目标仓库的默认分支设置、权限和工作流仍须另行检查。镜像推送还可能强制更新或删除目标引用，绝不能将本实验命令不加判断地用于已经承载其他工作的重要目标。</p>
+<h3 id="h3-18">切换以后仍需验证新成员路径</h3>
+<p>迁移成功的验收应从新地址开始，使用正常协作者权限取得仓库，初始化依赖，运行检查并尝试受控任务。维护者管理员账号下的成功不能代表普通成员也具备所需权限。自动化密钥与令牌应采用新服务的授权流程，避免把旧凭据作为普通文件复制。</p>
+<p>迁移需要分别安排数据取得与服务重建（图 <a class="book-ref" href="../chapters/15.html#fig:scenario-15-03">15.12</a> ）。修改远端URL只改变后续通信配置，不能自动搬迁平台资料、授予权限或恢复外部内容。</p>
+<figure id="fig:scenario-15-03"><button aria-label="放大图15.12：仓库迁移列出四类交接范围" class="zoom-image"><img alt="图15.12 仓库迁移列出四类交接范围" height="587" loading="lazy" src="../assets/figure-15-12.webp" width="1178"/></button><figcaption><b>图 15.12</b> 仓库迁移列出四类交接范围</figcaption></figure>
+<p>若旧地址继续提供只读归档，应明确说明新写入入口；若依赖地址发生变化，应检查版本化配置与文档。迁移公告可以指向固定版本和迁移说明，帮助后来者理解历史链接为何变化。</p>
+<h3 id="h3-19">回退计划与完成标准</h3>
+<p>切换前应约定出现何种问题时暂缓或回退，以及在切换窗口内产生的新提交怎样处理。不能简单把地址改回去，就假定新目标上的工作自动回到旧目标。回退本身也是一次数据协调任务，需要保留双方引用和实际写入记录。</p>
+<p>迁移练习：为课程仓库设计一份包含 Git 对象、LFS、子模块、评审记录和 CI 设置的清单。每项写出负责人、保存方式、验证依据和未覆盖内容。评价重点是边界完整与步骤可执行，而非追求一个看似通用的“一键迁移”命令。</p>
+<h2 id="h2-15">本章小结</h2>
+<p>自动化通过明确输入与可重复判定减少遗漏，但每个检查都有范围与权限边界。凭据事故先解决有效访问，再处理历史传播；恢复先保全现场，再判断缺少哪层数据。备份的价值要由实际恢复证明。</p>
+<p>把正例、反例和恢复步骤一并保留，能够让团队知道规则何时有效、失败后如何继续。Git 的分布式对象模型提供恢复材料，完善的工程安排则让这些材料在需要时真正可用。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-githubactions" role="listitem">
+GitHub. 2026. <em>GitHub Actions Documentation</em>. <a class="uri" href="https://docs.github.com/en/actions">Https://docs.github.com/en/actions</a>.
+</div>
+<div class="csl-entry" id="ref-actionscheckout" role="listitem">
+GitHub Actions. 2026a. <em>Actions/Checkout: Action for Checking Out a Repo</em>. <a class="uri" href="https://github.com/actions/checkout">Https://github.com/actions/checkout</a>.
+</div>
+<div class="csl-entry" id="ref-actionssetuppython" role="listitem">
+GitHub Actions. 2026b. <em>Actions/Setup-Python</em>. <a class="uri" href="https://github.com/actions/setup-python">Https://github.com/actions/setup-python</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-16">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:15.1"><summary><span class="difficulty">应用</span><b>15.1</b><span>为一个检查分别写出输入、通过条件、失败输出和环境前提，说明它读取工作区、索引还是提交树。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 检查输入 / 通过条件 / 失败输出</p><p>例如候选标题检查以索引中的README为输入，要求存在指定一级标题，失败输出路径与原因，需要Git和Python。明确读取对象之后，才能判断工作区修复是否已影响检查。测试应同时提供通过与拒绝输入。</p><p>可把检查定义写成“来源版本、执行动作、判定标准、失败说明”四项，再用一个已知错误确认它能识别目标缺陷。读取错误输入的检查即使稳定通过，也无法支持对拟交付版本的判断。</p></div></details><details class="exercise" id="ex:15.2"><summary><span class="difficulty">应用</span><b>15.2</b><span>完成钩子实验，证明工作区通过时索引仍可失败，解释提交被拒绝后哪些状态仍保留。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 客户端钩子 / 候选读取 / 拒绝后状态</p><p>先暂存错误标题，再仅修正工作文件，分别执行工作区和索引检查。钩子拒绝提交后，原提交入口通常不前进，工作文件与索引中的差异仍在；核对status与候选，而不是重建仓库。</p><p>比较工作文件检查与索引检查对同一现场的结果，确认前者通过、后者拒绝。提交被拒绝后，应检查候选和草稿仍在，再修正正确目标。拒绝本身不意味着Git已经自动修复错误内容。</p></div></details><details class="exercise" id="ex:15.3"><summary><span class="difficulty">基础</span><b>15.3</b><span>解释钩子文件随 clone 传递与钩子自动启用之间的区别，再说明客户端绕过为何需要服务端补充。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 钩子分发 / 启用 / 绕过</p><p>普通clone可取得被跟踪的钩子源码，但不会自动把所有文件启用为本地钩子。安装或hooksPath配置另行完成，客户端还可能绕过。强制规则需由受控服务端或平台检查补充，不能依赖所有人自觉执行。</p><p>普通克隆取得受跟踪脚本，不自动把它装入每位使用者的有效钩子目录。启用方式与core.hooksPath等配置需要明确，本地检查也可被绕过；团队需要在受控合入或发布入口补充相应验证。</p></div></details><details class="exercise" id="ex:15.4"><summary><span class="difficulty">应用</span><b>15.4</b><span>审阅工作流中的事件、提交目标与权限；线上未运行时，报告应如何准确描述验证程度？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · CI事件 / 检出提交 / 权限</p><p>说明事件触发条件、检出的候选提交、作业权限和脚本来源，检查输入是否可信。线上未运行时可报告静态核对与本地脚本结果，并给出待验证项；不能把YAML能解析写成远程执行通过。</p><p>工作流审查应说明由什么事件触发、测试哪个确切版本、需要哪些权限，以及输出如何支持结论。把示例配置保存到仓库并不等于已经产生成功运行；实际运行记录必须与提交标识对应。</p></div></details><details class="exercise" id="ex:15.5"><summary><span class="difficulty">基础</span><b>15.5</b><span>说明为什么在干净 CI 检出后只检查 cached diff 可能没有覆盖预期变化。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 干净检出 / 提交比较 / 候选差异</p><p>干净检出后索引通常与HEAD一致，cached diff可能为空，不能代表本次PR没有变化。需要明确base与候选端点，或对整个所选提交运行检查；差异范围必须来自任务，而不是机械使用某条diff命令。</p><p>干净CI通常没有新的暂存变化，cached diff为空不能证明本次PR没有修改。检查应围绕目标提交、合并测试版本或明确基线差异设计，并确认检出的代码确实对应希望验收的对象。</p></div></details><details class="exercise" id="ex:15.6"><summary><span class="difficulty">应用</span><b>15.6</b><span>用假凭据写事件复盘，区分凭据失效、历史减少传播和其他副本协调。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 凭据事件 / 传播 / 恢复协调</p><p>复盘分别记录发现、使凭据失效、减少历史传播与协调其他副本。合成字符串可验证过滤流程，但不证明真实凭据已经撤销；真实失效依赖服务端动作，其他克隆和备份需要单独处理。</p><p>真实凭据泄露需要先按服务流程失效或轮换，历史重写只能处理部分传播范围。演练使用假值，并列出旧克隆、平台缓存和外部日志的协调事项，避免把一次仓库清理当作完整事件处置。</p></div></details><details class="exercise" id="ex:15.7"><summary><span class="difficulty">应用</span><b>15.7</b><span>删除实验分支并恢复，说明为何不能依赖已删除分支自身的 reflog 永远存在。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 引用日志 / 删除入口 / 救援</p><p>先从仍有效的HEAD日志、其他入口或已记录标识找到候选，检查内容后建立恢复分支。删除分支可能同时删除其自身日志，且日志可能过期，因此不能依赖已删分支的reflog永久保留。</p><p>删除名称以后，使用仍有效的日志或其他保存标识定位候选，并读取内容确认。日志是否保留受实现和维护条件影响，应尽早建立新保护入口；恢复流程还需说明对象实际来自何处。</p></div></details><details class="exercise" id="ex:15.8"><summary><span class="difficulty">应用</span><b>15.8</b><span>当仓库缺失对象时，内容寻址为什么不能凭摘要还原原文？哪些副本可能提供恢复来源？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 摘要 / 对象正文 / 外部副本</p><p>摘要不是可逆压缩，无法凭对象标识推导完整原文。可从其他有效克隆、完整备份、服务器可提供对象或相关归档寻找来源，再校验标识与内容；有标识却无字节时不能承诺恢复。</p><p>哈希提供定位与校验信息，不包含足以重建任意正文的数据。应查询协作者副本、远端和有效备份，并校验取得的对象。若所有副本都缺失，报告应明确无法仅凭摘要恢复，不能编造内容。</p></div></details><details class="exercise" id="ex:15.9"><summary><span class="difficulty">应用</span><b>15.9</b><span>完成全量加增量恢复，核对前提、引用、文件和未提交草稿的范围。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 全量与增量 / 恢复前提 / 草稿</p><p>先恢复满足前提的全量历史，再应用或取得增量覆盖，检查引用、关键文件、标签与对象一致性。未提交草稿通常不在bundle内，应从另行保全位置恢复。报告记录实际边界，不只展示bundle verify。</p><p>先验证增量依赖的基线确实存在，再按顺序恢复引用和对象，最后检查文件。未提交草稿和平台资料另行保存并验证；只成功导入bundle不能推出整个项目运行现场已经恢复。</p></div></details><details class="exercise" id="ex:15.10"><summary><span class="difficulty">应用</span><b>15.10</b><span>为课程项目制定备份清单和恢复目标，并实际记录一次独立目录演练。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 备份目标 / 恢复时间 / 独立演练</p><p>按恢复目标登记源码历史、外部对象、依赖、草稿、平台记录与配置，分别确定保存位置和时点。实际在新目录恢复指定版本并运行检查，记录耗时、缺口与后续措施，避免只有备份文件而无恢复验证。</p><p>根据项目可接受损失的修改范围确定备份频率，再在新目录复现取得、校验和构建过程。应记录耗时、缺口和处理方法，使备份计划能落实为可检查的恢复能力，而非只有“定期备份”的口号。</p></div></details><details class="exercise" id="ex:15.11"><summary><span class="difficulty">应用</span><b>15.11</b><span>为外来PR设计不需要真实凭据的构建与测试流程。说明事件来源、检出版本、只读权限与生成结果的关系；为什么不能把未审阅代码与高权限凭据放进同一自动执行环境。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 不可信输入 / CI权限 / 检查来源</p><p>外来代码及其构建脚本属于需要审慎处理的输入，应先在不含真实凭据、权限受限的环境验证确定版本。工作流写明事件、检出对象和实际目标，限制默认令牌权限并核对所用Action来源及固定版本。</p><p>真实部署若确有需要，应在独立受控流程中满足审阅、环境和授权条件。课程项目的核心测试不需要生产学生系统或支付凭据；一次构建通过只对该次运行覆盖成立，不能替代安全设计与正式部署验收。</p></div></details><details class="exercise" id="ex:15.12"><summary><span class="difficulty">应用</span><b>15.12</b><span>使用假凭据完成一次敏感信息传播演练。区分立即失效、减少历史传播、协调旧克隆与平台资料的任务，说明重写对象身份带来的接续问题，以及哪些结果必须由服务或协作者另行确认。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 历史清理 / 副本协调 / 事件记录</p><p>演练先说明若为真实凭据，应按服务渠道失效或轮换，再确认污染范围并规划历史清理。相关对象重写后，分支与标签标识可能改变，旧克隆、缓存和附件仍需分别处理，不能靠一次推送宣布全部传播已经消除。</p><p>保留事件时间线、受影响范围、执行命令和确认材料，协调协作者如何迁移到新入口；不要把真实秘密写入报告。服务端撤销、缓存清理和协作者接续必须以实际结果登记，未执行部分明确列为待处理。</p></div></details><details class="exercise" id="ex:15.13"><summary><span class="difficulty">综合</span><b>15.13</b><span>校园项目同时出现误删分支、机器故障和一份泄露的假令牌。现有全量bundle、增量包、未提交草稿及单独的LFS资源。请制定处置顺序和恢复计划，验证增量前提、引用与对象、发布构建及草稿范围，并说明哪些平台资料和凭据动作超出Git历史恢复。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 恢复目标 / 候选与草稿 / 全量增量</p><p>先保全可用副本并处理凭据事件的失效与传播问题，记录恢复目标；全量与增量历史包按前提验证，缺少基线时不能直接把增量视作完整备份。恢复后核对名称、对象、标签及所需文件，再取得相应LFS与依赖。</p><p>草稿按独立清单合回并审查，避免覆盖已恢复版本。新目录运行构建和测试，报告实际恢复到哪个时点及剩余缺口。Issue、评审、工作流记录、服务权限和凭据失效属于其他系统职责，应通过各自保存与确认渠道处理，不由bundle导入成功推断完成。</p><p>虽然题中使用假令牌，处置演练仍应区分凭据动作与Git恢复：先登记撤销、轮换和访问核查步骤，实际课堂不操作真实凭据。保存故障现场后，在新目录验证基础bundle，再校验增量包所需前提并依次导入。随后恢复名称、检查对象与发布构建，草稿和LFS资料按独立清单还原。Issue、PR、附件与账户设置需从平台另行取得。报告说明哪些动作已实际执行、哪些仅为演练记录，保留每项恢复的来源与验证结果。</p></div></details></section><section id="mindmap"><h2 id="review-17">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第15章复习导图" class="zoom-image"><img alt="第15章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-15.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="15">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="14.html"><small>← 上一章</small>仓库规模、依赖与工作树</a><a href="16.html"><small>下一章 →</small>GitHub平台与图形化工具</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">自动化首先需要明确输入与判定</a><a href="#h2-2">Git 钩子与本地反馈</a><a href="#h2-3">完整实验一：检查候选，验证拒绝与绕过</a><a href="#h2-4">CI：明确检出的版本和执行权限</a><a href="#h2-5">凭据误提交：先消除有效访问，再减少传播</a><a href="#h2-6">恢复的第一步是保全现场</a><a href="#h2-7">完整实验二：删除名称以后重建入口</a><a href="#h2-8">完整实验三：全量与增量 bundle</a><a href="#h2-9">备份策略应列出范围与恢复目标</a><a href="#h2-10">自动化案例：检查应当绑定哪一份内容</a><a href="#h2-11">实验拓展：从备份恢复并证明范围</a><a href="#h2-12">事件处置中的顺序与责任</a><a href="#h2-13">迁移练习：为课程仓库制定交接清单</a><a href="#h2-14">仓库迁移：把数据、平台资料与服务配置分开</a><a href="#h2-15">本章小结</a><a href="#review-16">本章习题与解析</a><a href="#review-17">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

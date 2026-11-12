@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>引用管理与索引机制 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="10" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>进阶篇<span>/</span>第10章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 10 · 进阶篇</div><h1>引用管理与索引机制</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 37 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-10"></span>
+<p>第 9 章解释了快照和历史如何保存为对象。本章转而研究两类会变化的数据：名字当前指向哪里，以及下一次准备提交什么。前者由引用表达，后者由索引组织。对象、引用、索引与工作文件分别承担职责，正是理解“命令成功了，文件为什么没变”这类问题的基础。</p>
+<p><strong>学习目标：</strong>能够查询全限定引用而不依赖存储文件；区分正常、分离和尚无提交的 HEAD；用带旧值条件的 update-ref 更新练习引用；读懂索引的模式、对象、阶段与路径；从真实冲突中检查三份候选；解释底层构造实验与完整日常命令的边界。</p>
+<p>名字的必要性 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 引用命名空间 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> HEAD 与名称解析 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 有条件更新 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 索引条目 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 冲突阶段 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 显式解决与双亲提交 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 面向诊断的查询。</p>
+<h2 id="h2-1">为什么对象之外还需要名字</h2>
+<p>对象标识适合精确定位，却不便于每天记忆。更重要的是，开发需要一个会随任务前进的位置。例如 main 今天指向一个提交，明天完成工作后指向它的后代。提交对象保持不变，main 这个名称可以变化。把名称映射到对象，就是引用所承担的职责（图 <a class="book-ref" href="../chapters/10.html#fig:principle-ch10-01">10.1</a> ）。</p>
+<figure id="fig:principle-ch10-01"><button aria-label="放大图10.1：名字使对象可定位（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图10.1 名字使对象可定位（箭头表示所说明的对象或访问关系）" height="189" loading="lazy" src="../assets/figure-10-1.webp" width="1177"/></button><figcaption><b>图 10.1</b> 名字使对象可定位（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<p>引用不是文件副本，也不是一段独立保存的“分支内容”。从分支找到提交，再从提交找到树，才取得该分支尖端对应的快照。多个分支可以指向同一提交，同一提交也可能被多个分支的历史包含。</p>
+<p>常见的完整名称以 refs 开头。表<a class="book-ref" href="../chapters/10.html#tab:ref-namespaces">10.1</a>列出本书用到的命名空间。HEAD 和操作过程中的特殊记录需要单独理解，不应把所有管理文件都当作同一类引用。</p>
+<div class="table-scroll" id="tab:ref-namespaces" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 10.1</b> 常见引用命名空间</caption><tr><th colspan="1">名称范围</th><th colspan="1">用途</th></tr><tr><td colspan="1">refs/heads/</td><td colspan="1">本地分支，例如 main</td></tr><tr><td colspan="1">refs/remotes/</td><td colspan="1">本地保存的远程跟踪信息</td></tr><tr><td colspan="1">refs/tags/</td><td colspan="1">标签引用，目标可能是提交或标签对象</td></tr><tr><td colspan="1">refs/stash</td><td colspan="1">stash 的当前入口</td></tr></table></div></div>
+<h3 id="h3-1">逻辑引用不等于松散文本文件</h3>
+<p>常见仓库会把部分引用保存成目录中的小文件，也可能将引用打包，或采用其他引用后端。观察某个松散文件有助于理解一种实现，但找不到这个文件不能推出分支不存在。日常脚本应通过 show-ref、rev-parse 和 update-ref 等接口操作，而非拼接路径后直接编辑。</p>
+<p>多工作树还会使 Git 管理目录与工作目录的对应更加复杂。不要假设每个工作目录下的 .git 一定是完整目录；它也可能是指向实际管理位置的文件。第 14 章会在工作树实验中回到这个问题。</p>
+<h2 id="h2-2">实验一：名字、HEAD 与条件更新</h2>
+<p>引用让对象能够用稳定名称查询，但名称可能在并发操作或新提交以后移动。下面先解析对象，再使用带旧值条件的更新验证预期；更新失败时检查原入口仍在，理解保护条件究竟约束哪一项事实（图 <a class="book-ref" href="../chapters/10.html#fig:principle-ch10-02">10.3</a> ）。</p>
+<p>修改共享入口时，仅知道新目标还不够，还需要确认读取之后旧值是否发生变化。图 <a class="book-ref" href="../chapters/10.html#fig:visual-10-b">10.2</a> 用两个操作者展示比较并更新：第一个请求以预期旧值成功写入，第二个仍以旧值为前提的请求被拒绝。该条件约束引用更新，并不自动完成文件整合或检出。</p>
+<figure id="fig:visual-10-b"><button aria-label="放大图10.2：带预期旧值的引用更新与并发拒绝" class="zoom-image"><img alt="图10.2 带预期旧值的引用更新与并发拒绝" height="1024" loading="lazy" src="../assets/figure-10-2.webp" width="1536"/></button><figcaption><b>图 10.2</b> 带预期旧值的引用更新与并发拒绝</figcaption></figure>
+<figure id="fig:principle-ch10-02"><button aria-label="放大图10.3：带旧值条件的更新（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图10.3 带旧值条件的更新（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-10-3.webp" width="1136"/></button><figcaption><b>图 10.3</b> 带旧值条件的更新（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-2">从尚无提交的分支开始</h3>
+<div class="code-block"><div class="code-bar"><span>建立引用观察仓库</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab10-refs
+cd lab10-refs
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+git symbolic-ref HEAD
+git rev-parse --git-dir
+git rev-parse --show-toplevel</code></pre></div>
+<p>symbolic-ref 应显示 refs/heads/main，即使还没有第一次提交。此时 HEAD 已经说明“准备在 main 上工作”，但 main 尚无已有提交可以指向。这通常称为尚未诞生的分支状态。它说明名字关系与对象是否已经存在是两个问题。</p>
+<p>后两条命令分别查询 Git 管理位置与工作树顶层。它们用于确认现场，不修改文件。相对路径输出与绝对路径输出可能不同，不能把路径字符串不同直接当作不同仓库。</p>
+<div class="code-block"><div class="code-bar"><span>创建第一份历史并建立第二个名字</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'version one\n' &gt; note.txt
+git add note.txt
+git commit -m "docs: create reference baseline"
+git tag ref-base
+git branch topic
+git show-ref --heads
+OLD=$(git rev-parse refs/heads/topic)
+printf 'version two\n' &gt;&gt; note.txt
+git add note.txt
+git commit -m "docs: extend the note"
+NEW=$(git rev-parse HEAD)
+git rev-parse main topic</code></pre></div>
+<p>topic 在第一次提交后创建，因此仍指向旧提交；当前 main 在第二次提交后前进。末尾两个标识不同，反映两个名字的位置不同。对象数据库已经保存新旧提交，而引用层决定通过哪个名称首先到达哪个位置。</p>
+<h3 id="h3-3">带旧值条件的更新</h3>
+<div class="code-block"><div class="code-bar"><span>只在预期旧值一致时更新 topic</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git update-ref -m "lesson: advance topic" refs/heads/topic "$NEW" "$OLD"
+git rev-parse refs/heads/topic</code></pre></div>
+<p>第三个位置参数 OLD 是条件：topic 当前仍等于 OLD 时，才允许更新为 NEW。这类似先检查再替换，但应由引用更新接口完成，避免读到旧值后另一个进程已经改动却仍然覆盖。现在故意再次用过时的 OLD 作为条件。以下命令预期被拒绝；请看清错误类型后继续，而非重复尝试直到成功。</p>
+<div class="code-block"><div class="code-bar"><span>观察过时条件导致的拒绝</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git update-ref refs/heads/topic "$OLD" "$OLD"</code></pre></div>
+<p>topic 实际已经等于 NEW，条件却要求它仍是 OLD，因而不满足。拒绝后再执行 <code>git rev-parse topic</code>，应确认它保持 NEW。验证失败路径时，既要看退出状态，也要确认目标没有被错误改变。</p>
+<h3 id="h3-4">只更新引用，不自动修改工作文件</h3>
+<p>接下来只移动 topic，不移动当前 main。对象、工作文件和当前索引都不因这个其他分支名称的更新而自动改变。</p>
+<div class="code-block"><div class="code-bar"><span>把 topic 移回旧位置并分别查询</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git update-ref refs/heads/topic "$OLD" "$NEW"
+git show topic:note.txt
+cat note.txt
+git branch --show-current
+git status --short</code></pre></div>
+<p>topic 中的文件只有第一行，当前工作文件仍有两行，当前分支仍是 main。若读者认为“update-ref 是 reset 的完全同义词”，就会无法解释这个结果。update-ref 主要更新引用，reset 还根据形式和模式处理当前位置、索引或工作文件，不能简单等同。</p>
+<h2 id="h2-3">HEAD 的三种观察情境</h2>
+<p>HEAD既可能通过分支名间接找到提交，也可能直接记录提交，初始化后还可能暂时没有可解析的提交。下面把这三种情况并列观察，避免用普通分支状态的一条描述覆盖全部情境。（图 <a class="book-ref" href="../chapters/10.html#fig:principle-ch10-03">10.4</a> ）</p>
+<figure id="fig:principle-ch10-03"><button aria-label="放大图10.4：HEAD观察不能一概而论（每行对照一组条件与解释）" class="zoom-image"><img alt="图10.4 HEAD观察不能一概而论（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-10-4.webp" width="1237"/></button><figcaption><b>图 10.4</b> HEAD观察不能一概而论（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-5">正常指向分支</h3>
+<p>正常状态下，HEAD 保存当前分支名称，通过该分支再到提交。创建新提交时，当前分支前进；HEAD 的符号目标名称通常不变，但 HEAD 解析到的提交会随之变化。因此，“HEAD 没变”必须说明是名称字符串未变，还是解析结果未变。</p>
+<h3 id="h3-6">分离状态直接指向提交</h3>
+<div class="code-block"><div class="code-bar"><span>进入旧提交观察，再回到主线</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch --detach ref-base
+git rev-parse HEAD
+git symbolic-ref HEAD
+git switch main</code></pre></div>
+<p>symbolic-ref 在这里预期失败，因为 HEAD 直接保存提交位置，而不指向普通分支。失败并不意味着 rev-parse 也无法找到提交。如果在分离状态继续提交，HEAD 会更新，但没有一个普通本地分支随之自动前进；要长期保存成果，应建立分支引用。</p>
+<h3 id="h3-7">尚无提交并不等于分离</h3>
+<p>本章开始时 symbolic-ref 能报告 main，但还没有提交。分离状态恰好相反：可以指向一个具体提交，却没有当前分支名称。把这两种状态混在一起，容易使初始化脚本错误判断仓库损坏。图<a class="book-ref" href="../chapters/10.html#fig:head-observation">10.5</a>并列三种情境。箭头表示名字或记录指向，不表示时间顺序。</p>
+<figure id="fig:head-observation"><button aria-label="放大图10.5：HEAD 的三种观察情境" class="zoom-image"><img alt="图10.5 HEAD 的三种观察情境" height="263" loading="lazy" src="../assets/figure-10-5.webp" width="1084"/></button><figcaption><b>图 10.5</b> HEAD 的三种观察情境</figcaption></figure>
+<h2 id="h2-4">名称解析：给人便利，给脚本明确性</h2>
+<p>日常操作可以写 main、origin/main、短标识或带父关系的修订表达式。Git 根据语法与上下文解析这些表达式。便利的短名也可能引入歧义，例如分支与标签同名；因此工程脚本应尽量使用完整引用，并验证对象类型。</p>
+<div class="code-block"><div class="code-bar"><span>解析并验证预期对象</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git rev-parse --verify 'refs/heads/main^{commit}'
+git rev-parse --verify 'refs/tags/ref-base^{commit}'
+git rev-parse --symbolic-full-name main
+git rev-parse 'HEAD^{tree}'</code></pre></div>
+<p>verify 要求能解析到指定目标；花括号形式进一步表达类型要求。例如 commit 要求最终可取得提交，tree 则取得相应树。花括号属于修订表达式语法；外围单引号由shell处理，用于保护参数，应与路径中的普通字符区分。</p>
+<p>不要把某一份简化的优先级清单当成所有名称语法的完整定义。对象前缀、特殊引用、路径与修订表达式有不同规则。遇到脚本需要可靠定位时，首先减少歧义，而非让使用者猜测系统会优先取哪一个短名。</p>
+<h3 id="h3-8">特殊操作记录有生命周期</h3>
+<p>FETCH_HEAD 记录最近抓取结果，MERGE_HEAD 在合并过程中记录待整合目标，ORIG_HEAD 在某些操作中保留先前位置。它们帮助命令继续或恢复操作，但用途和更新时机不同，不能统称为长期备份。</p>
+<p>例如一次新的操作可能更新某个记录，使它不再指向你想找的先前位置。重要恢复点应建立明确救援引用并记录现场，而非假定 ORIG_HEAD 永远保存最初状态。引用日志也属于本地变动记录，不会因普通 clone 自动复制他人的日志。</p>
+<h2 id="h2-5">索引条目：下一次提交如何确定</h2>
+<p>第 3 章把索引作为候选快照理解。进一步看，它保存路径条目、模式、对象标识、阶段及用于文件变化检测的辅助信息。对象标识连接实际候选内容；文件大小和时间等缓存信息帮助提高扫描效率，不是内容身份的最终定义（图 <a class="book-ref" href="../chapters/10.html#fig:principle-ch10-05">10.7</a> ）。</p>
+<p>普通索引条目与冲突条目的区别可以从阶段号观察。图 <a class="book-ref" href="../chapters/10.html#fig:visual-10-a">10.6</a> 将共同基线、当前侧和合入侧的内容并列展示，便于对照ls-files –stage的输出。图中的短字符串用于示意对象标识；ours与theirs在这里采用普通合并的方向，变基时需要结合当前重放步骤重新解释。</p>
+<figure id="fig:visual-10-a"><button aria-label="放大图10.6：冲突路径的三个来源及索引阶段" class="zoom-image"><img alt="图10.6 冲突路径的三个来源及索引阶段" height="1024" loading="lazy" src="../assets/figure-10-6.webp" width="1536"/></button><figcaption><b>图 10.6</b> 冲突路径的三个来源及索引阶段</figcaption></figure>
+<figure id="fig:principle-ch10-05"><button aria-label="放大图10.7：索引确定候选树（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图10.7 索引确定候选树（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-10-7.webp" width="1084"/></button><figcaption><b>图 10.7</b> 索引确定候选树（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>观察正常条目与工作文件变化</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git ls-files --stage
+git ls-files --debug
+printf 'an unstaged observation\n' &gt;&gt; note.txt
+git ls-files --stage
+git diff -- note.txt
+git restore -- note.txt</code></pre></div>
+<p>追加一行后再次列出 stage，候选内容标识不应自动改变，因为尚未 add；diff 显示工作区相对索引的新增。最后的 restore 是有意丢弃刚刚加入的实验行，不能在包含其他未保存工作的目录中照搬。</p>
+<p>正常条目的 stage 为 0。模式与对象标识不同，模式表达路径条目的类型或可执行属性；对象标识表达内容。不要把行中出现的多组数字一概当成提交哈希。</p>
+<h3 id="h3-9">write-tree 依据索引，不依据所有工作文件</h3>
+<div class="code-block"><div class="code-bar"><span>保存候选树，再暂时改变工作区</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>BEFORE_TREE=$(git write-tree)
+printf 'not selected\n' &gt;&gt; note.txt
+AFTER_TREE=$(git write-tree)
+printf '%s\n%s\n' "$BEFORE_TREE" "$AFTER_TREE"
+git restore -- note.txt</code></pre></div>
+<p>两份 tree 标识应相同：工作文件虽改变，索引没有更新。write-tree 将候选条目组织为树，不自动把全部最新编辑加入候选。这个底层观察与第 3 章“add 后再编辑不会自动进入下一次提交”的结论互相印证。</p>
+<h2 id="h2-6">实验二：在冲突中读取三个来源</h2>
+<p>发生冲突时，工作文件可能带有标记，索引还可保留公共基线与两侧内容。下面直接读取阶段条目，说明每份内容在当前操作中的角色，再观察暂存解决结果如何把多阶段状态转换为普通候选（图 <a class="book-ref" href="../chapters/10.html#fig:principle-ch10-06">10.8</a> ）。</p>
+<figure id="fig:principle-ch10-06"><button aria-label="放大图10.8：冲突阶段与解决结果（每行对照一组条件与解释）" class="zoom-image"><img alt="图10.8 冲突阶段与解决结果（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-10-8.webp" width="1237"/></button><figcaption><b>图 10.8</b> 冲突阶段与解决结果（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-10">建立一个可解释的分歧</h3>
+<p>以下在另一个新目录开始。仍使用日常命令制造真实冲突，再用底层接口观察；不声称是“完全不用日常命令”的合并。</p>
+<div class="code-block"><div class="code-bar"><span>准备同一行的两项不同修改</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab10-index
+cd lab10-index
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Meeting: Monday\n' &gt; plan.txt
+git add plan.txt
+git commit -m "docs: set baseline meeting"
+git switch -c side
+printf 'Meeting: Tuesday\n' &gt; plan.txt
+git add plan.txt
+git commit -m "docs: propose Tuesday"
+git switch main
+printf 'Meeting: Wednesday\n' &gt; plan.txt
+git add plan.txt
+git commit -m "docs: choose Wednesday"
+git merge side</code></pre></div>
+<p>merge 最后预期失败并报告冲突。应先检查Git为同一路径保留的候选来源，再依据需求编辑解决结果；直接删除分隔符会遗漏来源分析。</p>
+<div class="code-block"><div class="code-bar"><span>分别读取冲突的阶段内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git ls-files --unmerged
+git show :1:plan.txt
+git show :2:plan.txt
+git show :3:plan.txt</code></pre></div>
+<p>stage 1 在本实验中显示 Monday，即共同基线；stage 2 显示当前 main 的 Wednesday；stage 3 显示合入侧的 Tuesday。这个解释限定于本次普通 merge，变基的当前侧语境不同，不能无条件把 stage 2 固定记成“我自己的原分支”。</p>
+<h3 id="h3-11">不是每种冲突都有三份内容</h3>
+<p>本例双方都修改已有文件，所以三个阶段均存在。新增/新增、修改/删除等冲突可能缺少某些阶段。例如一侧删除路径时，那一侧没有对应内容可显示；show 报告路径不存在，不应一律判断索引损坏。</p>
+<p>索引阶段保留候选证据，不替团队作业务决定。解决后用 add 把最终内容登记为 stage 0，相应未合并条目才被替换。图<a class="book-ref" href="../chapters/10.html#fig:stage-to-result">10.9</a>强调“多份来源到一份决定”，避免把 1、2、3 误看成依次覆盖的三个步骤。</p>
+<figure id="fig:stage-to-result"><button aria-label="放大图10.9：冲突来源经过明确决策形成正常候选条目" class="zoom-image"><img alt="图10.9 冲突来源经过明确决策形成正常候选条目" height="452" loading="lazy" src="../assets/figure-10-9.webp" width="853"/></button><figcaption><b>图 10.9</b> 冲突来源经过明确决策形成正常候选条目</figcaption></figure>
+<h3 id="h3-12">冲突未解决时，不能假装已有正常候选树</h3>
+<div class="code-block"><div class="code-bar"><span>验证未合并索引不能直接写成正常树</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git write-tree</code></pre></div>
+<p>此命令预期失败，因为索引仍有未合并条目。失败揭示了 write-tree 的前提：候选结果必须足够明确。仅仅在编辑器中看见某份文件，并不代表索引已经选定该结果。下面决定在 Wednesday 上课、Tuesday 答疑，写入最终文件，再登记索引。这里的结果来自课程需求，不是机械保留某一侧。</p>
+<div class="code-block"><div class="code-bar"><span>把明确结果写入正常候选树</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Meeting: Wednesday\nOffice hours: Tuesday\n' &gt; plan.txt
+git add plan.txt
+git ls-files --stage
+git ls-files --unmerged
+RESULT_TREE=$(git write-tree)
+git cat-file -t "$RESULT_TREE"
+git show :plan.txt</code></pre></div>
+<p>stage 现在应为 0；unmerged 没有输出；树类型查询成功；索引内容包含商定的两行。四项观察分别回答条目形式、是否仍有冲突、能否构树和实际候选内容，不能只用其中一项替代全部验证。</p>
+<h2 id="h2-7">构造双亲提交：内容整合与历史连接分开检查</h2>
+<p>一个提交可以同时记录两个父项，但父项数量本身不会替我们完成业务整合。下面把解决树与父关系作为独立输入，说明结构合法的提交仍可能保存错误内容，因此验收不能只数父项（图 <a class="book-ref" href="../chapters/10.html#fig:principle-ch10-07">10.10</a> ）。</p>
+<figure id="fig:principle-ch10-07"><button aria-label="放大图10.10：双亲结构与业务内容（每行对照一组条件与解释）" class="zoom-image"><img alt="图10.10 双亲结构与业务内容（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-10-10.webp" width="1237"/></button><figcaption><b>图 10.10</b> 双亲结构与业务内容（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-13">用明确父关系连接候选树</h3>
+<p>在本实验合并尚未完成的阶段，HEAD 是当前侧提交，MERGE_HEAD 是另一侧提交。先保存它们，再用 commit-tree 建立两个父关系。</p>
+<div class="code-block"><div class="code-bar"><span>创建并检查双亲提交对象</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>LEFT=$(git rev-parse HEAD)
+RIGHT=$(git rev-parse MERGE_HEAD)
+MERGED=$(printf 'docs: agree on meeting and office hours\n' | git commit-tree "$RESULT_TREE" -p "$LEFT" -p "$RIGHT")
+git cat-file -p "$MERGED"
+git rev-list --parents -n 1 "$MERGED"
+git show "$MERGED":plan.txt</code></pre></div>
+<p>此刻对象已经存在，但当前 main 尚未因此前进。提交正文中应有两行 parent，文件内容应为商定两行。双亲结构与正确树内容需要分别检查：给一个错误树附上两个父，并不会自动成为正确合并。</p>
+<h3 id="h3-14">保留构造结果，再正常完成合并</h3>
+<p>实验把手工对象保存到单独分支，随后正常完成先前 merge。这样既能比较底层对象，又不把更新引用误当成清理合并状态的完整过程。</p>
+<div class="code-block"><div class="code-bar"><span>保留手工对象并完成日常合并流程</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git update-ref refs/heads/manual-result "$MERGED"
+git commit -m "docs: finish the agreed merge"
+git diff manual-result HEAD
+git rev-list --parents -n 1 HEAD
+git status --short</code></pre></div>
+<p>两个提交的标识可能不同，因为说明、时间等元数据不同；diff 应为空，表示文件树一致。HEAD 的父关系应仍连接双方，status 应干净。正常 commit 还处理合并状态等事务，不能把 commit-tree 加一次 update-ref 描述为现代 merge 的全部实现。在真实项目中应优先使用日常 merge 完成整合。底层构造用于理解结构、诊断或经过审查的自动化，不是绕过检查和管理流程的理由。</p>
+<h2 id="h2-8">为诊断设计查询顺序</h2>
+<p>遇到状态异常，先确认当前位置与当前分支，再确认修订名解析到的对象，随后检查提交树、索引和工作文件。每次查询应回答一个具体问题。表<a class="book-ref" href="../chapters/10.html#tab:plumbing-diagnosis">10.2</a>给出建议顺序，不意味着所有故障都要逐条机械执行。</p>
+<div class="table-scroll" id="tab:plumbing-diagnosis" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 10.2</b> 引用与索引诊断的查询顺序</caption><tr><th colspan="1">问题</th><th colspan="1">观察入口</th></tr><tr><td colspan="1">是否位于预期工作树</td><td colspan="1">rev-parse –show-toplevel</td></tr><tr><td colspan="1">当前是否在普通分支</td><td colspan="1">symbolic-ref 或 branch –show-current</td></tr><tr><td colspan="1">某个名字到底指向什么</td><td colspan="1">rev-parse <code>--verify</code> 与 show-ref</td></tr><tr><td colspan="1">提交记录哪些父关系</td><td colspan="1">cat-file <code>-p</code> 或 rev-list –parents</td></tr><tr><td colspan="1">索引正在候选哪份内容</td><td colspan="1">ls-files <code>--stage</code> 与 show :路径</td></tr><tr><td colspan="1">是否仍有未合并条目</td><td colspan="1">ls-files –unmerged</td></tr><tr><td colspan="1">工作编辑还有什么未被选中</td><td colspan="1">diff；随后核对 cached diff</td></tr></table></div></div>
+<h2 id="h2-9">实验拓展：索引树与工作文件可以不同</h2>
+<p>构树操作读取索引，未被选入的编辑不会自动参与。拓展实验让两份内容故意不同，再分别读取它们，检验学生是否能准确说明命令输入。</p>
+<h3 id="h3-15">从“暂存列表”走向内容模型</h3>
+<p>把索引仅理解为文件名清单，会难以解释暂存后再次编辑的情况。索引记录候选路径及相应对象信息，因而可以生成下一次提交所需的树。工作区文件后来变化，并不会自动改写已经选择的候选内容。</p>
+<p>下面的独立实验使用 <code>write-tree</code> 将索引状态写成树对象，但不立即提交。这样能够把“形成候选树”与“创建提交并更新分支”两个步骤分开观察。底层命令用于理解模型，日常提交仍优先使用高层命令。</p>
+<div class="code-block"><div class="code-bar"><span>先暂存，再编辑，分别读取两份内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir candidate10
+cd candidate10
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Version: one\n' &gt; note.txt
+git add note.txt
+TREE10=$(git write-tree)
+printf 'Version: two\n' &gt; note.txt
+git show "$TREE10:note.txt"
+cat note.txt
+git diff -- note.txt
+git commit -m "docs: record the selected first version"
+test "$(git rev-parse HEAD^{tree})" = "$TREE10"
+test "$(git show HEAD:note.txt)" = 'Version: one'
+grep -q 'Version: two' note.txt</code></pre></div>
+<p>提交中的树与先前从索引写出的树相同，而工作文件仍是第二版。此时提交成功，但工作区并不干净。提交采用已经选择的候选状态；尚未暂存的工作区编辑继续保留在当前现场。</p>
+<div class="code-block"><div class="code-bar"><span>重新选择内容以后，树才发生变化</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git add note.txt
+NEXT10=$(git write-tree)
+test "$NEXT10" != "$TREE10"
+git commit -m "docs: record the revised second version"
+test "$(git rev-parse HEAD^{tree})" = "$NEXT10"
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>该实验把一次常见误解转化为可验证事实：编辑器保存只更新工作文件，暂存才更新相应候选；创建提交再把候选树连接进历史。理解这条链路以后，检查候选差异就成为提交前的必要步骤，而非可有可无的仪式。</p>
+<h2 id="h2-10">引用更新与并发条件</h2>
+<p>读取入口以后，另一个操作可能已经推进它。带旧值条件的更新把预期显式表达，失败后应重新调查，而非无条件覆盖当前实际值。</p>
+<h3 id="h3-16">为什么需要期待的旧值</h3>
+<p>两个程序可能同时准备更新同一引用。若第二个程序不核对旧值，便可能覆盖第一个程序刚完成的进展。带旧值条件的更新表达的是：“只有当前值仍等于我观察到的值，才执行这次替换。”这是对并发变化的一种约束，不是对新提交内容的质量判断。</p>
+<p>类似思想也出现在带租约的推送中。它有助于避免覆盖未被预期的远端更新，但不能代替团队对改写共享历史的授权。机械满足旧值条件，并不意味着历史替换符合业务约定。</p>
+<h3 id="h3-17">不依赖引用的物理布局编写脚本</h3>
+<p>分支引用可能采用不同存储形式，HEAD、公共目录和工作树专属信息也各有边界。脚本应优先使用 <code>rev-parse</code>、<code>symbolic-ref</code> 和 <code>for-each-ref</code> 等接口，不应把读取某个固定文件路径当作普遍规则。</p>
+<p>同样，不能假设 <code>.git</code> 必然是目录。在关联工作树或某些嵌套情境中，它可以是指向实际管理目录的文本文件。直接拼接 <code>.git/objects</code> 或 <code>.git/HEAD</code> 的脚本，可能只在最简单的仓库布局中工作。</p>
+<h2 id="h2-11">名称解析的实务边界</h2>
+<p>便利的缩写和相对记号适合交互，长期脚本还需要稳定来源、明确类型与错误处理。下面区分人类输入方便与自动化可重复要求。</p>
+<h3 id="h3-18">路径与修订名称可能发生歧义</h3>
+<p>同一个字符串可能既是分支名，又是文件路径。命令需要按照各自语法解释参数；在适当位置使用 <code>--</code> 可以明确后续参数是路径。脚本还应尽量使用完整引用名或验证过的对象表达式，减少环境差异造成的歧义。</p>
+<p>对于来自外部输入的名称，除了加引号，还要考虑它是否可能被当作命令选项或非法修订。引号处理终端分词，并不会自动证明输入具有合法的 Git 语义。应按命令接口逐层验证。</p>
+<p>交互命令中的简写便利不应直接转化为脚本假设（图 <a class="book-ref" href="../chapters/10.html#fig:scenario-10-01">10.11</a> ）。脚本应验证输入、对象类型与失败状态，再执行依赖这些条件的后续动作。</p>
+<figure id="fig:scenario-10-01"><button aria-label="放大图10.11：脚本先验证名称再读取目标" class="zoom-image"><img alt="图10.11 脚本先验证名称再读取目标" height="298" loading="lazy" src="../assets/figure-10-11.webp" width="1178"/></button><figcaption><b>图 10.11</b> 脚本先验证名称再读取目标</figcaption></figure>
+<h3 id="h3-19">让诊断结果服务于下一步决定</h3>
+<p>一次好的诊断应回答：当前 HEAD 关联哪个位置，候选树是否符合预期，工作文件是否另有编辑，是否存在未完成操作。只输出大量标识却不解释关系，会增加阅读负担。报告可以保留关键查询，并在每项结果后写出它排除了哪一种误判。</p>
+<p>迁移练习：某脚本把分支移动到正确提交后，工作文件仍旧。请解释原因。参考分析是：引用更新与工作区更新属于不同动作；正确的分支标识不能证明目录内容已随之改变。应先保护现场，再选择与目标状态匹配的高层操作，不能靠重复更新引用解决文件差异。</p>
+<h2 id="h2-12">本章小结</h2>
+<p>对象提供稳定内容，引用提供可移动入口，索引提供明确候选，工作区提供编辑现场。它们之间没有“任何一个改变，其他全部自动同步”的规则。理解每条命令更新哪一层，才能预测结果并设计验证。</p>
+<p>名字操作应尊重引用接口和条件更新。索引操作应区分正常 stage 0 与冲突候选阶段。手工创建双亲提交还进一步说明：合并既需要整合文件内容，也需要连接历史；完整日常操作包含的状态管理，不应被一个教学简图省略后误当作不存在。</p>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-13">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:10.1"><summary><span class="difficulty">应用</span><b>10.1</b><span>分别观察普通 HEAD、分离 HEAD 和尚无提交的 HEAD。解释 symbolic-ref 与 rev-parse 为何可能得到不同类别结果。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · HEAD三种状态 / 符号解析 / 对象解析</p><p>普通HEAD可符号解析到分支和提交；分离HEAD直接记录提交；未诞生HEAD指向尚无有效提交的名字。symbolic-ref询问符号引用，rev-parse通常按给定要求解析对象，所以成功条件与输出类别不同。</p><p>分别写出符号查询和提交查询的预期类别：名称存在、对象可解析以及分离提交各有条件。使用相同两条命令观察三种现场，可以避免把一次查询失败笼统解释为仓库无效。</p></div></details><details class="exercise" id="ex:10.2"><summary><span class="difficulty">应用</span><b>10.2</b><span>创建并打包练习分支引用，验证分支仍能查询。为什么脚本不应只检查某个松散文件？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 引用后端 / packed-refs / 查询接口</p><p>创建引用后执行适当pack-refs，使用show-ref或rev-parse继续查询，并与对象内容核对。打包可能使某个松散路径不存在，但逻辑引用仍有效；脚本应使用Git接口而非假定单一磁盘布局。</p><p>打包前后保存同一名称的解析值，并使用show-ref核对。松散文件消失而名称仍有效，是逻辑引用与物理记录分离的直接例子。工具脚本应依赖Git接口，也要考虑其他引用后端的存在。</p></div></details><details class="exercise" id="ex:10.3"><summary><span class="difficulty">应用</span><b>10.3</b><span>按实验一执行带旧值条件的 update-ref，再制造过时条件。证明更新失败后引用保持原位。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 比较并更新 / 预期旧值 / 并发保护</p><p>先记录旧值，再用update-ref给出新值和预期旧值。把实际入口推进后仍用过时旧值请求更新，应失败；随后rev-parse确认入口未被错误请求改写。条件保护针对引用目标，而不是工作区内容。</p><p>把两个操作者读取同一旧值后先后更新的过程列成表，第二个过时条件应被拒绝。拒绝只保护指定引用的旧值条件，不自动检查业务是否已经合入，也不能替代跨多个名称的完整事务设计。</p></div></details><details class="exercise" id="ex:10.4"><summary><span class="difficulty">应用</span><b>10.4</b><span>移动非当前分支后，工作文件为什么没有变？指出所观察的引用、索引和文件分别处于什么状态。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 非当前引用 / 独立索引 / 工作文件</p><p>更新非当前引用只改变该入口，不等于检出到它。HEAD仍沿原当前分支解析，索引和工作文件可保持原内容。报告分别查询被移动分支、当前HEAD、索引树与文件，不用一个status代替全部事实。</p><p>先保存当前HEAD、索引树和文件内容，再移动非当前名称并重复观察。由此可以证明引用维护与内容检出分属不同操作。若需要正常切换任务，应选用符合工作树管理条件的日常命令。</p></div></details><details class="exercise" id="ex:10.5"><summary><span class="difficulty">应用</span><b>10.5</b><span>只改工作文件但不 add，连续两次 write-tree 为什么能得到同一标识？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · write-tree / 候选快照 / 未暂存编辑</p><p>write-tree依据索引形成树，未add的工作编辑尚未改变索引，所以两次可以得到同一树标识。使用普通diff证明工作文件变化，再读取索引内容与write-tree结果确认输入未变。</p><p>将索引条目保持不变，只改变工作文件，再比较两次write-tree结果。结果相同来自候选输入一致；若随后add新内容，再次写树才可能变化。时间缓存等实现细节不应代替内容来源解释。</p></div></details><details class="exercise" id="ex:10.6"><summary><span class="difficulty">应用</span><b>10.6</b><span>制造一次修改/修改冲突，分别读取 stage 1、2、3。以内容说明其角色，而不只给出命令。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 冲突阶段 / 共同基线 / 两侧来源</p><p>通常stage 1为该冲突使用的基线，stage 2和3为当前整合两侧；以实验读取的实际文本和操作方向说明。不能仅用“我的”“对方的”定义，因为变基等操作中的角色需要重新解释。</p><p>应读取每个阶段的真实文本，并与合并前的两端和基线逐一对应。阶段编号不宜简化为某个自然人的固定所有权；在变基等情境中，更要根据当前操作解释两侧角色。</p></div></details><details class="exercise" id="ex:10.7"><summary><span class="difficulty">应用</span><b>10.7</b><span>构造修改/删除冲突，观察哪些阶段不存在。与本章三份候选的实验比较。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 删除路径 / 缺失阶段 / 解决结果</p><p>修改/删除时，删除侧的阶段可能不存在，另一侧和基线仍有内容；修改/修改一般三侧都存在。缺失阶段表示对应路径不在该来源，不能当作读取失败即说明仓库损坏。</p><p>若一侧删除该路径，其对应阶段可能缺失。检查应同时报告仍存在的阶段和最终选定内容，再用add或适当删除操作形成解决结果。阶段数量本身不承担业务正确性的判断。</p></div></details><details class="exercise" id="ex:10.8"><summary><span class="difficulty">应用</span><b>10.8</b><span>用错误文件树创建一个双亲提交，为什么它在结构上可成立但业务上仍错误？设计检查来区分两者。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · commit-tree / 双亲结构 / 语义检查</p><p>commit-tree可以把任意有效树与两个父项连接，结构上并不自动验证树融合了双方意图。分别检查父标识、最终文件差异、需求测试和依赖；故意使用未整合的旧树可以展示父项正确而业务错误。</p><p>可以让结果树故意遗漏一侧功能，同时给出两个合法父项。结构查询会显示双亲，业务测试却可失败。这个反例说明合并验收需要把提交关系与功能组合分开，不能只统计parent行数。</p></div></details><details class="exercise" id="ex:10.9"><summary><span class="difficulty">应用</span><b>10.9</b><span>给同一个解决树创建说明不同的提交，比较树与父关系。说明这些事实为什么需要分别验证。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 树比较 / 父项顺序 / 提交说明</p><p>同一解决树可以与不同说明或不同父项形成不同提交。空树差异只能证明内容相同；rev-list --parents和cat-file分别检查父关系与元数据。三者是不同验收事实。</p><p>相同树可以用于多个说明或父关系不同的提交。报告应分别保存树标识、父列表和diff结果，再解释每项事实的意义。选择发布或维护版本时，仅凭目录相同不足以替代来源与整合关系审查。</p></div></details><details class="exercise" id="ex:10.10"><summary><span class="difficulty">应用</span><b>10.10</b><span>同学把 update-ref 当作正常 merge 的完整替代。列出其可能遗漏的状态管理与检查，并说明何时应回到日常命令。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 引用维护 / 合并状态 / 日常命令</p><p>update-ref只提供引用更新，可能遗漏三方整合、未合并索引处理、工作文件检出、状态文件管理、测试与协作策略。普通开发优先回到merge等日常命令；底层接口用于理解或受控自动化且需额外验证。</p><p>update-ref不执行完整的三方整合、冲突管理和工作树更新。日常merge还会依据历史条件与策略组织过程；只有明确承担相关输入构造与验证责任时，才适合在底层实验中拆开这些阶段。</p></div></details><details class="exercise" id="ex:10.11"><summary><span class="difficulty">应用</span><b>10.11</b><span>比较主工作树与关联工作树中的HEAD、index、commondir及引用日志。说明哪些数据共享、哪些独立，以及为什么复制一个.git指向文件不能形成可独立运行的历史备份。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 管理路径 / 公共目录 / 引用日志</p><p>各工作树具有自己的HEAD与索引等现场数据，公共对象及多数名称由公共目录提供。应使用管理目录、公共目录和指定管理路径查询，读取实际指向，再解释日志范围；不能只把两个路径前缀作字符串比较。</p><p>复制.git文本文件只复制了一条指向，关联目标仍可能依赖原目录。独立备份需要保存实际对象与相应引用，并从脱离原路径的新目录恢复验证。答案应把工作现场隔离与数据冗余分开，避免以多个工作树数量代表备份数量。</p></div></details><details class="exercise" id="ex:10.12"><summary><span class="difficulty">应用</span><b>10.12</b><span>某脚本通过读取refs/heads/main判断分支存在，却在引用打包或另一后端下失败。请改写判断思路，区分对象格式和引用后端，并说明后端差异为何不改变分支作为名称入口的逻辑含义。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 引用查询接口 / reftable / 实现边界</p><p>分支存在性应通过Git支持的引用或名称查询确定，并核对目标类型，避免依赖一个松散文件路径。files后端的打包记录与reftable等后端可以改变物理布局，名称到对象的逻辑职责保持可解释。</p><p>对象格式关注对象标识计算与表示，引用后端关注名称记录的保存，两者不能混称。工具在环境不支持所需查询时应明确前提和失败类别，不应将文件未找到直接报告为历史丢失。验证至少覆盖打包前后的同一分支。</p></div></details><details class="exercise" id="ex:10.13"><summary><span class="difficulty">综合</span><b>10.13</b><span>两个维护脚本依据同一旧值更新发布入口，一份工作树仍有冲突阶段，另一份能创建双亲提交却遗漏一侧业务。请设计受控更新与验收过程，说明旧值比较、索引可写树条件、父项结构和最终功能各提供什么保证，并展示一次应被拒绝的更新。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 并发更新 / 冲突索引 / 候选树</p><p>对指定入口采用预期旧值的比较并更新，使第二个过时请求在条件不符时拒绝；需要多个入口整体变化时，应进一步采用合适事务接口，不能把单引用检查扩大为全项目原子性。冲突索引先解决为明确候选，才可形成可解释的树。</p><p>创建合法双亲提交只给出结构关系，遗漏一侧功能仍需要内容比较与业务测试识别。验收材料应分别展示过时更新被拒绝、引用保持原位、索引阶段变化、结果树及测试。全过程保持可回查的旧入口与日志，避免仅根据一次命令返回成功判定交付完整。</p><p>两个脚本都应记录预期旧值，并用带旧值条件的更新请求竞争同一入口；先成功的请求改变当前值，后一个过期请求必须被拒绝，不能覆盖新结果。另在包含未合并阶段的索引中尝试写树并记录拒绝，再解决条目、读取候选树。构造双亲提交后，应独立检查最终树及双方业务测试，证明父项齐全与内容齐全是两个结论。入口更新完成后仍需核对相应工作树，防止把引用变化当作检出。</p></div></details></section><section id="mindmap"><h2 id="review-14">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第10章复习导图" class="zoom-image"><img alt="第10章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-10.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="10">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="09.html"><small>← 上一章</small>对象模型与内容寻址</a><a href="11.html"><small>下一章 →</small>变基、拣选与历史整理</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">为什么对象之外还需要名字</a><a href="#h2-2">实验一：名字、HEAD 与条件更新</a><a href="#h2-3">HEAD 的三种观察情境</a><a href="#h2-4">名称解析：给人便利，给脚本明确性</a><a href="#h2-5">索引条目：下一次提交如何确定</a><a href="#h2-6">实验二：在冲突中读取三个来源</a><a href="#h2-7">构造双亲提交：内容整合与历史连接分开检查</a><a href="#h2-8">为诊断设计查询顺序</a><a href="#h2-9">实验拓展：索引树与工作文件可以不同</a><a href="#h2-10">引用更新与并发条件</a><a href="#h2-11">名称解析的实务边界</a><a href="#h2-12">本章小结</a><a href="#review-13">本章习题与解析</a><a href="#review-14">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

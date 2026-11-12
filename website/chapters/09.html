@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>对象模型与内容寻址 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="9" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link active" data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>进阶篇<span>/</span>第09章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 09 · 进阶篇</div><h1>对象模型与内容寻址</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 55 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-09"></span>
+<p>同一份文件被一百次提交使用，Git 是否必须保存一百份内容？改了文件名，为什么文件内容的标识可能不变？把提交说明改一个字，为什么提交标识就变了？这些问题不能仅靠记住 add 和 commit 的用法回答。本章从“如何保存并重新找到内容”出发，逐层建立 blob、tree、commit 和 tag 的关系，再用实际命令验证。</p>
+<p><strong>学习目标：</strong>能区分内容、路径和历史各由什么对象记录；能从一个提交定位到文件内容；能解释对象复用与标识变化；能在独立仓库构造提交；能区分逻辑快照、物理压缩、完整性检查和身份信任。</p>
+<p>保存内容的问题 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 内容寻址 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 文件与目录 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 提交与父关系 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 对象复用实验 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 手工构造提交 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 存储与维护 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 完整性与工程边界。</p>
+<h2 id="h2-1">从文件名寻址到内容寻址</h2>
+<p>普通文件系统通过路径寻找文件，例如 notes/week01.txt。路径说明文件位于哪里，却不能单独说明里面是什么：今天与明天同一路径下的内容可能不同。版本控制需要同时保存这些不同状态，不能只依赖当前路径（图 <a class="book-ref" href="../chapters/09.html#fig:principle-ch09-01">9.1</a> ）。</p>
+<figure id="fig:principle-ch09-01"><button aria-label="放大图9.1：内容寻址的输入（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图9.1 内容寻址的输入（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-9-1.webp" width="1097"/></button><figcaption><b>图 9.1</b> 内容寻址的输入（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>一种直接办法是给每份内容分配顺序编号，再维护编号到内容的目录。Git 采用另一种办法：根据对象的类型、长度和正文计算标识，再用该标识读取对象。这称为内容寻址。这里的“内容”指参与计算的完整对象输入，其中还包括类型和长度等信息。</p>
+<p>计算对象标识时，输入包含类型、长度和精确正文（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-01">9.2</a> ）。编辑器显示相近的文本，若编码或换行字节不同，便可能得到不同标识；对象校验应以实际字节为准。</p>
+<figure id="fig:scenario-09-01"><button aria-label="放大图9.2：对象标识的输入包含类型与长度" class="zoom-image"><img alt="图9.2 对象标识的输入包含类型与长度" height="298" loading="lazy" src="../assets/figure-9-2.webp" width="1178"/></button><figcaption><b>图 9.2</b> 对象标识的输入包含类型与长度</figcaption></figure>
+<p>以 blob 为例，输入由类型名、空格、正文的字节数、一个 NUL 分隔字节和正文组成。若正文是五个 ASCII 字符 hello，长度就是 5；若正文是 hello 加换行，长度变为 6。文件看起来只差一个不显眼的换行，对象输入仍然不同。</p>
+<p><strong>字节数不等于字符数。</strong>中文在 UTF-8 下通常需要多个字节，编辑器显示的字符数不能直接代替对象长度。后面的实验使用短英文文本，目的是让初学者先清楚看见换行和字节的影响，而非限制 Git 只能处理英文。</p>
+<p>同一种对象类型、相同字节内容和相同对象格式下，计算得到相同标识，Git 因而能够复用同一对象。不同内容通常得到不同标识，但不能在数学上把有限长度哈希写成绝无碰撞。Git 的对象格式和相关校验机制共同服务于数据完整性；签名与身份信任是另一个层次的问题。</p>
+<p>[标识与加密不是同一概念] 哈希用于计算内容摘要，不把正文变成只有持钥者才能解开的密文。知道对象标识并不代表拥有访问权限；把仓库公开后，对象内容也不会因为使用哈希名称而自动保密。不要将内容寻址当作密钥保护机制。</p>
+<h2 id="h2-2">四种对象分别解决什么问题</h2>
+<p>四种Git对象共同表达内容、目录、提交关系与标记，彼此通过对象标识建立联系。本节依次说明各类对象保存的字段与连接，再据此沿一个提交追踪到实际文件内容。（图 <a class="book-ref" href="../chapters/09.html#fig:principle-ch09-02">9.4</a> ）</p>
+<p>Git的快照通过对象之间的连接描述项目状态。图 <a class="book-ref" href="../chapters/09.html#fig:visual-09-a">9.3</a> 把提交、目录树和文件内容展开，并突出相同内容对象的复用：树条目组织名称与模式，blob保存内容，提交把快照与父关系、身份及说明联系起来。</p>
+<figure id="fig:visual-09-a"><button aria-label="放大图9.3：提交、树与文件内容对象的连接和复用" class="zoom-image"><img alt="图9.3 提交、树与文件内容对象的连接和复用" height="1024" loading="lazy" src="../assets/figure-9-3.webp" width="1536"/></button><figcaption><b>图 9.3</b> 提交、树与文件内容对象的连接和复用</figcaption></figure>
+<figure id="fig:principle-ch09-02"><button aria-label="放大图9.4：对象逐层连接项目（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图9.4 对象逐层连接项目（箭头表示所说明的对象或访问关系）" height="171" loading="lazy" src="../assets/figure-9-4.webp" width="1177"/></button><figcaption><b>图 9.4</b> 对象逐层连接项目（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<h3 id="h3-1">blob：保存内容，不保存路径</h3>
+<p>blob 可以保存普通文本，也可以保存二进制文件。它不记文件名、所属目录或“这是第几个版本”。如果两个路径拥有相同的文件内容，它们可以引用同一个 blob；如果一个文件改名但内容不变，blob 也可以保持不变。</p>
+<p>这恰好回答了保存历史时的一个问题：同一内容不必因为出现在不同路径、不同版本中而重复保存。至于“这个内容在本次快照中叫什么名字”，由 tree 回答。</p>
+<h3 id="h3-2">tree：把名称与对象组织成目录</h3>
+<p>tree 类似一份目录清单，每项记录模式、名称和目标对象标识。普通文件条目通常指向 blob，子目录条目指向另一棵 tree。由根 tree 沿目录名逐层查找，就能定位快照中的文件。</p>
+<p>模式也不是完整的操作系统权限表。普通文件常见模式为 100644，可执行文件常见模式为 100755；Git 不保存文件系统的所有权限、所有者、访问时间和任意扩展属性。子模块条目使用 gitlink，含义也不同于普通目录，第 14 章会另作说明。</p>
+<p>根 tree 不保存“项目根目录在你机器上叫哪个绝对路径”。因此，同一个提交可以在不同位置检出，而无须改写所有对象。路径在快照内部组织，个人主目录不是提交内容的必要组成部分。</p>
+<h3 id="h3-3">commit：连接快照与历史</h3>
+<p>根 tree 足以表示一个文件集合，却没有回答谁记录了它、为什么记录、它接在哪一份历史后面。commit 对象补充根树标识、父提交、作者、提交者、时间与提交说明等信息。</p>
+<p>第一次提交没有父提交；普通线性提交通常有一个父提交；常见合并提交有两个父提交。父关系使历史形成有向无环图。分支以另外保存的名称定位提交；提交对象的字段中不记录永久的“所属分组”。</p>
+<p>作者与提交者也需要分开理解。一个人编写补丁，另一个人应用补丁时，两者可能不同。变基和拣选过程中，作者信息与提交者信息的处理也可能不同。提交中的姓名和邮箱属于记录字段，不能单凭这些文字证明操作者身份。</p>
+<h3 id="h3-4">tag：给目标加上说明</h3>
+<p>附注标签使用 tag 对象记录目标、类型、标签名、制作者与说明，可包含签名。轻量标签则仅引用，不额外产生 tag 对象。标签通常标记提交，但对象模型允许附注标签指向其他类型对象；日常发布约定不能替代底层类型定义。表<a class="book-ref" href="../chapters/09.html#tab:object-responsibilities">9.1</a>把四类职责并列，便于后续观察命令时先判断所处层次。</p>
+<div class="table-scroll" id="tab:object-responsibilities" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 9.1</b> 四类对象的职责与不负责的事项</caption><tr><th colspan="1">对象</th><th colspan="1">主要记录</th><th colspan="1">不应据此推断</th></tr><tr><td colspan="1">blob</td><td colspan="1">文件字节内容</td><td colspan="1">文件名、历史位置与作者</td></tr><tr><td colspan="1">tree</td><td colspan="1">名称、模式和目标对象</td><td colspan="1">某次提交的理由</td></tr><tr><td colspan="1">commit</td><td colspan="1">根树、父关系和元数据</td><td colspan="1">固定属于某一个分支</td></tr><tr><td colspan="1">tag</td><td colspan="1">目标、说明及可选签名</td><td colspan="1">目标软件必然正确</td></tr></table></div></div>
+<h2 id="h2-3">辨认<code>.git</code>中的管理数据</h2>
+<span id="sec:repository-layout"></span>
+<p>前面从对象关系解释了Git保存哪些信息，现在可以把这些关系同磁盘上的管理数据对应起来。常规非裸仓库把管理数据放在工作树根目录的<code>.git</code>目录中；工作文件位于其外。关联工作树和子模块等情形还可能使用同名文本文件指向实际管理目录。因此，判断仓库位置应使用Git的路径查询，不能以“发现一个同名文件夹”作为唯一依据<span class="citation" data-cites="gitlayout">(Git Project 2026)</span>。</p>
+<h3 id="h3-5">先区分工作文件与管理目录</h3>
+<p>项目中的<code>src/</code>、<code>README.md</code>等路径供日常编辑；管理目录中的对象、引用和索引则分别支持历史保存、名称解析和候选内容组织。工作树中的目录层次由提交树描述，<code>objects/</code>下的层次服务于对象查找，两者各有用途。图 <a class="book-ref" href="../chapters/09.html#fig:git-layout-tree">9.5</a> 以files引用后端的常规布局为例，将目录和普通文件画成不同图标；尖括号内为结构占位说明。</p>
+<figure id="fig:git-layout-tree"><button aria-label="放大图9.5：常规管理目录的文件夹层次：files引用后端示意，按需出现的其他条目另见正文" class="zoom-image"><img alt="图9.5 常规管理目录的文件夹层次：files引用后端示意，按需出现的其他条目另见正文" height="950" loading="lazy" src="../assets/figure-9-5.webp" width="1155"/></button><figcaption><b>图 9.5</b> 常规管理目录的文件夹层次：files引用后端示意，按需出现的其他条目另见正文</figcaption></figure>
+<p><code>HEAD</code>通常记录<code>ref: refs/heads/main</code>这样的符号引用；分离状态下可直接记录提交标识。<code>refs/heads/main</code>保存本地分支目标，分支尚无提交时，该目标文件可以尚未形成。<code>config</code>存放仓库级配置，例如远程地址及本仓库的提交身份设置；其有效值还可能受到其他作用域配置影响。<code>description</code>主要供部分仓库展示工具使用，通常不决定日常提交行为。</p>
+<p><code>index</code>采用二进制结构记录候选条目及相关缓存。条目中的对象标识连接到对象数据库；文件内容通常不直接作为完整正文嵌在索引中。读取候选应使用<code>git ls-files --stage</code>、<code>git show :路径</code>等入口。将索引交给文本编辑器修改，既难以正确解释字段，也可能破坏其格式。</p>
+<h3 id="h3-6">对象、名称与变化记录分别保存</h3>
+<p><code>objects/</code>中可同时存在松散对象与打包对象。松散对象路径通常用对象标识的前两位作为子目录名，其余部分作为文件名；正文经过压缩，不能据文件名寻找原始项目路径。<code>objects/pack/</code>中的<code>.pack</code>保存打包对象，配套<code>.idx</code>支持定位；具体辅助文件随版本、配置和维护过程变化。对象格式也决定标识长度，应先检查仓库格式，再解释长度。</p>
+<p><code>refs/</code>提供分支、标签和远程跟踪名称等入口。采用files后端时，部分引用可能以松散文件保存，也可能进入<code>packed-refs</code>；采用reftable等其他后端时，实际布局还会不同。脚本应使用<code>git show-ref</code>、<code>git for-each-ref</code>或<code>git rev-parse</code>查询名称，而不依赖某个松散文件持续存在。</p>
+<p><code>logs/</code>保存已启用的引用日志。日志反映本地引用怎样移动，保留情况受到配置和维护策略影响；它与提交对象中的作者时间、提交说明属于不同记录。<code>FETCH_HEAD</code>登记最近抓取涉及的目标，<code>ORIG_HEAD</code>可由相关操作保存此前位置；这些文件按操作出现或更新，适合结合具体情境分析，不能当作永久不变的恢复凭证。表 <a class="book-ref" href="../chapters/09.html#tab:git-admin-files">9.2</a> 按用途整理了常见入口。阅读时可先确认某项数据属于对象、引用、索引、配置还是过程状态，再选择相应查询。相同的“找不到文件”现象，可能对应尚未创建、引用已打包、使用另一后端或查错工作树位置等不同原因。</p>
+<div class="table-scroll" id="tab:git-admin-files" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 9.2</b> 常见仓库管理数据及其推荐查询入口</caption><tr><th colspan="1">名称或路径</th><th colspan="1">主要用途</th><th colspan="1">推荐观察方法</th></tr><tr><td colspan="1">HEAD</td><td colspan="1">当前名称或分离提交</td><td colspan="1">symbolic-ref与rev-parse分别查询</td></tr><tr><td colspan="1">config</td><td colspan="1">仓库级配置</td><td colspan="1">config –local –list –show-origin</td></tr><tr><td colspan="1">index</td><td colspan="1">候选条目与状态缓存</td><td colspan="1">ls-files –stage；show :路径</td></tr><tr><td colspan="1">objects/</td><td colspan="1">对象的物理保存</td><td colspan="1">cat-file；count-objects -v</td></tr><tr><td colspan="1">refs/、packed-refs</td><td colspan="1">files后端的名称记录</td><td colspan="1">show-ref；for-each-ref</td></tr><tr><td colspan="1">logs/</td><td colspan="1">本地引用移动记录</td><td colspan="1">reflog show指定入口</td></tr><tr><td colspan="1">info/exclude</td><td colspan="1">本地忽略规则</td><td colspan="1">check-ignore -v指定路径</td></tr><tr><td colspan="1">hooks/</td><td colspan="1">常规钩子目录</td><td colspan="1">先查询core.hooksPath是否另有设置</td></tr><tr><td colspan="1">FETCH_HEAD等</td><td colspan="1">特定操作的过程记录</td><td colspan="1">结合最近操作、log及状态解释</td></tr></table></div></div>
+<h3 id="h3-7">在独立仓库中核对路径与内容</h3>
+<p>以下实验使用SHA-1对象格式与files引用后端，使对象和引用后端条件明确。若本机版本不识别相应选项，应先按第2章核对安装版本。所有操作在新练习目录中完成，不手工改写管理文件。先建立一次提交和一个标签，为后续观察提供实际对象与名称。</p>
+<div class="code-block"><div class="code-bar"><span>建立管理数据观察仓库</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir layout09
+cd layout09
+git init -b main --object-format=sha1 --ref-format=files
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Repository layout\n' &gt; notes.txt
+git add notes.txt
+git commit -m "docs: establish a layout observation baseline"
+git tag -a layout-v1 -m "Layout observation baseline"</code></pre></div>
+<p>初始化建立管理结构，首次提交再建立有效分支目标。<code>notes.txt</code>是工作文件；提交树及blob保存已记录的路径和内容；<code>main</code>与<code>layout-v1</code>则提供名称入口。身份与时间字段会影响对象标识，观察时应使用本机解析出的实际值。</p>
+<div class="code-block"><div class="code-bar"><span>查询实际管理路径并读取可解释字段</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git rev-parse --git-dir
+git rev-parse --git-common-dir
+git rev-parse --git-path HEAD
+git rev-parse --git-path index
+cat "$(git rev-parse --git-path HEAD)"
+git ls-files --stage
+git cat-file -p HEAD</code></pre></div>
+<p>前四项查询分别提供当前管理目录、公共管理目录及指定管理文件路径。常规工作树中，前两者通常都指向<code>.git</code>；后面的关联工作树会呈现不同结果。<code>HEAD</code>正文说明当前名称关系，索引查询说明候选路径与blob，提交查询说明根树和父项等字段。将这三类输出并列，便能辨认“当前在哪条分支”“下次准备提交什么”“已有提交记录什么”。</p>
+<div class="code-block"><div class="code-bar"><span>验证磁盘编辑不自动更新候选</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>INDEX_BLOB=$(git rev-parse :notes.txt)
+printf 'Unstaged detail\n' &gt;&gt; notes.txt
+test "$(git rev-parse :notes.txt)" = "$INDEX_BLOB"
+git diff -- notes.txt
+git show :notes.txt
+git restore --worktree -- notes.txt</code></pre></div>
+<p>追加文字以后，工作文件改变，索引中的对象标识保持原值；<code>diff</code>报告两者差异，<code>show :notes.txt</code>仍读取原候选。最后按索引来源恢复工作文件，重新得到一致状态。这个实验把第3章的内容模型同索引条目联系起来，也说明索引文件与工作文件各自有独立的更新条件。</p>
+<h3 id="h3-8">引用打包与关联工作树的布局差异</h3>
+<p>引用打包可以改变名称的保存位置，同时保持名称解析结果。下面先保存分支目标，再通过Git维护命令打包引用。检查重点是<code>main</code>仍解析到原提交，不能因某个松散文件消失就判断分支已被删除。</p>
+<div class="code-block"><div class="code-bar"><span>打包引用后核对逻辑名称</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>LAYOUT_TIP=$(git rev-parse main)
+git pack-refs --all
+git show-ref --verify refs/heads/main
+test "$(git rev-parse main)" = "$LAYOUT_TIP"
+git for-each-ref --format='%(refname) %(objectname)' refs/heads refs/tags</code></pre></div>
+<p><code>show-ref</code>和<code>for-each-ref</code>按Git支持的接口读取引用，因此能够越过具体存储形式查到同一名称。对象打包与引用打包处理的对象不同：前者组织对象数据，后者组织名称记录。二者都需要分别验证逻辑结果，不能仅凭目录外观判断历史变化。</p>
+<p>关联工作树进一步区分当前管理目录与公共管理目录。其工作树根部的<code>.git</code>是带有<code>gitdir:</code>指向的文本文件；对应管理目录保存该工作树的<code>HEAD</code>、<code>index</code>等信息，公共对象及多数引用由主仓库提供。图 <a class="book-ref" href="../chapters/09.html#fig:gitdir-common">9.6</a> 把两段路径连接展开；连线表示路径指向与共享关系。</p>
+<figure id="fig:gitdir-common"><button aria-label="放大图9.6：关联工作树的独立管理数据与公共数据：连线表示路径解析关系" class="zoom-image"><img alt="图9.6 关联工作树的独立管理数据与公共数据：连线表示路径解析关系" height="545" loading="lazy" src="../assets/figure-9-6.webp" width="1118"/></button><figcaption><b>图 9.6</b> 关联工作树的独立管理数据与公共数据：连线表示路径解析关系</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>观察关联工作树的gitdir与公共目录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git worktree add -b inspect-layout ../layout09-linked
+cat ../layout09-linked/.git
+git -C ../layout09-linked rev-parse --git-dir
+git -C ../layout09-linked rev-parse --git-common-dir
+git -C ../layout09-linked rev-parse --git-path index
+git worktree remove ../layout09-linked
+test -z "$(git status --porcelain)"
+cd ..</code></pre></div>
+<p>新工作树的索引路径与原工作树不同，公共对象目录仍由同一仓库提供。理解这一布局后，便能说明为什么复制关联工作树根部的<code>.git</code>文本文件无法构成独立备份。正式维护应使用<code>git worktree</code>管理入口，并按第14、15章所述范围另行验证备份与恢复。</p>
+<h2 id="h2-4">实验一：沿提交查到文件内容</h2>
+<p>已经理解对象职责以后，可以从一个实际提交出发验证它们怎样连接。查询按提交、树、路径和blob逐层进行；每一步都核对对象类型与内容，使“版本包含文件”成为可以实际检查的关系。</p>
+<h3 id="h3-9">创建可以自行观察的仓库</h3>
+<p>以下所有步骤在同一 shell 会话中运行。shell 变量用来保存本机计算出的真实标识，避免照抄教材中的虚构哈希。</p>
+<div class="code-block"><div class="code-bar"><span>建立对象观察实验</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab09-objects
+cd lab09-objects
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'same content\n' &gt; first.txt
+cp first.txt second.txt
+git add first.txt second.txt
+git commit -m "docs: record two equal files"
+FIRST=$(git rev-parse HEAD)
+git cat-file -t "$FIRST"
+git cat-file -p "$FIRST"</code></pre></div>
+<p>cat-file 的 -t 只报告对象类型，这里应为 commit；<code>-p</code> 用适合人阅读的方式展示对象。提交输出首先包含 tree 行，随后是作者、提交者等字段和说明；本次为初始提交，不应出现 parent 行。输出中的时区和时间戳不必与他人一致。</p>
+<p>从提交追到文件，需要逐层读取对象连接（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-03">9.7</a> ）。每一步都先检查对象类型，再按相应语义解释正文，避免把任意对象都当作可直接显示的普通文本文件。</p>
+<figure id="fig:scenario-09-03"><button aria-label="放大图9.7：沿对象连接逐层读取" class="zoom-image"><img alt="图9.7 沿对象连接逐层读取" height="315" loading="lazy" src="../assets/figure-9-7.webp" width="1160"/></button><figcaption><b>图 9.7</b> 沿对象连接逐层读取</figcaption></figure>
+<p><code>FIRST=...</code> 保存的是命令结果，不产生额外仓库副本。<code>$(...)</code> 是 shell 命令替换；双引号让变量展开作为一个参数传给 Git。变量仅在当前会话生效，重新打开终端后需重新取得这些值。</p>
+<div class="code-block"><div class="code-bar"><span>查看根树与两个文件的对象</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>ROOT=$(git rev-parse 'HEAD^{tree}')
+git cat-file -t "$ROOT"
+git ls-tree HEAD
+ONE=$(git rev-parse HEAD:first.txt)
+TWO=$(git rev-parse HEAD:second.txt)
+printf '%s\n%s\n' "$ONE" "$TWO"
+git cat-file -p "$ONE"</code></pre></div>
+<p>根对象类型应为 tree。ls-tree 列出两个不同名称，但它们对应的 blob 标识应相同，因为内容完全相同。最后一条命令显示实际正文，证明两个名称都可以回到同一份内容。请特别区分两种“相同”：两个文件的 blob 相同，说明文件字节相同；两个提交的标识相同，才说明它们是同一提交对象。文件相同不要求提交也相同。</p>
+<h3 id="h3-10">改名时，什么改变、什么保留</h3>
+<div class="code-block"><div class="code-bar"><span>只改变路径，再观察快照</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git mv first.txt renamed.txt
+git commit -m "docs: rename the first file"
+SECOND=$(git rev-parse HEAD)
+RENAMED=$(git rev-parse HEAD:renamed.txt)
+printf '%s\n%s\n' "$ONE" "$RENAMED"
+git cat-file -p HEAD
+git diff-tree --no-commit-id --name-status -r -M "$FIRST" "$SECOND"</code></pre></div>
+<p>重命名后的 blob 标识应仍与 ONE 一致，因为内容没有改变；根树改变，因为名称映射改变；提交也改变，因为树、父关系和元数据形成了新的对象输入。最后的 -M 请求差异展示时进行重命名检测，输出属于对两份快照的分析，不表示 blob 内部存有重命名指令。</p>
+<p>这解释了为什么不同选项下，差异工具可能将同一变化显示为重命名，或显示为一删一增。底层保存的是快照关系，展示层再解释快照之间的相似性。</p>
+<h3 id="h3-11">修改一份内容，再观察复用</h3>
+<div class="code-block"><div class="code-bar"><span>修改其中一个文件</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'new content\n' &gt; renamed.txt
+git add renamed.txt
+git commit -m "docs: revise one file"
+THIRD=$(git rev-parse HEAD)
+git ls-tree HEAD
+git cat-file -p "$ONE"
+git show HEAD:second.txt
+git show HEAD:renamed.txt</code></pre></div>
+<p>second.txt 仍指向原 blob，renamed.txt 指向新 blob。查询 ONE 仍能读到原内容。更新当前文件不会原地改写历史对象；新快照引用新的内容，同时可以继续引用未变化对象。图<a class="book-ref" href="../chapters/09.html#fig:object-graph">9.8</a>用一个未变化文件和一个变化文件概括复用。图中箭头表示对象引用，父箭头从较新提交指向较旧提交，不表示时间向前流动。</p>
+<figure id="fig:object-graph"><button aria-label="放大图9.8：新快照既可以引用新对象，也可以复用已有内容" class="zoom-image"><img alt="图9.8 新快照既可以引用新对象，也可以复用已有内容" height="281" loading="lazy" src="../assets/figure-9-8.webp" width="902"/></button><figcaption><b>图 9.8</b> 新快照既可以引用新对象，也可以复用已有内容</figcaption></figure>
+<h2 id="h2-5">同一快照为什么可以有不同提交</h2>
+<p>在工程中，我们有时希望保留一次合并的历史关系，即使最终文件树与某个已有提交相同。理解这一情形的关键是：提交不是只有树标识，它还包含父关系和元数据（图 <a class="book-ref" href="../chapters/09.html#fig:principle-ch09-04">9.9</a> ）。</p>
+<figure id="fig:principle-ch09-04"><button aria-label="放大图9.9：相同树不等于相同提交（每行对照一组条件与解释）" class="zoom-image"><img alt="图9.9 相同树不等于相同提交（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-9-9.webp" width="1237"/></button><figcaption><b>图 9.9</b> 相同树不等于相同提交（每行对照一组条件与解释）</figcaption></figure>
+<p>下面不改工作文件，只用同一棵树和相同父提交构造两份说明不同的提交对象。它们暂时没有被分支引用，本实验只观察对象，不切换当前分支。</p>
+<p>提交身份由完整对象数据决定，根树只占其中一部分（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-04">9.10</a> ）。判断两次提交内容是否相同，应比较树或文件；判断历史记录是否同一对象，则应核对完整提交标识。</p>
+<figure id="fig:scenario-09-04"><button aria-label="放大图9.10：同一棵树可以对应不同提交" class="zoom-image"><img alt="图9.10 同一棵树可以对应不同提交" height="426" loading="lazy" src="../assets/figure-9-10.webp" width="1169"/></button><figcaption><b>图 9.10</b> 同一棵树可以对应不同提交</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>同一文件树，不同提交说明</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>SAME_TREE=$(git rev-parse 'HEAD^{tree}')
+A=$(printf 'explanation A\n' | git commit-tree "$SAME_TREE" -p HEAD)
+B=$(printf 'explanation B\n' | git commit-tree "$SAME_TREE" -p HEAD)
+printf '%s\n%s\n' "$A" "$B"
+git diff "$A" "$B"
+git cat-file -p "$A"
+git cat-file -p "$B"</code></pre></div>
+<p>两个标识应不同，但 diff 不显示文件差异，因为比较的树内容相同。cat-file 则可以看出说明差异。于是，“文件没有变化”“提交相同”“父链相同”是三个不能互相替代的判断。</p>
+<p>这一认识可以用于解释 amend：即使只修改说明，仍然创建新提交对象。若其后还有后代需要沿新历史继续连接，后代的父字段也会改变。历史整理的协作成本由这种身份变化而来，而非因为 Git 任意更改一串编号。</p>
+<h2 id="h2-6">实验二：用底层命令构造提交</h2>
+<p>日常提交命令把多个动作组织为一次方便的操作。把这些动作拆开，有助于理解内容写入、目录树形成和提交入口更新各自负责什么；下面只在独立仓库构造对象，不以底层命令替代全部日常流程（图 <a class="book-ref" href="../chapters/09.html#fig:principle-ch09-05">9.11</a> ）。</p>
+<figure id="fig:principle-ch09-05"><button aria-label="放大图9.11：底层构造的分工（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图9.11 底层构造的分工（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-9-11.webp" width="1111"/></button><figcaption><b>图 9.11</b> 底层构造的分工（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-12">先区分构造对象与发布名字</h3>
+<p>日常 add/commit 把很多检查与更新组合起来。底层实验把关键阶段分开，让读者看到每一步产物。它用于观察关键构造阶段，日常命令的附加检查及完整实现仍需分别研究。尤其是钩子、签名、索引刷新、引用日志与错误处理等，需要另作分析。下面使用另一个独立仓库，避免观察实验中的分支和对象影响判断。hash-object 写内容，update-index 选择候选，write-tree 写树，commit-tree 写提交，update-ref 最后建立分支引用。</p>
+<div class="code-block"><div class="code-bar"><span>写入内容并建立候选树</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab09-plumbing
+cd lab09-plumbing
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+mkdir docs
+printf 'A small reproducible course\n' &gt; docs/intro.txt
+BLOB=$(git hash-object -w docs/intro.txt)
+git cat-file -t "$BLOB"
+git cat-file -s "$BLOB"
+git cat-file -p "$BLOB"
+git update-index --add docs/intro.txt
+TREE=$(git write-tree)
+git ls-tree -r "$TREE"</code></pre></div>
+<p>-w 表示将对象写入数据库；不带 -w 时，hash-object 可以只计算标识。-s 给出对象正文的字节数，应与压缩文件所占磁盘空间区分。update-index 把路径、模式和内容等候选信息登记到索引；write-tree 由这些条目生成树结构。</p>
+<p>包含docs子目录时，根tree先以docs名称引用子树，再由该子树的intro.txt条目引用blob；这条路径按目录层次逐步解析。ls-tree 的 -r 递归展开，便于检查最终路径。直接查看根 tree 与递归查看，是观察同一结构的两种粒度。</p>
+<p>底层命令把对象构造的各阶段分开，便于理解日常提交的职责（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-05">9.12</a> ）。对象已经写入，并不自动意味着当前分支、索引和工作目录都已相应改变。</p>
+<figure id="fig:scenario-09-05"><button aria-label="放大图9.12：构造对象不等于建立分支入口" class="zoom-image"><img alt="图9.12 构造对象不等于建立分支入口" height="426" loading="lazy" src="../assets/figure-9-12.webp" width="1169"/></button><figcaption><b>图 9.12</b> 构造对象不等于建立分支入口</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>创建提交并建立引用</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>COMMIT=$(printf 'docs: create a nested course file\n' | git commit-tree "$TREE")
+git cat-file -t "$COMMIT"
+git cat-file -p "$COMMIT"
+git update-ref refs/heads/main "$COMMIT"
+git log -1 --oneline
+git status --short
+git show HEAD:docs/intro.txt</code></pre></div>
+<p>commit-tree 没有 <code>-p</code> 参数，因此创建没有父提交的根提交。在 update-ref 之前，提交对象已经存在，但 main 还没有指向它；建立引用之后，常用 log 才能从当前 main 走到它。</p>
+<p>正常情况下，status 应为空：当前工作文件、索引与新提交的树内容一致。手工实验中形成一致状态，是因为每一步有意保持了相同内容，不是 update-ref 自动同步了工作区。第 10 章会故意制造它们不同的情况。</p>
+<h3 id="h3-13">给手工构造结果增加一代历史</h3>
+<div class="code-block"><div class="code-bar"><span>显式指定父提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Add a second learning objective\n' &gt;&gt; docs/intro.txt
+git update-index --add docs/intro.txt
+NEXT_TREE=$(git write-tree)
+NEXT_COMMIT=$(printf 'docs: extend the objectives\n' | git commit-tree "$NEXT_TREE" -p "$COMMIT")
+git update-ref refs/heads/main "$NEXT_COMMIT" "$COMMIT"
+git rev-list --parents -n 1 HEAD
+git diff HEAD~1 HEAD -- docs/intro.txt</code></pre></div>
+<p>现在 commit-tree 的 <code>-p</code> 明确给出父提交。rev-list 应显示当前提交和一个父提交，diff 显示新增的一行。update-ref 的第三个位置参数要求引用旧值仍是 COMMIT；若别人或另一个进程已改变该引用，更新会拒绝，而非默默覆盖。对旧值的比较是第 10 章引用安全更新的起点。</p>
+<h2 id="h2-7">对象如何存储：逻辑与物理分层</h2>
+<p>对象标识和连接描述逻辑内容，磁盘上的松散对象、打包与压缩则决定保存方式。维护过程中物理布局可以变化，而有效对象的含义应保持一致。本节据此解释为何不能从某个目录文件数量推断历史是否改变（图 <a class="book-ref" href="../chapters/09.html#fig:principle-ch09-06">9.14</a> ）。</p>
+<p>查询对象的逻辑身份与观察磁盘文件的保存方式，属于两个层次。图 <a class="book-ref" href="../chapters/09.html#fig:visual-09-b">9.13</a> 展示对象从松散文件进入pack后的表示变化；B1、B2、T、C是示意名称，打包前后仍表示同一批对象。打包索引用于定位包内对象，应与提交候选的索引文件加以区分。</p>
+<figure id="fig:visual-09-b"><button aria-label="放大图9.13：对象打包改变物理表示并保留逻辑身份" class="zoom-image"><img alt="图9.13 对象打包改变物理表示并保留逻辑身份" height="1024" loading="lazy" src="../assets/figure-9-13.webp" width="1536"/></button><figcaption><b>图 9.13</b> 对象打包改变物理表示并保留逻辑身份</figcaption></figure>
+<figure id="fig:principle-ch09-06"><button aria-label="放大图9.14：逻辑对象与物理保存（每行对照一组条件与解释）" class="zoom-image"><img alt="图9.14 逻辑对象与物理保存（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-9-14.webp" width="1237"/></button><figcaption><b>图 9.14</b> 逻辑对象与物理保存（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-14">松散对象是便于增量写入的形式</h3>
+<p>对象通常可以作为独立压缩文件保存，称为松散对象。常见布局以对象标识前两位作为子目录，剩余部分作为文件名。这个布局服务于对象查找，不是项目目录结构；不要到 objects 中寻找 docs/intro.txt 同名文件。</p>
+<p>对象数据库也不一定全部位于一份简单的 .git/objects 目录中。共享对象、工作树与替代对象库等会使布局更复杂。观察时优先通过 Git 命令查询，不把一种常见实现布局写成所有仓库的定义。</p>
+<h3 id="h3-15">pack 将多个对象组织到一起</h3>
+<p>对象很多时，每个对象一个小文件会带来文件系统开销。pack 把多个对象组织进包文件，并使用索引加速定位。某些对象可以用相对其他对象的增量形式保存，降低重复内容的存储成本。</p>
+<p>增量的基对象并不必然是“上一版文件”。基对象选择属于存储优化，包可以重新组织；用户看到的提交树仍表示完整快照。逻辑层回答“某次提交有什么”，物理层回答“怎样节省空间并快速取回”。这两层不能混为一谈。</p>
+<div class="code-block"><div class="code-bar"><span>观察维护前后的对象统计</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git count-objects -v
+git gc
+git count-objects -v
+git log --oneline
+git show HEAD:docs/intro.txt</code></pre></div>
+<p>统计中的松散对象数量、包内数量与磁盘相关字段可能变化，不要求小仓库每次都出现同一数字。验证重点是维护前后仍能查询同一历史与文件内容。gc 受引用、日志、时间和配置等维护条件约束，也不应为了观察而加上激进修剪参数。</p>
+<h2 id="h2-8">可达性、保留与回收的边界</h2>
+<p>一个对象没有被当前分支使用，并不意味着它可以立即删除。其他分支、标签、工作树、索引和仍有效的引用日志等，都可能需要它。垃圾回收需要考虑实际保留根、对象关系和时间策略（图 <a class="book-ref" href="../chapters/09.html#fig:principle-ch09-07">9.15</a> ）。</p>
+<figure id="fig:principle-ch09-07"><button aria-label="放大图9.15：恢复能力受保留条件影响（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图9.15 恢复能力受保留条件影响（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-9-15.webp" width="1110"/></button><figcaption><b>图 9.15</b> 恢复能力受保留条件影响（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>例如实验中构造的 A、B 没有分支指向，但不应根据“刚写入却没有名字”就预言它们在某一天必然消失。对象年龄、reflog 策略、维护配置和实际执行时机会共同影响回收。reflog 是记录引用变化的机制，不能简单把它列为一种普通引用。</p>
+<p>对重要实验结果，最清楚的保留办法是建立明确的引用。对业务数据，仍需要独立备份与恢复演练。对象暂时存在是一项事实，能否在故障后可靠找到它是另一项要求。</p>
+<h2 id="h2-9">完整性检查不能替代信任判断</h2>
+<div class="code-block"><div class="code-bar"><span>在实验仓库检查对象连接与完整性</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git fsck --full</code></pre></div>
+<p>fsck 检查对象有效性和连接关系。它可能报告悬空对象，这不自动表示损坏：先前构造但未引用的实验提交就可能成为此类对象。判断结果时应分清损坏、缺失、连接错误和不再被常规引用使用的对象。</p>
+<p>也不能写成“每一次读取都会执行全部哈希与全库校验”。具体命令和路径执行的检查不同，fsck、传输检查和对象读取不是同一个层次。工程上需要适合任务的完整性验证，而非依赖一个过度简化的保证。</p>
+<p>对象检查通过可以支持数据完整性的判断，不能替代身份认证或业务验收（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-07">9.16</a> ）。发布与交接时，应把这些结论及其证据分别列出。</p>
+<figure id="fig:scenario-09-07"><button aria-label="放大图9.16：完整性、身份与内容责任分别验证" class="zoom-image"><img alt="图9.16 完整性、身份与内容责任分别验证" height="298" loading="lazy" src="../assets/figure-9-16.webp" width="1177"/></button><figcaption><b>图 9.16</b> 完整性、身份与内容责任分别验证</figcaption></figure>
+<p>即使对象连接与哈希都正确，仓库仍可能包含错误代码、恶意内容或伪造的作者文字。完整性告诉我们内容与预期标识一致；可信身份还需要密钥、签名与信任绑定；软件质量还需要评审、测试和依赖治理。</p>
+<h2 id="h2-10">从模型返回日常操作</h2>
+<p>内容不变而路径改变，可以复用 blob；内容和路径都不变而说明改变，仍会产生新 commit。删除分支不会立即删除对象，但会改变从名字出发找到历史的路径。大文件频繁修改可能积累大量内容，是否适合 LFS 要结合文件性质、版本频率和协作成本判断，不能只凭文件扩展名决定。表<a class="book-ref" href="../chapters/09.html#tab:object-diagnosis">9.3</a>为常见疑问提供观察入口。先确认问题位于哪一层，再执行相应只读命令，通常比直接猜测底层文件更有效。</p>
+<div class="table-scroll" id="tab:object-diagnosis" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 9.3</b> 对象问题的诊断入口</caption><tr><th colspan="1">要回答的问题</th><th colspan="1">适合的观察方法</th></tr><tr><td colspan="1">目标是什么类型</td><td colspan="1">cat-file -t</td></tr><tr><td colspan="1">对象正文有多长</td><td colspan="1">cat-file -s</td></tr><tr><td colspan="1">提交连接了谁</td><td colspan="1">cat-file <code>-p</code> 或 rev-list –parents</td></tr><tr><td colspan="1">快照包含哪些路径</td><td colspan="1">ls-tree；需要递归时加 -r</td></tr><tr><td colspan="1">两个提交文件内容是否相同</td><td colspan="1">diff 两个明确修订</td></tr><tr><td colspan="1">对象库是否缺失或损坏</td><td colspan="1">fsck，结合输出类别分析</td></tr></table></div></div>
+<h2 id="h2-11">实验拓展：从同一内容观察对象复用</h2>
+<p>两个路径不一定需要两份相同内容对象。下面通过复制和单侧修改，对照路径条目与blob标识，说明逻辑快照如何与存储复用同时成立。</p>
+<h3 id="h3-16">问题背景</h3>
+<p>两份实验说明恰好具有相同文字，但名称不同。Git 是否必须为它们分别保存两份 blob？回答这个问题，需要把内容对象与目录条目分开。blob 对应内容，tree 条目把路径名称、模式和对象标识联系起来。两个路径可以引用同一 blob，而目录结构仍然清楚区分这两个名称。</p>
+<p>以下独立实验不直接操作对象文件，而使用稳定的查询命令观察逻辑关系。对象标识会随内容与对象格式变化，不应照抄书中某个固定哈希作为判断依据。</p>
+<p>文件内容相同而路径不同，可以复用同一个blob（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-02">9.17</a> ）。路径变化由树条目组织，不能把内容对象的标识当作文件在项目中的永久名称。</p>
+<figure id="fig:scenario-09-02"><button aria-label="放大图9.17：路径与文件内容分别保存" class="zoom-image"><img alt="图9.17 路径与文件内容分别保存" height="315" loading="lazy" src="../assets/figure-9-17.webp" width="1160"/></button><figcaption><b>图 9.17</b> 路径与文件内容分别保存</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>让两个路径具有相同内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir reuse09
+cd reuse09
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Inspect the staged content.\n' &gt; first.txt
+cp first.txt second.txt
+git add first.txt second.txt
+git commit -m "docs: add two identical notes"
+FIRST09=$(git rev-parse HEAD:first.txt)
+SECOND09=$(git rev-parse HEAD:second.txt)
+test "$FIRST09" = "$SECOND09"
+git ls-tree HEAD
+git cat-file -t "$FIRST09"
+git cat-file -p "$FIRST09"</code></pre></div>
+<p><code>ls-tree</code> 显示两个路径条目，却可看到它们指向相同内容标识。两个不同名称通过条目引用相同blob，说明它们在该快照中使用同一份内容。查询 blob 本身时，输出中不会附带路径名；路径属于 tree 的组织信息。</p>
+<div class="code-block"><div class="code-bar"><span>只改一个路径，并观察另一份内容继续复用</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Inspect both staged and unstaged content.\n' &gt; first.txt
+git add first.txt
+git commit -m "docs: refine the first note"
+NEW09=$(git rev-parse HEAD:first.txt)
+test "$NEW09" != "$FIRST09"
+test "$(git rev-parse HEAD:second.txt)" = "$SECOND09"
+test "$(git rev-parse HEAD^:first.txt)" = "$FIRST09"
+git diff HEAD^ HEAD --name-only</code></pre></div>
+<p>新提交的根树发生变化，first.txt 指向新 blob，second.txt 仍引用旧 blob。旧提交也继续引用原有内容，因此读者仍能查到 first.txt 的旧版本。逻辑上的完整快照不要求每个版本都重新写入所有相同内容。</p>
+<h2 id="h2-12">对象模型带来的三项推论</h2>
+<p>理解对象连接以后，可以推导改名、说明修订和后代重连的结果。推论来自具体字段与输入变化，需要用查询验证，不靠记忆“Git规定如此”。</p>
+<h3 id="h3-17">提交标识不能只由文件内容解释</h3>
+<p>提交对象除了树标识，还包含父提交、作者、提交者、时间和说明等信息。因此两个提交可以具有相同树，却具有不同提交标识。例如两种整理路线可能产生相同最终文件，但连接到不同父提交。比较树与比较历史回答不同问题。</p>
+<p>这也解释了为什么修改旧提交通常影响相关后继提交的标识：父标识属于提交内容，父关系改变会传递到重新构造的后继。其他没有重写、也不依赖该变化的分支，不会因为“仓库里改过历史”就全部自动改变。</p>
+<h3 id="h3-18">可达性是一种关系判断</h3>
+<p>对象是否仍可由引用和相关对象关系访问，与对象此刻是否还占据磁盘空间，不能简单等同。失去普通分支入口以后，对象可能暂时仍存在；反之，受限克隆也可能使某些所需内容尚未在本地完整取得。恢复时应查询实际对象与入口，而非根据文件夹大小推断。</p>
+<p>不可达与损坏是不同结论（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-06">9.18</a> ）。发现悬空对象时，应先检查内容和保留需要，不能把报告中的存在性线索直接当作应立即删除的依据。</p>
+<figure id="fig:scenario-09-06"><button aria-label="放大图9.18：可达性从保留入口沿连接判断" class="zoom-image"><img alt="图9.18 可达性从保留入口沿连接判断" height="430" loading="lazy" src="../assets/figure-9-18.webp" width="1169"/></button><figcaption><b>图 9.18</b> 可达性从保留入口沿连接判断</figcaption></figure>
+<p>对象回收有其保留条件和实现细节。日常学习无需手工删除对象目录；真实故障中更不应为了“整理干净”而先执行激进清理。先建立保护入口与副本，再依据诊断结果决定维护动作。</p>
+<h3 id="h3-19">内容校验与来源信任必须分开</h3>
+<p>对象标识帮助检测内容是否与预期对象一致，但它本身不能证明作者身份、需求正确性或依赖安全性。攻击者也能构造内容自洽的仓库。获取外部项目时，还需要核对来源、签名、发布流程和依赖策略。</p>
+<p>学习哈希时应避免“绝不会碰撞”这类绝对表述。有限长度标识存在理论碰撞可能，实际安全还涉及具体算法、实现与攻击模型。本书用对象模型解释内容关系，不把哈希当作所有信任问题的统一答案。</p>
+<h2 id="h2-13">迁移练习：相同文件树的两条历史</h2>
+<p>请说明：为什么两个仓库的文件完全相同，仍可能无法直接快进连接？参考分析应包含父关系与可达性。快进要求原位置是目标历史的祖先，文件相同并不能证明这一关系。若为了得到线性外观而强行替换引用，还可能丢失需要保留的协作入口。</p>
+<h2 id="h2-14">存储观察：压缩组织不改变逻辑对象</h2>
+<h3 id="h3-20">为什么需要打包</h3>
+<p>若每个新对象都以独立文件保存，随着项目增长，文件数量和访问开销可能增加。Git 可以把对象组织到 pack 中，并配套索引提高定位效率；部分对象还可能采用基于其他对象的差异表示。这些属于物理存储安排，不改变逻辑上通过标识访问对象的方式。</p>
+<p>因此，“Git 保存快照”与“Git 使用差异压缩”并不矛盾。前者描述版本的逻辑内容模型，后者描述如何节约存储与传输。相似地，打包前后磁盘占用变化，并不意味着提交历史已经被整理或删除。</p>
+<h3 id="h3-21">独立实验：打包前后核对对象身份</h3>
+<p>本实验创建几次具有相似内容的提交，记录提交与树的标识，然后执行一次显式重新打包。目的仅是观察对象查询接口保持一致，不比较不同硬件上的性能。</p>
+<div class="code-block"><div class="code-bar"><span>创建相似内容的连续版本</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir packing09
+cd packing09
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+for number in 1 2 3 4; do
+  printf 'Course note version %s\n' "$number" &gt; note.txt
+  git add note.txt
+  git commit -m "docs: record note version $number"
+done
+COMMIT09=$(git rev-parse HEAD)
+TREE09=$(git rev-parse HEAD^{tree})
+BLOB09=$(git rev-parse HEAD:note.txt)
+git count-objects -v
+git repack -ad
+git count-objects -v</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>验证逻辑对象与历史保持一致</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>test "$(git rev-parse HEAD)" = "$COMMIT09"
+test "$(git rev-parse HEAD^{tree})" = "$TREE09"
+test "$(git rev-parse HEAD:note.txt)" = "$BLOB09"
+test "$(git rev-list --count HEAD)" = 4
+git cat-file -p "$BLOB09"
+git fsck --full
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>对象标识保持不变，是因为逻辑对象内容没有变化。<code>count-objects</code> 的统计可以帮助观察松散对象与包的组织，但具体数量和大小受版本、配置及维护状态影响，不应要求所有读者得到完全相同的字节数。</p>
+<h3 id="h3-22">维护、回收与恢复不能混为一谈</h3>
+<p>重新打包主要调整存储组织；回收还涉及对象是否可达及保留条件；恢复则试图为需要的成果找到内容和入口。三项工作相关，却不具有相同目标。故障现场中先进行激进回收，可能削弱恢复线索，因此应先保全和诊断。</p>
+<p>候选索引与pack索引名称相近，却对应不同的数据和任务（图 <a class="book-ref" href="../chapters/09.html#fig:scenario-09-08">9.19</a> ）。阅读存储统计时应明确所指机制，并用对象查询验证打包前后的逻辑内容。</p>
+<figure id="fig:scenario-09-08"><button aria-label="放大图9.19：两种索引服务于不同任务" class="zoom-image"><img alt="图9.19 两种索引服务于不同任务" height="426" loading="lazy" src="../assets/figure-9-19.webp" width="1169"/></button><figcaption><b>图 9.19</b> 两种索引服务于不同任务</figcaption></figure>
+<p>日常维护可以由 Git 的维护机制或平台运维安排执行。大型仓库还可能使用提交图、多个包的索引以及位图等辅助结构改善查询和传输。它们是加速用的数据结构，不是项目业务内容；生成或更新后仍应能通过正常接口访问同一逻辑历史。</p>
+<h3 id="h3-23">对象数据库为什么不宜手工修改</h3>
+<p>直接编辑压缩对象文件不会像编辑普通文本那样产生有效新版本。对象标识、编码与引用关系必须一致，局部修改可能造成损坏。研究实现时应使用独立实验副本和专用命令，真实项目则通过高层工作流产生新对象。</p>
+<p>本节练习：打包后发现对象目录中文件数减少，能否认定旧版本丢失？参考分析是不能。应查询目标提交、相关内容与完整性，而非以目录中文件数量判断历史。物理布局是实现层线索，逻辑查询才直接对应用户需要访问的版本。</p>
+<h2 id="h2-15">本章小结</h2>
+<p>Git 把内容、路径和历史分别组织起来。blob 保存字节，tree 把名称与对象连接，commit 为树补上父关系和元数据，附注 tag 为目标增加说明。对象复用使完整逻辑快照不必等于完整物理复制；打包与增量又进一步优化存储。</p>
+<p>本章的两个实验提供了两种观察方法：先从日常提交向内追踪对象，再从底层对象向外建立可查询历史。无论从哪个方向进入，都应区分对象存在、名称指向、候选内容和工作文件这几件事。下一章将集中解释可变名字与索引怎样在它们之间协调。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-gitlayout" role="listitem">
+Git Project. 2026. <span>“Gitrepository-Layout: Git Repository Layout.”</span> <a href="https://git-scm.com/docs/gitrepository-layout">https://git-scm.com/docs/gitrepository-layout</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-16">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:9.1"><summary><span class="difficulty">应用</span><b>9.1</b><span>复制一个文件得到第二个路径，提交后比较两者 blob。随后只改其中一个文件，说明哪些对象可以继续复用。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · blob复用 / 路径映射 / 修改对象</p><p>两个路径具有相同模式与相同字节内容时可引用同一blob。只修改其中一个后，新路径内容通常对应新blob，另一条目仍复用旧blob；相关树和新提交重新表达状态。比较ls-tree中的对象标识即可验证。</p><p>比较时同时保存两个路径的blob标识和根树标识。第一次相同内容可以共用blob，第二次只修改一个文件后，未变路径仍引用旧对象。应据此说明复用发生在对象层，文件名由树条目另行组织。</p></div></details><details class="exercise" id="ex:9.2"><summary><span class="difficulty">应用</span><b>9.2</b><span>用换行结束的 hello 与不含换行的 hello 分别计算 blob 标识。解释为何不能仅按编辑器显示文字判断两份内容相同。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 对象输入 / 字节长度 / 换行</p><p>换行是实际字节，hello与hello加换行是不同内容；blob标识还包含对象类型和长度等输入。使用明确的printf与hash-object计算，不能凭编辑器看起来同样显示hello就认定字节相同。</p><p>可先查看实际字节数，再计算标识。文本编辑器可能自动补换行，实验应使用明确的printf输入，避免把显示相同误认为字节相同。对象输入还包含类型与长度信息，不能只对人眼看到的字符串解释结果。</p></div></details><details class="exercise" id="ex:9.3"><summary><span class="difficulty">应用</span><b>9.3</b><span>只重命名文件后，blob、根树和提交各会如何变化？用命令给出证据，并区分快照记录与重命名检测。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 重命名 / 树对象 / 检测启发式</p><p>若只变路径而不变内容与模式，blob可复用；目录树的路径条目变化，通常根树和新提交也变化。Git快照保存路径与内容，显示的重命名关系常由后续比较检测，不是blob内部记录了旧文件名。</p><p>blob保存字节，改名通常改变树条目；新的提交再连接新树和父项。差异工具的-M属于展示时的相似性判断，同一对快照可因选项显示为重命名或删除加新增，这不改变快照保存方式。</p></div></details><details class="exercise" id="ex:9.4"><summary><span class="difficulty">应用</span><b>9.4</b><span>使用同一根树创建说明不同的两个提交，比较对象正文与 diff 结果。解释“内容无差异”为什么不等于“同一提交”。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 提交身份 / 同树异提交 / 元数据</p><p>用同一tree、相同或指定父项但不同说明创建提交，检查cat-file正文并比较diff。树可相同而说明等提交字段不同，因此标识不同；空文件差异不能推出两个提交是同一对象。</p><p>读取两个commit正文，逐项比较tree、parent及说明等字段。空diff仅说明两棵树在所选范围一致，不能证明提交对象相同；这种区别在合并保留历史关系和发布追溯中都很重要。</p></div></details><details class="exercise" id="ex:9.5"><summary><span class="difficulty">应用</span><b>9.5</b><span>在独立仓库手工构造含两级子目录的根提交，用 ls-tree 逐层追踪到 blob。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 手工构造 / 目录树 / 路径层次</p><p>先写入文件内容对象，再为内层目录建立tree，逐层把子树放入上层树，最后commit-tree形成无父根提交。使用ls-tree读取根树和子树并最终cat-file blob核对内容，报告各层标识与模式。</p><p>对子目录使用独立tree条目，从根树按名称逐级进入，再读取末端blob。根树不必直接保存完整路径字符串。报告应展示模式与对象类型，区分普通子目录、文件和子模块gitlink等不同条目。</p></div></details><details class="exercise" id="ex:9.6"><summary><span class="difficulty">应用</span><b>9.6</b><span>修改提交说明后，后代为何需要重新连接？请从父标识字段说明，不以“Git 规定如此”作答。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 父标识 / 后继重建 / 历史整理</p><p>提交正文包含父对象标识。修改某提交的说明建立新身份，若要让后继接在新身份上，其父字段也要改变，继而后继身份可能变化。原对象不被原地修改；新的后代关系另行建立。</p><p>修改父提交说明会得到新的对象标识；若后继需要沿替代历史连接，其parent字段也需改变，进而产生新对象。没有参与该次重建的其他路线可以继续引用原对象，不能将影响扩大到全部仓库。</p></div></details><details class="exercise" id="ex:9.7"><summary><span class="difficulty">应用</span><b>9.7</b><span>观察 gc 前后对象统计。哪些统计可以变化，哪些文件与历史事实应保持不变？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 松散对象 / pack / 逻辑不变量</p><p>gc可改变松散对象数量、包数量及磁盘空间。受保留入口可达的历史、对象内容和所选提交树应保持可访问且含义一致。分别比较count-objects统计、fsck与关键版本内容，不要求物理文件布局相同。</p><p>维护前后可比较对象统计，并从同一提交读取关键文件。松散对象数量、包内数量和空间占用可变化；树内容、父关系和名称解析不应因单纯物理重组而被任意改变。实验不要求小仓库一定减少空间。</p></div></details><details class="exercise" id="ex:9.8"><summary><span class="difficulty">应用</span><b>9.8</b><span>fsck 报告悬空提交时，是否应立即判定仓库损坏？列出检查该提交与保留重要内容的步骤。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 悬空对象 / 完整性 / 保全入口</p><p>悬空不自动意味着损坏，它可能是整理后暂时没有入口的有效对象。检查对象类型、内容和父关系，判断是否重要；需要保留时建立分支或标签，再核对可访问。缺失或损坏对象属于另一类问题。</p><p>悬空通常表示所选遍历中缺少常规入口，与对象正文损坏是不同诊断。先用cat-file或show辨认内容，必要时建立救援引用，再判断是否与任务相关。清理前应保留有价值对象的访问方法。</p></div></details><details class="exercise" id="ex:9.9"><summary><span class="difficulty">应用</span><b>9.9</b><span>举例区分内容完整性、提交身份可信和软件行为正确三种判断。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 完整性 / 身份信任 / 业务正确</p><p>内容完整性可通过对象校验等检查；身份可信还要验证签名、密钥及信任关联；行为正确要依据需求、测试和审查。摘要匹配不证明现实作者，签名有效也不证明没有逻辑错误。</p><p>可分别用对象校验、可信密钥验证及业务测试说明三类依据。某份恶意程序也能拥有结构完整且签名有效的提交，因此不能将其中一个层次的通过自动扩展为另外两项结论。</p></div></details><details class="exercise" id="ex:9.10"><summary><span class="difficulty">基础</span><b>9.10</b><span>为什么不能依赖“对象默认两周后删除”制定恢复承诺？说明至少三项会影响结果的条件。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 可达性 / 日志保留 / 清理条件</p><p>回收受可达入口、引用日志及其过期策略、对象时间、维护命令和配置等影响。对象也可能已打包或被其他入口保护。恢复策略应建立明确备份和演练，而不能把某个默认期限作为保留保证。</p><p>对象是否被保留会受到引用、日志、时间、配置、后台维护及外部副本影响。可靠恢复承诺应依据可验证备份与演练，而非把某个默认期限当作所有环境的固定事实；保留摘要也不能替代保存对象正文。</p></div></details><details class="exercise" id="ex:9.11"><summary><span class="difficulty">应用</span><b>9.11</b><span>在独立练习仓库中分别观察HEAD、索引、对象、松散引用与打包引用。解释它们的职责及推荐查询；再以关联工作树说明.git为何可以是文本文件，为什么脚本不宜直接拼接固定管理路径。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · .git布局 / 二进制索引 / 引用后端</p><p>HEAD表达当前名称或提交，索引组织候选条目，对象数据库保存内容和关系，引用提供可更新入口。索引采用二进制格式，读取应使用ls-files等接口；松散引用与packed-refs可承担同类名称信息，逻辑查询应越过具体保存形式。</p><p>关联工作树的.git文件指向独立管理目录，公共目录再提供共享对象及多数引用。使用rev-parse的路径查询可以适应这种布局。验收应包括实际路径、候选内容及打包前后相同的名称解析，不能仅凭文件夹截图推断仓库状态。</p></div></details><details class="exercise" id="ex:9.12"><summary><span class="difficulty">应用</span><b>9.12</b><span>说明blob、tree和commit分别怎样受到正文、路径和父字段影响。若仓库使用不同对象格式，应怎样解释标识长度？为什么对象标识可用于定位和校验，却不能代替身份认证或还原缺失正文。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 对象格式 / 哈希输入 / 路径与元数据</p><p>blob关注带类型与长度的字节输入，路径由tree条目组织，commit还包含根树、父项和元数据，因此相同正文、相同树与相同提交是不同条件。对象格式决定相关算法及长度，不能把常见的40位写成所有仓库的固定规则。</p><p>摘要可参与定位与完整性检查，身份可信还需签名及密钥归属，缺失正文也无法由有限摘要一般地还原。答案应给出改名、仅改说明等对照，并说明对象是否实际存在及来源是否可访问。</p></div></details><details class="exercise" id="ex:9.13"><summary><span class="difficulty">综合</span><b>9.13</b><span>校园项目迁移后，部分历史文件无法读取，分支名却仍能列出；原目录又包含打包对象和关联工作树。请制定诊断与恢复方案：区分引用存在、对象存在和内容完整，检查外部对象依赖，确定可用副本，恢复指定发布并验证；列出无法仅凭摘要解决的情况。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 对象复用 / 损坏排查 / 可恢复交付</p><p>先保全当前副本并记录目标引用与错误，分别查询对象类型、可读取正文及连接检查，判断缺口位于名称、对象还是外部依赖。关联工作树的管理文件不构成独立对象副本；alternates、延迟对象和LFS等来源还需按实际配置检查。</p><p>从有效备份、远端或协作者副本取得所需对象后，核对完整标识、树内容和发布目标，并在新目录构建验证。物理pack文件存在不足以证明所需对象全部齐备，分支名存在也不足以证明正文可读。若所有副本均缺少对象，应准确报告缺失，不能由摘要推测原文再冒充恢复结果。</p><p>先保全原目录与可用副本，查询仓库管理目录和公共目录，检查是否依赖外部对象库或部分克隆来源。随后逐项验证发布入口能解析为提交、树对象可读取、关键文件字节完整，以及所需子仓库或LFS内容已取得。恢复时使用经过确认的独立副本，不直接移动关联工作树的路径充当备份。最后在新目录重建发布并核对内容摘要、构建和测试。摘要只能比较已取得的数据，不能补造缺失内容或证明来源身份。</p></div></details></section><section id="mindmap"><h2 id="review-17">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第9章复习导图" class="zoom-image"><img alt="第9章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-09.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="9">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="08.html"><small>← 上一章</small>变更撤销与版本恢复</a><a href="10.html"><small>下一章 →</small>引用管理与索引机制</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">从文件名寻址到内容寻址</a><a href="#h2-2">四种对象分别解决什么问题</a><a href="#h2-3">辨认.git中的管理数据</a><a href="#h2-4">实验一：沿提交查到文件内容</a><a href="#h2-5">同一快照为什么可以有不同提交</a><a href="#h2-6">实验二：用底层命令构造提交</a><a href="#h2-7">对象如何存储：逻辑与物理分层</a><a href="#h2-8">可达性、保留与回收的边界</a><a href="#h2-9">完整性检查不能替代信任判断</a><a href="#h2-10">从模型返回日常操作</a><a href="#h2-11">实验拓展：从同一内容观察对象复用</a><a href="#h2-12">对象模型带来的三项推论</a><a href="#h2-13">迁移练习：相同文件树的两条历史</a><a href="#h2-14">存储观察：压缩组织不改变逻辑对象</a><a href="#h2-15">本章小结</a><a href="#review-16">本章习题与解析</a><a href="#review-17">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>版本控制与Git基础 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="1" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link active" data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>基础篇<span>/</span>第01章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 01 · 基础篇</div><h1>版本控制与Git基础</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 33 分钟</span><span>11 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-01"></span>
+<p>课程资料从一份文件发展为多人的共同成果时，需要持续回答三个问题：当前内容如何形成，哪些修改可以独立说明，不同来源的成果如何整合。版本控制以明确的记录与关系支持这些任务。</p>
+<p>本章介绍版本控制的目标、常见组织方式及 Git 的基础模型。暂不要求掌握命令，先区分文件状态、提交对象、历史入口与协作平台，为后续实验建立共同的术语和判断依据。</p>
+<p><strong>学习目标：</strong>解释版本控制与文件备份的区别；比较本地式、集中式与分布式组织方式；说明快照、对象、引用和索引的基本职责；区分 Git 与 GitHub；能够从内容和历史两个维度描述一次修改。</p>
+<p>从课程资料修订的问题出发，理解历史记录与协作需要，再建立工作区、索引、提交和引用的初步模型。对象细节在第 9、10 章继续展开。</p>
+<h2 id="h2-1">文件、终端与实验约定</h2>
+<p>学习 Git 之前，不必先学会编程。不过，本书会用到终端、目录和普通文本文件。本节解释这些必要知识。已经熟悉命令行的读者可以查看本节末尾的实验约定，再继续阅读版本控制模型。</p>
+<h3 id="h3-1">从文件夹走到当前目录</h3>
+<p>在图形界面中，我们双击文件夹进入下一级。在终端中，同样的动作由命令完成。<strong>终端</strong>是一个输入和显示文字的窗口；<strong>shell</strong> 是在窗口内解释命令的程序。终端与 shell 经常一起使用，但不是同一件事。Git 是 shell 能够调用的程序之一。</p>
+<p>本书的基础实验使用 macOS、Linux 的常见 shell，或 Windows 的 Git Bash。Windows 的 PowerShell 和命令提示符也能运行 Git，但创建文本、路径与某些辅助命令的语法不同。初次学习时请使用 Git Bash，避免一边学习 Git，一边转换 shell 语法。</p>
+<p>打开终端后，屏幕上通常会显示用户名、目录和一个提示符。提示符表示程序已经准备接收命令。本书的可执行代码块不包含提示符，复制时从命令名开始。按下回车，shell 才会执行当前行。</p>
+<div class="code-block"><div class="code-bar"><span>查看当前所在目录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>pwd</code></pre></div>
+<p><code>pwd</code> 显示<strong>当前目录</strong>，即后续相对路径的起点。不同计算机显示的路径不同，这不是错误。接着运行 <code>ls</code>，可以查看当前目录下的可见文件与子目录；<code>ls -a</code> 还会显示名称以点开头的隐藏项目。</p>
+<div class="code-block"><div class="code-bar"><span>建立一个学习目录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir git-study
+cd git-study
+pwd</code></pre></div>
+<p><code>mkdir</code> 后的 <code>git-study</code> 是要创建的目录名。<code>cd</code> 表示改变当前目录；执行它不会复制或删除文件，只会改变后续命令的工作位置。如果提示目录已存在，不要删除其中的文件，可以改用 <code>git-study-2</code> 并在下一条命令中使用相同名称。</p>
+<p><strong>绝对路径</strong>从文件系统的起点指定位置；<strong>相对路径</strong>从当前目录指定位置。例如在 <code>git-study</code> 内，<code>notes.txt</code> 指当前目录的文件，<code>../notes.txt</code> 指上一级目录的文件。<code>cd ..</code> 返回上一级，<code>cd</code> 通常返回用户主目录。路径含空格时，用英文双引号将整个路径括起来。图 <a class="book-ref" href="../chapters/01.html#figure:reading-preparation-1">1.1</a> 把目录层次与路径解释并列展示；高亮的当前目录决定相对路径从哪里开始。</p>
+<figure id="figure:reading-preparation-1"><button aria-label="放大图1.1：当前目录决定相对路径从哪里开始解释" class="zoom-image"><img alt="图1.1 当前目录决定相对路径从哪里开始解释" height="340" loading="lazy" src="../assets/figure-1-1.webp" width="1230"/></button><figcaption><b>图 1.1</b> 当前目录决定相对路径从哪里开始解释</figcaption></figure>
+<h3 id="h3-2">如何阅读一条命令</h3>
+<p>以 <code>git status --short</code> 为例：<code>git</code> 是程序名，<code>status</code> 指明 Git 要执行的子命令，<code>--short</code> 是选项，要求输出简短格式。不同部分用空格分开。连字符和引号必须使用英文半角字符，不能把它们替换为中文标点。</p>
+<p>命令手册常用尖括号表示需要替换的参数。例如 <code>git show &lt;提交&gt;</code> 的意思是将 <code>&lt;提交&gt;</code> 换为实际提交标识，不是原样输入尖括号。本书第一次演示一个动作时尽量使用具体参数，随后再给通用形式。</p>
+<p>以 <code>#</code> 开始的文字通常是 shell 注释。为了便于初学者复制，本书把较长解释放在代码块外。遇到 <code>&amp;&amp;</code> 时，含义是前一条命令成功后才运行后一条；遇到重定向 <code>&gt;</code> 时，应先看清将要写入哪个文件。</p>
+<h3 id="h3-3">创建普通文本文件</h3>
+<p>Git 能保存多种文件，但文本文件更便于查看差异。普通文本只保存字符与换行，不包含 Word 文档中的字体、分页等富文本信息。请用纯文本编辑器保存 UTF-8 文件，注意实际文件名不要多出隐藏的 <code>.txt</code> 扩展名。下面用 shell 的 <code>printf</code> 创建一个文本文件：</p>
+<p>编辑器中的项目与终端位置可能不同（图 <a class="book-ref" href="../chapters/01.html#fig:scenario-01-01">1.2</a> ）。操作前先确认目录关系，再解释相对路径，能够避免在错误位置初始化或修改资料。</p>
+<figure id="fig:scenario-01-01"><button aria-label="放大图1.2：编辑位置与命令位置需要核对" class="zoom-image"><img alt="图1.2 编辑位置与命令位置需要核对" height="298" loading="lazy" src="../assets/figure-1-2.webp" width="1177"/></button><figcaption><b>图 1.2</b> 编辑位置与命令位置需要核对</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>创建并阅读文本</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'My Git notes\n' &gt; notes.txt
+cat notes.txt</code></pre></div>
+<p>单引号中的文字是输出内容；<code>\n</code> 表示换行。<code>&gt;</code> 把输出写到文件，<strong>会覆盖同名文件的原内容</strong>，所以只在专用实验目录中执行。<code>cat</code> 读取并显示文件，不修改文件。后面还会使用 <code>&gt;&gt;</code>，它在文件末尾追加，不覆盖原内容。你也可以用编辑器完成相同的编辑，Git 关心保存后的内容，不关心用哪种工具输入。</p>
+<h3 id="h3-4">执行、查看与退出</h3>
+<p>不是所有命令都会输出文字。成功执行 <code>cd</code> 或 <code>git add</code> 时，终端可能直接回到提示符。没有输出不代表失败；需要结合命令的作用和后续检查判断。</p>
+<p>有些命令使用<strong>分页器</strong>显示较长结果，例如 <code>git log</code>。在分页器中可以按空格向下翻页，按 <code>q</code> 退出。如果命令仍在运行且需要中断，通常按 <code>Ctrl+C</code>。不要把退出分页器的 <code>q</code> 当作普通 shell 命令。</p>
+<p>Git 有时会打开编辑器填写说明。第一次提交使用 <code>-m</code> 直接提供说明，暂不依赖编辑器；后续再配置自己熟悉的编辑器。如果意外进入 Vim，可按 <code>Esc</code>，输入 <code>:q!</code> 并回车退出编辑；这仅退出当前编辑过程，是否创建提交仍应查看终端结果与历史。</p>
+<h3 id="h3-5">本书实验的共同约定</h3>
+<p>基础实验只在个人练习目录运行。书中给出的邮箱与姓名是教学示例，在线协作时应使用自己的身份与隐私设置。学习用的仓库级配置不会改变其他项目。</p>
+<p>每个实验开始先确认目录、分支和已有文件。终端输出中的路径、时间、哈希和传输数量通常因机器而异，判断依据是结构与状态，不是逐字一致。哈希是 Git 给对象计算的标识，正式含义在后续章节展开，此处只需把它看作可用于检索版本的编号。</p>
+<p>[开始前的自检] 你应当能够创建并进入一个目录，说明 <code>pwd</code> 输出的意义，用编辑器保存文件，读取该文件，并从分页器退出。若这些动作仍不熟悉，请在练习目录重复一次。后续 Git 命令的结果都建立在“命令执行在预期位置”这一前提上。</p>
+<h2 id="h2-2">版本控制解决什么问题</h2>
+<p>先从日常修订中辨认困难，再讨论工具，能够避免把版本控制理解为单纯保存更多副本。本节依次分析状态、变化来由和多人协作三个问题，说明怎样通过有联系的记录追溯这些问题，以及单独命名文件所不能提供的信息。</p>
+<h3 id="h3-6">文件副本能够保留状态，但关系需要另行说明</h3>
+<p>版本记录需要把文件状态与修改说明联系起来。图 <a class="book-ref" href="../chapters/01.html#fig:visual-01-a">1.3</a> 将同一份课程资料的连续修订展开：每个版本都保留可辨认的内容，修改者据此说明变化及原因，后来者才能沿历史查询和比较。</p>
+<figure id="fig:visual-01-a"><button aria-label="放大图1.3：文件修订、版本记录与历史查询" class="zoom-image"><img alt="图1.3 文件修订、版本记录与历史查询" height="1024" loading="lazy" src="../assets/figure-1-3.webp" width="1536"/></button><figcaption><b>图 1.3</b> 文件修订、版本记录与历史查询</figcaption></figure>
+<p>一个课程小组先后保存了 syllabus-v1、syllabus-v2 和 syllabus-final 三份文件。保留副本有助于避免一次编辑直接覆盖旧内容，但文件名称本身不能充分解释：第二版为何改变考核比例，最终版依据哪一份意见，两个同学分别修订后应采用哪些段落（图 <a class="book-ref" href="../chapters/01.html#fig:principle-ch01-01">1.4</a> ）。</p>
+<figure id="fig:principle-ch01-01"><button aria-label="放大图1.4：从副本到可解释历史（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图1.4 从副本到可解释历史（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-1-4.webp" width="1071"/></button><figcaption><b>图 1.4</b> 从副本到可解释历史（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>问题不在于文件复制没有价值，而在于内容状态、修改说明和来源关系分散在不同位置。如果文件名、邮件与口头说明之间缺乏明确对应，后来者就需要重新比较和推断。版本控制把这些关系纳入相对统一的记录方式。</p>
+<div class="definition">
+<p><span>版本控制</span><span>version-control</span> 版本控制是记录和管理文件集合变化的技术与过程。它支持按标识查询历史状态、比较变化，并在协作与恢复任务中利用版本之间的关系。</p>
+</div>
+<p>使用版本控制仍需要合理的工作方法。工具可以记录一次提交，但不能替代提交者解释改动原因；可以检测部分整合冲突，但不能判断课程安排是否符合教学要求。教材中的每次验证因此既检查工具状态，也检查实际内容。</p>
+<h3 id="h3-7">版本不是文件名后缀</h3>
+<p>本书所说的项目版本，通常指某个明确记录所描述的一组文件状态。一次提交可以涉及多个文件：课程说明、实验要求和评分规则可以共同构成一个可以解释的修改。提交说明应交代这次修改解决的问题，而不仅是“更新文件”。</p>
+<p>版本号是项目面向使用者的命名约定，例如 1.2.0；提交标识是 Git 用于定位提交对象的标识。多个提交可能发生在同一个发布周期内，一个发布标签则可以把一个名称关联到明确目标。三者的作用不同，第 12 章会进一步讨论。</p>
+<h3 id="h3-8">记录、协作与恢复的共同基础</h3>
+<p>历史查询需要明确的状态和关系，协作需要能够交换与整合这些记录，恢复需要仍可取得的目标内容。三类任务共同依赖“记录了什么、从哪里继续、用什么证据确认”。</p>
+<p>如果一份草稿从未提交，也没有其他保存措施，Git 的历史查询不能凭空还原它。反过来，一份已经提交的错误安排仍可以被保留为历史证据，再通过修复提交作出新的决定。记录历史与认定内容正确并不是同一个问题。</p>
+<h2 id="h2-3">版本控制的几种组织方式</h2>
+<p>版本控制系统可以把历史集中保存，也可以让多个仓库各自保存和交换历史。组织方式影响断网工作、数据取得和协作责任，但不能仅凭名称判断一个系统适合所有任务。下面先说明各自怎样组织信息，再讨论条件与边界。</p>
+<h3 id="h3-9">本地式组织</h3>
+<p>本地版本控制工具在一台计算机中管理文件历史。RCS 等工具展示了利用版本记录和差异组织数据的早期方法。这些方法可以服务于真实的软件维护，不能简单评价为“只适合个人文档”。它们的协作能力和管理方式取决于具体工具与工作流程（图 <a class="book-ref" href="../chapters/01.html#fig:principle-ch01-02">1.5</a> ）。</p>
+<figure id="fig:principle-ch01-02"><button aria-label="放大图1.5：集中保存与仓库交换（每行对照一组条件与解释）" class="zoom-image"><img alt="图1.5 集中保存与仓库交换（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-1-5.webp" width="1237"/></button><figcaption><b>图 1.5</b> 集中保存与仓库交换（每行对照一组条件与解释）</figcaption></figure>
+<p>单台机器保存历史时，机器故障可能同时影响当前文件与历史记录。把项目纳入版本控制，并不自动消除独立备份的需要。是否可以协作，也不能仅凭数据在本地这一事实判断，还需看共享方式、锁定规则和管理约定。</p>
+<h3 id="h3-10">集中式组织</h3>
+<p>集中式系统通常在服务器上维护项目的权威版本库，客户端从中检出工作副本，并向服务器提交。Subversion 是常见例子。集中管理便于围绕统一入口实施授权和过程管理，但可用能力依赖具体客户端及本地已有数据。</p>
+<p>服务器不可连接时，提交到中心通常无法完成；然而客户端仍可能编辑文件、查看本地已有的基线或进行部分差异比较。因此，“断网后完全无法工作”是不准确的概括。比较系统时，应说明具体操作是否依赖服务器，而非只给出笼统的优劣结论。</p>
+<h3 id="h3-11">分布式组织</h3>
+<p>Git 允许参与者在自己的仓库中独立形成提交、分支与历史整合，再按需要交换对象与引用信息。常规完整克隆通常能取得来源提供的历史；浅克隆、部分克隆及访问限制则可能使本地数据范围不同。</p>
+<p>分布式描述的是历史记录和交换能力，不表示团队不能指定共享中心，也不表示权限管理必然分散。项目可以约定一个受管理的中心分支，同时允许各成员在本地独立试验。图<a class="book-ref" href="../chapters/01.html#fig:vcs-organization">1.6</a>比较两种常见协作组织。双向连线表示通信关系，不表示提交父关系，也不表示任一参与者天然拥有所有访问权限。</p>
+<figure id="fig:vcs-organization"><button aria-label="放大图1.6：协作拓扑与本地历史能力是需要分别说明的维度" class="zoom-image"><img alt="图1.6 协作拓扑与本地历史能力是需要分别说明的维度" height="298" loading="lazy" src="../assets/figure-1-6.webp" width="1169"/></button><figcaption><b>图 1.6</b> 协作拓扑与本地历史能力是需要分别说明的维度</figcaption></figure>
+<h2 id="h2-4">Git 的形成背景与设计问题</h2>
+<p>Git 在 2005 年 Linux 内核开发的协作背景下形成。大规模补丁交换与并行开发需要高效的历史处理方式，这一背景有助于理解其对分布式工作、分支整合与本地操作的重视<span class="citation" data-cites="chacon2014progit torvalds2005git">(Chacon and Straub 2014; Torvalds 2005)</span>。教材关注这些需求与模型之间的联系，不把开发历程压缩为缺少上下文的传奇叙述。</p>
+<p>大规模协作并不意味着每位参与者同时编辑同一个中心工作目录。更可行的方式是分别形成可以解释的记录，再明确交换与整合关系。Git 的仓库、提交图和引用，为这种工作方式提供了基本结构。</p>
+<p>本地操作减少了许多日常任务对网络的依赖，但不能据此保证任意规模的操作都很快。检出需要处理实际文件，历史查询需要遍历相应数据，部分对象可能需要延迟获取。性能必须结合文件数量、对象范围、硬件与具体命令分析。</p>
+<h2 id="h2-5">从快照理解项目状态</h2>
+<p>为了回答“某个版本的整个项目是什么样”，需要把单个文件的修改联系到同一次状态记录。快照是一种逻辑描述：它说明所选版本具有哪些路径和内容；磁盘上如何复用或压缩数据，则属于另一个层次。</p>
+<h3 id="h3-12">快照的逻辑含义与物理保存</h3>
+<p>提交通过目录树描述记录时的文件状态。使用者可以从指定提交查询对应路径，不需要手工按一串补丁重建文件。这就是本书采用快照模型解释提交的原因（图 <a class="book-ref" href="../chapters/01.html#fig:principle-ch01-04">1.7</a> ）。</p>
+<figure id="fig:principle-ch01-04"><button aria-label="放大图1.7：快照语义与物理表示（每行对照一组条件与解释）" class="zoom-image"><img alt="图1.7 快照语义与物理表示（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-1-7.webp" width="1237"/></button><figcaption><b>图 1.7</b> 快照语义与物理表示（每行对照一组条件与解释）</figcaption></figure>
+<p>逻辑上记录完整状态，不表示每次都把所有未变文件再复制一遍。相同内容可以复用已有对象；存储维护还可能使用压缩和增量表示。快照语义与差异压缩属于不同层次，二者并不矛盾。</p>
+<p>检出一个版本也不是与项目规模无关的常数时间操作。需要写入多少文件、是否已有所需对象，以及文件系统处理成本，都会影响耗时。模型用于解释职责，不应被写成未经测量的性能承诺。</p>
+<h3 id="h3-13">文件内容与路径分别组织</h3>
+<p>同样的一段文本可以出现在不同文件名下。Git 用文件内容对象保存内容，用树对象记录名称、模式与对象关系。由此，改名不必然产生一份新的内容对象；修改内容也不要求保留同一个对象标识。</p>
+<p>第 9 章会通过改名与内容修改实验验证这一区分。此处先记住：项目快照同时涉及内容与组织方式，不能只把对象理解为工作区文件的一份逐名副本。</p>
+<h2 id="h2-6">从对象和引用理解历史</h2>
+<p>项目状态还需要与过去的变化联系起来。Git用对象保存内容及关系，用引用提供易于使用的入口；先把保存的信息与可移动的名字分开，后续的分支、恢复和历史整理才有共同的解释基础。</p>
+<h3 id="h3-14">对象标识用于定位和校验</h3>
+<p>对象标识由相应哈希规则根据带类型的数据计算。相同对象数据在相同规则下得到相同标识；不同数据通常得到不同标识。哈希并不是数学上无条件唯一的序号，不能以此声称碰撞绝无可能（图 <a class="book-ref" href="../chapters/01.html#fig:principle-ch01-05">1.8</a> ）。</p>
+<figure id="fig:principle-ch01-05"><button aria-label="放大图1.8：对象与名字的职责（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图1.8 对象与名字的职责（箭头表示所说明的对象或访问关系）" height="188" loading="lazy" src="../assets/figure-1-8.webp" width="1177"/></button><figcaption><b>图 1.8</b> 对象与名字的职责（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<p>完整性检查有助于发现对象损坏与连接问题，但检查机制、执行时机和覆盖范围需要分别说明。知道一个提交标识，也不代表知道其作者身份已经受可信认证。签名与密钥信任在第 12 章讨论。</p>
+<h3 id="h3-15">提交连接父项，引用提供入口</h3>
+<p>普通提交通常记录一个父提交，根提交没有普通父项，合并提交可以有多个父项。沿父关系可以了解当前记录包含哪些历史；分支和标签则提供可读的名称入口。</p>
+<p>分支名称不是写入每个提交的永久归属标签。同一个提交可以被多条分支包含，分支改名也不会自动重写已有提交。创建分支主要建立新的历史入口，通常无需复制整个工作目录；这不等于任何环境下操作成本都为零。图<a class="book-ref" href="../chapters/01.html#fig:git-basic-model">1.9</a>把名称与对象关系分开。实线箭头表示父关系，虚线表示名字提供的入口。B 的文件状态可以与 A 不同，但它们的联系由父标识表达。</p>
+<figure id="fig:git-basic-model"><button aria-label="放大图1.9：历史关系保存在对象中，名称提供当前可解析的入口" class="zoom-image"><img alt="图1.9 历史关系保存在对象中，名称提供当前可解析的入口" height="252" loading="lazy" src="../assets/figure-1-9.webp" width="860"/></button><figcaption><b>图 1.9</b> 历史关系保存在对象中，名称提供当前可解析的入口</figcaption></figure>
+<h3 id="h3-16">历史整理创建替代对象</h3>
+<p>已经存在的对象不会因分支改名而原地改变。amend 和 rebase 等操作，可以创建替代版本并调整历史入口。旧对象是否仍可取得，取决于其他引用、日志与维护条件。</p>
+<p>如果一个后继提交要改为连接替代父项，其父标识随之变化，因此需要新的提交对象。但未参与重建的其他路线不会因为仓库中出现历史整理而全部自动改写。将“相关后继需要重建”扩大成“全仓库所有标识都改变”，会妨碍理解分支隔离。</p>
+<h2 id="h2-7">从索引理解提交的选择</h2>
+<p>编辑器保存的是工作文件，提交记录的则是明确准备好的候选状态。索引提供组织候选内容的机制。它使同一文件中的不同修改可以按任务分别安排，而非必须把所有未完成工作同时发布（图 <a class="book-ref" href="../chapters/01.html#fig:principle-ch01-06">1.10</a> ）。</p>
+<figure id="fig:principle-ch01-06"><button aria-label="放大图1.10：候选选择形成提交（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图1.10 候选选择形成提交（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-1-10.webp" width="1071"/></button><figcaption><b>图 1.10</b> 候选选择形成提交（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>例如课程说明中的邮箱修正已经确认，考核办法仍在讨论。可以让索引只采用邮箱修正，工作区继续保留未定的办法。提交后仍有未提交编辑，是这种选择的合理结果，不表示提交失败。</p>
+<p>工作区、索引与当前提交的树，构成本书前半部分的三份内容模型。它们不是三个普通文件夹；后文会逐步用查询命令展示各自内容，再解释内部对象和条目。</p>
+<h2 id="h2-8">Git、远程仓库与托管平台</h2>
+<p>Git 是版本控制工具；远程仓库是相对于当前仓库可以通信的另一个仓库；GitHub 则提供仓库托管、评审和自动化等服务。Git 不要求先注册 GitHub，平台评审请求也不是一条 Git 命令。</p>
+<p>一次完整交接所需的资料可能分布在多个位置。工作文件、Git历史、外部数据和平台讨论分别承担不同职责，图 <a class="book-ref" href="../chapters/01.html#fig:visual-01-b">1.11</a> 将这四类资料列入同一份交接清单。克隆所取得的Git数据与平台的Issue、PR记录应分别核对，外部大文件的取得条件也需要另行说明。</p>
+<figure id="fig:visual-01-b"><button aria-label="放大图1.11：项目交接的四类记录范围" class="zoom-image"><img alt="图1.11 项目交接的四类记录范围" height="1024" loading="lazy" src="../assets/figure-1-11.webp" width="1536"/></button><figcaption><b>图 1.11</b> 项目交接的四类记录范围</figcaption></figure>
+<p>本书先用本地路径建立远程协作实验，再引入 GitEasy 的线上流程。这样既能够观察真实对象交换，也能够单独讨论账户认证与授权。知道一个公开仓库的地址，并不意味着拥有写入权限。</p>
+<p>与其他系统比较时，应按具体任务评估本地历史能力、权限粒度、文件规模、整合方式和维护成本。不宜把某种系统简单归结为一种物理存储策略，也不宜把 Git 的使用描述为适用于所有项目的唯一选择。</p>
+<h2 id="h2-9">学习过程中的证据与责任</h2>
+<p>每次实验先说明起点与预期，再执行操作，并检查足以支持结论的证据。对于提交，可检查标识、父项与文件；对于恢复，可检查目标内容和保全入口；对于线上协作，还需要真实的平台结果。</p>
+<p>提交身份字段、代码行归属和评审记录各自提供线索，但不能单独证明全部现实责任。课程应培养对事实、推断与未验证范围的区分。贡献者还应尊重许可证、署名和他人历史，不把可以技术上执行的动作当成已经获得授权。</p>
+<h2 id="h2-10">案例研读：为课程资料建立可信记录</h2>
+<p>课程资料逐周变化以后，教师和学生需要共同回答版本、理由和复现范围。本节从小组分工出发，说明怎样选择提交边界并补齐历史之外的必要证据。</p>
+<h3 id="h3-17">先确定需要回答的问题</h3>
+<p>假设一个四人课程小组共同编写实验指导。第一周只有一份说明，第二周增加数据文件，第三周开始分工：一人修正操作步骤，一人调整评分标准，另两人补充范例。若只保留最终压缩包，教师可以看到当前成果，却无法判断评分标准何时改变，也不能据此重建某次课堂使用的资料。这种困难源于变化关系和使用状态缺少记录，单独增加或减少副本数量难以解决。</p>
+<p>为项目引入 Git 之前，应先列出需要长期回答的问题：某次授课使用哪一版内容；一项修改的理由是什么；不同成员的成果如何整合；发现错误后能够恢复到什么范围。问题决定记录方式。若要求重现课堂环境，仅保存 Markdown 文件还不够，还应记录软件版本、数据来源和必要的构建步骤。版本控制提供历史骨架，项目自身仍须补全复现条件。</p>
+<h3 id="h3-18">把记录单位与文件单位分开</h3>
+<p>一次合理的提交可以修改多个文件。例如调整实验时长时，需要同时修改课程安排、实验要求和评分说明。这些文件共同表达一个教学决定，适合形成同一次提交。相反，一个文件中的两个修改也可能属于不同任务：修正文句与改变评分比例应分别说明，以便独立评审或撤销。提交的边界取决于变化的目的，而非编辑器一次保存了几个文件。</p>
+<p>这种组织方式使历史具备解释能力。读者看到“修正第三次实验的输入格式”时，应能从补丁中找到对应修正，并从说明中了解原格式为何造成问题。若说明只有“更新资料”，虽然提交仍然有效，却把解释成本转移给后来的读者。写好提交说明的前提是先理解本次变化，而非套用某种固定句式。</p>
+<h3 id="h3-19">完整记录仍有明确边界</h3>
+<p>课程小组的一个普通完整克隆通常包含取得的引用所对应的对象历史，成员可以在离线时查询和提交。然而，这并不意味着每台计算机保存了项目的一切。平台讨论、评审附件、未推送分支、外部大文件和成员的未提交草稿，都可能不在这个副本中。浅克隆、部分克隆或受限的引用获取范围还会进一步改变本地可用内容。</p>
+<p>因此，“分布式”应理解为多个仓库各自具有对象与引用，并能通过协议交换数据。它不是备份策略的替代词，也不意味着任何副本都可以无条件接替服务器。第 <a class="book-ref" href="../chapters/15.html#ch:lookup-15">15</a> 章将据此设计恢复演练；现在只需形成一个判断习惯：说明保存了什么，再讨论能够恢复什么。</p>
+<h2 id="h2-11">从日常表达走向技术表达</h2>
+<p>口头意图往往省略了对象与条件，容易在相似命令之间造成误解。把“保存”“退回”“同步”改写为明确状态变化，是后续操作与故障解释的共同基础。</p>
+<h3 id="h3-20">用状态和关系替代含混动词</h3>
+<p>初学者常说“把文件放进 Git”“退回以前的版本”或“同步一下代码”。这些说法可以表达意图，却没有唯一的操作含义。“放进 Git”可能指开始跟踪、暂存或提交；“退回”可能指查看旧版文件、移动当前分支，也可能指追加一次反向修改；“同步”则可能同时涉及获取、整合和推送。</p>
+<p>学习过程中应把任务改写为可观察的陈述。例如“把当前工作文件中的第二段加入下一次提交”，明确了输入内容、目标位置与范围；“保留既有公共历史，追加一次撤销错误的提交”，说明了协作约束。这样的表述未必最短，却能帮助读者在相似命令之间作出正确选择。</p>
+<h3 id="h3-21">区分事实、推断与约定</h3>
+<p>“当前分支名为 main”是可以查询的事实；“main 是团队发布入口”是需要协作文件支持的约定；“main 上的每个提交都通过测试”则是需要检查规则和运行记录支持的结论。三者不能相互替代。分支名称本身不赋予发布质量，提交对象存在也不能证明需求已经实现。</p>
+<p>后续实验将反复采用同一种证据链：先查询起始状态，再执行单一目的的操作，最后分别核对内容与历史。内容核对回答“文件是否正确”，历史核对回答“变化如何连接”。两方面都正确，才能说明操作符合预期。</p>
+<h2 id="h2-12">思考训练：记录方案怎样取舍</h2>
+<p>记录越多不一定越便于理解，保存方式应服务于可重复任务与证据要求。下面通过生成结果和贡献判断两个情境，训练对工具能力及边界的取舍。</p>
+<h3 id="h3-22">问题一：实验结果是否全部入库</h3>
+<p>某实验每次运行生成数千个临时文件，而原始输入只有几份文本。应否将全部输出提交？判断时首先区分可再生成结果与不可替代记录。能够由固定输入和明确程序重建的临时文件，通常应从日常提交中排除；关键报告、人工标注和不可再采集的原始数据，则应按容量、许可和保密要求选择保存方式。</p>
+<p>参考分析是：先保存复现所必需的源码、配置和输入说明，再决定哪些结果具有独立归档价值。大文件存储或数据仓库可以与 Git 配合，但必须记录两者的关联。忽略生成文件不会自动保全原始数据，提交生成文件也不会自动保证实验可复现。</p>
+<h3 id="h3-23">问题二：历史完整是否等于过程可信</h3>
+<p>一个仓库有很多提交，能否证明每位成员都独立完成了工作？不能。提交记录提供技术线索，作者字段可以自行设置，历史也可能经过整理。教学评价还需要任务分工、评审意见、阶段说明和答辩解释。版本控制有助于形成证据，但证据的解释必须符合其实际含义。</p>
+<p>本题要求读者把技术机制与管理判断分开。后续学习签名时，还应继续追问：签名证明哪个对象由哪把密钥签出，密钥又怎样与真实身份建立关系。只有保留这些边界，工具能力才能被准确使用。</p>
+<h2 id="h2-13">本章小结</h2>
+<p>版本控制把项目状态和变化关系组织为可检索的历史。Git 通过本地仓库、快照、对象、父关系与引用支持独立工作和后续整合，索引则让提交内容可以明确选择。</p>
+<p>这些模型有清晰的边界：快照不等于逐次复制，分布式不等于每个副本永远拥有全部数据，标识不等于身份认证，历史可恢复也不等于所有编辑都被保存。后续章节将用可复现实验逐项展开。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-chacon2014progit" role="listitem">
+Chacon, Scott, and Ben Straub. 2014. <em>Pro Git</em>. 2nd ed. Apress. <a href="https://git-scm.com/book/en/v2">https://git-scm.com/book/en/v2</a>.
+</div>
+<div class="csl-entry" id="ref-torvalds2005git" role="listitem">
+Torvalds, Linus. 2005. <em>Initial Revision of <span>“Git,”</span> the Information Manager from Hell</em>. <a class="uri" href="https://github.com/git/git/commit/e83c5163316f89bfbde7d9ab23ca2e25604af290">Https://github.com/git/git/commit/e83c5163316f89bfbde7d9ab23ca2e25604af290</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-14">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:1.1"><summary><span class="difficulty">应用</span><b>1.1</b><span>以课程资料修订为例，区分文件副本、提交记录和发布版本号，分别说明它们能回答的问题。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 文件副本 / 提交 / 发布命名</p><p>文件副本保存一份当前内容，通常不能说明它与其他副本之间的关系；提交记录保存所选快照、父关系和说明，可追查变化；发布版本号是团队为交付建立的命名，需关联确切提交和兼容性约定。三者可以配合，不能互相替代。</p><p>例如，三份同名报告只能直接证明各自保存的内容；要回答“哪次修订首次改变评分标准”，还需要变化关系及说明。发布版本号再把面向使用者的交付名称同确定状态联系起来，便于教师与学生使用同一份资料。</p></div></details><details class="exercise" id="ex:1.2"><summary><span class="difficulty">基础</span><b>1.2</b><span>列出集中式客户端断网时仍可能完成的工作，以及通常依赖服务器的工作。为什么不能用“完全不能工作”概括？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 集中式与分布式 / 本地能力</p><p>断网时仍可编辑本地文件，并使用系统已缓存的内容进行部分查询；取得服务器尚未提供的数据、共享提交或执行依赖服务器的操作通常需要连接。具体能力由系统实现和本地已有数据决定，因此“完全不能工作”过于绝对。</p><p>判断时应列出具体操作及其数据来源。编辑当前文件可以在本地完成；查询未缓存的旧版需要相应服务或副本。网络断开改变的是可取得的数据和通信条件，不能据此推断所有本地编辑能力同时消失。</p></div></details><details class="exercise" id="ex:1.3"><summary><span class="difficulty">基础</span><b>1.3</b><span>解释常规完整克隆、浅克隆和部分克隆为什么不能都被定义为“无条件包含所有历史”。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 克隆范围 / 浅历史 / 延迟对象</p><p>常规完整克隆也只取得来源按协议提供和所选引用可达的对象，不包括所有草稿与平台资料；浅克隆限制祖先范围；部分克隆可以暂缺某类对象。答题应同时说明历史、对象、引用及外部数据四个范围。</p><p>检查克隆是否适合某项任务，应分别询问祖先是否完整、目标文件对象是否已经取得、所需引用是否传送，以及外部资源如何保存。课程中的离线阅读和跨历史调查可能提出不同要求，应按任务选择验证方法。</p></div></details><details class="exercise" id="ex:1.4"><summary><span class="difficulty">应用</span><b>1.4</b><span>快照模型与存储层的差异压缩是否矛盾？请分别说明它们描述哪一层。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 逻辑快照 / 对象复用 / 物理压缩</p><p>不矛盾。快照描述某次提交下路径和内容的逻辑状态；差异压缩描述对象的物理保存方式。Git可以复用相同内容，并在打包时选择差异表示，仍然向使用者提供可按提交访问的完整逻辑状态。</p><p>可以把“指定提交能定位哪些路径及内容”作为逻辑问题，把“磁盘用了多少个压缩文件”作为物理问题。相同blob可被多个目录条目引用；重新打包以后，原提交所描述的路径和字节仍应保持可访问。</p></div></details><details class="exercise" id="ex:1.5"><summary><span class="difficulty">应用</span><b>1.5</b><span>在 A、B 两个提交的图中增加第二条分支，解释改名或移动一条引用为何不改变另一条父链。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 父关系 / 引用 / 可达性</p><p>令B以A为父，main与topic都指向B。将topic改名或移动到另一个已存在提交，只改变这个引用的目标，不会改写B中保存的父标识，也不自动移动main。图中应把父箭头与名字指向分别画出。</p><p>绘图时将main和topic画成名称标签，将A、B画成提交节点。删除或移动标签以后，再从其余入口沿父箭头阅读，能够直观看到失去一个名称与改写对象之间的区别；图上的时间先后不能代替父引用方向。</p></div></details><details class="exercise" id="ex:1.6"><summary><span class="difficulty">基础</span><b>1.6</b><span>为什么工作区存在文件，不能推出该内容已经纳入历史？索引增加了哪一种选择？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 工作区 / 索引 / 历史记录</p><p>文件保存只说明工作区有该内容，未跟踪或未暂存的部分可能没有进入候选。索引使提交内容可以单独选择；建立提交以后，相应快照才进入历史。可用status、候选差异和show分别核对三项事实。</p><p>例如，新建一份实验说明但尚未选择其内容时，编辑器已经显示文件，提交树仍可能没有该路径。检验学习结果应能分别指出磁盘内容、候选内容和已有历史，不宜只凭文件图标或一次保存动作作结论。</p></div></details><details class="exercise" id="ex:1.7"><summary><span class="difficulty">基础</span><b>1.7</b><span>解释 Git、远程仓库、GitHub 与评审请求的关系，并指出本地实验是否需要平台账户。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · Git / 远程仓库 / 托管平台</p><p>Git管理版本对象与操作，远程仓库是通信另一端的仓库，GitHub在托管之外提供评审等平台功能，PR组织拟合入的变化及讨论。纯本地双人实验可以用路径通信，不要求平台账户。</p><p>本地实验中的两个目录各自拥有仓库，通过路径交换提交便可观察协作模型。平台账号随后增加身份、权限、评审和任务管理。将这两层分开，有助于解释“本地提交成功而线上推送失败”的常见现象。</p></div></details><details class="exercise" id="ex:1.8"><summary><span class="difficulty">应用</span><b>1.8</b><span>为一次课程说明修订拟定提交说明，分别标注事实依据、修改意图和仍需验证的事项。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 提交说明 / 修改意图 / 验证范围</p><p>示例：修正第二周实验的输出目录。正文说明原说明让结果写入源码目录，改为独立build目录；注明已在新目录执行核心构建，Qt路径仍待验证。标题表达结果，说明提供依据与意图，限制明确尚未确认的范围。</p><p>合格说明应使未参与操作的人理解改了什么、为何需要改，以及结果如何核实。标题不必逐项列出命令；说明正文可补充原因和限制。尚未验证的Qt路径应保留为待办，不能因核心构建通过就视为已经完成。</p></div></details><details class="exercise" id="ex:1.9"><summary><span class="difficulty">应用</span><b>1.9</b><span>同一项目中有README、临时草稿和.git管理目录。分别说明三类资料的用途；画出工作文件、候选内容、已有提交的关系，并说明保存编辑、建立提交和制作项目备份各自解决什么问题。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 工作树 / 管理数据 / 记录范围</p><p>README属于工作文件，是否进入历史取决于候选选择和提交；临时草稿即使仍可读取，也可能尚无Git记录；.git提供对象、引用、索引与配置等管理数据。图中应把三份内容状态分开，标明它们如何参与记录。</p><p>编辑器保存使磁盘文件更新，提交使所选快照获得历史入口，项目备份则需要覆盖实际要保全的数据。把工作区内容与历史资料分别列入清单，可以发现未提交草稿和外部附件等缺口。验收关注三类操作与保存范围的对应关系。</p></div></details><details class="exercise" id="ex:1.10"><summary><span class="difficulty">应用</span><b>1.10</b><span>将“项目已经同步”“文件已经保存”“版本已经删除”各改写为两个含义明确、可以观察的表述。任选一组，说明需要什么资料才能判断它成立，避免使用一个含混动词同时代替多个状态。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 模型推理 / 验证方法 / 术语规范</p><p>“同步”可分为已取得服务器最新已知提交、当前分支已整合指定来源；“保存”可分为编辑已写入磁盘、候选快照已形成提交；“删除”可分为工作树路径移除、某个名称入口取消。每个表述都应指出对象和比较范围。</p><p>例如，要判断当前分支已整合来源，需明确双方提交及采用的整合定义；要判断远端信息最新，还需一次实际通信。单看编辑器文件存在或终端无错误，都不足以同时支持这两项结论。能把观察结果与所问事实准确对应，才说明掌握了模型。</p></div></details><details class="exercise" id="ex:1.11"><summary><span class="difficulty">综合</span><b>1.11</b><span>四人小组连续四周修订课程实验手册，期间调整评分办法、补充附件并保留一次未完成草稿。请设计版本记录与交付方案：区分个人工作和共同成果，说明如何追溯评分变化、识别实际交付状态、保全草稿，并列出判断方案有效所需的材料。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 版本控制方案 / 贡献记录 / 交付范围</p><p>方案可将每项已确认修改组织成能说明目的的提交，用确定名称标记共同交付状态，另行保存尚未完成的草稿。评分办法的变化应能从历史定位到对应内容及修改说明；附件是否进入交付，应按实际文件与依赖范围检查。个人工作与共同成果需要明确接收约定，不能让同名压缩包承担全部追溯责任。</p><p>验收材料包括四周的状态与变化关系图、一次评分调整的前后内容、交付名称对应的确切记录，以及草稿和外部附件清单。接手者应能辨认交付中包含什么、哪些还未完成。允许不同组织方案，但每项需求均须有可检查的实现依据。</p><p>实施时先约定共同交付分支与提交说明格式，每次评分调整独立提交并在说明中关联讨论依据。交付前记录发布标签解析到的提交，使用该提交中的评分文件与附件建立清单。未完成草稿保存到有明确访问范围的独立位置，标注与共同版本的关系。让一名未参与整理的成员按清单取得材料，查询评分调整的补丁并比较发布内容；能够重复取得同一内容、解释变化来源且不丢失草稿，才构成验收依据。</p></div></details></section><section id="mindmap"><h2 id="review-15">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第1章复习导图" class="zoom-image"><img alt="第1章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-01.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="1">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="02.html"><small>下一章 →</small>环境配置与仓库初始化</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">文件、终端与实验约定</a><a href="#h2-2">版本控制解决什么问题</a><a href="#h2-3">版本控制的几种组织方式</a><a href="#h2-4">Git 的形成背景与设计问题</a><a href="#h2-5">从快照理解项目状态</a><a href="#h2-6">从对象和引用理解历史</a><a href="#h2-7">从索引理解提交的选择</a><a href="#h2-8">Git、远程仓库与托管平台</a><a href="#h2-9">学习过程中的证据与责任</a><a href="#h2-10">案例研读：为课程资料建立可信记录</a><a href="#h2-11">从日常表达走向技术表达</a><a href="#h2-12">思考训练：记录方案怎样取舍</a><a href="#h2-13">本章小结</a><a href="#review-14">本章习题与解析</a><a href="#review-15">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

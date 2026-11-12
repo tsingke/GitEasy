@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>合并原理与冲突处理 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="6" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>核心篇<span>/</span>第06章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 06 · 核心篇</div><h1>合并原理与冲突处理</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 61 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-06"></span>
+<p>分支解决“怎样分别推进”，合并解决“怎样把工作重新连接起来”。连接历史并不等于把两个目录简单叠放：同一个文件可能被两边修改，也可能一边删除、一边继续维护；即使文本可以自动拼接，组合后的程序仍可能违背原来的需求。</p>
+<p>本章先从提交的祖先关系判断合并形态，再通过课程安排、文件增删和计价程序三个场景解释冲突。读者应能回答：当前分支将发生什么变化，Git 根据哪些版本整合内容，哪些决定必须由人作出，以及怎样留下可以检查的整合证据。</p>
+<p><strong>学习目标：</strong>辨认快进、分叉和已包含三种情形；解释合并基与多阶段索引；完成冲突观察、内容决策、暂存、验证和提交；区分中止合并与退出合并状态；识别自动合并中的语义问题。</p>
+<p>从合并方向出发，依次观察引用变化、双亲关系和三方内容，再处理文本冲突、增删冲突与语义冲突。实验均在新的独立目录中进行，不依赖上一章留下的分支。</p>
+<h2 id="h2-1">先明确合并的方向与条件</h2>
+<p>合并把指定来源纳入当前工作入口，因此先确认“站在哪条分支上、准备纳入谁”。同样两个分支名称，切换当前分支以后命令可能产生不同入口更新；下面先固定方向，再依据祖先关系预测结果。</p>
+<h3 id="h3-1">当前分支接收指定来源</h3>
+<p>在 main 上执行 <code>git merge lesson</code>，表示把 lesson 所代表的历史整合到当前分支 main。lesson 不会因此自动改名、删除或移动到新的合并提交。若反过来先切换到 lesson 再合并 main，接收整合结果的分支就变成 lesson。这两个操作即使得到相同的文件内容，也可能形成不同的父提交顺序和历史说明。</p>
+<p>因此，合并前应先确认三项事实：当前在哪一条分支，准备接收哪个提交或分支的工作，索引和工作区是否夹带其他编辑。新手最好从干净状态开始。Git 会阻止某些可能覆盖未提交内容的合并，但不能据此推断“只要命令接受了，混入的编辑就一定容易区分和恢复”。</p>
+<p>交换命令参数和切换当前分支，可能形成不同的接收位置与第一父项（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-02">6.1</a> ）。执行前应把当前分支、来源入口和公共基线分别写出，随后再解释结果。</p>
+<figure id="fig:scenario-06-02"><button aria-label="放大图6.1：当前分支决定整合的接收方向" class="zoom-image"><img alt="图6.1 当前分支决定整合的接收方向" height="315" loading="lazy" src="../assets/figure-6-1.webp" width="1161"/></button><figcaption><b>图 6.1</b> 当前分支决定整合的接收方向</figcaption></figure>
+<p>合并参数可以是分支名，也可以是解析到提交的其他名称。本章用本地分支建立模型；第 7 章再把远程跟踪引用加入同一个模型。远程合并没有另一套文件整合原理。</p>
+<h3 id="h3-2">三种常见的历史关系</h3>
+<p>第一种情形是<strong>目标已包含</strong>：指定来源已经是当前提交的祖先，当前历史已经沿父关系包含它。普通合并通常报告无需更新。这不表示两个分支的文件必然完全相同；当前分支可能在包含该来源以后又修改了文件。</p>
+<p>第二种情形是<strong>可以快进</strong>：当前提交是指定来源的祖先。沿着已经存在的提交链就能从当前位置走到来源端点，不必创建一个新的整合节点。Git 可以把当前分支引用直接移动过去，这称为快进。</p>
+<p>第三种情形是<strong>已经分叉</strong>：两边各自有对方尚未包含的提交。对本章的普通双分支整合，Git 需要计算整合后的项目状态；若顺利完成并采用普通合并提交方式，会创建一个具有两个父提交的新提交。图<a class="book-ref" href="../chapters/06.html#fig:merge-forms">6.2</a>用实线箭头表示“子提交指向父提交”，用虚线表示引用。图中 M 的父提交是双方原来的端点，而非公共祖先 A。</p>
+<figure id="fig:merge-forms"><button aria-label="放大图6.2：快进复用已有历史，分叉整合通常建立新的历史连接" class="zoom-image"><img alt="图6.2 快进复用已有历史，分叉整合通常建立新的历史连接" height="521" loading="lazy" src="../assets/figure-6-2.webp" width="996"/></button><figcaption><b>图 6.2</b> 快进复用已有历史，分叉整合通常建立新的历史连接</figcaption></figure>
+<h2 id="h2-2">实验一：比较三种合并选项</h2>
+<p>在一个新的父目录中创建 lab06-shapes。实验刻意让各任务修改不同文件，以便先观察历史关系，暂不引入文本冲突（图 <a class="book-ref" href="../chapters/06.html#fig:principle-ch06-02">6.3</a> ）。</p>
+<figure id="fig:principle-ch06-02"><button aria-label="放大图6.3：快进与合并节点（每行对照一组条件与解释）" class="zoom-image"><img alt="图6.3 快进与合并节点（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-6-3.webp" width="1237"/></button><figcaption><b>图 6.3</b> 快进与合并节点（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-3">快进没有新增提交</h3>
+<div class="code-block"><div class="code-bar"><span>建立共同起点与单向前进的分支</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab06-shapes
+cd lab06-shapes
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Course materials\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish course baseline"
+git tag shape-base
+git switch -c lesson
+printf 'Task: inspect a merge\n' &gt; lesson.txt
+git add lesson.txt
+git commit -m "docs: add merge lesson"
+git switch main
+git merge --ff-only lesson
+git rev-parse main lesson
+git rev-list --count main</code></pre></div>
+<p>两次 rev-parse 输出应相同，因为两个分支现在指向同一提交。main 可达的提交数量应为 2：一个起始提交和一个 lesson 提交。合并动作没有额外增加第三个提交。lesson.txt 出现在 main 的工作区，是因为 main 已经指向包含该文件的提交，并不是 Git 在后台替我们重新提交了一遍文件。</p>
+<p><code>--ff-only</code> 明确要求只接受快进。这适合“只更新到已存在的后继提交，不在这里创造新的整合历史”的场景。它并不承诺任何时候都能更新；一旦两边已经分叉，就会拒绝。</p>
+<h3 id="h3-4">同样的文件结果，可以有不同的历史</h3>
+<p>从原始起点新建 preserve 分支，再用 <code>--no-ff</code> 接收 lesson。这样可以与前面的快进结果作对照，而不需要破坏 main。</p>
+<div class="code-block"><div class="code-bar"><span>在可快进条件下保留合并节点</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c preserve shape-base
+git merge --no-ff lesson -m "merge: integrate lesson with a boundary"
+git rev-list --parents -n 1 HEAD
+git diff main preserve
+git log --graph --oneline --all</code></pre></div>
+<p>rev-list 的一行应包含三个标识：当前合并提交、第一父提交和第二父提交。第一父是 preserve 合并前的位置，第二父是 lesson 当时的位置。两个父提交并不意味着存在两个工作区；一个提交仍只指向一份最终目录树。</p>
+<p>选项约束的是允许采用的历史整合方式（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-01">6.4</a> ）。拒绝一次非快进合并，并不表示来源内容必然有文本冲突；需要先区分祖先关系与文件比较。</p>
+<figure id="fig:scenario-06-01"><button aria-label="放大图6.4：三种合并选项约束不同" class="zoom-image"><img alt="图6.4 三种合并选项约束不同" height="426" loading="lazy" src="../assets/figure-6-4.webp" width="1169"/></button><figcaption><b>图 6.4</b> 三种合并选项约束不同</figcaption></figure>
+<p>main 与 preserve 的最终内容相同，因此本例 diff 没有输出；但二者提交标识与历史结构不同。这个对照说明，文件状态和历史关系是两个可以分别检查的维度。选择 <code>--no-ff</code> 的理由通常是保留一次整合的边界，而非让文件内容“合得更完整”。</p>
+<h3 id="h3-5">分叉后，要求仅快进会被拒绝</h3>
+<div class="code-block"><div class="code-bar"><span>构造两边各自前进的路线</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c left shape-base
+printf 'Left task\n' &gt; left.txt
+git add left.txt
+git commit -m "docs: add left task"
+git switch -c right shape-base
+printf 'Right task\n' &gt; right.txt
+git add right.txt
+git commit -m "docs: add right task"
+git switch left
+git merge --ff-only right</code></pre></div>
+<p>最后一条命令<strong>预期失败</strong>。left 和 right 都从起点增加了一次提交，left 不是 right 的祖先，不能只靠移动 left 就既保留 left 的工作、又包含 right 的工作。拒绝是选项约束得到执行，并不是仓库损坏。</p>
+<h3 id="h3-6">把“计算结果”与“创建提交”分开</h3>
+<p>现在允许普通合并，但要求先停下来检查整合内容。<code>--no-commit</code> 用于在真正合并后暂停自动提交；为确保本实验即使结构变化后也不会直接快进，显式同时使用 <code>--no-ff</code>。</p>
+<div class="code-block"><div class="code-bar"><span>检查结果后再完成合并</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git merge --no-ff --no-commit right
+git status
+git rev-parse HEAD MERGE_HEAD
+git diff --cached --stat
+git diff --cached
+git commit -m "merge: integrate right after inspection"
+git rev-list --parents -n 1 HEAD
+git merge right</code></pre></div>
+<p>暂停时，HEAD 仍表示 left 原来的端点，MERGE_HEAD 记录正在合入的 right 端点。索引已经包含计算出的整合结果；相对 HEAD 检查暂存差异，可以看到 right.txt 将加入下一次提交。只有完成 commit 后，left 才前进到新建的双亲提交。最后再次合并 right，通常会报告已经包含该来源。重复 merge 不会为同一个已包含来源无条件再造一个提交。</p>
+<p>表<a class="book-ref" href="../chapters/06.html#tab:merge-options">6.1</a>概括本节选项的用途。阅读时必须同时考虑祖先关系和选项，不能只凭“这条命令叫 merge”预测是否一定产生新提交。</p>
+<div class="table-scroll" id="tab:merge-options" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 6.1</b> 常见合并选项及其边界</caption><tr><th colspan="1">选择</th><th colspan="1">应如何理解</th></tr><tr><td colspan="1">默认的普通合并</td><td colspan="1">在通常的分支合并和默认配置下，可快进则快进；分叉则整合并准备合并提交。其他配置或特殊输入可能影响行为。</td></tr><tr><td colspan="1"><code>--ff-only</code></td><td colspan="1">只接受快进或已包含的关系；需要新整合节点时拒绝。</td></tr><tr><td colspan="1"><code>--no-ff</code></td><td colspan="1">在本节的非空整合中保留合并提交；若来源早已包含，并不会凭空建立一次新合并。</td></tr><tr><td colspan="1"><code>--no-commit</code></td><td colspan="1">真正合并后暂停自动提交；快进不创建提交，因此单独使用不能保证暂停快进。</td></tr><tr><td colspan="1"><code>--no-ff --no-commit</code></td><td colspan="1">用于希望先检查一个普通合并结果、再手动完成提交的场景。</td></tr></table></div></div>
+<h2 id="h2-3">三方合并为什么需要公共基线</h2>
+<p>只比较两侧最终文件，难以判断每项差异由哪一侧引入。公共基线提供变化的共同起点，使Git能够分别观察两侧做了什么；理解这层关系以后，再讨论自动整合、冲突和合并基的选择。</p>
+<h3 id="h3-7">只比较两个最终文件会丢失修改意图</h3>
+<p>对比两个最终文件并不足以解释各自改了什么；公共基线提供了变化的起点。图 <a class="book-ref" href="../chapters/06.html#fig:visual-06-a">6.5</a> 用标题和邮箱两项独立编辑说明三方比较：分别识别两侧相对基线的修改，再尝试形成结果。文本能够自动整合，仍需进一步检验业务含义。</p>
+<figure id="fig:visual-06-a"><button aria-label="放大图6.5：公共基线与两侧独立修改的三方比较" class="zoom-image"><img alt="图6.5 公共基线与两侧独立修改的三方比较" height="1024" loading="lazy" src="../assets/figure-6-5.webp" width="1536"/></button><figcaption><b>图 6.5</b> 公共基线与两侧独立修改的三方比较</figcaption></figure>
+<p>假设原来的课程安排写着 Monday，一边改成 Tuesday，另一边仍是 Monday。仅看最终两个文件，会看到两个不同的单词，却不知道是谁改变了原来的安排。有了原始基线，就能判断：一侧确实提出了新安排，另一侧没有修改这一处（图 <a class="book-ref" href="../chapters/06.html#fig:principle-ch06-03">6.7</a> ）。</p>
+<p>三方比较关心两侧相对公共基线分别发生了什么（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-08">6.6</a> ）。没有文本冲突时也应阅读最终结果，尤其要检查两项独立修改组合后的接口与业务假设。</p>
+<figure id="fig:scenario-06-08"><button aria-label="放大图6.6：公共基线用于辨认变化" class="zoom-image"><img alt="图6.6 公共基线用于辨认变化" height="425" loading="lazy" src="../assets/figure-6-6.webp" width="1169"/></button><figcaption><b>图 6.6</b> 公共基线用于辨认变化</figcaption></figure>
+<figure id="fig:principle-ch06-03"><button aria-label="放大图6.7：三方变化需要基线（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图6.7 三方变化需要基线（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-6-7.webp" width="1124"/></button><figcaption><b>图 6.7</b> 三方变化需要基线（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>再看另一种情况：两侧分别改为 Tuesday 和 Wednesday。相对 Monday，双方都提出了不同安排。Git 没有课程管理的领域知识，不能决定哪一天更合适。公共基线使“保留原样”与“主动修改”可以被区分，但不会让工具获得替团队作决定的能力。图<a class="book-ref" href="../chapters/06.html#fig:merge-three-inputs">6.8</a>说明三个输入与一个结果的关系。箭头在这张图中表示内容分析流程，与前面提交图中的父引用箭头具有不同含义。</p>
+<figure id="fig:merge-three-inputs"><button aria-label="放大图6.8：三方信息帮助识别双方修改，最终需求仍由人判断" class="zoom-image"><img alt="图6.8 三方信息帮助识别双方修改，最终需求仍由人判断" height="484" loading="lazy" src="../assets/figure-6-8.webp" width="913"/></button><figcaption><b>图 6.8</b> 三方信息帮助识别双方修改，最终需求仍由人判断</figcaption></figure>
+<h3 id="h3-8">合并基不是按图上距离选出的唯一点</h3>
+<p>对于两个提交，共同祖先是沿双方父关系都能到达的提交。在共同祖先之间，如果某个共同祖先还是另一个共同祖先的祖先，那么后者提供了包含更多共同历史的参照。通常所说的最佳公共祖先，是不存在另一个共同祖先比它更靠后的候选。</p>
+<p>在简单分叉图中，最佳公共祖先往往只有一个，看起来就像两条路线分开的那个点。但提交图是有向无环图，存在交叉合并时，可能出现多个互不为祖先的最佳公共祖先。因此，不能用“到双方边数之和最小的唯一提交”作为一般定义。</p>
+<p><code>git merge-base --all left right</code> 可以列出所有最佳候选。默认不带 <code>--all</code> 时只输出一个，并不证明候选只有一个。现代常用的双分支整合策略会按规则处理多个合并基，可能先形成用于后续整合的公共基线。本章实验采用单一合并基，先建立清晰的基础模型；更复杂的情形应结合合并策略文档分析<span class="citation" data-cites="gitdocs2026">(Git Project 2026a)</span>。</p>
+<h3 id="h3-9">文本规则与项目含义有不同边界</h3>
+<p>在常见文本路径上，可以把三方整合理解为：比较两边相对基线的修改，再尝试组合兼容的编辑。如果双方修改能够协调，Git 可以自动生成结果；如果相同位置的替换、文件增删等情况无法按规则协调，就会停下来。</p>
+<p>“不同行一定不冲突、同一行一定冲突”都不够准确。相邻插入、上下文变化和文件重命名可能影响结果；双方作出完全相同的编辑时，也不需要让人重复确认。对二进制文件、符号链接、子模块或自定义合并驱动，处理方式还可能不同。</p>
+<p>更需要区分的是：自动合并成功表示工具按相应规则得到了结构上可以继续的结果，不表示整合后的配置、程序和文档必然自洽。一个接口单位发生变化，而调用处仍按旧单位计算，即使改动位于不同文件，也可能形成业务错误。</p>
+<h2 id="h2-4">实验二：完整观察和解决文本冲突</h2>
+<p>先回到父目录，开展独立的课程安排实验。这个实验不会复用 lab06-shapes 的分支名称或文件。</p>
+<div class="code-block"><div class="code-bar"><span>离开合并形态实验</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..</code></pre></div>
+<h2 id="h2-5">引导实验：冲突是需要决定的内容</h2>
+<p>同一个文本位置出现两个修改，Git 只能看到它们的结构差异，无法代替团队决定课程安排。下面故意让两个分支修改同一行。实验从干净目录开始，不依赖第 5 章的任何分支。</p>
+<div class="code-block"><div class="code-bar"><span>构造两个不同的课程安排</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab06
+cd lab06
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+git config merge.conflictStyle diff3
+printf 'Meeting: Monday\n' &gt; course.txt
+git add course.txt
+git commit -m "docs: baseline meeting"
+git switch -c proposal
+printf 'Meeting: Tuesday\n' &gt; course.txt
+git add course.txt
+git commit -m "docs: propose Tuesday"
+git switch main
+printf 'Meeting: Wednesday\n' &gt; course.txt
+git add course.txt
+git commit -m "docs: choose Wednesday"
+git merge proposal</code></pre></div>
+<p>最后一步预期产生冲突并返回非零状态。不要反复运行 merge，也不要马上删除整个文件。先运行 status，确认处于合并中；再读取 course.txt。diff3 样式会额外显示公共基线；上方是当前侧，下方是正在合入的分支。普通 merge 场景下，可分别用 HEAD 与 MERGE_HEAD 查询双方提交。</p>
+<div class="code-block"><div class="code-bar"><span>从三个来源理解分歧</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git show HEAD:course.txt
+git show MERGE_HEAD:course.txt
+git show HEAD~1:course.txt
+git ls-files -u
+git show :1:course.txt
+git show :2:course.txt
+git show :3:course.txt</code></pre></div>
+<p>本实验中 HEAD 的父提交恰好是共同基线，所以第三条显示 Monday；这仅实验结构，不是任何合并都能用 HEAD 的父提交代替合并基。ls-files 的未合并条目让我们看到 Git 同时保存了多个候选来源。下一步必须依据真实需求决定最终内容。假设小组决定把课程放在 Wednesday，同时保留 Tuesday 的答疑安排。编辑后的结果可以是两行，而非简单保留任意一侧。下面写入这个明确决策：</p>
+<div class="code-block"><div class="code-bar"><span>保存并验证解决结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Meeting: Wednesday\nOffice hours: Tuesday\n' &gt; course.txt
+git add course.txt
+git diff --cached
+git ls-files -u
+git commit -m "docs: combine meeting and office hours"
+git rev-list --parents -n 1 HEAD
+git status --short</code></pre></div>
+<p>提交前 ls-files -u 应不再输出未合并条目。这个结果只证明索引冲突已解除；还必须检查最终两行是否表达商定意图。提交后 rev-list 应显示当前提交及两个父提交，证明历史连接了两条路线。status 应恢复干净。</p>
+<p>如果仍未达成安排，正确的选择可以是中止合并，而非随便选一侧让工具通过。开始时工作区干净，有助于 merge –abort 恢复到合并前；若夹带其他未提交编辑，恢复条件就更复杂，应先保全现场。</p>
+<h3 id="h3-10">自动合并也需要验证</h3>
+<p>两个分支若改动不同位置，Git 可能顺利合并，但结果依旧可能自相矛盾。例如一侧把上课时间改成上午，另一侧新增“每次课后晚间答疑”，文本没有重叠，却需要人工核对时间安排。工具解决的是结构整合，团队仍负责语义正确性。</p>
+<h3 id="h3-11">冲突标记、索引状态与需求决定</h3>
+<p>采用本实验设置的 diff3 冲突样式时，工作文件中除当前侧和合入侧外，还会显示公共基线片段。默认 merge 样式通常不显示基线区块。标记附近的名称、上下文和标记长度可能随配置及操作场景变化，应理解结构，而非只记住某一行固定文字（图 <a class="book-ref" href="../chapters/06.html#fig:principle-ch06-04">6.9</a> ）。</p>
+<figure id="fig:principle-ch06-04"><button aria-label="放大图6.9：文本冲突到完整结果（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图6.9 文本冲突到完整结果（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-6-9.webp" width="1111"/></button><figcaption><b>图 6.9</b> 文本冲突到完整结果（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>终端输出</span><button class="copy-code">复制</button></div><pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
+Meeting: Wednesday
+||||||| ...
+Meeting: Monday
+=======
+Meeting: Tuesday
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; proposal</code></pre></div>
+<p>这段输出是结构示意，中间的省略符号代表实际环境可能显示的基线标识。上方属于本次普通 merge 的当前侧，下方属于合入侧，中间表示公共基线。标记给出了需要讨论的事实：双方都改变了原来 Monday 的安排。</p>
+<p><code>git ls-files -u</code> 从另一个角度展示现场：它列出未合并的索引条目。阶段 1 用于公共基线，阶段 2 用于当前侧，阶段 3 用于合入侧。普通文本修改冲突常见三个阶段都存在；新增或删除路径的冲突则可能缺少某个阶段，下一节会亲自观察。</p>
+<p>解决冲突包含三个不同的判断。第一，内容决定是否符合需求；第二，是否已经把决定后的内容放进索引；第三，是否验证了组合结果并完成合并提交。删除工作文件中的标记，只完成了编辑的一部分，不会自动把多阶段条目变为正常条目，更不会自动完成提交。</p>
+<p>编辑器中移除冲突标记后，Git还需要明确的解决记录（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-03">6.10</a> ）。最终提交之前，应同时检查文件语义、候选差异和未合并条目，避免只完成其中一项。</p>
+<figure id="fig:scenario-06-03"><button aria-label="放大图6.10：解决冲突分为内容与状态两步" class="zoom-image"><img alt="图6.10 解决冲突分为内容与状态两步" height="425" loading="lazy" src="../assets/figure-6-10.webp" width="1169"/></button><figcaption><b>图 6.10</b> 解决冲突分为内容与状态两步</figcaption></figure>
+<h3 id="h3-12">为什么解决内容可以同时不同于双方</h3>
+<p>本实验保留 Wednesday 上课，同时增加 Tuesday 答疑。解决结果综合了双方需求，形成新的可用安排，两侧原文均需按最终约定作相应调整。实际项目中的接口适配、配置迁移和文档重组经常需要这样的第三种结果。</p>
+<p>如果需求明确要求采用一整侧的文件，也可以从索引中的相应阶段恢复工作文件。例如在普通合并的文本冲突中，<code>git restore --ours -- course.txt</code> 读取当前侧，<code>git restore --theirs -- course.txt</code> 读取合入侧。它们本身并不替你完成业务验证和最终暂存。还要注意，这是选择整个冲突路径的一个侧面，不是逐个冲突块智能选择正确内容。</p>
+<p>变基中的“当前侧”是重放过程所建立的临时基线，“合入侧”对应正在重放的改动，不能把日常所说的“我的分支”机械对应到 ours。第 11 章会再次对照实际现场解释。</p>
+<h3 id="h3-13">从索引检查到结果验证</h3>
+<p>本实验在 add 后检查了 <code>git diff --cached</code> 和 <code>git ls-files -u</code>。前者说明将提交哪些内容，后者确认是否还存在未合并条目。两者不可互相替代：没有未合并条目，仍可能把错误的解决内容暂存进去。</p>
+<p>还可以使用 <code>git diff --cached --check</code> 检查差异中可识别的空白错误与冲突标记等问题。但这种检查只覆盖它检查到的差异和规则，不能作为“整个项目绝无残留标记”的证明。示例文字中也可能合法出现冲突标记，需要结合文件用途判断。</p>
+<p>最后检查测试、配置和文档的一致性，再完成合并。提交后的双亲关系证明两条历史获得了连接，最终文件的内容证明约定的安排得到保存，干净状态证明本轮操作没有留下未处理的编辑。三类证据回答的是不同问题。</p>
+<h2 id="h2-6">实验三：文件删除与新增的冲突</h2>
+<p>文本行冲突仅冲突的一种形式。下面在 lab06-cases 中观察两个路径结构问题。不要预设每个冲突文件都一定带有尖括号标记（图 <a class="book-ref" href="../chapters/06.html#fig:principle-ch06-05">6.12</a> ）。</p>
+<p>冲突索引中的阶段号表示同一路径的不同来源，三个条目需要并列阅读。图 <a class="book-ref" href="../chapters/06.html#fig:visual-06-b">6.11</a> 区分修改／删除与新增／新增两类冲突：前者可能缺少被删除一侧的条目，后者没有共同基线中的条目。阶段缺失本身并不表示索引损坏。</p>
+<figure id="fig:visual-06-b"><button aria-label="放大图6.11：不同冲突类型中的并列索引阶段" class="zoom-image"><img alt="图6.11 不同冲突类型中的并列索引阶段" height="594" loading="lazy" src="../assets/figure-6-11.webp" width="1144"/></button><figcaption><b>图 6.11</b> 不同冲突类型中的并列索引阶段</figcaption></figure>
+<figure id="fig:principle-ch06-05"><button aria-label="放大图6.12：缺失阶段的正常来源（每行对照一组条件与解释）" class="zoom-image"><img alt="图6.12 缺失阶段的正常来源（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-6-12.webp" width="1237"/></button><figcaption><b>图 6.12</b> 缺失阶段的正常来源（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-14">一侧删除，另一侧继续修改</h3>
+<div class="code-block"><div class="code-bar"><span>建立修改与删除的分歧</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab06-cases
+cd lab06-cases
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Policy: initial\n' &gt; policy.txt
+git add policy.txt
+git commit -m "docs: add initial policy"
+git tag case-base
+git switch -c remove-policy
+git rm policy.txt
+git commit -m "docs: retire policy file"
+git switch -c revise-policy case-base
+printf 'Policy: revise before archiving\n' &gt; policy.txt
+git add policy.txt
+git commit -m "docs: revise existing policy"
+git merge remove-policy</code></pre></div>
+<p>最后一步<strong>预期发生修改／删除冲突</strong>。删除侧可能认为这份制度已失效，修改侧则可能仍在处理有效条款。若 Git 直接接受删除，会丢掉另一侧的修订意图；若直接保留文件，又可能违背取消制度的决定。需要先查明需求。</p>
+<p>修改／删除冲突不能仅凭哪一侧文件较新作出决定（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-07">6.13</a> ）。应先明确删除的目的和修改的依赖，再选择最终快照，并检查仍然引用该路径的内容。</p>
+<figure id="fig:scenario-06-07"><button aria-label="放大图6.13：修改与删除冲突的两类业务决定" class="zoom-image"><img alt="图6.13 修改与删除冲突的两类业务决定" height="324" loading="lazy" src="../assets/figure-6-13.webp" width="1169"/></button><figcaption><b>图 6.13</b> 修改与删除冲突的两类业务决定</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>从存在和缺失的阶段读取依据</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git status --short
+git ls-files -u
+git show :1:policy.txt
+git show :2:policy.txt
+git show :3:policy.txt</code></pre></div>
+<p>本次当前侧为 revise-policy，因此阶段 2 有修订后的文件，阶段 1 有基线文件，阶段 3 没有 policy.txt。最后一条 show <strong>预期失败</strong>，因为合入侧删除了这个路径。这个缺失正是诊断信息，不能把它理解为对象数据库损坏。假设讨论结果为：保留一个简短的归档说明，提醒读者旧制度已停止使用。于是写入新的决定，而非无条件采用原来的任意一侧。</p>
+<div class="code-block"><div class="code-bar"><span>把讨论后的归档决定写入提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Policy: archived after review\n' &gt; policy.txt
+git add policy.txt
+git diff --cached --check
+git diff --cached
+git ls-files -u
+git commit -m "merge: retain an explicit policy archive notice"</code></pre></div>
+<p>若决定确实应该删除文件，则用 <code>git rm -- policy.txt</code> 将删除作为解决结果放进索引。选择 add 还是 rm，应由最终路径应否存在决定，而非由哪条命令更容易让状态变绿决定。</p>
+<h3 id="h3-15">两边独立新增了同一路径</h3>
+<div class="code-block"><div class="code-bar"><span>构造没有基线内容的同名新增</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c add-students case-base
+printf 'Audience: students\n' &gt; handbook.txt
+git add handbook.txt
+git commit -m "docs: add student handbook"
+git switch -c add-tutors case-base
+printf 'Audience: tutors\n' &gt; handbook.txt
+git add handbook.txt
+git commit -m "docs: add tutor handbook"
+git merge add-students
+git ls-files -u
+git show :2:handbook.txt
+git show :3:handbook.txt
+git show :1:handbook.txt</code></pre></div>
+<p>合并<strong>预期产生新增／新增冲突</strong>；最后读取阶段 1 的命令也<strong>预期失败</strong>。共同起点没有 handbook.txt，因此没有该路径的基线文件。阶段 2 和阶段 3 分别提供导师版和学生版。</p>
+<p>这里应讨论两种合理方案：一本手册兼顾两个读者群，或把文件拆成两个明确命名的入口。若拆分，还需检查其他文件中的链接。仅仅消除同名冲突，而不修正引用路径，仍可能交付一份无法导航的资料库。</p>
+<h2 id="h2-7">中止、退出与已经完成的合并</h2>
+<h3 id="h3-16">中止尝试恢复合并前的状态</h3>
+<p>当前仍停在 add-tutors 的冲突现场。因为实验从干净状态开始，可以用中止操作观察原文件的恢复。</p>
+<div class="code-block"><div class="code-bar"><span>放弃当前整合尝试</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git merge --abort
+git status --short
+cat handbook.txt
+git branch --show-current</code></pre></div>
+<p>本例应回到 add-tutors，handbook.txt 内容仍为 tutors，状态无待处理差异。中止处理的是尚在进行的合并过程，不涉及删除一个已经建立的合并提交。当前例子的合并提交从未形成（图 <a class="book-ref" href="../chapters/06.html#fig:principle-ch06-06">6.14</a> ）。</p>
+<figure id="fig:principle-ch06-06"><button aria-label="放大图6.14：退出管理与恢复现场（每行对照一组条件与解释）" class="zoom-image"><img alt="图6.14 退出管理与恢复现场（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-6-14.webp" width="1237"/></button><figcaption><b>图 6.14</b> 退出管理与恢复现场（每行对照一组条件与解释）</figcaption></figure>
+<p>如果合并开始前就混有未提交修改，或在冲突期间又进行无关编辑，Git 可能无法重建所有原始现场。不要把 <code>--abort</code> 当成无条件的完整快照恢复。对仍有价值的编辑，应先另外保全，再评估当前状态和恢复路径。</p>
+<h3 id="h3-17">退出操作状态不会替你还原内容</h3>
+<p>下面重新制造同一个冲突，然后退出合并状态。这样可以在同一条件下比较 abort 与 quit。</p>
+<p>中止和退出状态有不同目的（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-04">6.15</a> ）。判断命令结果时，应查询合并管理信息与实际文件，不能根据提示消失推断原有现场已经恢复。</p>
+<figure id="fig:scenario-06-04"><button aria-label="放大图6.15：中止合并与忘记合并状态" class="zoom-image"><img alt="图6.15 中止合并与忘记合并状态" height="425" loading="lazy" src="../assets/figure-6-15.webp" width="1169"/></button><figcaption><b>图 6.15</b> 中止合并与忘记合并状态</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>观察 quit 留下的索引与工作文件</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git merge add-students
+git merge --quit
+git status --short
+git ls-files -u
+git rev-parse --verify MERGE_HEAD</code></pre></div>
+<p>第一条 merge 再次<strong>预期冲突</strong>；最后一条查询<strong>预期失败</strong>，因为退出后不再保留本次合并的 MERGE_HEAD 状态。但是，未合并索引条目和工作文件并没有因此恢复成原样。这说明“忘记正在合并这件事”与“撤掉合并对内容的影响”是不同操作。</p>
+<p>初学者不应把 quit 当成解决或放弃冲突的常规替代。本实验只为观察它的边界。退出后若直接把解决文件提交，不能再假定 Git 会自动建立原计划中的双亲连接。应先明确接下来希望保留何种历史。下面已经决定放弃刚才的实验性整合；同时确认 handbook.txt 中没有需要保留的新编辑。于是从 HEAD 同时恢复这个路径的索引与工作区，再检查状态。</p>
+<div class="code-block"><div class="code-bar"><span>在保全和确认后清理本次实验路径</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git restore --source=HEAD --staged --worktree -- handbook.txt
+git status --short
+cat handbook.txt</code></pre></div>
+<p>这个路径限定的恢复命令会覆盖所选路径的现场，不能不加判断地用于真实项目。第 8 章将系统区分恢复索引、恢复工作区与移动分支位置。</p>
+<h3 id="h3-18">合并提交形成后，问题已经改变</h3>
+<p>若 merge 已经完成提交，就不存在可供本次 abort 处理的进行中状态。此时要回答的是是否需要新提交抵消整合的内容，或者在尚未共享的前提下调整历史入口。前者通常涉及 revert，后者可能涉及 reset。</p>
+<p>撤销一个合并提交还需要理解父序：应以哪一个父提交为主线，来解释要抵消的改动。父序不是按“作者重要性”排列，也不是按提交时间排序；本章的普通双分支合并中，第一父就是合并前当前端点。具体撤销与重新合入的影响将在第 8 章讨论。</p>
+<h2 id="h2-8">实验四：自动合并通过，计算却错了</h2>
+<p>下面用一个只依赖 Python 标准功能的计价程序说明：结构整合与业务正确性之间存在距离。程序把 100 元商品打九折，正确结果应为 90 元。两个任务分别做“折扣单位调整”和“新增收据计算”（图 <a class="book-ref" href="../chapters/06.html#fig:principle-ch06-07">6.16</a> ）。</p>
+<figure id="fig:principle-ch06-07"><button aria-label="放大图6.16：自动文本成功后的检查（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图6.16 自动文本成功后的检查（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-6-16.webp" width="1111"/></button><figcaption><b>图 6.16</b> 自动文本成功后的检查（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-19">建立百分数单位的共同起点</h3>
+<div class="code-block"><div class="code-bar"><span>建立可以计算折后价的小项目</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab06-semantic
+cd lab06-semantic
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '__pycache__/\n' &gt; .gitignore
+printf 'discount = 10\n' &gt; config.py
+cat &gt; price.py &lt;&lt;'PY'
+from config import discount
+
+def final_price(amount):
+    return amount * (100 - discount) / 100
+PY
+git add .gitignore config.py price.py
+git commit -m "feat: calculate discount in percentage points"
+git tag semantic-base
+python3 -c "from price import final_price; print(final_price(100))"</code></pre></div>
+<p>当前 discount 的单位是百分点，10 表示减免百分之十。两个值同样叫 discount，不代表单位也可以随意互换；变量名之外的约定也是接口的一部分。</p>
+<h3 id="h3-20">双方各自检查时都能得到 90</h3>
+<div class="code-block"><div class="code-bar"><span>把折扣单位调整为比例值</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c fractional-discount
+printf 'discount = 0.1\n' &gt; config.py
+cat &gt; price.py &lt;&lt;'PY'
+from config import discount
+
+def final_price(amount):
+    return amount * (1 - discount)
+PY
+git add config.py price.py
+git commit -m "refactor: express discount as a fraction"
+python3 -c "from price import final_price; assert final_price(100) == 90"</code></pre></div>
+<p>这一侧同时修改了数据表示和计算方式，单独测试能够得到 90。另一侧仍从旧起点开发，新增收据模块，沿用当时正确的百分点公式。</p>
+<div class="code-block"><div class="code-bar"><span>基于旧单位实现收据金额</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c receipt semantic-base
+cat &gt; receipt.py &lt;&lt;'PY'
+from config import discount
+
+def receipt_total(amount):
+    return amount * (100 - discount) / 100
+PY
+git add receipt.py
+git commit -m "feat: calculate receipt total"
+python3 -c "from receipt import receipt_total; assert receipt_total(100) == 90"</code></pre></div>
+<p>两条分支的单独检查都通过。但这还没有检验它们组合后的接口一致性。</p>
+<h3 id="h3-21">没有文本冲突，也会出现集成缺陷</h3>
+<div class="code-block"><div class="code-bar"><span>整合后比较两个计算入口</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git merge --no-ff fractional-discount -m "merge: integrate fractional discount"
+python3 -c "from price import final_price; from receipt import receipt_total; print(final_price(100), receipt_total(100))"
+python3 -c "from receipt import receipt_total; assert receipt_total(100) == 90"</code></pre></div>
+<p>merge 应能自动完成：一侧改动已有的 config.py 与 price.py，另一侧新增 receipt.py，没有出现需要人工裁决的文本冲突。随后应看到约为 90 和 99.9 的两个结果；最后断言<strong>预期失败</strong>，揭示收据仍按旧单位解释新值。</p>
+<p>如果验收只检查“合并命令是否成功”，这个缺陷就会漏过。如果只重跑 price.py 的旧测试，也仍然可能漏过。需要从需求出发，覆盖两个计算入口并比较它们的一致性。一种修复是让收据复用已经定义清楚的统一计算函数，减少两份公式分别维护的机会。</p>
+<div class="code-block"><div class="code-bar"><span>统一计算入口并验证整合结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cat &gt; receipt.py &lt;&lt;'PY'
+from price import final_price
+
+def receipt_total(amount):
+    return final_price(amount)
+PY
+python3 -c "from price import final_price; from receipt import receipt_total; assert final_price(100) == receipt_total(100) == 90"
+git add receipt.py
+git commit -m "fix: reuse the shared discount calculation"
+git status --short</code></pre></div>
+<p>本实验为便于观察，先保留了发生集成缺陷的合并，再用一个修复提交纠正。实际流程可以在暂停合并时、评审阶段或持续集成中尽早发现并调整。关键是为整合后的整体行为建立检查，而非依赖“各分支单独测试通过”这一较弱条件。</p>
+<h2 id="h2-9">建立可以复核的冲突处理流程</h2>
+<p>图<a class="book-ref" href="../chapters/06.html#fig:merge-resolution-flow">6.17</a>把处理分为观察、决定和验证。三个阶段分别防止认错现场、丢失需求和把未经检查的内容写入历史。</p>
+<figure id="fig:merge-resolution-flow"><button aria-label="放大图6.17：冲突处理要同时覆盖工具状态、需求决定与最终证据" class="zoom-image"><img alt="图6.17 冲突处理要同时覆盖工具状态、需求决定与最终证据" height="175" loading="lazy" src="../assets/figure-6-17.webp" width="1143"/></button><figcaption><b>图 6.17</b> 冲突处理要同时覆盖工具状态、需求决定与最终证据</figcaption></figure>
+<h3 id="h3-22">发生冲突时先停止连串操作</h3>
+<p>出现冲突后，先读 status，不要不断重复 merge，也不要立即换一条强制命令。确认是在合并、变基还是拣选中，再按该操作的流程继续。不同过程可以有相似的文件标记，却具有不同的继续方式与侧面含义。</p>
+<p>对多个冲突文件，应先列出清单，再按依赖关系处理。接口定义与调用方的改动要放在一起核对；配置与使用配置的程序也要配对检查。只按文件名字母顺序机械处理，容易漏掉跨文件关系。</p>
+<h3 id="h3-23">合并工具提供视图，需求决定正确性</h3>
+<p>图形合并工具通常提供公共基线、当前侧、合入侧和结果面板，但面板位置与名称由工具决定。开始前用一个已知的小冲突验证每个面板的含义。接受一侧按钮可以加快编辑，不构成正确性证明。</p>
+<p>对于无法直接按行合并的图片或二进制文档，团队可能需要由原作者提供合成版本，或者明确选择某一版并重新生成。不能要求普通文本合并算法理解任意文件格式。必要时通过属性和专用驱动约定处理方式，详见第 14、15 章。</p>
+<h3 id="h3-24">减少不必要的分歧</h3>
+<p>短期任务分支和及时整合可以缩小待处理差异；小步提交可以帮助定位每项改变的原因。但“每天机械合并一次”不是普遍规则，整合节奏仍应服从开发阶段、测试成本和团队约定。</p>
+<p>格式化和大范围重命名尽量与功能修改分开提交。这样发生冲突时，读者能够先识别机械变化，再讨论真正的行为变化。单位、数据格式和公共接口调整则应明确通知相关任务，补充兼容方案与组合测试。</p>
+<p>合并完成后不要急于删除所有任务分支。先确认目标分支包含预期工作、必要验证已经通过、交付说明已经保存，再进行清理。分支清理是管理入口的动作，不是证明整合正确的方式。</p>
+<h2 id="h2-10">案例研读：没有文本冲突，结果仍可能错误</h2>
+<p>两侧代码可能各自通过检查，却在组合后违反共同契约。案例以业务单位和调用关系为线索，说明为什么整合以后还必须检查新的组合状态。</p>
+<h3 id="h3-25">自动整合依据什么</h3>
+<p>一位成员把课程时长由两小时改为三小时，另一位成员把练习安排从三个单元扩展到五个单元。如果修改位于不同位置，Git 可能顺利生成结果，且不会报告文本冲突。但五个单元是否适合三小时，需要课程设计知识来判断。文本整合成功不能证明语义协调完成。</p>
+<p>Git 主要依据版本中的文本变化和相关合并机制处理文件，无法自动掌握每项业务约束。合并后的验收应包括文件检查、测试运行和需求核对。对于资料项目，可以检查时间总和、引用编号、目录链接和术语一致性；对于软件项目，还要覆盖接口、数据格式与运行行为。</p>
+<p>两条分支分别通过检查后，组合结果仍可能违反共同约定（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-05">6.18</a> ）。文本整合、构建和业务测试应连续执行，并说明每一层已经覆盖与尚未覆盖的条件。</p>
+<figure id="fig:scenario-06-05"><button aria-label="放大图6.18：文本整合与业务验证分层进行" class="zoom-image"><img alt="图6.18 文本整合与业务验证分层进行" height="426" loading="lazy" src="../assets/figure-6-18.webp" width="1169"/></button><figcaption><b>图 6.18</b> 文本整合与业务验证分层进行</figcaption></figure>
+<h3 id="h3-26">冲突仅需要明确决定的位置</h3>
+<p>冲突并不等于其中一位成员做错了。两人可能都基于正确但不同的需求修改同一处内容。解决时先恢复共同语境：共同起点是什么，双方分别试图解决什么，最终版本必须满足什么约束。删除标记仅编辑动作，解释选择依据才是整合工作。</p>
+<p>对无法独自判断的冲突，应保留双方证据并向相应作者确认。若项目明确授权整合者作决定，也应在提交说明或评审记录中写出理由。选择“当前方”或“对方”是一种内容取舍，不能仅因为按钮名称更熟悉就执行。</p>
+<h2 id="h2-11">实验拓展：验证合并提交的两个维度</h2>
+<p>下面的独立实验让两条分支修改不同文件，并强制保留双亲整合点。它用于分别观察最终文件和历史连接，不制造内容冲突。</p>
+<div class="code-block"><div class="code-bar"><span>建立互不覆盖的两项变化</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir evidence06
+cd evidence06
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Course baseline\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the baseline"
+git switch -c topic
+printf 'Exercise: inspect the index.\n' &gt; exercise.txt
+git add exercise.txt
+git commit -m "docs: add the index exercise"
+git switch main
+printf 'Lecture: Wednesday.\n' &gt; schedule.txt
+git add schedule.txt
+git commit -m "docs: record the lecture schedule"
+git merge --no-ff topic -m "merge: integrate the index exercise"</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>分别核对内容与父关系</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git show HEAD:exercise.txt
+git show HEAD:schedule.txt
+git rev-list --parents -n 1 HEAD
+git diff HEAD^1 HEAD --name-status
+git diff HEAD^2 HEAD --name-status
+test "$(git rev-list --parents -n 1 HEAD | wc -w | tr -d ' ')" = 3
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>最后一项提交具有两个父提交，因此父关系查询的一行包含三个标识：当前提交与两个父提交。从第一个父提交比较到合并结果，看到主题练习的加入；从第二个父提交比较到结果，看到主线安排的加入。两个补丁采用不同起点，分别说明相对于各父项新增了哪些内容。</p>
+<p>本例还说明：合并提交不是将两份补丁简单拼接成一个文本文件。它记录完整结果树，并以父关系连接被整合的历史。要检查“哪些主题变化进入主线”，通常以主线侧父提交为比较起点；要调查某一整合决定，则还应结合其他父提交与共同起点。</p>
+<h2 id="h2-12">整合后的审阅顺序</h2>
+<p>完整审阅不仅确认没有冲突标记，还要核对范围、依赖、业务与历史。按固定对象顺序检查，能够减少在复杂合并现场遗漏某一层事实的可能。</p>
+<h3 id="h3-27">先检查范围，再检查关键约束</h3>
+<p>完成合并后，先看变化文件列表，确认没有意外的大文件、生成目录或无关重排；再阅读关键文件补丁，检查冲突位置及其邻近内容；最后运行与需求匹配的验证。范围检查能发现误纳入内容，局部检查能发现不完整解决，运行验证能覆盖部分语义后果。</p>
+<p>对于存在格式化工具的项目，应尽量区分纯格式调整与功能整合。否则大量空白差异会遮蔽真正需要审阅的变化。若必须同时调整格式，应在说明中解释原因，并提供便于识别业务修改的比较方式。</p>
+<p>冲突处理包含工程决定（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-06">6.19</a> ）。保留来源、修改理由和验证结果，能使同伴理解解决方案，并为以后出现相似冲突提供可核对的依据。</p>
+<figure id="fig:scenario-06-06"><button aria-label="放大图6.19：冲突解决材料应支持复查" class="zoom-image"><img alt="图6.19 冲突解决材料应支持复查" height="588" loading="lazy" src="../assets/figure-6-19.webp" width="1177"/></button><figcaption><b>图 6.19</b> 冲突解决材料应支持复查</figcaption></figure>
+<h3 id="h3-28">中止、重试与继续的适用时机</h3>
+<p>当合并目标选错、前置条件不满足或需求仍不清楚时，中止往往比仓促完成更合适。中止不是抹去所有工作现场的通用命令，其能否完整恢复还受起始未提交变化等条件影响，因此开始整合前应先处理好草稿。</p>
+<p>若仅暂时无法判断一处冲突，可以保留现场继续调查；若要开始另一个任务，应先明确当前操作状态，不能在未完成整合的索引上随意推进。可靠流程的核心是保持每个阶段的状态可解释，而非追求每条命令都立即成功。</p>
+<h2 id="h2-13">迁移练习：设计一次语义验收</h2>
+<p>请为课程时间表设计两项分别合理、合并后却相互矛盾的修改，并写出能检测矛盾的验收规则。例如授课总时长与各单元时长之和必须一致，实验前置软件版本应与安装指南一致。规则应基于项目约束，而非检查“没有冲突标记”。</p>
+<p>参考分析：文本冲突检测与项目验收承担不同责任。前者帮助定位不能自动决定的文本位置，后者判断最终成果是否满足约束。真正完成合并，需要对最终结果负责。</p>
+<h2 id="h2-14">重复冲突的处理记录与复用</h2>
+<h3 id="h3-29">为什么会反复遇到同一类冲突</h3>
+<p>长时间维护的主题分支可能多次与主线整合，或者在试验不同整理方案时反复遇到相近冲突。若每次都从头编辑，不仅耗时，也容易在重复劳动中引入不一致。Git 的 rerere 机制可以记录某些冲突的解决方式，并在以后匹配到相应情境时复用<span class="citation" data-cites="gitrerere">(Git Project 2026b)</span>。</p>
+<p>复用不代表解决结果永远正确。项目语义可能已经变化，先前选择也可能存在错误。因此建议把自动复用的内容看作待复核候选，重新检查文件和测试，再决定是否暂存。尤其在学习阶段，不宜让自动更新索引掩盖观察过程。</p>
+<h3 id="h3-30">独立实验：先解决，再重复同一合并</h3>
+<p>本实验在新仓库启用记录，关闭自动更新索引，并保留整合前入口。第一次产生冲突后写入明确结果，再回到整合前位置重做同一合并。所有重置仅针对本实验仓库。</p>
+<div class="code-block"><div class="code-bar"><span>构造并记录第一次冲突解决</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir repeated06
+cd repeated06
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+git config rerere.enabled true
+git config rerere.autoupdate false
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: establish the baseline room"
+git switch -c topic
+printf 'Room: B202\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: propose room B202"
+git switch main
+printf 'Room: C303\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: propose room C303"
+git branch before-integration
+if git merge topic; then exit 1; fi
+git rerere status
+printf 'Room: D404, confirmed by the instructor.\n' &gt; room.txt
+git rerere
+git add room.txt
+git commit -m "merge: use the confirmed room D404"</code></pre></div>
+<p>第一次解决采用第三种明确确认的结果，而非机械保留某一方。执行 <code>rerere</code> 记录解决后，仍由作者暂存并提交。这使内容决定与记录机制保持清楚的先后关系。</p>
+<p>复用记录减少重复编辑，但当前任务的接口和业务条件可能已变化（图 <a class="book-ref" href="../chapters/06.html#fig:scenario-06-09">6.20</a> ）。每次采用已有解决结果后，仍应检查候选和测试，不把复用成功当作验收完成。</p>
+<figure id="fig:scenario-06-09"><button aria-label="放大图6.20：重复冲突记录与本次验收分开" class="zoom-image"><img alt="图6.20 重复冲突记录与本次验收分开" height="588" loading="lazy" src="../assets/figure-6-20.webp" width="1178"/></button><figcaption><b>图 6.20</b> 重复冲突记录与本次验收分开</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>重复整合，检查复用内容与未合并索引</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git reset --hard before-integration
+if git merge topic; then exit 1; fi
+grep -q 'Room: D404' room.txt
+test -n "$(git ls-files -u)"
+git diff -- room.txt
+git add room.txt
+git commit -m "merge: review and accept the reused resolution"
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>再次合并时，工作文件可以出现已记录的解决内容，但因为关闭自动索引更新，仍需检查未合并条目并明确暂存。合并命令报告冲突退出，并不妨碍记录机制把候选解决写入工作文件；退出状态与当前文件状态需要分别观察。</p>
+<h3 id="h3-31">错误记录如何处理</h3>
+<p>若先前解决已经不适用，应先依据当前需求修正，再按手册选择忘记相应记录等操作。不能因为复用了历史方案就跳过评审。对于并非重复冲突的全新情境，机制也不保证能够匹配或生成正确答案。</p>
+<p>本节迁移任务是解释：为什么“工作文件已没有冲突标记”仍不足以证明合并完成？参考分析应同时讨论索引状态、项目语义与提交状态。rerere 的价值在于减少重复编辑，使维护者有更多时间审阅决定，而非代替维护者作决定。</p>
+<h2 id="h2-15">本章小结</h2>
+<p>合并先判断历史关系，再根据选项决定是否移动引用、计算整合结果及创建提交。公共基线帮助识别双方的变化，多阶段索引保留尚未裁决的来源；冲突标记仅这些信息的一种文件呈现。</p>
+<p>解决冲突应把内容决策、暂存确认和结果验证分开。中止尝试撤销正在进行的合并，退出只移除操作状态；合并完成后则需要采用相应的历史恢复方法。自动合并通过以后，仍要检查整体需求与跨文件接口。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-gitdocs2026" role="listitem">
+Git Project. 2026a. <em>Git Reference Manual</em>. <a class="uri" href="https://git-scm.com/docs">Https://git-scm.com/docs</a>.
+</div>
+<div class="csl-entry" id="ref-gitrerere" role="listitem">
+Git Project. 2026b. <em>Git-Rerere Manual Page</em>. <a class="uri" href="https://git-scm.com/docs/git-rerere">Https://git-scm.com/docs/git-rerere</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-16">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:6.1"><summary><span class="difficulty">应用</span><b>6.1</b><span>在 main 上执行 merge lesson 后，哪些引用一定或可能改变？lesson 会自动前进到合并提交吗？说明你的条件。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 接收分支 / 来源分支 / 合并状态</p><p>普通合并以当前main为接收入口；快进或新合并提交时main更新，HEAD若符号指向main则间接跟随。来源lesson通常不自动移动到合并结果。已包含或合并失败时更新情况不同，需结合实际状态说明。</p><p>图中分别标记合并前的main、lesson和合并后的main，再通过rev-parse核对实际位置。若已包含来源或发生冲突，不能照搬“main必然前进”的结论；来源名称通常仍保留原先目标。</p></div></details><details class="exercise" id="ex:6.2"><summary><span class="difficulty">应用</span><b>6.2</b><span>画出已包含、可快进和已分叉三种提交图。用箭头明确表示父引用，再预测普通合并的结果。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 祖先条件 / 快进 / 合并提交</p><p>已包含指来源头是当前头的祖先，通常无需新增；可快进指当前头是来源祖先，可移动入口；已分叉则通常需要三方整合并可能建立合并提交。父箭头从子提交指向父，不与时间展示方向混淆。</p><p>三种情形可用祖先查询先分类，再用实际合并验证。快进只需推进接收入口，分叉整合通常建立双亲节点；是否采用额外策略与选项，还应结合命令及团队要求说明，避免把示意图当作所有策略的全集。</p></div></details><details class="exercise" id="ex:6.3"><summary><span class="difficulty">基础</span><b>6.3</b><span>为什么只检查 main 与 preserve 的文件差异，不能判断它们是否具有相同历史？给出两条额外检查命令。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 树一致 / 父关系 / 整合证据</p><p>文件差异只比较树，不能证明父链相同。可检查rev-list --parents与merge-base --is-ancestor，或比较log范围；即使最终树一致，是否保留来源祖先仍可能不同。</p><p>一个有意义的反例是保留双亲合并与squash结果拥有相同文件树，但父字段不同。文件内容检查与祖先检查因此都需要保留，尤其在判断后续是否还需整合某个主题时。</p></div></details><details class="exercise" id="ex:6.4"><summary><span class="difficulty">基础</span><b>6.4</b><span>解释为什么单独使用 <code>--no-commit</code> 不能保证快进之前暂停。为先审查普通合并结果给出合适组合。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 暂停合并 / 快进条件 / 候选审查</p><p>快进不需要建立普通合并提交，因此--no-commit没有该提交可暂停。若任务要求在拟建立的合并提交前审查，可在适用情境采用--no-ff --no-commit，再检查候选与测试；已包含情境仍需另行解释。</p><p>在普通双亲合并暂停后，先读取索引差异、检查未合并条目并运行相关测试，再决定提交或中止。--no-commit对不创建普通合并提交的情况不提供相同暂停点，使用前应确认实际历史条件。</p></div></details><details class="exercise" id="ex:6.5"><summary><span class="difficulty">基础</span><b>6.5</b><span>说明合并基的一般定义。为什么按图上距离选一个唯一点不够严谨？带 <code>--all</code> 的查询补充了什么信息？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 最佳共同祖先 / 偏序 / 多基线</p><p>合并基是两端共同祖先中未被其他共同祖先支配的最佳共同祖先，可能不唯一。图上距离不定义这一偏序关系；merge-base --all显示多个最佳基，避免把任意一个结果误认为普遍唯一。</p><p>可以构造交叉合并后的图，说明多个共同祖先互相都不是另一个的祖先。查询--all列出的结果属于历史关系判断；合并实现如何综合基线还涉及具体策略，不能靠屏幕上最近的交点代替。</p></div></details><details class="exercise" id="ex:6.6"><summary><span class="difficulty">应用</span><b>6.6</b><span>在课程冲突中，删除所有工作文件标记后暂不执行 add。观察 status 和多阶段索引；再暂存，解释两次结果的差异。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 工作文件 / 冲突标记 / 索引阶段</p><p>删除标记只改工作文件，未合并索引阶段仍可能存在。add接受所选解决结果后通常形成stage 0条目，status与ls-files -u相应变化。暂存表示选择候选，不表示业务测试自动正确。</p><p>编辑完成后先读取文件，确认需求内容完整，再执行add选择解决结果。随后检查ls-files -u为空并审查候选。两个条件分别说明冲突条目已处理和候选内容符合任务，仍需相关业务验证。</p></div></details><details class="exercise" id="ex:6.7"><summary><span class="difficulty">应用</span><b>6.7</b><span>分别为修改／删除和新增／新增冲突列出可能缺失的阶段。为什么缺失阶段不表示对象损坏？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 新增与删除 / 阶段缺失 / 对象检查</p><p>修改/删除冲突中，删除一侧通常没有对应阶段；新增/新增通常没有共同基的stage 1。阶段是否存在取决于路径在各来源中的内容，不存在的路径不等于已存在对象损坏。</p><p>对每个阶段应回答其来源版本中该路径是否存在。例如新增/新增没有共同旧文件时，stage 1可以缺失。对象完整性问题需要进一步使用相应检查确认，不能从阶段数量直接得出损坏结论。</p></div></details><details class="exercise" id="ex:6.8"><summary><span class="difficulty">应用</span><b>6.8</b><span>在独立副本中比较 abort 与 quit。报告需同时提供 MERGE_HEAD、未合并索引和工作文件三方面证据。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 中止 / 退出管理 / 原始现场</p><p>abort尝试按当前合并恢复开始前状态；quit停止合并管理而保留当前文件与索引现场。分别检查MERGE_HEAD、ls-files -u和实际内容。未提交改动可能影响恢复能力，因此在独立副本比较且保留原始现场。</p><p>两份独立实验应从相同起点开始，分别记录操作前后的管理状态、索引和磁盘文件。这样才能把abort与quit的差异归因于命令语义，避免因两个现场原本不同而得出错误结论。</p></div></details><details class="exercise" id="ex:6.9"><summary><span class="difficulty">应用</span><b>6.9</b><span>扩展折扣程序，为零折扣、全额折扣和多个调用入口建立检查。说明仅在各分支单独测试会漏掉哪些组合问题。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 语义冲突 / 接口契约 / 组合测试</p><p>测试零折扣、全额折扣及所有调用入口，核对折扣单位和函数契约。各分支独立通过，仍可能在组合后出现参数含义或接口不一致；自动文本合并不覆盖这种语义组合。</p><p>除正常折扣，还要覆盖边界值及全部调用入口，确认单位、范围和返回含义保持一致。若两个分支分别改变调用方和实现，组合测试应能识别其契约冲突，文本算法无需报错也可能暴露问题。</p></div></details><details class="exercise" id="ex:6.10"><summary><span class="difficulty">应用</span><b>6.10</b><span>以 GitEasy 的本地练习副本设计一次文档整合：一侧改文件名，另一侧更新链接。解释即使自动合并通过，还应核对哪些导航关系。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 重命名 / 相对链接 / 导航完整性</p><p>核对重命名后的实际路径、README链接、章节导航、图片引用及大小写。可以运行相对链接检查并从新目录打开。没有文本冲突只表示算法未要求人工解决，不证明导航依赖已同步。</p><p>验收可以从项目首页逐项打开导航，再运行相对路径检查，特别关注图片、附件和跨章引用。对大小写敏感系统还应核对名称大小写，避免本机能够打开而另一系统失效。</p></div></details><details class="exercise" id="ex:6.11"><summary><span class="difficulty">应用</span><b>6.11</b><span>在修改/修改冲突中读取三个索引阶段，随后解决并记录一次结果。说明rerere可能复用哪类历史处理，以及复用以后仍需检查什么；为何不能仅凭冲突标记消失或自动复用成功认定业务正确。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 三方输入 / ours与theirs / rerere</p><p>三个阶段应依据本次操作对应共同基线及两侧内容，解决结果由当前需求决定。rerere可以记录冲突解决并在相应条件下帮助复用，但它依赖冲突形态和既有记录，不负责判断需求是否已经改变。</p><p>复用后重新读取工作文件、索引和候选差异，按设置确认暂存状态，并运行相关测试。若同样文本在新版本中具有不同业务含义，旧解决办法可能需要修订。验收重点是解释每个来源及当前结果，而非只报告出现了自动处理提示。</p></div></details><details class="exercise" id="ex:6.12"><summary><span class="difficulty">应用</span><b>6.12</b><span>设计一组对照，区分快进、强制建立普通合并节点、暂停待审查与已包含来源四种情况。要求分别记录引用、父项、候选及文件状态，并解释选项为何不能无条件改变祖先关系判断。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 合并策略 / 暂停 / 内容与结构验收</p><p>从相同提交图建立独立实验，先判断来源是否已包含、当前是否为来源祖先，以及是否真正分叉，再运行相应选项。快进移动入口，普通合并节点保存父关系；暂停提供候选审查位置，已包含来源则通常无须重新应用。</p><p>不能用--no-commit承诺所有情境暂停，也不能以--no-ff要求重新播放已有祖先提交。报告将条件、选项和结果逐项对应，再检查最终内容及必要测试。这样能区分策略选择与历史已经满足的关系。</p></div></details><details class="exercise" id="ex:6.13"><summary><span class="difficulty">综合</span><b>6.13</b><span>校园卡两条分支分别改变消费限额单位和调用接口，另一对文档分支分别改名与更新导航。请构造一次真实文本冲突和一次无文本冲突但业务错误的整合，给出共同基线、索引阶段、解决依据、父关系及组合测试；说明何时继续、何时中止。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 语义整合 / 删除与修改 / 导航依赖</p><p>先以明确基线建立两类任务。真实冲突保存基线与双方文本，按业务约定编辑结果并暂存；无文本冲突的案例则通过单位或接口组合测试揭示错误，不能将算法合并成功写成功能已经完成。文档部分还需从入口核对链接和大小写。</p><p>每次整合完成后检查未合并条目、候选、父项及测试；需要回到开始前状态时按现场条件评估中止，并保全原有草稿。交付应能解释为何采用当前解决结果，以及自动化怎样识别错误组合。仅交一份无标记文件或一张双亲历史图不足以完成验收。</p><p>实验材料应同时保留两条任务分支和整合前入口。先用明确的同路径编辑制造文本冲突，读取基线及阶段条目，再依据两侧需求形成解决结果。另以数值单位与调用约定的组合制造语义错误，证明双方独立测试通过而组合测试失败。解决后检查最终树、双亲顺序和业务边界；若需求尚未确定，保全现场并中止合并。验收包括成功路径和拒绝路径，不能只截图无冲突状态或提交父项。</p></div></details></section><section id="mindmap"><h2 id="review-17">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第6章复习导图" class="zoom-image"><img alt="第6章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-06.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="6">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="05.html"><small>← 上一章</small>分支与HEAD</a><a href="07.html"><small>下一章 →</small>远程仓库与协作</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">先明确合并的方向与条件</a><a href="#h2-2">实验一：比较三种合并选项</a><a href="#h2-3">三方合并为什么需要公共基线</a><a href="#h2-4">实验二：完整观察和解决文本冲突</a><a href="#h2-5">引导实验：冲突是需要决定的内容</a><a href="#h2-6">实验三：文件删除与新增的冲突</a><a href="#h2-7">中止、退出与已经完成的合并</a><a href="#h2-8">实验四：自动合并通过，计算却错了</a><a href="#h2-9">建立可以复核的冲突处理流程</a><a href="#h2-10">案例研读：没有文本冲突，结果仍可能错误</a><a href="#h2-11">实验拓展：验证合并提交的两个维度</a><a href="#h2-12">整合后的审阅顺序</a><a href="#h2-13">迁移练习：设计一次语义验收</a><a href="#h2-14">重复冲突的处理记录与复用</a><a href="#h2-15">本章小结</a><a href="#review-16">本章习题与解析</a><a href="#review-17">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

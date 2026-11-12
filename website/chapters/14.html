@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>仓库规模、依赖与工作树 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="14" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>实践篇<span>/</span>第14章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 14 · 实践篇</div><h1>仓库规模、依赖与工作树</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 42 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-14"></span>
+<p>仓库变大以后，问题并不只有“文件太多”。历史长度影响查询，对象内容影响下载，工作文件数量影响检出与扫描，依赖来源影响复现。本章把这些成本分开，再选择对应机制，避免不经测量就堆叠配置。</p>
+<p><strong>学习目标：</strong>能区分浅克隆、部分克隆和稀疏检出；能通过实验说明历史、对象与工作区的不同范围；能解释 LFS 的指针与外部内容；能更新并验证子模块固定位置；能比较 subtree 和子模块；能用 worktree 保留开发现场并行维护。</p>
+<p>测量问题 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 历史、对象、工作区三个维度 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 克隆对照 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> LFS <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 依赖固定与重建 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 并行工作树 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 仓库组织与配置。</p>
+<h2 id="h2-1">把规模问题拆成可以测量的成本</h2>
+<span id="sec:perf"></span>
+<p>一次操作的耗时可能来自网络、对象解压、历史遍历、索引读取、工作文件扫描或项目自己的钩子。若 status 很慢，重新压缩历史未必有帮助；若下载慢，只减少工作区文件也未必减少传输（图 <a class="book-ref" href="../chapters/14.html#fig:principle-ch14-01">14.1</a> ）。</p>
+<figure id="fig:principle-ch14-01"><button aria-label="放大图14.1：规模问题的三种成本（每行对照一组条件与解释）" class="zoom-image"><img alt="图14.1 规模问题的三种成本（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-14-1.webp" width="1237"/></button><figcaption><b>图 14.1</b> 规模问题的三种成本（每行对照一组条件与解释）</figcaption></figure>
+<p>先记录 Git 版本、操作、仓库位置和数据规模，再在相同条件下测量。首次与再次运行受缓存影响，网络也有波动，所以一次快慢不能证明因果。优化实验至少应保留基线、改变一项条件、重复观察，并同时确认结果语义没有改变。图<a class="book-ref" href="../chapters/14.html#fig:guide-14-scale-axis">14.2</a>区分三个常用维度。浅克隆限制一部分祖先历史；部分克隆允许缺少约定可按需取得的对象；稀疏检出控制哪些路径进入工作区。它们可以组合，但解决的问题不同。</p>
+<figure id="fig:guide-14-scale-axis"><button aria-label="放大图14.2：规模优化需要分别考虑历史、对象与工作区" class="zoom-image"><img alt="图14.2 规模优化需要分别考虑历史、对象与工作区" height="176" loading="lazy" src="../assets/figure-14-2.webp" width="1109"/></button><figcaption><b>图 14.2</b> 规模优化需要分别考虑历史、对象与工作区</figcaption></figure>
+<h3 id="h3-1">扫描优化不能一概保证提速</h3>
+<p>文件系统监视器可以帮助 Git 缩小需要重新检查的路径范围，未跟踪缓存可以减少某些目录扫描。具体支持取决于 Git、操作系统、文件系统和配置方式。现代 Git 在支持的平台可使用内置监视器，不应一概写成“macOS 必须安装 Watchman”。</p>
+<p>启用前查阅本机配置手册，使用仓库级配置试验，并比较首次与后续运行结果。网络磁盘、同步盘或特殊挂载点可能影响事件可靠性与性能。不能承诺把任何仓库从秒级固定提升到毫秒级，更不能以没有测量的数字作为教材结论。</p>
+<p>提交图索引、位图和维护任务也可能降低某些操作成本，但不是所有查询都同样受益。先掌握本章的数据范围，再按实际瓶颈使用维护机制，通常比背诵一组“万能加速开关”更可靠。</p>
+<h2 id="h2-2">完整实验一：三种范围的对照</h2>
+<p>实验全部使用本地传输，不代表真实网络耗时。在新的父目录建立 lab14-scale。使用 file URL 是为了让浅克隆和过滤经正常上传服务路径执行，避免普通本地复制的优化掩盖传输语义（图 <a class="book-ref" href="../chapters/14.html#fig:principle-ch14-02">14.3</a> ）。</p>
+<figure id="fig:principle-ch14-02"><button aria-label="放大图14.3：范围机制不能互称（每行对照一组条件与解释）" class="zoom-image"><img alt="图14.3 范围机制不能互称（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-14-3.webp" width="1237"/></button><figcaption><b>图 14.3</b> 范围机制不能互称（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-2">准备四次提交和三个内容目录</h3>
+<div class="code-block"><div class="code-bar"><span>建立可供不同克隆方式观察的源仓库</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab14-scale
+cd lab14-scale
+mkdir source14
+cd source14
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+mkdir lessons docs assets
+printf '# Course\n' &gt; README.md
+printf '# Git lesson\n\nInspect the index.\n' &gt; lessons/git.md
+printf '# Guide\n\nRead before practice.\n' &gt; docs/guide.md
+printf 'Flat diagram source.\n' &gt; assets/diagram.txt
+git add .
+git commit -m "docs: establish three content areas"
+printf '\nFirst reading note.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: record first reading note"
+printf '\nSecond reading note.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: record second reading note"
+printf '\nThird reading note.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: record third reading note"
+cd ..
+git clone --bare source14 center14.git
+SOURCE14="$(pwd)/center14.git"</code></pre></div>
+<p>保存 SOURCE14 是为了取得当前实验中心的绝对路径。它是本地变量，不是远端密码。后续继续使用同一个 shell；若换终端，需要重新确定路径。</p>
+<h3 id="h3-3">浅克隆限制祖先边界</h3>
+<div class="code-block"><div class="code-bar"><span>取得两层历史，再补全祖先</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git clone --depth 2 "file://$SOURCE14" shallow14
+git -C shallow14 rev-parse --is-shallow-repository
+git -C shallow14 log --oneline
+git -C shallow14 rev-list --count HEAD
+git -C shallow14 fetch --unshallow
+git -C shallow14 rev-parse --is-shallow-repository
+git -C shallow14 rev-list --count HEAD</code></pre></div>
+<p>最初应报告浅仓库并列出两次提交；补全后应有四次。这里 depth 2 描述从指定入口限制历史的深度，不应推广成“任何多分支仓库总共只含两个提交”。默认克隆分支范围和其他参数也会影响取得的数据。</p>
+<p>浅克隆适合确实不需要全部历史的任务，但 blame、bisect、merge-base 和版本描述可能受边界影响。补全需要来源仍提供祖先且允许访问；离线时不能凭本地浅副本恢复未取得的数据。</p>
+<h3 id="h3-4">稀疏检出不等于删除仓库历史</h3>
+<div class="code-block"><div class="code-bar"><span>在普通克隆中只展开实验目录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git clone "file://$SOURCE14" sparse14
+git -C sparse14 sparse-checkout set --cone lessons
+ls sparse14
+ls sparse14/lessons
+git -C sparse14 show HEAD:docs/guide.md
+git -C sparse14 log --oneline
+git -C sparse14 sparse-checkout disable
+ls sparse14/docs</code></pre></div>
+<p>cone 模式按目录选择，通常也保留根目录及选中目录祖先位置的文件，因此根 README 仍然出现是正常的。docs 暂时不展开到工作区，show 仍能读取它的历史内容，四次提交也没有被删去。</p>
+<p>disable 恢复完整工作区。稀疏范围之外如果存在修改、冲突或工具创建文件，Git 的行为需要结合状态判断，不应直接手工删除所有“本不应出现”的路径。稀疏检出是一种工作区视图，不是访问控制，拿到对象的用户仍可能读取其他目录。</p>
+<h3 id="h3-5">部分克隆把某些对象延迟取得</h3>
+<p>本例对自己建立的中心仓库允许过滤，再使用 blob:none 和 <code>--no-checkout</code>。此时先取得相关提交与树，暂不为完整工作区取得所有 blob。服务端配置仅作用于本地教学中心，不更改系统或作者 GitHub。</p>
+<div class="code-block"><div class="code-bar"><span>观察过滤后缺少的对象与按需取得</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git --git-dir=center14.git config uploadpack.allowFilter true
+git clone --filter=blob:none --no-checkout "file://$SOURCE14" partial14
+git -C partial14 config --get remote.origin.promisor
+git -C partial14 rev-list --objects --all --missing=print
+git -C partial14 show HEAD:lessons/git.md
+git -C partial14 rev-list --objects --all --missing=print</code></pre></div>
+<p>missing 输出中带问号的对象表示该遍历发现但本地缺少的对象；读取指定文件可能触发获取，前后缺失集合因而改变。这个小仓库用于验证机制，不足以推出真实项目节省多少空间或时间。</p>
+<p>部分克隆要求来源支持相应过滤，并在未来按需请求时仍可访问。后续 checkout、diff 或其他操作可能继续下载数据，初次 clone 较小不意味着总流量永远较小。blob:none 也不意味着提交和树之外永远没有任何 blob。</p>
+<p>promisor 表示缺失对象与承诺来源之间的约定。不能通过把 promisor 配置改成 false 来“变成完整离线仓库”；关掉声明不会凭空补齐对象。离线准备需要实际取得任务所需对象，并在受控断网条件下验证。</p>
+<h2 id="h2-3">Git LFS：指针与外部内容分层</h2>
+<span id="sec:lfs"></span>
+<p>频繁变化的大型二进制文件可能使普通 Git 对象体积和传输成本增加。Git LFS 通过过滤机制，让 Git 历史记录小型文本指针，实际文件内容由 LFS 存储与传输<span class="citation" data-cites="gitlfs">(Git LFS Project 2026)</span>。它把指针记录与实际大文件内容分层管理，因此增加了独立的数据取得与保存责任（图 <a class="book-ref" href="../chapters/14.html#fig:principle-ch14-03">14.4</a> ）。</p>
+<figure id="fig:principle-ch14-03"><button aria-label="放大图14.4：LFS的两层内容（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图14.4 LFS的两层内容（箭头表示所说明的对象或访问关系）" height="188" loading="lazy" src="../assets/figure-14-4.webp" width="1178"/></button><figcaption><b>图 14.4</b> LFS的两层内容（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<p>典型指针记录协议版本地址、内容对象标识和字节大小。指针本身可由 Git 保存与传输；工作区看到实际大文件，则还需要 LFS 客户端、过滤配置和对应内容可用。只看到指针文本往往意味着这一层尚未展开，不能据此断定原文件就是几行文本。</p>
+<h3 id="h3-6">采用前的四个问题</h3>
+<p>首先确定哪些文件需要版本化，哪些是可以重新制作的产物。其次确认每位协作者与 CI 是否具有客户端及下载权限。再次核对服务端配额、保留和计费规则。最后决定备份与离线工作需要哪些实际内容。</p>
+<p>图片和音视频并非绝对不能进入普通 Git，LFS 也并非全部大文件的固定答案。文件大小、更新频率、合并需求、分发方式和平台能力共同决定选择。项目应写出规则，而非单靠扩展名判断所有情况。</p>
+<h3 id="h3-7">一个有前提的选做流程</h3>
+<p>在已安装 LFS、具备可用存储的独立练习仓库中，先确认 git lfs version，再初始化本地集成，声明资源模式，提交属性和示例文件。以下展示操作顺序，文件 assets/demo.psd 必须由学习者预先准备；本稿尚未实测 LFS 传输，不把它并入已通过的基础实验。</p>
+<div class="code-block"><div class="code-bar"><span>LFS 选做操作：先确认客户端、示例文件与服务端</span><button class="copy-code">复制</button></div><pre><code>git lfs version
+git lfs install --local
+git lfs track '*.psd'
+git add .gitattributes assets/demo.psd
+git diff --cached --stat
+git commit -m "assets: manage the design example with LFS"
+git lfs ls-files
+git show HEAD:assets/demo.psd</code></pre></div>
+<p>检查 Git 版本中的文件是指针，再在另一份干净克隆取得实际资源，核对大小与内容。新写 track 规则不会自动迁移既有全部历史；历史迁移需要专门规划、工具与协作安排。普通 bundle 也不自动打包全部 LFS 服务端内容，备份需另外覆盖这一层。</p>
+<h2 id="h2-4">子模块：在父项目中固定依赖提交</h2>
+<span id="sec:submodule"></span>
+<p>子模块与LFS都涉及额外取得条件，但记录的对象不同。图 <a class="book-ref" href="../chapters/14.html#fig:visual-14-b">14.5</a> 中，gitlink固定另一个仓库中的提交，LFS指针文件标识外部大文件内容。父仓库的普通克隆不能据此证明两类外部内容已经齐备，应分别核对来源、权限和实际取得结果。</p>
+<figure id="fig:visual-14-b"><button aria-label="放大图14.5：子模块提交入口与LFS外部内容指针" class="zoom-image"><img alt="图14.5 子模块提交入口与LFS外部内容指针" height="1024" loading="lazy" src="../assets/figure-14-5.webp" width="1536"/></button><figcaption><b>图 14.5</b> 子模块提交入口与LFS外部内容指针</figcaption></figure>
+<p>子模块把另一个仓库放在父项目的路径下。父项目的树记录模式为 160000 的 gitlink，固定子仓库的提交位置；.gitmodules 记录路径和来源等约定。URL 与提交位置分属不同记录，不是同一个“指针文件”（图 <a class="book-ref" href="../chapters/14.html#fig:principle-ch14-04">14.6</a> ）。</p>
+<figure id="fig:principle-ch14-04"><button aria-label="放大图14.6：父树固定子仓库位置（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图14.6 父树固定子仓库位置（箭头表示所说明的对象或访问关系）" height="188" loading="lazy" src="../assets/figure-14-6.webp" width="1177"/></button><figcaption><b>图 14.6</b> 父树固定子仓库位置（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<p>固定提交意味着大家知道应取得哪个版本，不意味着数据一定仍可下载。来源权限、提交是否仍被保存、子模块自身的 LFS 或嵌套依赖都会影响复现。验收应在新目录完成，而非只观察原作者电脑能运行。</p>
+<h3 id="h3-8">完整实验二：从创建者到新协作者</h3>
+<p>继续在 lab14-scale 父目录中。实验建立自己的本地依赖，明确允许本地文件协议只作用于相应命令；这不是建议给陌生仓库全局放宽协议限制。</p>
+<div class="code-block"><div class="code-bar"><span>创建依赖仓库与父项目</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir dep14
+cd dep14
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Shared lesson\n\nVersion one.\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish shared lesson"
+cd ..
+mkdir parent14
+cd parent14
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Parent course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish parent course"
+git -c protocol.file.allow=always submodule add ../dep14 libs/dep
+git add .gitmodules libs/dep
+git commit -m "deps: pin the shared lesson"
+git ls-tree HEAD libs/dep
+cat .gitmodules</code></pre></div>
+<p>ls-tree 应显示 gitlink 及依赖提交标识。父项目不会把子仓库每个普通文件同时记录成自己的 blob 路径。子模块内部的 commit 只前进子仓库；要让父项目采用新版本，还需要另一次父项目提交。</p>
+<div class="code-block"><div class="code-bar"><span>从第三个目录取得并初始化依赖</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+git clone parent14 consumer14
+git -C consumer14 submodule status
+git -C consumer14 -c protocol.file.allow=always submodule update --init --recursive
+git -C consumer14 submodule status
+git -C consumer14/libs/dep log -1 --oneline
+cat consumer14/libs/dep/README.md</code></pre></div>
+<p>初始化前 status 可能以减号表示尚未取得的子模块。初始化后检出父项目固定提交，子模块处于分离 HEAD 很常见，这是对固定位置的观察，不自动代表损坏。若要在子模块中开发，应先建立自己的分支并按独立仓库规则共享。</p>
+<p>相对 URL 根据父项目的来源位置解析，不简单等于执行命令时的 shell 目录。更换托管位置或 fork 时要检查解析结果；能在原目录成功，不保证迁移后仍指向预期依赖。</p>
+<h3 id="h3-9">依赖更新包含两层提交</h3>
+<div class="code-block"><div class="code-bar"><span>先发布依赖新提交，再让父项目采用它</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd dep14
+printf '\nVersion two adds an observation task.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: extend the shared lesson"
+cd ../parent14
+git -C libs/dep fetch origin
+git -C libs/dep switch --detach origin/main
+git diff --submodule=log
+git add libs/dep
+git commit -m "deps: adopt the extended shared lesson"
+cd ..
+git -C consumer14 fetch origin
+git -C consumer14 merge --ff-only origin/main
+git -C consumer14 -c protocol.file.allow=always submodule update --init --recursive
+cat consumer14/libs/dep/README.md</code></pre></div>
+<p>此时新协作者应读到 Version two。主仓库先记录新标识、子仓库却没有让协作者取得对应对象，是典型交付缺口。真实远程应先共享依赖提交，再更新父项目，并从干净副本检验整个过程。</p>
+<p>不要在分离 HEAD 的子模块中直接 pull 并假定它会更新“当前分支”。根据目标选择获取后检出固定提交，或在明确的子分支上开发；父项目最终仍需明确记录采用哪个位置。</p>
+<h2 id="h2-5">subtree：把依赖内容纳入普通目录</h2>
+<p>subtree 常通过 Git 分发附带的辅助命令使用，具体安装需确认。它将外部项目内容整合到父项目指定前缀下，可选择保留较完整的来源历史或采用 squash 形式。对普通克隆者而言，目录文件随父项目树一起取得，不需要初始化子模块。</p>
+<p>这降低了使用者初始化负担，却把更新、回传与来源追踪责任放在维护流程中。不能把复制一个目录就都称作完成 subtree 管理；后续怎样同步、哪些本地修改需要回传，仍需约定。</p>
+<p>依赖组织方案应结合交接与维护任务选择（图 <a class="book-ref" href="../chapters/14.html#fig:scenario-14-01">14.7</a> ）。父仓库实际记录什么，会影响离线取得、独立恢复以及后续更新的操作范围。</p>
+<figure id="fig:scenario-14-01"><button aria-label="放大图14.7：三种依赖组织的父仓库记录" class="zoom-image"><img alt="图14.7 三种依赖组织的父仓库记录" height="426" loading="lazy" src="../assets/figure-14-7.webp" width="1169"/></button><figcaption><b>图 14.7</b> 三种依赖组织的父仓库记录</figcaption></figure>
+<h3 id="h3-10">完整实验三：普通克隆取得依赖文件</h3>
+<p>在装有 subtree 辅助命令的环境完成下面任务。它独立于 parent14，避免把两种方案混在同一个前缀里。实验只把内容引入并验证新克隆，不向外部来源推送。</p>
+<div class="code-block"><div class="code-bar"><span>建立 subtree 副本并验证分发</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir subtree14
+cd subtree14
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Subtree course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish subtree course"
+git subtree add --prefix vendor/dep ../dep14 main --squash
+git ls-tree HEAD vendor/dep
+git log --oneline --graph -5
+cd ..
+git clone subtree14 subtree-reader14
+cat subtree-reader14/vendor/dep/README.md</code></pre></div>
+<p>这里 vendor/dep 是普通树，文件内容属于父项目可取得的树。<code>--squash</code> 保留汇入来源位置等追踪信息，但不会将来源所有提交逐项接入同一完整祖先链。以后可用约定的 subtree pull 取得更新，仍需对冲突与本地定制进行审阅。表<a class="book-ref" href="../chapters/14.html#tab:submodule-vs-subtree">14.1</a>比较两种方案。可复现都依赖对象与数据能够取得，不能把它们简单评分为一种“强”、一种“弱”。</p>
+<div class="table-scroll" id="tab:submodule-vs-subtree" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 14.1</b> 两种依赖整合方式的责任分配</caption><tr><th colspan="1">关注点</th><th colspan="1">子模块</th><th colspan="1">subtree</th></tr><tr><td colspan="1">父树中的表示</td><td colspan="1">固定子提交的 gitlink</td><td colspan="1">普通目录树及文件</td></tr><tr><td colspan="1">新克隆使用</td><td colspan="1">需要取得并初始化依赖</td><td colspan="1">普通内容随父树取得</td></tr><tr><td colspan="1">历史边界</td><td colspan="1">子仓库独立</td><td colspan="1">依整合方式接入或压缩来源历史</td></tr><tr><td colspan="1">更新责任</td><td colspan="1">更新子位置，再提交父位置</td><td colspan="1">按前缀整合并管理定制</td></tr><tr><td colspan="1">分发核验</td><td colspan="1">父子对象及外部内容都可取得</td><td colspan="1">父树及可能外部内容可取得</td></tr></table></div></div>
+<p>包管理器还提供版本解析、锁定、缓存与发布生态，可能比直接管理源码更符合需求。仓库机制仅依赖方案的一部分，选择前应考虑语言生态、离线要求、定制程度与维护责任。</p>
+<h2 id="h2-6">worktree：并行目录，共享对象</h2>
+<p>并行工作树为不同任务提供独立工作目录和索引，同时共享对象及多数引用。图 <a class="book-ref" href="../chapters/14.html#fig:visual-14-a">14.8</a> 展示这种共享与独立的组合。图中HEAD到提交的联系表示最终解析结果；在普通分支检出状态下，HEAD先通过各自的分支名解析到提交。</p>
+<figure id="fig:visual-14-a"><button aria-label="放大图14.8：共享对象库与独立工作树现场" class="zoom-image"><img alt="图14.8 共享对象库与独立工作树现场" height="1024" loading="lazy" src="../assets/figure-14-8.webp" width="1536"/></button><figcaption><b>图 14.8</b> 共享对象库与独立工作树现场</figcaption></figure>
+<p>多个 worktree 让同一个仓库在不同目录维护不同工作现场。它们共享普通对象与多数引用，各自具有 HEAD、索引和工作文件等状态。图<a class="book-ref" href="../chapters/14.html#fig:guide-14-worktree-sharing">14.9</a>强调共享范围，避免把 linked worktree 当成完全独立的 clone。</p>
+<figure id="fig:guide-14-worktree-sharing"><button aria-label="放大图14.9：多工作树有独立现场，也有共享数据" class="zoom-image"><img alt="图14.9 多工作树有独立现场，也有共享数据" height="297" loading="lazy" src="../assets/figure-14-9.webp" width="1084"/></button><figcaption><b>图 14.9</b> 多工作树有独立现场，也有共享数据</figcaption></figure>
+<h3 id="h3-11">完整实验四：保留未完成编辑并修正旧版</h3>
+<div class="code-block"><div class="code-bar"><span>开发目录保留草稿，另开维护工作树</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd source14
+printf 'Unfinished development note.\n' &gt; draft.txt
+git worktree add -b maintenance14 ../hotfix14 HEAD~1
+git worktree list
+git -C ../hotfix14 status --short
+git status --short
+printf '\nA maintenance correction.\n' &gt;&gt; ../hotfix14/README.md
+git -C ../hotfix14 add README.md
+git -C ../hotfix14 commit -m "docs: correct the maintained material"
+git log --oneline -1 main
+git log --oneline -1 maintenance14</code></pre></div>
+<p>开发目录仍保留 draft，维护目录从旧位置单独工作。维护提交创建后，因为对象与引用共享，在原目录也能查询 maintenance14。它没有自动推进 main；之后是否合入或拣选由需求决定（图 <a class="book-ref" href="../chapters/14.html#fig:principle-ch14-06">14.10</a> ）。</p>
+<figure id="fig:principle-ch14-06"><button aria-label="放大图14.10：工作树共享与独立（每行对照一组条件与解释）" class="zoom-image"><img alt="图14.10 工作树共享与独立（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-14-10.webp" width="1237"/></button><figcaption><b>图 14.10</b> 工作树共享与独立（每行对照一组条件与解释）</figcaption></figure>
+<p>Git 通常拒绝把同一个分支同时检出到多个工作树，以减少互相移动同一引用造成的混淆。分离观察、强制选项和特殊用途另有规则，初学者先遵循一条工作分支对应一个活跃工作树的约定。</p>
+<div class="code-block"><div class="code-bar"><span>清理已经完成的工作树并保全草稿</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git worktree remove ../hotfix14
+git worktree list
+git show maintenance14:README.md
+mv draft.txt ../draft14-saved.txt
+git status --short</code></pre></div>
+<p>remove 删除工作目录及相应管理记录，不自动删除 maintenance14 分支。它通常拒绝移除有未保存改动的现场；不要习惯性加 force。直接用文件管理器删目录可能留下管理记录，需要按 worktree 的修复或清理机制处理。</p>
+<p>共享对象意味着 worktree 不是独立灾备副本。删除共享对象库、修改共享引用或运行影响共同数据的操作，可能影响多个现场。独立备份仍按第 15 章设计。</p>
+<h2 id="h2-7">仓库组织与日常配置</h2>
+<p>monorepo 把多个模块组织在一个仓库，multi-repo 把它们分在多个仓库。比较时应先问：哪些变化必须一起交付，权限是否需要隔离，构建和发布是否独立，跨项目升级如何协调。表<a class="book-ref" href="../chapters/14.html#tab:monorepo">14.2</a>只给出机制倾向。一个仓库不会自动让依赖一致或测试完善，多个仓库也不会自动消除耦合。教学课程既可以集中资料方便统一发布，也可以按独立作业划分仓库；应说明选择理由。</p>
+<div class="table-scroll" id="tab:monorepo" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 14.2</b> 仓库组织形式需要结合交付边界判断</caption><tr><th colspan="1">问题</th><th colspan="1">单仓多模块</th><th colspan="1">多仓组织</th></tr><tr><td colspan="1">跨模块记录</td><td colspan="1">可由一次提交表达变化</td><td colspan="1">需跨仓记录与版本协调</td></tr><tr><td colspan="1">访问范围</td><td colspan="1">普通克隆通常可见整个仓库</td><td colspan="1">可按仓库划分访问</td></tr><tr><td colspan="1">发布节奏</td><td colspan="1">仍可设计独立模块发布</td><td colspan="1">各仓可独立发布但需协调依赖</td></tr><tr><td colspan="1">工具要求</td><td colspan="1">视规模准备构建与稀疏能力</td><td colspan="1">准备发现、依赖与跨仓变更工具</td></tr></table></div></div>
+<p>日常别名可以减少输入，例如把 log <code>--oneline</code> <code>--graph</code> <code>--decorate</code> <code>--all</code> 约定为 lg，但别名不应隐藏危险动作或未经解释的强制参数。团队教程首次出现命令应给出展开形式，便于尚未配置别名的读者执行。</p>
+<p>工作目录变小、下载变少和历史变短，是三个不同目标（图 <a class="book-ref" href="../chapters/14.html#fig:scenario-14-02">14.11</a> ）。先测量具体成本，再选择浅克隆、部分克隆或稀疏检出，避免用一种优化推断另外两种效果。</p>
+<figure id="fig:scenario-14-02"><button aria-label="放大图14.11：规模问题先区分三项成本" class="zoom-image"><img alt="图14.11 规模问题先区分三项成本" height="298" loading="lazy" src="../assets/figure-14-11.webp" width="1177"/></button><figcaption><b>图 14.11</b> 规模问题先区分三项成本</figcaption></figure>
+<p>配置建议先在仓库范围试验，确认来源与效果后再决定是否扩展到全局。性能、过滤、依赖和工作树规则都应能在交接文档中找到，不让项目只能依赖某个人的机器。</p>
+<h2 id="h2-8">案例研读：为仓库增长选择合适方案</h2>
+<p>仓库增长可能表现为下载慢、历史查询慢或目录扫描慢。先分解成本与测量条件，再选择范围控制或存储方案，能够避免把不同问题交给同一个配置。</p>
+<h3 id="h3-12">先测量瓶颈，再选择工具</h3>
+<p>课程仓库逐年增加高清图片、实验数据和历史资料，首次取得越来越慢。此时应先区分成本来自哪里：网络传输、历史对象、工作区文件数、外部依赖，还是构建过程。不同成本对应不同工具，不能把“仓库大”视为单一问题。</p>
+<p>如果只需编辑少量目录，稀疏检出可以减少工作区范围；如果历史对象本身占用较多，部分克隆或浅克隆可能改变获取成本，但会带来后续取对象或历史边界限制；如果主要是大二进制文件，则需评估 LFS 或独立数据存储，并确认服务端支持与配额。</p>
+<h3 id="h3-13">方案必须覆盖新成员和离线情境</h3>
+<p>某项配置在作者计算机上运行顺利，并不能证明新成员能够取得全部材料。应从一个干净目录重新演练获取、依赖准备、构建和验证。若需要登录、联网或额外下载，应明确记录。把这些前提隐藏在个人环境中，会使项目难以交接。</p>
+<p>对于课堂机房，还要考虑网络不稳定和账号权限。可以预先分发经过验证的资料包，但应说明包中是否包含历史、外部数据和依赖。离线材料的方便性不能代替版本对应关系。</p>
+<h2 id="h2-9">实验拓展：并行目录如何保持独立</h2>
+<p>本实验使用多工作树保留主线草稿，同时在另一目录修订稳定基线。它不复制整个对象库，且两个目录中的工作文件互不覆盖。</p>
+<div class="code-block"><div class="code-bar"><span>创建主线与独立维护目录</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir parallel14
+cd parallel14
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: establish the stable baseline"
+printf 'Unfinished optional lesson\n' &gt; draft.txt
+git worktree add -b maintenance ../maintenance14 HEAD
+git -C ../maintenance14 config user.name "Git Learner"
+git -C ../maintenance14 config user.email "learner@example.invalid"
+printf 'Room: B202\n' &gt; ../maintenance14/room.txt
+git -C ../maintenance14 add room.txt
+git -C ../maintenance14 commit -m "fix: correct the maintenance room"</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>核对工作文件隔离与对象共享的结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git worktree list
+grep -q 'Room: A101' room.txt
+grep -q 'Room: B202' ../maintenance14/room.txt
+test -f draft.txt
+test ! -e ../maintenance14/draft.txt
+test "$(git rev-parse main)" != "$(git rev-parse maintenance)"
+git show maintenance:room.txt
+git worktree remove ../maintenance14
+test -f draft.txt</code></pre></div>
+<p>维护提交可以从主工作树查询，因为对象与引用具有共享关系；主工作目录中的 room.txt 没有自动改变，因为当前分支与工作文件状态独立。删除干净的维护工作树目录，也不会删除维护分支所指向的提交。本例中的未跟踪草稿始终保留在主目录。</p>
+<h2 id="h2-10">依赖管理的复现责任</h2>
+<p>记录依赖名称不足以重建项目，还需明确版本、来源和取得条件。父仓库、子仓库与外部对象各有保存范围，交接时应分别验证。</p>
+<h3 id="h3-14">固定依赖提交与内容取得</h3>
+<p>子模块记录依赖提交，有助于明确版本，但依赖仓库还必须可访问，所需对象也必须能够取得。若依赖被删除或权限改变，父项目中的提交标识本身不能提供实际内容。重要交付应评估依赖镜像、许可、归档与恢复方案。</p>
+<p>采用 subtree 时，依赖内容进入普通目录，获取路径更直接，但更新来源与本地修改之间的关系仍需维护。两种方式各有成本；不能仅以命令数量判断长期维护难度。</p>
+<h3 id="h3-15">属性规则应纳入团队约定</h3>
+<p>换行、二进制判定、差异驱动和合并驱动可能影响协作体验。适合项目的规则应写入版本化配置，并说明外部工具要求。纯个人偏好则应避免无谓改变整个项目。引入新规则时，应单独检查规范化差异，让评审者能够辨认哪些变化来自规则调整。</p>
+<p>迁移练习：项目含大量历史图片，但课堂只编辑当前练习目录。请分别说明减少工作区内容、减少初次对象传输和保存历史图片的方案，并写出各自局限。参考分析必须区分工作区、对象历史与外部存储，不能用一个“下载更少”的笼统目标替代三类问题。</p>
+<h2 id="h2-11">本章小结</h2>
+<p>历史、对象和工作区是不同维度，浅克隆、部分克隆与稀疏检出分别改变其取得与展开方式。LFS 把指针和实际内容分层；子模块与 subtree 在不同位置分配依赖责任；worktree 为共享对象上的并行工作提供独立现场。</p>
+<p>选择机制之后，最后一步始终是从新目录验证使用者能够取得所需版本。节省数据与保持可复现需要共同衡量，不应为了局部速度丢掉实际任务需要的历史或内容。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-gitlfs" role="listitem">
+Git LFS Project. 2026. <em>Git Large File Storage</em>. <a class="uri" href="https://git-lfs.com/">Https://git-lfs.com/</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-12">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:14.1"><summary><span class="difficulty">应用</span><b>14.1</b><span>把一次操作耗时分成可能来源，设计只改变一个条件的测量，不预设优化一定有效。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 性能测量 / 传输 / 检出 / 对象查询</p><p>分解网络、解压、历史遍历、索引和工作文件扫描等成本，先保存环境与数据规模。只改变一个条件，例如同一网络下比较是否延迟blob，重复测量并解释缓存；不能用一次变快证明某配置普遍有效。</p><p>固定仓库版本和硬件条件，分别测量取得数据、写入工作文件与遍历历史的成本。优化方案应对应实际瓶颈，并记录测试前后的相同任务，避免用一次速度变化替代可重复的比较。</p></div></details><details class="exercise" id="ex:14.2"><summary><span class="difficulty">应用</span><b>14.2</b><span>完成三种克隆与检出对照，分别说明历史是否完整、哪些对象可能缺少、哪些文件进入工作区。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 浅克隆 / 部分克隆 / 稀疏检出</p><p>浅克隆限制祖先范围；部分克隆允许暂缺特定对象；稀疏检出控制工作区路径。它们分别作用于历史、对象和检出视图，可以组合。用提交查询、对象状态和实际目录分别验证，不统称为只下载部分文件。</p><p>三种机制改变的范围不同，应分别查询浅边界、对象可取得性和工作树路径。稀疏视图可以隐藏文件而仍保留历史；部分克隆可按需取得内容；浅历史则限制祖先遍历，不能互称为相同节省方式。</p></div></details><details class="exercise" id="ex:14.3"><summary><span class="difficulty">应用</span><b>14.3</b><span>解释为何关闭 promisor 标记不能自动补齐数据，以及怎样设计离线任务验证。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · promisor / 缺失对象 / 离线任务</p><p>promisor记录对象可由来源补取的约定，不是对象内容本身。关闭标记不产生缺少的字节。离线前明确任务会访问哪些对象，补齐后断开网络执行相同任务；仍缺对象时如实记录失败条件。</p><p>关闭配置不会生成尚未保存的正文。应先在允许访问来源时补齐任务所需对象，再断开来源验证实际操作。若仍有按需取回请求，说明离线交付尚不完整，应按结果补充取得或归档方案。</p></div></details><details class="exercise" id="ex:14.4"><summary><span class="difficulty">基础</span><b>14.4</b><span>说明 cone 模式下根 README 仍存在的原因，解释稀疏检出为什么不是权限隔离。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · cone模式 / 工作树视图 / 访问范围</p><p>cone模式按目录集合展开，根目录及所选目录的必要祖先位置可能保留文件，因此根README仍在。稀疏检出不是访问控制，仓库对象或后续检出仍可能提供其他路径；权限需由服务端等机制管理。</p><p>检查根目录文件与选定子目录的实际出现情况，再区分视图选择和权限控制。拥有对象访问条件的使用者仍可能查询其他内容，因此不能用少显示一些路径来隔离敏感资料。</p></div></details><details class="exercise" id="ex:14.5"><summary><span class="difficulty">基础</span><b>14.5</b><span>解释 LFS 指针和实际内容的关系。具备环境时验证干净克隆，未具备时明确列出前提与待验证项。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · LFS指针 / 外部对象 / 交付验证</p><p>Git中可保存LFS指针，实际大文件内容由另一机制取得。干净克隆要检查指针、实际内容和LFS来源是否可用；未安装或未连接服务时说明未验证传输，不能以小指针存在证明大文件已备份。</p><p>应同时保存指针中的标识及大小信息，并确认实际内容能够取得和读取。源码压缩包可能只含指针，完整交付需另列LFS来源、权限与离线保存方法；没有服务环境时将实测部分与分析部分分开。</p></div></details><details class="exercise" id="ex:14.6"><summary><span class="difficulty">应用</span><b>14.6</b><span>完成子模块更新，分别指出子提交与父提交，证明新协作者取得了固定版本。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 子模块 / gitlink / 固定依赖</p><p>先在子仓库提交并共享依赖版本，再在父仓库更新gitlink并提交。新协作者按父提交取得固定子提交，验证子HEAD与gitlink相符且对象可取得。父提交只记标识，不自动保存子仓库全部数据。</p><p>先提交子仓库中的变化，再更新父仓库指向的子提交，并从新克隆按说明初始化。验收应分别核对子仓库HEAD和父树gitlink，同时确认目标对象在约定来源可取得，避免只更新本机工作目录。</p></div></details><details class="exercise" id="ex:14.7"><summary><span class="difficulty">应用</span><b>14.7</b><span>完成 subtree 实验，比较父树中 gitlink 与普通目录的不同，并说明后续同步责任。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · subtree / 普通路径 / 同步约定</p><p>子模块在父树中通常是指向子提交的gitlink，subtree把相应文件作为普通目录纳入父树。前者需另取子对象，后者需管理后续导入与回送策略；两者都不能仅按目录外观判断依赖责任。</p><p>比较ls-tree结果可见父树如何组织内容，再说明导入、更新和回送分别由谁承担。采用普通目录并不自动解决后续同步；交接应记录来源、前缀与版本，防止使用者无法判断依赖来历。</p></div></details><details class="exercise" id="ex:14.8"><summary><span class="difficulty">应用</span><b>14.8</b><span>完成 worktree 维护，证明开发草稿保留，说明哪些数据共享、哪些独立。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · worktree / 共享对象 / 独立现场</p><p>在另一工作树检出维护位置，原开发目录的草稿应仍在。工作文件、索引和部分现场独立，对象与多数引用等信息共享。用worktree list、两处状态和对象查询验证，不能把工作树当作完整独立备份。</p><p>在一个工作树保留草稿，另一个切到维护版本并构建，再核对两边索引和文件。对象数据库及多数引用共享，HEAD和候选管理各自独立；关联工作树不能视作对主仓库失效具有独立保障的备份。</p></div></details><details class="exercise" id="ex:14.9"><summary><span class="difficulty">应用</span><b>14.9</b><span>为课程资料选择单仓或多仓组织，按权限、交付边界和依赖给出理由。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 单仓与多仓 / 权限 / 交付边界</p><p>单仓便于原子修改和共同检查，多仓便于独立权限、发布和职责边界，但需要明确依赖固定与获取。按课程资料实际的授权、交付节奏和维护成本选择，不以仓库数量作为工程水平指标。</p><p>选择时需考虑哪些部分必须共同变更、哪些需要独立访问和发布。目录组织、仓库边界和权限规则承担不同职责；答案应结合课程依赖与交接方式说明取舍，不以某一种组织形式一概优越。</p></div></details><details class="exercise" id="ex:14.10"><summary><span class="difficulty">应用</span><b>14.10</b><span>为本章机制列出备份缺口，特别检查浅历史、延迟对象、LFS、子仓库和共享工作树。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 备份缺口 / 外部依赖 / 恢复条件</p><p>分别检查浅历史未取得部分、延迟对象、LFS实际内容、子模块对象与所有工作树草稿。备份清单说明每项保存位置与恢复步骤；仅复制一个Git目录或归档一棵树未必覆盖这些范围。</p><p>清单应逐项说明历史祖先、延迟对象、LFS内容、子仓库与工作草稿是否实际保存。恢复演练在断开原来源的目录执行，才能发现仍依赖本机缓存或在线服务的部分，并据此调整交付范围。</p></div></details><details class="exercise" id="ex:14.11"><summary><span class="difficulty">应用</span><b>14.11</b><span>一个部分克隆在联网时能够读取目标版本，断网后却失败。请设计取得与离线核验方案，说明需要哪些历史或内容对象、如何排除只依赖本机缓存的假成功，以及为何不能只删除promisor配置。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 延迟对象 / 离线取得 / 范围验证</p><p>先明确离线任务包含哪些提交、路径与依赖，再在允许访问来源时取得所需对象。随后在独立环境或明确断开来源的目录执行相同读取和构建，观察是否仍请求网络；本机此前访问造成的缓存可能掩盖交付缺口。</p><p>删除promisor配置不生成缺失正文，还可能妨碍正确识别来源条件。方案应按实际仓库能力补齐数据或采用合适的完整归档与历史包，并记录仍未覆盖的任务。不能仅因一份文件能打开就宣布全部历史可离线使用。</p></div></details><details class="exercise" id="ex:14.12"><summary><span class="difficulty">应用</span><b>14.12</b><span>父仓库已经打包，子模块提交尚未推送，LFS实际文件也只存在于一台电脑。请分析新协作者会遇到什么问题，给出发布前检查及保存方案，并说明固定标识与实际取得之间的区别。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · LFS / 子模块 / 来源可得性</p><p>父树gitlink固定子提交，却不自动把子仓库对象包含进父仓库包；未推送的子提交可能无法从约定来源取得。LFS指针记录实际内容的标识与大小等信息，也不保证对应大文件已上传或被归档。</p><p>发布前应从干净目录递归取得依赖并验证实际内容，必要时建立经许可的依赖镜像与离线包。清单记录父提交、子提交、LFS对象和各自来源，并通过断开原机器的恢复演练核对，避免把标识齐全误当作数据已经齐备。</p></div></details><details class="exercise" id="ex:14.13"><summary><span class="difficulty">综合</span><b>14.13</b><span>校园项目需交到无外网机房，包含图片素材、一个子模块、LFS资料和两个关联工作树中的草稿。请制定可重建交付方案，比较浅克隆、部分克隆和稀疏检出的限制，明确历史、外部内容、依赖与草稿保存范围，并实际验证原机器不可用时仍可完成指定任务。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 大文件 / 多仓依赖 / 隔离交付</p><p>先列明机房必须完成的阅读、构建、测试和历史调查范围，再选取合适副本；浅或部分克隆可能缺少所需祖先或对象，稀疏视图主要改变工作文件展示。父仓库、子仓库、LFS实际内容与工具依赖分别归档，关联工作树草稿另行保护。</p><p>恢复不依赖原主仓库路径，也不依赖原电脑缓存。接手者从交付介质取得确定版本和全部所需依赖，运行既定任务，并记录缺失、校验和许可条件。若仅承诺某个发布版本可离线构建，应明确这一范围，不能把它扩大成任意历史查询均可离线。</p><p>先在断网前形成资源清单，取得指定提交所需对象、子仓库提交和LFS载荷，分别保存两个工作树中的草稿。主仓库历史与公共管理目录的关系要通过命令核对，不能只复制链接工作树中的.git指针文件。验收机应切断对原目录与网络来源的依赖，重新检出指定版本，恢复子模块及外部内容并执行构建。浅历史缺少祖先，部分克隆可能缺少对象，稀疏视图省略文件；三者都须按实际任务补齐所需范围。</p></div></details></section><section id="mindmap"><h2 id="review-13">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第14章复习导图" class="zoom-image"><img alt="第14章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-14.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="14">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="13.html"><small>← 上一章</small>团队工作流与代码评审</a><a href="15.html"><small>下一章 →</small>自动化、安全与备份恢复</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">把规模问题拆成可以测量的成本</a><a href="#h2-2">完整实验一：三种范围的对照</a><a href="#h2-3">Git LFS：指针与外部内容分层</a><a href="#h2-4">子模块：在父项目中固定依赖提交</a><a href="#h2-5">subtree：把依赖内容纳入普通目录</a><a href="#h2-6">worktree：并行目录，共享对象</a><a href="#h2-7">仓库组织与日常配置</a><a href="#h2-8">案例研读：为仓库增长选择合适方案</a><a href="#h2-9">实验拓展：并行目录如何保持独立</a><a href="#h2-10">依赖管理的复现责任</a><a href="#h2-11">本章小结</a><a href="#review-12">本章习题与解析</a><a href="#review-13">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

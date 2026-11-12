@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>分支与HEAD · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="5" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link active" data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>核心篇<span>/</span>第05章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 05 · 核心篇</div><h1>分支与HEAD</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 41 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-05"></span>
+<p>一份课程资料已经可以使用，同时有人要增加实验，有人要修订安排。我们希望分别推进、随时比较，再有选择地整合。分支为不同任务提供历史入口，HEAD 标记当前工作的位置。本章把“名字指向哪里”与“目录里现在有什么”分开解释。</p>
+<p><strong>学习目标：</strong>能解释分支、HEAD 与提交的关系；能预测创建、切换、提交、重命名和删除的影响；能判断未提交工作何时可以随切换保留、何时会阻止切换；能保存在分离状态产生的成果；能用内容和可达关系核对任务是否已经整合。</p>
+<p>并行需求 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 名称与历史 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> HEAD <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 创建与推进 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 工作文件切换 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 拒绝与保护 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 分离观察 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 命名、清理与任务复盘。</p>
+<h2 id="h2-1">为什么一个项目需要多条工作路线</h2>
+<p>课程主线中保存着已经验证的资料。现在准备增加一份实验，但新实验还没有写完；此时有人报告现有课程安排有误。若所有变化都混进同一批提交，发布修复时可能把半成品也交出去；若只等实验完成，现有错误又不能及时纠正。</p>
+<p>分支让团队先分别组织历史，再决定怎样整合。它并不自动决定任务边界，也不保证每条分支内容正确。创建一个名叫 stable 的分支，不会让其中资料天然稳定；稳定性仍来自验证与约定。</p>
+<p>分支也不要求有多个操作者。一位教师可以同时维护本学期资料、下学期草稿和旧版勘误；一名学生可以为一个实验尝试两种方案。关键是每条路线具有明确起点和用途，而非一遇到修改就随意创建新名称。</p>
+<h3 id="h3-1">分支隔离的是已提交的演进路线</h3>
+<p>同一个仓库中，多个分支可以指向同一提交，也可以沿不同父链前进。它们通常共享已有对象；创建名称不需要复制整个项目工作目录。这与“再复制一个文件夹”在组织方式上不同。</p>
+<p>但是，普通单工作树仓库仍只有眼前这一套工作文件和索引。尚未提交的编辑不因为创建了某条分支，就自动成为该分支的专属内容。切换可能保留这些编辑，也可能因覆盖风险被拒绝。这是理解分支最容易遗漏的一层。</p>
+<h2 id="h2-2">名称、提交与可达历史</h2>
+<p>分支是位于本地分支命名空间中的引用，保存当前提交标识。提交对象记录自己的父提交，沿父关系可以访问它所包含的历史。分支引用不需要保存“这条分支从创建以来的所有提交清单”（图 <a class="book-ref" href="../chapters/05.html#fig:principle-ch05-02">5.2</a> ）。</p>
+<p>分支名提供历史入口，提交则保存快照和父关系。图 <a class="book-ref" href="../chapters/05.html#fig:visual-05-a">5.1</a> 把名称标签与提交节点分别绘制：main与topic可以指向不同节点，并共享更早的历史。建立分支所增加的是入口，后续提交才逐步形成各自的发展路线。</p>
+<figure id="fig:visual-05-a"><button aria-label="放大图5.1：共享祖先上的分支入口与HEAD" class="zoom-image"><img alt="图5.1 共享祖先上的分支入口与HEAD" height="1024" loading="lazy" src="../assets/figure-5-1.webp" width="1536"/></button><figcaption><b>图 5.1</b> 共享祖先上的分支入口与HEAD</figcaption></figure>
+<figure id="fig:principle-ch05-02"><button aria-label="放大图5.2：两个名字可以共用历史（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图5.2 两个名字可以共用历史（箭头表示所说明的对象或访问关系）" height="171" loading="lazy" src="../assets/figure-5-2.webp" width="1178"/></button><figcaption><b>图 5.2</b> 两个名字可以共用历史（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<p>例如 main 与 lesson 最初都指向 A。在 lesson 上提交 B 后，lesson 指向 B，B 的父为 A，main 仍指向 A。之后在 main 上提交 C，main 指向 C，C 的父也为 A。两个名字分别提供入口，历史关系来自对象中的父标识。图<a class="book-ref" href="../chapters/05.html#fig:branch-divergence">5.3</a>以子提交指向父提交的箭头表示这段关系。名字的位置可以变化，但已存在对象中的父关系不会因改名而自动改变。</p>
+<figure id="fig:branch-divergence"><button aria-label="放大图5.3：分支名称提供入口，提交父关系保存历史" class="zoom-image"><img alt="图5.3 分支名称提供入口，提交父关系保存历史" height="308" loading="lazy" src="../assets/figure-5-3.webp" width="847"/></button><figcaption><b>图 5.3</b> 分支名称提供入口，提交父关系保存历史</figcaption></figure>
+<h3 id="h3-2">引用不是固定格式的文件承诺</h3>
+<p>松散引用可以用文件保存，引用也可以打包或由其他后端管理。因此教材用 show-ref、rev-parse 和 symbolic-ref 观察逻辑关系，不要求读者手工打开或编辑某个 .git 内部文件。</p>
+<p>“创建分支成本很低”是因为主要建立一个名称，而非复制所有文件；但操作仍可能涉及锁、引用日志、钩子或其他管理工作。无需把它夸张为“任意仓库永远只写几十字节、耗时与环境绝对无关”。区分机制和性能承诺，才能准确解释实际行为。</p>
+<h2 id="h2-3">HEAD 如何表示当前位置</h2>
+<p>普通分支状态下，HEAD 是指向某个分支的符号引用。新提交建立后，该分支通常前进到新提交，HEAD 仍通过它取得当前位置。切换到另一条分支，则改变 HEAD 所关联的名字，并按需要更新索引与工作文件（图 <a class="book-ref" href="../chapters/05.html#fig:principle-ch05-03">5.4</a> ）。</p>
+<figure id="fig:principle-ch05-03"><button aria-label="放大图5.4：普通HEAD的间接关系（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图5.4 普通HEAD的间接关系（箭头表示所说明的对象或访问关系）" height="171" loading="lazy" src="../assets/figure-5-4.webp" width="1177"/></button><figcaption><b>图 5.4</b> 普通HEAD的间接关系（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<p>分离状态下，HEAD 直接表示一个提交位置，不通过普通本地分支。此时仍可读取、测试、编辑和提交；新提交会让 HEAD 前进，但没有普通分支名称随之自动前进。图<a class="book-ref" href="../chapters/05.html#fig:head-forms">5.5</a>将两种入口分开。箭头表示解析方向，不表示时间流逝。分离状态是一种合法观察方式，不应把它一律称为故障。</p>
+<figure id="fig:head-forms"><button aria-label="放大图5.5：HEAD 可通过分支或直接定位提交" class="zoom-image"><img alt="图5.5 HEAD 可通过分支或直接定位提交" height="430" loading="lazy" src="../assets/figure-5-5.webp" width="691"/></button><figcaption><b>图 5.5</b> HEAD 可通过分支或直接定位提交</figcaption></figure>
+<h3 id="h3-3">尚无提交时也可以有分支名字</h3>
+<p>init -b main 之后，HEAD 可以指向准备使用的 main，但第一次提交尚未产生，因此 main 还没有可解析的提交目标。这通常称为尚未诞生的分支状态。它解释了为什么“显示自己在 main”与“能够查询 main 的提交”不是同一个条件。第一次 commit 会创建根提交并建立相应分支目标。出现无法解析 HEAD 的消息时，先确认是否从未提交，不要立刻认定仓库损坏。</p>
+<h2 id="h2-4">完整实验一：从空仓库到两条路线</h2>
+<span id="sec:branch-model-lab"></span>
+<p>本实验创建 lab05-model，与后面的独立引导实验分开。所有命令从一个新的父目录按顺序执行；例中身份仅用于本地记录，不关联真实账号权限。</p>
+<h3 id="h3-4">先观察尚无提交的状态</h3>
+<div class="code-block"><div class="code-bar"><span>初始化后查询名字与提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab05-model
+cd lab05-model
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+git symbolic-ref --short HEAD
+git rev-parse --verify HEAD</code></pre></div>
+<p>symbolic-ref 应显示 main；最后一条预期失败，因为尚没有提交。两项结果并不矛盾。若在新建库中直接创建依赖 HEAD 的分支或读取 HEAD:path，也可能遇到相同前提问题。</p>
+<div class="code-block"><div class="code-bar"><span>建立起点并创建另一个名称</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Room: A101\n' &gt; course.txt
+printf 'Initial observation.\n' &gt; notes.txt
+git add course.txt notes.txt
+git commit -m "docs: establish branch observation baseline"
+git tag branch-base
+git branch lesson
+git symbolic-ref --short HEAD
+git rev-parse main lesson
+git show-ref --heads</code></pre></div>
+<p>创建 lesson 后当前分支仍是 main，两个名称解析到同一标识。rev-parse 分别输出解析结果；show-ref 则还会输出引用名称，所以不能说这两类命令的整行输出完全相同。标签 branch-base 为本实验固定起点，避免依赖每台机器不同的提交缩写。日后 main 前进，标签不会因为普通 commit 自动跟着前进；标签自己的更新约定见第 12 章。</p>
+<h3 id="h3-5">让一条路线前进，另一条保持原位</h3>
+<div class="code-block"><div class="code-bar"><span>分别保存实验任务和课程安排</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch lesson
+printf 'Task: inspect the staged content.\n' &gt; task.txt
+git add task.txt
+git commit -m "docs: introduce the inspection task"
+git switch main
+printf 'Schedule: Monday.\n' &gt; schedule.txt
+git add schedule.txt
+git commit -m "docs: record the course schedule"
+git log --oneline --graph --decorate --all
+git show lesson:task.txt
+git show main:schedule.txt</code></pre></div>
+<p>回到 main 后，task.txt 不在当前提交的树中，切换会让它从普通工作区中消失；对象与 lesson 的成果仍可通过 show 读取。main 中的 schedule 同样没有自动进入 lesson。已提交文件的当前可见范围取决于检出位置，不取决于它曾经是否出现在这个文件夹里。</p>
+<p>从 branch-base 出发，两侧各有一次提交。注意 log 输出的左右排版不是身份规则，不能把左线永远当作 main。请读取装饰名称和父关系，而不只看文字在屏幕上的位置。</p>
+<h2 id="h2-5">切换分支究竟检查什么</h2>
+<p>切换时能否保留未提交修改，需要结合目标版本和覆盖条件判断。图 <a class="book-ref" href="../chapters/05.html#fig:visual-05-b">5.6</a> 将两类结果并列：无需覆盖本地修改时可以保留现场，可能覆盖时先停止操作并提示保全。未提交编辑仍属于工作现场，不能理解为已经自动保存到某条分支。</p>
+<figure id="fig:visual-05-b"><button aria-label="放大图5.6：分支切换时的覆盖检查与现场保护" class="zoom-image"><img alt="图5.6 分支切换时的覆盖检查与现场保护" height="1024" loading="lazy" src="../assets/figure-5-6.webp" width="1536"/></button><figcaption><b>图 5.6</b> 分支切换时的覆盖检查与现场保护</figcaption></figure>
+<p>switch 要让当前工作现场转向目标，但它通常会保护可能被覆盖的未提交内容。它不是简单地“无条件用目标提交覆盖一切”，也不是只改一个名字而不碰文件。索引、跟踪文件、未跟踪文件和目标树的关系都会影响是否能切换（图 <a class="book-ref" href="../chapters/05.html#fig:principle-ch05-05">5.7</a> ）。</p>
+<figure id="fig:principle-ch05-05"><button aria-label="放大图5.7：切换先检查覆盖条件（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图5.7 切换先检查覆盖条件（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-5-7.webp" width="1112"/></button><figcaption><b>图 5.7</b> 切换先检查覆盖条件（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>初学阶段可以采用一个容易检查的操作约定：进入一个新任务前先查看 status；有编辑时先判断属于哪个任务，再提交、stash 或保存在仓库外。这个约定比要求所有状态下绝对清空目录更实用。表<a class="book-ref" href="../chapters/05.html#tab:branch-operations">5.1</a>把常见动作的主要影响分开。具体结果还要结合未提交状态与参数，尤其不能将表中“通常不改文件”误解为任意强制选项都安全。</p>
+<div class="table-scroll" id="tab:branch-operations" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 5.1</b> 分支动作与工作现场的主要关系</caption><tr><th colspan="1">动作</th><th colspan="1">名称与 HEAD</th><th colspan="1">工作区和索引</th></tr><tr><td colspan="1">branch NAME</td><td colspan="1">创建名称，HEAD 通常不变</td><td colspan="1">通常不改变</td></tr><tr><td colspan="1">switch NAME</td><td colspan="1">将 HEAD 关联到目标分支</td><td colspan="1">按切换需要调整并检查覆盖风险</td></tr><tr><td colspan="1">switch -c NAME</td><td colspan="1">创建并切换到新分支</td><td colspan="1">取决于起点与现有状态</td></tr><tr><td colspan="1">commit</td><td colspan="1">当前分支或分离 HEAD 前进</td><td colspan="1">候选成为提交，未暂存编辑可保留</td></tr><tr><td colspan="1">branch -m</td><td colspan="1">修改分支名称及相关管理记录</td><td colspan="1">通常不切换版本内容</td></tr><tr><td colspan="1">branch -d</td><td colspan="1">按规则删除名称</td><td colspan="1">不等于删除所有可达对象</td></tr></table></div></div>
+<h3 id="h3-6">完整实验二：编辑可以被带到另一条分支</h3>
+<p>两条分支的 notes.txt 都还与基线相同。现在只在工作区改它，再切换到 lesson，观察变化是否仍然存在。</p>
+<div class="code-block"><div class="code-bar"><span>让不被覆盖的编辑随切换保留</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Personal observation before staging.\n' &gt; notes.txt
+git diff -- notes.txt
+git switch lesson
+git status --short
+git diff -- notes.txt
+git restore -- notes.txt</code></pre></div>
+<p>编辑应仍可见，说明未提交变化不是“自动绑死在 main”。最后的 restore 明确丢弃刚制造的 notes 编辑，恢复索引中的原内容；这一步仅用于结束受控实验，不能推广为遇到未知变化就直接恢复。</p>
+<p>本实验两条分支对 notes 具有相同已提交内容，因此保留编辑较容易解释。实际目标在该路径有变化时，需要更细致判断；不能以一次成功推出“Git 总会带着编辑切过去”。</p>
+<h3 id="h3-7">完整实验三：未跟踪文件也会阻止覆盖</h3>
+<p>lesson 跟踪 task.txt，main 没有。回到 main 后新建同名未跟踪文件，再切到 lesson，就会触及覆盖保护。</p>
+<div class="code-block"><div class="code-bar"><span>触发未跟踪内容的覆盖保护</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch main
+printf 'Local draft that must be preserved.\n' &gt; task.txt
+git status --short
+git switch lesson</code></pre></div>
+<p>最后一条预期失败。拒绝来自具体覆盖条件：目标将写入task.txt的已跟踪版本，可能覆盖当前同名未跟踪内容；先保全该内容后，再评估切换。不能通过 add 机械“解决”：把它放进索引可能仅改变冲突类型，并没有说明草稿应属于哪项任务。</p>
+<div class="code-block"><div class="code-bar"><span>保全草稿后完成切换</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mv task.txt ../task05-saved.txt
+git switch lesson
+cat task.txt
+git status --short</code></pre></div>
+<p>现在 task.txt 来自 lesson 的已提交版本，草稿另存在父目录。两个版本都可检查，切换不需要强制丢弃。文件另存不是 Git 历史备份，后续仍应按需求决定草稿的归属。</p>
+<h3 id="h3-8">完整实验四：已跟踪的编辑与目标版本竞争</h3>
+<p>接下来让 main 更新 course，而 lesson 仍保留 A101。在 lesson 的工作区提出另一种安排，再试图回 main。</p>
+<div class="code-block"><div class="code-bar"><span>触发已跟踪编辑的覆盖保护</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch main
+printf 'Room: A102\n' &gt; course.txt
+git add course.txt
+git commit -m "docs: update the main lecture room"
+git switch lesson
+printf 'Room: B201\n' &gt; course.txt
+git status --short
+git switch main</code></pre></div>
+<p>最后一条也预期失败。与上一例不同，这次保护的是已跟踪文件的未提交编辑；目标 main 还要写入不同的已提交内容。错误消息中提到文件将被覆盖时，应先保存并识别现有内容，不要反复尝试同一命令。</p>
+<div class="code-block"><div class="code-bar"><span>保存提议并选择回到已提交状态</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cp course.txt ../course05-saved.txt
+git restore -- course.txt
+git switch main
+cat course.txt
+cat ../course05-saved.txt</code></pre></div>
+<p>两个输出分别是正式 A102 和草稿 B201，证明本次选择保留了两份信息。若 B201 确实是一项需要持续开发的任务，更合适的路线是留在所属分支提交后再切换，或使用第 8 章的 stash；本例用另存便于第一次学习时直接核对。</p>
+<h2 id="h2-6">创建与切换命令的边界</h2>
+<p>branch NAME 只创建名字，switch NAME 切换到已有分支，switch -c NAME 组合创建与切换。指定起点时，需要知道它是哪个提交或引用；省略起点通常使用当前 HEAD，不能凭名字推断创建在 main 上（图 <a class="book-ref" href="../chapters/05.html#fig:principle-ch05-06">5.8</a> ）。</p>
+<figure id="fig:principle-ch05-06"><button aria-label="放大图5.8：建立入口与切换入口（每行对照一组条件与解释）" class="zoom-image"><img alt="图5.8 建立入口与切换入口（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-5-8.webp" width="1237"/></button><figcaption><b>图 5.8</b> 建立入口与切换入口（每行对照一组条件与解释）</figcaption></figure>
+<p>switch 与 restore 从 Git 2.23 起为原有 checkout 的常见用途提供更明确分工。checkout 仍是有效命令，不应写成已被废弃或完全取代。阅读旧项目脚本时，要按参数判断是在切换位置还是恢复文件。</p>
+<p>普通 switch 通常要求分支目标，读取历史提交可使用 –detach 明确进入分离状态。不要用教程中某个缩写哈希替代实际位置，尤其不要假设不同仓库含有相同的七位标识。</p>
+<h2 id="h2-7">分离观察与保存实验成果</h2>
+<p>检出旧版本适合复现历史问题、比较资料或运行旧版检查。只观察时不需要为每个位置创建分支；决定继续编辑和保存时，应给当前位置建立明确名称（图 <a class="book-ref" href="../chapters/05.html#fig:principle-ch05-07">5.10</a> ）。</p>
+<p>分离状态下建立的提交仍是有效对象（图 <a class="book-ref" href="../chapters/05.html#fig:scenario-05-01">5.9</a> ）。离开试验现场前，应为需要保留的结果建立明确入口，再检查新名称解析到的内容。</p>
+<figure id="fig:scenario-05-01"><button aria-label="放大图5.9：分离HEAD上的实验需要建立入口" class="zoom-image"><img alt="图5.9 分离HEAD上的实验需要建立入口" height="360" loading="lazy" src="../assets/figure-5-9.webp" width="1160"/></button><figcaption><b>图 5.9</b> 分离HEAD上的实验需要建立入口</figcaption></figure>
+<figure id="fig:principle-ch05-07"><button aria-label="放大图5.10：分离提交的保留方法（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图5.10 分离提交的保留方法（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-5-10.webp" width="1111"/></button><figcaption><b>图 5.10</b> 分离提交的保留方法（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>如果已经在分离状态提交了若干次，创建分支仍可以从当前 HEAD 保留整条新父链。切换离开后，若还有其他引用、保存标识或本地 reflog 线索，也可能找回；不能说离开后“只能靠一种机制、固定几天后一定消失”。下面的独立引导实验同时验证分叉与分离保存。它与前面的 lab05-model 无关，开始时回到合适的练习父目录，不在已有实验目录内重复初始化。</p>
+<div class="code-block"><div class="code-bar"><span>回到实验父目录再开始独立实例</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..</code></pre></div>
+<h2 id="h2-8">引导实验：把工作分开，再证明它们的关系</h2>
+<p>现在用课程资料仓库验证分支模型。假设主线已经保存课程说明，你需要编写新的实验要求，同时不希望影响当前可用资料。下面每一步都在同一个仓库中执行；切换分支并没有创建第二个项目目录。</p>
+<div class="code-block"><div class="code-bar"><span>从确定的基线创建分支</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab05
+cd lab05
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Course: Git\n' &gt; course.txt
+git add course.txt
+git commit -m "docs: create course baseline"
+git tag base05
+git branch feature
+git symbolic-ref --short HEAD
+git rev-parse main feature</code></pre></div>
+<p>symbolic-ref 应显示 main，因为 branch 只建立名称，没有切换。最后两行完整标识应相同，因为两个分支暂时指向同一提交。分支名称不同，并不要求它们已经拥有不同内容。标签 base05 保存一个稳定的实验起点，避免后文依赖每台机器不同的哈希缩写。</p>
+<div class="code-block"><div class="code-bar"><span>让两个分支各自推进</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch feature
+printf 'Task: compare three states\n' &gt; task.txt
+git add task.txt
+git commit -m "docs: add practice task"
+git switch main
+printf 'Schedule: Monday\n' &gt; schedule.txt
+git add schedule.txt
+git commit -m "docs: add schedule"
+git log --graph --oneline --all --decorate</code></pre></div>
+<p>切回 main 后，task.txt 通常从当前工作目录中消失，因为它只在 feature 的快照中出现。这不等于删除了 feature 的成果；运行 <code>git show feature:task.txt</code> 可以读取它。类似地，feature 并不自动包含 main 刚加入的 schedule.txt。两条分支共享历史起点，之后分别保存不同的演化路线。</p>
+<p>你可以先用纸画出 base05、feature、main 三个位置，再与历史输出对照。父提交关系保存在提交中；分支引用只标记各路线当前走到的位置。因此，移动分支名称与改写已有提交是不同操作。</p>
+<div class="code-block"><div class="code-bar"><span>在旧版本上实验并保留结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch --detach base05
+printf 'An experimental note\n' &gt; experiment.txt
+git add experiment.txt
+git commit -m "docs: try a teaching note"
+git symbolic-ref --short HEAD
+git switch -c experiment</code></pre></div>
+<p>这里 symbolic-ref 预期以非零状态结束，说明 HEAD 不是符号引用；这一步是用于观察的预期失败，不是仓库损坏。在分离状态创建提交时，HEAD 会移动到新提交，仅没有普通本地分支自动跟随。最后创建 experiment 分支，把这份成果纳入一个可以长期引用的名字。</p>
+<h3 id="h3-9">切换被拒绝时，不要把 add 当作保险</h3>
+<p>若未提交修改会被目标分支的内容覆盖，switch 通常会拒绝执行。add 仅把内容写入索引，并不普遍消除这种冲突；已暂存变化也可能阻止切换。应先判断改动属于哪个任务，再选择提交、stash 或保存在仓库外。只有了解明确丢弃目标时，才考虑破坏性的强制切换。</p>
+<h3 id="h3-10">实验后的自问</h3>
+<p>创建分支前后有哪些对象没有变化？同一条提交为何能同时被两个分支命名？在 feature 上提交，main 为什么不跟着移动？回答时请指出具体名称与提交关系，而非只说“分支彼此独立”。本实验的实际文件查询就是解释的证据。</p>
+<h2 id="h2-9">命名、重命名与查询</h2>
+<p>main 不是 Git 内建的唯一主分支名。本书用 init -b main 明确选定，实际项目可能使用其他默认名。分支名、当前分支和上游是不同信息，遇到命令不适用时先查询，不要先重命名他人项目来适配教程。名称宜简短并表达任务，例如 docs/first-lab、fix/room-number。斜杠提供命名分组，不代表分支拥有独立目录或权限层级。合法规则由 Git 检查，团队再补充自己的约定。</p>
+<h3 id="h3-11">完整实验五：验证名称与重命名</h3>
+<p>结束独立引导实验后，先回到 lab05-model。这里假定两个实验都位于同一个父目录，因此以明确的相对路径返回。</p>
+<div class="code-block"><div class="code-bar"><span>重命名一个保存点并查询位置</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ../lab05-model
+git switch main
+git check-ref-format --branch 'docs/first-lab'
+git branch saved-start branch-base
+git branch -m saved-start archive/start
+git rev-parse archive/start branch-base
+git branch -v
+git check-ref-format --branch 'bad name'</code></pre></div>
+<p>最后一项预期因空格而失败。archive/start 和 branch-base 仍解析到同一提交，重命名没有重建那次提交，也没有让当前 main 自动回到基线。</p>
+<p>命名还需避免引用前缀冲突，例如已经有 foo 时，不应再假定可同时创建 foo/bar。团队采用固定分组前缀时，应避免把同一前缀单独用作一条普通分支。</p>
+<h2 id="h2-10">清理名称前，先区分内容与祖先关系</h2>
+<p>branch –merged 按可达关系列出已整合的候选，–no-merged 列出相反方向。它们不是“代码是否已经以任何方式出现”的语义分析。例如 squash 可以把变化内容带进 main，但原主题提交仍不一定成为 main 的祖先。</p>
+<p>branch -d 具有相应合入检查，判断目标可能涉及其上游或 HEAD，具体还要结合配置。不能把它概括为“任何情况下只检查当前 main”。安全删除失败时，先查询父关系与团队合入方式，再决定是否清理。</p>
+<h3 id="h3-12">完整实验六：删除的对象是名称</h3>
+<div class="code-block"><div class="code-bar"><span>比较可删除的起点与尚未整合的任务</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git branch -d archive/start
+git branch --merged main
+git branch --no-merged main
+git branch -d lesson</code></pre></div>
+<p>archive/start 指向基线，是 main 的祖先，因此可删除。lesson 包含尚未被 main 接入的任务提交，本例没有上游，最后一项预期拒绝。先不要把拒绝理解为权限问题，它是在提醒历史关系不满足当前检查。</p>
+<div class="code-block"><div class="code-bar"><span>受控删除并用明确标识重建入口</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>LESSON05=$(git rev-parse lesson)
+git branch -D lesson
+git show "$LESSON05":task.txt
+git branch rescued/lesson "$LESSON05"
+git show rescued/lesson:task.txt
+git status --short</code></pre></div>
+<p>强制删除没有立即擦除提交内容，本例因保存了准确标识而能重新建立入口。但这不是建议日常先删再救：原分支的配置与日志也可能受删除影响，失去入口的对象未来还受可达性和维护规则影响。已知不再需要的名称可以清理，需要的任务应先整合或保留明确入口。删除本地分支不等于删除远端同名分支，也不等于删除 PR；这些操作属于不同命名空间和系统层次，第 7、13 章再展开。</p>
+<h2 id="h2-11">任务复盘：从症状回到模型</h2>
+<p>切换后“文件不见了”，先确认它是否只属于另一条提交树；可以 show 读取，而不急于从其他目录复制回来。切换被拒绝，先看保护的是已跟踪编辑还是未跟踪同名文件。分支列表有两个名字指同一位置，说明它们尚未分开演进，不是创建失败。图<a class="book-ref" href="../chapters/05.html#fig:branch-switch-check">5.11</a>给出切换前的判断路径。它是工作过程示意，箭头表示判断顺序。不要把任何一条路径缩写成“报错就 add”或“报错就 force”。</p>
+<figure id="fig:branch-switch-check"><button aria-label="放大图5.11：切换之前先识别任务与需要保留的内容" class="zoom-image"><img alt="图5.11 切换之前先识别任务与需要保留的内容" height="144" loading="lazy" src="../assets/figure-5-11.webp" width="1075"/></button><figcaption><b>图 5.11</b> 切换之前先识别任务与需要保留的内容</figcaption></figure>
+<h2 id="h2-12">实验拓展：分支名称改变以后，历史在哪里</h2>
+<p>名称变化容易让初学者误以为内容被复制或删除。下面从同一提交的多个入口出发，观察改名与清理的效果，再核对哪些对象关系没有改变。</p>
+<h3 id="h3-13">任务背景</h3>
+<p>小组准备在 <code>topic</code> 分支上补充实验说明，后来决定将名称改为 <code>feature/guide</code>。改名应改变访问历史的名称，而不应凭空生成一次内容修改。删除名称则更需要区分：失去一个入口，与对象立即从仓库消失，是不同事件。以下独立实验在改名前保存提交标识，随后以查询验证名称与对象的关系。实验中的删除仅针对已整合的教学分支，不用于清理真实项目。</p>
+<div class="code-block"><div class="code-bar"><span>建立分支并修改其名称</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir names05
+cd names05
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Course baseline\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the baseline"
+git switch -c topic
+printf 'Read the staged diff before committing.\n' &gt; guide.txt
+git add guide.txt
+git commit -m "docs: add a review guide"
+SAVED05=$(git rev-parse HEAD)
+git branch -m feature/guide
+test "$(git branch --show-current)" = feature/guide
+test "$(git rev-parse HEAD)" = "$SAVED05"
+git log -2 --oneline</code></pre></div>
+<p>改名后的 HEAD 仍解析到同一提交，提交数也没有因改名增加。斜杠使分支名称便于分类，但不会创建一种新的提交对象类型。把分支命名为 <code>feature/guide</code> 也不会自动设置评审规则；这些规则由团队或托管平台另行规定。</p>
+<div class="code-block"><div class="code-bar"><span>整合后删除名称，并用另一个入口查询内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch main
+git merge --ff-only feature/guide
+git branch -d feature/guide
+test "$(git rev-parse main)" = "$SAVED05"
+git show main:guide.txt
+test "$(git rev-list --count main)" = 2</code></pre></div>
+<p>此处 main 已到达原主题分支的提交，因此删除主题名称不妨碍从 main 访问该历史。若没有其他入口，恢复就要依赖尚存的标识、reflog 或其他副本，不能承诺永久可恢复。第 <a class="book-ref" href="../chapters/08.html#ch:lookup-08">8</a> 章将系统分析这些条件。</p>
+<h2 id="h2-13">并行任务的组织与认知边界</h2>
+<p>分支便于保留不同工作入口，但任务仍需要清楚边界与整合规则。合理组织取决于修改依赖、验证成本和协作约定，而非创建越多名字越好。</p>
+<h3 id="h3-14">分支不是多个工作目录</h3>
+<p>在同一工作区切换分支，会依据目标状态更新文件；它不会为每条分支自动保留一套可同时编辑的目录。未提交变化能否随切换保留，取决于是否与目标文件更新冲突等条件。不能把“切换成功”解释成“草稿已存入原分支”。只有提交或其他明确保存动作，才形成相应记录。</p>
+<p>当任务需要同时打开两个版本，例如一边运行主线一边修复旧版，可以使用第 <a class="book-ref" href="../chapters/14.html#ch:lookup-14">14</a> 章的多工作树。其价值在于提供独立工作目录和索引，同时共享对象数据。了解这个区别后，读者便能按任务选择切换、暂存草稿或新工作树，而非反复复制整个项目文件夹。</p>
+<h3 id="h3-15">分支数量不是工作完成度</h3>
+<p>一条长期存在且没有更新的分支，不一定保存了仍有价值的任务；一条刚删除的分支，也可能已经顺利合入。管理时应关注分支的目的、基线、当前状态和接收位置。可在任务完成后删除临时入口，同时让主线历史、需求单和发布记录承担长期追溯责任。</p>
+<p>对教学项目而言，建议每条任务分支有一项明确的验收目标。例如“补充第三次实验的输入说明”比“个人练习分支”更容易判断是否完成。命名可以辅助识别，但最终完成与否仍以补丁、验证和评审结论为准。</p>
+<h2 id="h2-14">推理训练：分支指针与当前工作状态</h2>
+<p>判断分支操作时，需要同时关注入口、索引和工作文件。下面的推理把这些状态分别列出，使名称移动和内容检出不再被混为同一件事。 图 <a class="book-ref" href="../chapters/05.html#fig:branch-shared-baseline">5.12</a> 把创建分支与创建提交分开：左图两个名称共同定位A；右图在topic上产生B后，只有topic前进，B的父项仍连接A。HEAD指向当前分支名称，不能被画成一份独立文件集合。</p>
+<figure id="fig:branch-shared-baseline"><button aria-label="放大图5.12：分支共享基线并独立前进：细线箭头为名称关系，粗线箭头为父引用" class="zoom-image"><img alt="图5.12 分支共享基线并独立前进：细线箭头为名称关系，粗线箭头为父引用" height="390" loading="lazy" src="../assets/figure-5-12.webp" width="1116"/></button><figcaption><b>图 5.12</b> 分支共享基线并独立前进：细线箭头为名称关系，粗线箭头为父引用</figcaption></figure>
+<h3 id="h3-16">情境一：分支前进，另一个名称是否自动跟随</h3>
+<p>main 与 topic 最初指向同一提交。读者在 topic 上创建新提交后，main 是否也移动？不会。提交操作通常推进当前所在分支，而其他分支引用仍保持各自的值。共享相同历史起点，不意味着这些名称以后始终绑定。</p>
+<p>参考分析时应画出两次状态：创建分支时两个名称共同指向基线；新提交创建后，topic 指向新提交，新提交的父关系连接基线，main 仍指向基线。若只画文件目录，就难以解释为何两个分支可以共享绝大部分历史而独立演进。</p>
+<h3 id="h3-17">情境二：工作区干净，是否可以删除任意分支</h3>
+<p>工作区干净只表示当前比较边界中没有待记录变化，不能证明其他分支已经整合。删除前应检查目标分支的独有提交和任务状态。默认删除保护提供一项技术约束，却不能代替团队对任务价值的判断；强制删除也不应作为消除提示的惯常手段。</p>
+<p>本题的关键是识别证据的适用范围：<code>status</code> 观察当前工作状态，分支可达性查询观察历史关系，任务记录说明业务目的。三者回答不同问题，需要组合使用。</p>
+<h2 id="h2-15">本章小结</h2>
+<p>分支名字定位提交，父关系组织历史，HEAD 表示当前入口。创建名字、切换现场和提交新版本是不同动作。未提交工作不能靠分支名字自动归属，切换时应按状态与覆盖风险判断。</p>
+<p>把每条分支的起点、用途和预期合入位置说清楚，再用实际内容与祖先关系验证，就能让分支成为组织任务的工具。下一章讨论这些路线如何整合，以及自动整合为何有时必须暂停。</p>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-16">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:5.1"><summary><span class="difficulty">基础</span><b>5.1</b><span>解释尚未诞生的分支中，HEAD 有名字但无法解析提交为何并不矛盾。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 未诞生分支 / 符号HEAD / 名称解析</p><p>初始化后HEAD可符号指向refs/heads/main，而该引用尚未指向任何提交。名字代表准备使用的入口，提交解析要求实际目标存在，两者条件不同。第一次提交通常建立该分支的有效提交入口。</p><p>可以先读取HEAD的符号名称，再尝试解析提交并记录失败；首次提交以后重复观察，两次结果相互印证。该过程说明名称关系与对象存在性是两项条件，适合用于检查初始化阶段的认识。</p></div></details><details class="exercise" id="ex:5.2"><summary><span class="difficulty">应用</span><b>5.2</b><span>画出两条分支从同一提交各自前进一步的图，说明对象中保存什么，引用中保存什么。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 分支共享 / 父引用 / 独立推进</p><p>以A为共同父，B与C分别以A为父，main指B、topic指C。提交对象保存父项等固定信息，分支引用保存可更新的目标标识。新提交不修改A，另一分支也不会因为当前分支推进而自动移动。</p><p>把每次提交操作前后的标签位置分别画出：创建B时推进main，创建C时推进topic。两个新对象都保留自己的父字段；后续切换仅改变当前使用入口，不能据此修改另一条路线已经形成的父关系。</p></div></details><details class="exercise" id="ex:5.3"><summary><span class="difficulty">基础</span><b>5.3</b><span>比较 branch、switch 和 switch -c 的影响，解释省略起点的风险。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 创建分支 / 切换 / 起点选择</p><p>branch创建或查询入口，switch切换已有入口，switch -c创建并切换；省略起点时依赖当前HEAD。开始任务前先确认当前分支与提交，避免从故障演练或分离位置误建主题。</p><p>开始任务前记录当前提交，并以显式起点建立主题，可以减少误从旧标签或分离位置开始开发的情况。创建已有名称会被拒绝，不能把这一拒绝当作自动切换；应根据是否确实需要新入口选择命令。</p></div></details><details class="exercise" id="ex:5.4"><summary><span class="difficulty">应用</span><b>5.4</b><span>完成编辑随切换保留的实验，再说明它为什么不能证明未提交工作永远安全。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 切换保护 / 未提交修改 / 覆盖风险</p><p>可在不覆盖编辑的切换中观察文件仍保留，但保护依赖路径与目标内容。目标更新可能覆盖受跟踪编辑或未跟踪同名文件，此时会拒绝；还可能有不能被Git完整保全的外部编辑。需要提交、stash或另建工作树。</p><p>成功保留编辑的例子只说明这组路径和目标内容允许切换。应再构造一个目标版本将写入同一路径的例子，核对保护提示。把两种条件并列，才能说明为何一次成功经验不足以形成无条件操作规则。</p></div></details><details class="exercise" id="ex:5.5"><summary><span class="difficulty">应用</span><b>5.5</b><span>分别制造未跟踪同名文件、已跟踪未提交编辑导致的拒绝，记录保护对象和保留办法。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 未跟踪路径 / 受跟踪编辑 / 现场保全</p><p>分别保存目标分支将写入的未跟踪同名文件，以及与目标冲突的受跟踪编辑，观察拒绝提示。先复制重要现场或建立相应提交，再切换；仅add并不保证消除覆盖风险。报告指出具体保护了哪个路径与内容。</p><p>记录发生冲突的确切路径及要保留的字节，再选择提交、另存或其他合适方式保护。仅改变文件名可能打乱项目引用，强制覆盖也可能丢失内容；保全方案需要与实际任务和后续验证相配合。</p></div></details><details class="exercise" id="ex:5.6"><summary><span class="difficulty">应用</span><b>5.6</b><span>在分离状态产生两次提交，用一个新分支保留，证明新分支可访问两次变化。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 分离HEAD / 救援分支 / 提交可达性</p><p>在分离状态提交两次后，以当前HEAD建立新分支。用log和show检查两次变化，证明从新分支可沿父链访问。关键是保留最后提交的可达入口，而不是必须立即移动原main。</p><p>应保存两次提交的关系，并从新建分支读取它们的内容。若只保存较早提交，新入口可能不包含后一次修改。建立入口以后再切换，能够减少因位置变化而混淆待保留提交的风险。</p></div></details><details class="exercise" id="ex:5.7"><summary><span class="difficulty">基础</span><b>5.7</b><span>说明分支重命名为什么通常不改变提交标识；本地名字改变是否自动修改远端？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 分支改名 / 远程名称 / 本地配置</p><p>重命名引用改变名字及相关本地配置，通常不改提交字段，因此不改变提交标识。服务器分支是另一个仓库中的入口，本地改名不会自动改写；如需同步名称，应明确推送与删除范围。</p><p>本地改名以后查询分支列表及跟踪配置，再到远端检查目标名称。需要迁移远端名称时，应先建立并验证新入口，再按团队约定清理旧入口，尤其注意默认分支、评审和自动化仍可能引用旧名。</p></div></details><details class="exercise" id="ex:5.8"><summary><span class="difficulty">基础</span><b>5.8</b><span>解释 –merged 查询与最终文件内容相同之间的差异，联系 squash 的情况。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 祖先关系 / squash / 最终树</p><p>--merged依据祖先可达关系，而文件相同是树内容比较。squash可以产生相同最终内容，却不把来源主题头作为祖先；因此仅凭空diff不能认定主题已按祖先关系合入。</p><p>应把内容比较与可达性查询同时列出。空diff可以说明所选树在当前比较范围相同；merge-base或--merged说明特定祖先关系。采用squash的团队应建立任务完成记录，避免只依赖祖先查询清理主题。</p></div></details><details class="exercise" id="ex:5.9"><summary><span class="difficulty">应用</span><b>5.9</b><span>在独立实验中删除并重建任务入口，写出本例成功依赖的证据，不声称无限期可恢复。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 删除与重建 / 引用日志 / 对象保留</p><p>删除前记录并检查任务头，或在本次有效引用日志中找到候选；用show验证后新建入口。成功依赖对象仍存在且可取得，日志和其他入口没有被过期或清除，不构成无限期恢复承诺。</p><p>恢复前使用show检查候选的提交说明、树和父关系，再建立新的保护入口。日志序号会随操作变化，复制旧序号并不可靠；报告应记录实际选中的完整标识及其取得条件。</p></div></details><details class="exercise" id="ex:5.10"><summary><span class="difficulty">应用</span><b>5.10</b><span>为课程小组写三条命名与清理规则，分别说明解决什么协作问题。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 分支命名 / 任务范围 / 清理约定</p><p>例如按类型和任务命名以便定位意图；一个主题集中一项可评审需求以控制范围；清理前核对合入方式、未共享变化与保留入口以避免误删任务。规则应说明条件，而不是只规定固定前缀。</p><p>可规定feature/任务号、fix/问题号等前缀，但应解释目的和结束条件。长期无目的分支增加判断成本；删除前检查独有提交、共享情况和任务交接，能够把命名规则同真实协作联系起来。</p></div></details><details class="exercise" id="ex:5.11"><summary><span class="difficulty">应用</span><b>5.11</b><span>分别比较创建新分支、切换已有分支、创建并切换的前提。若目标名称已经存在或当前处于分离状态，应怎样确认实际起点与保护对象，避免把创建失败当作已经进入目标分支。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 创建与切换 / 已有名称 / 任务起点</p><p>branch和switch相关形式承担不同任务：查询或建立名称、切换已有入口、建立后切换。新名称冲突时应读取提示并重查当前分支，不能根据命令意图推断动作已经发生。</p><p>分离状态下，应先确定当前提交是否需要保留；新主题若应来自main，则显式指定正确起点。验收包括操作前后的分支名称、提交解析值及工作文件状态。选择动作要依据已有入口和实际任务，而非反复尝试一个固定命令。</p></div></details><details class="exercise" id="ex:5.12"><summary><span class="difficulty">应用</span><b>5.12</b><span>某主题经过squash合入后，文件差异为空，–merged却未把它列为已合并。请解释结果，并设计清理前检查：任务是否完成、是否还有未共享工作、哪些入口需要保留，以及本地改名是否影响远端。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 分支清理 / 未共享提交 / 祖先判断</p><p>空树差异与祖先包含描述不同事实；squash结果通常没有接入来源头作为父项，因此--merged可不列出主题。应继续核对任务记录和最终内容，检查主题上是否新增了未共享修改。</p><p>清理前保存需要长期追溯的提交入口，按团队约定确认发布或评审引用，再分别管理本地和服务器名称。本地改名不会自动调整远端入口；删除名称也不承担立即删除全部对象的语义。验收需要同时展示任务与历史关系的判断依据。</p></div></details><details class="exercise" id="ex:5.13"><summary><span class="difficulty">综合</span><b>5.13</b><span>两位同学从同一基线分别修改文档和实现。一位保留未提交草稿，另一位在旧标签的分离状态新增两次提交，且main与topic后来拥有相同内容但不同历史。请设计保全与接续方案，解释各分支是否移动、哪些切换可能被拒绝，以及何时可以清理临时入口。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 并行任务 / 切换保护 / 分离提交 / 交接</p><p>分别记录两个工作现场，先保全未提交草稿，再确认任何切换不会覆盖仍需保留的路径。分离状态中的两次提交应以最后一次提交建立任务分支，使两次变化均可达；原main不会自动跟随这条路线前进。</p><p>对内容相同的main与topic，继续比较父关系和任务完成情况，不能直接据空diff判断祖先合入。临时入口的清理需确认独有工作已处理、接手者具备访问方法且没有被依赖的未共享提交。交付包括状态图、保护入口和可达性查询，并说明没有进入Git记录的草稿另存在哪里。</p><p>先记录所有已知提交标识，把草稿保存到可恢复位置，并为分离状态下的两次提交建立主题分支。每次切换前比较本地编辑与目标将写入的路径，遇到覆盖拒绝先保全内容。随后分别比较main与topic的树和祖先关系：树相同仅支持内容一致的结论，不能证明互为祖先。清理临时入口之前，确认需要的对象从保留名称可达，并从独立检出验证结果。报告列出每一步实际移动的名称及保持不变的父关系。</p></div></details></section><section id="mindmap"><h2 id="review-17">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第5章复习导图" class="zoom-image"><img alt="第5章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-05.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="5">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="04.html"><small>← 上一章</small>历史查询与版本溯源</a><a href="06.html"><small>下一章 →</small>合并原理与冲突处理</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">为什么一个项目需要多条工作路线</a><a href="#h2-2">名称、提交与可达历史</a><a href="#h2-3">HEAD 如何表示当前位置</a><a href="#h2-4">完整实验一：从空仓库到两条路线</a><a href="#h2-5">切换分支究竟检查什么</a><a href="#h2-6">创建与切换命令的边界</a><a href="#h2-7">分离观察与保存实验成果</a><a href="#h2-8">引导实验：把工作分开，再证明它们的关系</a><a href="#h2-9">命名、重命名与查询</a><a href="#h2-10">清理名称前，先区分内容与祖先关系</a><a href="#h2-11">任务复盘：从症状回到模型</a><a href="#h2-12">实验拓展：分支名称改变以后，历史在哪里</a><a href="#h2-13">并行任务的组织与认知边界</a><a href="#h2-14">推理训练：分支指针与当前工作状态</a><a href="#h2-15">本章小结</a><a href="#review-16">本章习题与解析</a><a href="#review-17">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

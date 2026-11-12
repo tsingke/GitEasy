@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>远程仓库与协作 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="7" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>核心篇<span>/</span>第07章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 07 · 核心篇</div><h1>远程仓库与协作</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 50 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-07"></span>
+<p>两个人各自在本地提交，都可以得到完整而清晰的工作记录。协作的新问题是：怎样交换记录，怎样发现对方的新工作，怎样在不覆盖彼此成果的前提下更新共享分支。</p>
+<p>本章先用同一台机器上的三个目录模拟一个共享中心和两位参与者，再把相同的数据关系映射到 GitHub。这样可以把历史整合与网络、身份、权限分别理解，不会把每次失败都归因于账号或网络。</p>
+<p><strong>学习目标：</strong>区分本地分支、远程跟踪引用和服务器分支；解释抓取、整合与推送的不同作用；读取上游配置和领先／落后信息；诊断非快进拒绝；完成异名分支推送与跟踪清理实验；设计基于 GitEasy 的个人副本协作流程。</p>
+<p>先建立通信对象与引用的模型，再完成双人协作；随后解释上游和引用映射，通过本地实验验证命名、推送与清理边界，最后迁移到 GitHub。</p>
+<h2 id="h2-1">远程配置与独立仓库</h2>
+<p>远程名称是本地保存的通信配置，不是仓库天然的主从等级。同一项目可以拥有多个来源和发布目标。本节先辨认名称、地址和访问身份，再解释为什么复制、抓取和推送需要分别核对对象。</p>
+<h3 id="h3-1">另一个仓库可以位于本地路径</h3>
+<p>从一个仓库的视角看，远程仓库是可以交换对象与引用信息的另一个仓库。它可以位于 GitHub，也可以位于学校服务器，甚至仅同一台机器的另一个目录。“远程”在这里描述通信对象，不以地理距离为定义（图 <a class="book-ref" href="../chapters/07.html#fig:principle-ch07-01">7.1</a> ）。</p>
+<figure id="fig:principle-ch07-01"><button aria-label="放大图7.1：远程名称与实际仓库（每行对照一组条件与解释）" class="zoom-image"><img alt="图7.1 远程名称与实际仓库（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-7-1.webp" width="1237"/></button><figcaption><b>图 7.1</b> 远程名称与实际仓库（每行对照一组条件与解释）</figcaption></figure>
+<p>团队通常约定某个仓库为共享汇合点，但这个管理角色不是 Git 自动赋予的绝对权威。每个参与者都可以在本地形成提交。能否把提交发布到共享仓库，则取决于访问身份、授权和服务器规则。</p>
+<p>普通仓库通常同时有管理数据与工作区；裸仓库不提供日常编辑用的工作区，适合作为本章接收推送的中心。它并不因此自动拥有 GitHub 的网页评审、权限面板和任务管理功能。</p>
+<h3 id="h3-2">远程名是当前仓库中的别名</h3>
+<p>origin 是 clone 通常为来源设置的默认远程名。这个名字仅本地配置里的一个标签，不是协议关键词，也不保证指向作者原项目。在 fork 工作流中，origin 往往指向自己的副本，upstream 则约定指向原项目。</p>
+<p>远程配置包括地址与引用映射等信息。把 origin 改名，不会让服务器上的仓库跟着改名；移除远程配置，也不等于删除服务器。多个本地克隆可以对同一个地址使用不同的别名。</p>
+<p>地址解决“去哪里通信”，认证解决“以谁的身份通信”，授权解决“允许做什么”。这三个问题需要分别检查。同一个 HTTPS 地址，在不同凭据下可能具有不同权限；使用 SSH 也不意味着天然获得写入权限。</p>
+<h2 id="h2-2">三个分支位置与两种方向</h2>
+<p>本地开发分支、本地远程跟踪引用和服务器上的分支可能暂时不同步。把它们画成三个独立位置，才能解释抓取为什么更新观察记录、推送为什么需要服务器接受，以及本地状态为什么可能滞后。</p>
+<h3 id="h3-3">名字相似，所在仓库与职责不同</h3>
+<p>在常见克隆中，main 是本地分支，完整名称为 refs/heads/main；origin/main 是本地的远程跟踪引用，完整名称为 refs/remotes/origin/main；服务器上的 main 则属于服务器自己的引用空间（图 <a class="book-ref" href="../chapters/07.html#fig:principle-ch07-02">7.3</a> ）。</p>
+<p>理解协作时，应先区分服务器上的分支、本地的远程跟踪引用和本地工作分支。图 <a class="book-ref" href="../chapters/07.html#fig:visual-07-a">7.2</a> 把这些位置放回两个独立仓库中。推送向另一端提出引用更新请求，抓取则把可取得的数据及相应观察记录带回本地。</p>
+<figure id="fig:visual-07-a"><button aria-label="放大图7.2：两个仓库中的交换方向与引用位置" class="zoom-image"><img alt="图7.2 两个仓库中的交换方向与引用位置" height="1024" loading="lazy" src="../assets/figure-7-2.webp" width="1536"/></button><figcaption><b>图 7.2</b> 两个仓库中的交换方向与引用位置</figcaption></figure>
+<figure id="fig:principle-ch07-02"><button aria-label="放大图7.3：远程协作的三个位置（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图7.3 远程协作的三个位置（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-7-3.webp" width="1088"/></button><figcaption><b>图 7.3</b> 远程协作的三个位置（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>origin/main 记录本地最近通过相关通信和映射规则得知的位置。它不是实时查询服务器的窗口。别人推送后，如果本地尚未获取新信息，这个引用仍可能停在原来的提交。自己的成功推送在通常配置下也可能更新相应的本地跟踪信息。</p>
+<p>不要直接把远程跟踪引用当作日常开发分支。需要基于它工作时，应创建本地分支；直接检出某个引用还可能进入分离 HEAD 状态。分支名含有斜杠，也不自动表示远程属性，必须结合命名空间判断。图<a class="book-ref" href="../chapters/07.html#fig:remote-tracking">7.4</a>把三个位置分开。图中的虚线箭头表示信息更新或更新请求，不是提交的父关系。</p>
+<figure id="fig:remote-tracking"><button aria-label="放大图7.4：跟踪信息、当前开发入口与中心分支分别存在" class="zoom-image"><img alt="图7.4 跟踪信息、当前开发入口与中心分支分别存在" height="339" loading="lazy" src="../assets/figure-7-4.webp" width="990"/></button><figcaption><b>图 7.4</b> 跟踪信息、当前开发入口与中心分支分别存在</figcaption></figure>
+<h3 id="h3-4">抓取、整合、推送回答不同的问题</h3>
+<p>fetch 获取所需对象并按规则更新引用和抓取结果信息。在本章默认克隆配置中，<code>git fetch origin</code> 更新 origin 下配置的跟踪引用，通常不整合当前 main，也不把 main 的工作区直接改成服务器版本。</p>
+<p>这个常见行为有明确前提。fetch 可以接受显式引用映射，映射也可能指向不同的本地引用；不能把它概括为“任何参数下都绝不会更新本地分支”。本章先使用常规映射，遇到特殊配置时应先查询配置和手册<span class="citation" data-cites="gitdocs2026">(Git Project 2026)</span>。</p>
+<p>merge 把指定历史整合到当前分支；rebase 采用重放方式整理当前路线；push 则把需要的对象发送出去，并请求对方更新指定引用。它们不是同一动作的不同拼写。</p>
+<p>pull 先抓取，再按选项、配置和历史条件进行整合。<code>git pull --ff-only</code> 明确只接受快进关系，<code>git pull --no-rebase</code> 请求合并方式，<code>git pull --rebase</code> 请求变基方式。不要依赖各台机器可能不同的默认配置来理解课堂实验。</p>
+<h2 id="h2-3">实验一：建立真实的双人协作循环</h2>
+<p>下面的命令从新的父目录开始。实验中心完全位于本地，不需要平台账号，也不会改动作者的线上仓库。两个克隆代表两个操作者，必须关注每一次目录切换。</p>
+<h2 id="h2-4">引导实验：不联网也能完成双人协作</h2>
+<p>远程仓库中的“远程”描述通信对象，并不要求它一定在互联网上。一个本地裸仓库就能模拟共享中心；两个普通克隆分别代表 Alice 与 Bob。裸仓库主要保存 Git 管理数据，不提供日常编辑的工作区，因此适合作为接收推送的实验汇合点。</p>
+<div class="code-block"><div class="code-bar"><span>建立共享中心与 Alice 的第一份历史</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab07
+cd lab07
+git init --bare --initial-branch=main center.git
+git clone center.git alice
+cd alice
+git config user.name "Alice"
+git config user.email "alice@example.invalid"
+printf 'Course: Git\n' &gt; README.md
+git add README.md
+git commit -m "docs: start shared notes"
+git push -u origin main
+cd ..
+git clone center.git bob
+cd bob
+git config user.name "Bob"
+git config user.email "bob@example.invalid"</code></pre></div>
+<p>第一次克隆空仓库时出现空仓库提示是正常现象。Alice 先创建提交并推送，Bob 随后克隆，因而双方共享同一基线。两人的 user.name 与邮箱只影响各自创建的提交，不作为本地路径通信的账号密码。</p>
+<p>现在在 Bob 的目录新增笔记并提交，但暂时不推送；随后切到 Alice 的目录，让她先推送另一份内容。请特别注意每次 cd：同样的 Git 命令作用于不同仓库时，观察到的历史也不同。</p>
+<div class="code-block"><div class="code-bar"><span>制造一次正常的推送拒绝</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Bob: inspect status\n' &gt; bob.txt
+git add bob.txt
+git commit -m "docs: add Bob notes"
+cd ../alice
+printf 'Alice: inspect diff\n' &gt; alice.txt
+git add alice.txt
+git commit -m "docs: add Alice notes"
+git push origin main
+cd ../bob
+git push origin main</code></pre></div>
+<p>最后一次 push 预期被拒绝：中心的 main 已经指向 Alice 的新提交，而 Bob 的路线未包含它。此时服务器并没有丢失 Bob 的文件；他的提交仍保存在本地。拒绝保护共享引用，避免不经整合就把另一条路线替换掉。首先阅读错误类别，确认是历史不满足快进条件，而非路径或权限错误。</p>
+<div class="code-block"><div class="code-bar"><span>抓取、检查、整合，再推送</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git fetch origin
+git log --graph --oneline --all --decorate
+git merge --no-edit origin/main
+git push origin main
+cd ../alice
+git fetch origin
+git merge --ff-only origin/main
+git ls-tree --name-only HEAD</code></pre></div>
+<p>两人增加不同文件，本例应能够自动合并。Bob 先连接两条历史，中心允许快进到这个整合结果；Alice 再抓取并快进，最终应同时看到 README.md、alice.txt 和 bob.txt。这里的最终文件集合与祖先关系，比传输进度是否一致更重要。</p>
+<h3 id="h3-5">四个名字不要混用</h3>
+<p>main 是当前克隆中的本地分支；origin 是本地配置中的通信对象别名；origin/main 是本地保存的远端位置记录；center.git 中的 main 才是中心自己的分支。fetch 会更新本地对象与跟踪信息，但不自动把当前 main 整合到那个位置。没有通信时，ahead/behind 只基于已知记录，不能保证反映服务器此刻的情况。</p>
+<p>线上协作在这个数据模型之外再加入认证、权限和评审。即使平台按钮改变，先抓取、比较历史、选择整合方式并验证结果的思路仍适用。遇到非快进拒绝不应直接强推，因为拒绝通常是需要整合的信号。</p>
+<p>服务器已经前进，不代表本地工作分支同时前进。图 <a class="book-ref" href="../chapters/07.html#fig:visual-07-b">7.5</a> 中，抓取把origin/main从B更新到C，而main及工作文件仍保留在B对应的状态。读者应先核对抓取结果，再决定采用合并、变基或其他整合策略。</p>
+<figure id="fig:visual-07-b"><button aria-label="放大图7.5：抓取前后服务器分支与两类本地引用" class="zoom-image"><img alt="图7.5 抓取前后服务器分支与两类本地引用" height="570" loading="lazy" src="../assets/figure-7-5.webp" width="1177"/></button><figcaption><b>图 7.5</b> 抓取前后服务器分支与两类本地引用</figcaption></figure>
+<h3 id="h3-6">把推送拒绝解释成历史关系</h3>
+<p>Alice 推送以后，中心 main 包含她的新提交；Bob 的本地 main 尚未包含它。若中心直接接受 Bob 当时的位置，共享引用将离开 Alice 的提交。默认的普通分支更新因此拒绝非快进请求。</p>
+<p>Bob 的文件没有被服务器删除，他的本地提交也没有失效。需要先获取中心的新位置，再根据需求连接两条路线。实验中双方修改不同文件，普通合并即可得到包含两人成果的双亲提交；随后中心可以从旧位置快进到这个提交。</p>
+<p>“推送失败”不总意味着这种关系。对象传输可能成功，而引用更新因权限或策略被拒绝；连接失败也可能发生在获取任何信息之前。必须读取错误分类，不能看到 rejected 就一律重置仓库或强制推送。</p>
+<h3 id="h3-7">领先和落后依赖本地已知位置</h3>
+<p>status 中的 ahead 和 behind，通常比较当前分支与配置的上游引用。领先表示当前侧可达、上游不可达的提交数；落后表示上游可达、当前侧不可达的提交数。它不是修改行数、文件数量，也不是提交时间之差。</p>
+<p>如果两边各有新提交，就可能同时领先和落后。若尚未抓取同伴刚推送的工作，本地甚至可能显示“已同步”，实际服务器却已经前进。因此，应在说明状态时写清“相对于本地当前保存的上游记录”，并在决策前按需要更新信息。</p>
+<h2 id="h2-5">上游配置与默认推送规则</h2>
+<p>上游关联帮助确定默认比较和整合对象，推送还要根据目标选择与模式配置决定写入哪个入口。两套规则在常见场景下相互配合，却不能互相替代。本节通过异名分支与显式映射揭示这一差别。</p>
+<h3 id="h3-8">上游为本地分支建立关联</h3>
+<p>本章的克隆会把本地 main 关联到 origin/main。关联通常由分支的 remote 与 merge 配置表达：前者指定远程名，后者指定对方分支的完整引用名称。<code>git branch -vv</code> 便于查看关联概况，<code>@{upstream}</code> 表达当前分支的上游（图 <a class="book-ref" href="../chapters/07.html#fig:principle-ch07-04">7.6</a> ）。</p>
+<figure id="fig:principle-ch07-04"><button aria-label="放大图7.6：上游与推送分别配置（每行对照一组条件与解释）" class="zoom-image"><img alt="图7.6 上游与推送分别配置（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-7-6.webp" width="1237"/></button><figcaption><b>图 7.6</b> 上游与推送分别配置（每行对照一组条件与解释）</figcaption></figure>
+<p>上游提供默认整合目标和状态比较依据。它不是让两个名字永远自动一致的绑定，也不会在没有通信时自动同步文件。每条本地分支都可以有自己的上游；一条新建本地分支也可以没有上游。</p>
+<h3 id="h3-9">省略 push 参数仍受配置规则影响</h3>
+<p>建立上游后，经常可以直接运行 push，但并非所有命名和配置下都能如此。推送远程的选择还可能受分支的 pushRemote、全局推送远程等配置影响；未显式给出推送映射时，push.default 决定常见的默认行为。</p>
+<p>默认常见的 simple 模式会对本地分支名与上游分支名不同等情况采取保护性拒绝。因此，“设置了上游，之后所有 push 都能省略参数”是不完整的说法。对重要交付，明确写出远程与目标引用，也更便于复核。</p>
+<h2 id="h2-6">实验二：读取配置并推送到异名分支</h2>
+<p>接续双人实验，当前应在 lab07/alice，main 已包含双方成果。下面所有推送仍只作用于本地 center.git（图 <a class="book-ref" href="../chapters/07.html#fig:principle-ch07-05">7.7</a> ）。</p>
+<figure id="fig:principle-ch07-05"><button aria-label="放大图7.7：异名推送需要明确映射（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图7.7 异名推送需要明确映射（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-7-7.webp" width="1097"/></button><figcaption><b>图 7.7</b> 异名推送需要明确映射（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-10">查看远程地址、映射与上游</h3>
+<div class="code-block"><div class="code-bar"><span>核对同一中心在三个位置的表示</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git remote -v
+git config --get remote.origin.fetch
+git config --get branch.main.remote
+git config --get branch.main.merge
+git rev-parse main refs/remotes/origin/main
+git --git-dir=../center.git rev-parse refs/heads/main
+git branch -vv</code></pre></div>
+<p>常见抓取映射形如下面这一行。它是配置值示意，不是需要单独执行的命令。</p>
+<div class="code-block"><div class="code-bar"><span>终端输出</span><button class="copy-code">复制</button></div><pre><code>+refs/heads/*:refs/remotes/origin/*</code></pre></div>
+<p>冒号左侧描述来源引用，右侧描述本地保存位置；两个星号把来源名称的匹配部分对应起来。前面的加号允许这条抓取映射按相应规则接受引用的非快进变化。它不是“允许向服务器随意强推”的开关。</p>
+<p>对象交换和引用命名要分别理解。下载到一个提交对象，不等于必须把当前 main 移过去；同一个提交也可以同时由多个本地引用提供入口。</p>
+<h3 id="h3-11">远程改名只改变本地通信名称</h3>
+<div class="code-block"><div class="code-bar"><span>把 origin 临时改名并核对关联</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git remote rename origin shared
+git remote -v
+git branch -vv
+git config --get branch.main.remote
+git remote rename shared origin
+git config push.default simple</code></pre></div>
+<p>常规远程改名会相应调整相关跟踪引用和配置，便于继续使用原来的关联。中心的目录名和中心 main 的内容没有因此变化。最后一条把本实验仓库的默认推送模式显式设为 simple，不改变其他项目。</p>
+<h3 id="h3-12">源分支与目标分支可以使用不同名称</h3>
+<div class="code-block"><div class="code-bar"><span>创建本地任务并发布到不同名称</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c course-local
+printf 'Review the direction of each reference.\n' &gt; review.txt
+git add review.txt
+git commit -m "docs: add reference review exercise"
+git push -u origin HEAD:refs/heads/course-notes
+git branch -vv
+git config --get branch.course-local.merge
+git rev-parse '@{upstream}'
+git push</code></pre></div>
+<p>显式映射中的 HEAD 是本地来源，refs/heads/course-notes 是中心目标。加 <code>-u</code> 后，本地 course-local 的上游关联到中心 course-notes，在本地通常表示为 origin/course-notes。</p>
+<p>最后不带参数的 push 在本实验 simple 配置下<strong>预期拒绝</strong>，因为本地与上游分支名不一致。刚才显式推送已经成功；这里的失败来自默认推送选择规则，不能误判为网络故障或提交丢失。</p>
+<div class="code-block"><div class="code-bar"><span>显式指定已确认的推送目标</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git push origin HEAD:refs/heads/course-notes
+cd ../bob
+git fetch origin
+git switch --track -c review-notes origin/course-notes
+git branch -vv
+cat review.txt</code></pre></div>
+<p>Bob 创建的是自己的本地 review-notes，起点来自 origin/course-notes，并建立上游关联。它和 Alice 的 course-local 不同名，但都可以从同一中心提交开始。分支名称是协作约定的一部分，不是内容相同的必要条件。</p>
+<h2 id="h2-7">删除远程分支与清理本地记录</h2>
+<p>服务器删除一个入口以后，本地仍可能保留旧观察记录和自己的开发分支。下面分别处理服务器分支、本地跟踪引用和本地分支，说明通信何时更新信息，以及清理记录为什么不会自动删除所有相关工作。</p>
+<span id="sec:delete-remote-branch"></span>
+<h3 id="h3-13">三个删除动作作用范围不同</h3>
+<p>删除本地任务分支，改变当前仓库的本地分支入口。删除服务器分支，需要向服务器发出对应引用的删除请求，并通过权限与策略检查。清理远程跟踪引用，则是让本地记录不再保留已经不存在的来源名称（图 <a class="book-ref" href="../chapters/07.html#fig:principle-ch07-06">7.8</a> ）。</p>
+<figure id="fig:principle-ch07-06"><button aria-label="放大图7.8：删除入口与清理记录（每行对照一组条件与解释）" class="zoom-image"><img alt="图7.8 删除入口与清理记录（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-7-8.webp" width="1237"/></button><figcaption><b>图 7.8</b> 删除入口与清理记录（每行对照一组条件与解释）</figcaption></figure>
+<p>表<a class="book-ref" href="../chapters/07.html#tab:remote-cleanup">7.1</a>区分三者。操作前先说明想删除哪一个仓库里的哪一种引用，能够避免“我仅清理列表，却删除了共享分支”的误会。</p>
+<p>服务器名称、本地观察记录和工作分支可能在不同时间更新（图 <a class="book-ref" href="../chapters/07.html#fig:scenario-07-02">7.9</a> ）。清理时逐项确认目标与保留需要，不应把一次删除理解为三个位置同时消失。</p>
+<figure id="fig:scenario-07-02"><button aria-label="放大图7.9：删除三个位置的名称分别进行" class="zoom-image"><img alt="图7.9 删除三个位置的名称分别进行" height="425" loading="lazy" src="../assets/figure-7-9.webp" width="1169"/></button><figcaption><b>图 7.9</b> 删除三个位置的名称分别进行</figcaption></figure>
+<div class="table-scroll" id="tab:remote-cleanup" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 7.1</b> 分支清理操作的对象与边界</caption><tr><th colspan="1">操作意图</th><th colspan="1">实际作用</th></tr><tr><td colspan="1">删除本地分支</td><td colspan="1">branch 的删除操作移除当前仓库的本地入口；不会同时请求中心删除同名分支。</td></tr><tr><td colspan="1">删除中心分支</td><td colspan="1">push 的删除请求修改中心引用；不会自动删除每位同伴的本地开发分支。</td></tr><tr><td colspan="1">抓取时 prune</td><td colspan="1">按抓取映射清理已经失去来源的本地跟踪引用；不等同于删除中心分支。</td></tr><tr><td colspan="1">移除远程配置</td><td colspan="1">remote remove 清理当前仓库相关远程配置及跟踪入口；不会删除服务器仓库。</td></tr></table></div></div>
+<h3 id="h3-14">实验三：观察另一位参与者的陈旧记录</h3>
+<p>实验中的 course-notes 已完成演示，确认可以删除中心入口。Alice 先切回 main 再发出请求，Bob 暂不通信，保留原来的跟踪记录。</p>
+<div class="code-block"><div class="code-bar"><span>删除中心分支并保留两人的本地成果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ../alice
+git switch main
+git push origin --delete course-notes
+git branch --list course-local
+cd ../bob
+git branch -r
+git show-ref --verify refs/remotes/origin/course-notes</code></pre></div>
+<p>中心已没有 course-notes，但 Bob 的本地跟踪引用仍在；show-ref 应能读取它。这段时间差再次说明，origin/course-notes 是本地记录，而非实时远程视图。Alice 的 course-local 和 Bob 的 review-notes 也没有被自动删除。</p>
+<div class="code-block"><div class="code-bar"><span>抓取时清理失去来源的跟踪引用</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git fetch --prune origin
+git show-ref --verify refs/remotes/origin/course-notes
+git branch -vv
+cat review.txt
+git branch --unset-upstream
+git switch main
+git status --short</code></pre></div>
+<p>第二条查询<strong>预期失败</strong>，因为该跟踪引用已被清理。review.txt 仍能读取，因为 Bob 当前的本地 review-notes 仍指向包含它的提交。上游已不存在时，branch 的详细列表可能提示 gone；这是关联来源消失，不等于本地成果被清空。本实验取消已失效的上游关联，再返回 main。实际项目中是否删除本地任务分支，还需先检查任务是否已验收、是否还有其他成果要保留。</p>
+<p>prune 的清理范围由引用映射决定。自定义映射、镜像配置或涉及标签的特殊映射可能扩大其作用范围，不能把“只清理普通远程跟踪分支”当成所有配置下的绝对保证。</p>
+<h2 id="h2-8">把同一个模型迁移到 GitHub</h2>
+<p>本地中心实验已经说明对象交换与引用更新，迁移到托管平台以后还要增加账户权限、个人副本和评审。底层提交关系没有因此改变；本节把两层联系起来，为第16章的平台操作准备共同模型。</p>
+<h3 id="h3-15">先区别访问仓库与贡献仓库</h3>
+<p>本书作者提供的教学仓库为 <a class="uri" href="https://github.com/tsingke/GitEasy">https://github.com/tsingke/GitEasy</a>。读者可以把它作为学习载体，但知道地址不表示拥有写入权限。直接克隆原仓库，origin 通常指向原仓库；只有获得相应授权，才可能向它推送（图 <a class="book-ref" href="../chapters/07.html#fig:principle-ch07-07">7.10</a> ）。</p>
+<figure id="fig:principle-ch07-07"><button aria-label="放大图7.10：从本地中心迁移平台（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图7.10 从本地中心迁移平台（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-7-10.webp" width="1124"/></button><figcaption><b>图 7.10</b> 从本地中心迁移平台（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>没有原仓库写入权限时，常见做法是先在平台创建自己的 fork，再克隆个人副本，把原仓库加入为 upstream。fork 是平台维护的一种仓库关系，clone 是 Git 获取仓库的操作；完成其中一个不会自动完成另一个。</p>
+<p>下面是配置模板。YOUR_ACCOUNT 必须替换为实际账号，且相应个人副本已经存在。模板用于说明地址关系，本章离线实验不执行这些在线步骤，也不预设作者仓库已经存在任何课堂 PR。</p>
+<div class="code-block"><div class="code-bar"><span>GitEasy 个人副本协作模板（需替换账号）</span><button class="copy-code">复制</button></div><pre><code>git clone https://github.com/YOUR_ACCOUNT/GitEasy.git
+cd GitEasy
+git remote add upstream https://github.com/tsingke/GitEasy.git
+git remote -v
+git fetch upstream
+git switch -c docs/first-exercise upstream/main
+# 编辑、暂存、检查并提交自己的学习成果
+git push -u origin docs/first-exercise</code></pre></div>
+<p>本例先从 upstream/main 创建任务分支，再显式推送到个人 origin；不要因为分支起点来自上游，就误以为当前推送目标也必然正确。发布前核对 remote 列表和具体目标。账户认证方式、组织策略及平台界面可能变化，操作时结合平台现行文档检查<span class="citation" data-cites="githubflow">(GitHub 2026)</span>。</p>
+<h3 id="h3-16">评审请求连接的是来源与目标</h3>
+<p>推送完成后，可以在平台选择来源仓库、来源分支，以及目标仓库、目标分支，发起评审请求。四个位置都应核对，尤其不要把个人 fork 内部的 main 误当成原项目的 main。</p>
+<p>请求说明应包括解决的问题、改动范围、验证步骤和仍存在的限制。对于学习笔记，需要核对术语和命令；对于代码，需要给出可重复的行为检查。评审请求的创建不是 Git 提交，也不是已经合并；审批、自动检查和最终合入是后续过程。</p>
+<p>读者练习时可以先在自己的副本内部完成评审，不需要为了完成作业向原项目发送无关请求。真正贡献应遵守项目规范与维护者约定。第 13 章进一步比较合并、压缩合入和重放合入的历史后果。</p>
+<h3 id="h3-17">认证、提交身份与签名各有职责</h3>
+<p>user.name 和 user.email 写入提交元数据，不是登录凭据。SSH 密钥或 HTTPS 凭据用于访问身份验证；提交签名则用于验证某个对象与签名密钥的关系。这三层可以相关，但不能互相替代。</p>
+<p>使用 SSH 时，先核对服务端主机信息，再确认客户端实际使用哪个密钥、平台将其识别成哪个账户。认证通过后还可能因目标仓库授权不足而拒绝写入。使用 HTTPS 时，应按平台要求配置适合的凭据方式与凭据助手，不把令牌写入教材命令、提交文件或公开日志。若同一台机器使用多个账户，要检查凭据助手或 SSH 配置选择的实际身份。重新设置提交邮箱不能修复“以错误账户访问服务器”的问题。</p>
+<h2 id="h2-9">按层次排查协作失败</h2>
+<p>图<a class="book-ref" href="../chapters/07.html#fig:remote-diagnosis">7.11</a>给出从入口到历史的排查顺序。它是诊断路径示意，并不意味着每种错误都会依次出现。</p>
+<figure id="fig:remote-diagnosis"><button aria-label="放大图7.11：把通信、授权和历史关系分开诊断" class="zoom-image"><img alt="图7.11 把通信、授权和历史关系分开诊断" height="175" loading="lazy" src="../assets/figure-7-11.webp" width="1066"/></button><figcaption><b>图 7.11</b> 把通信、授权和历史关系分开诊断</figcaption></figure>
+<h3 id="h3-18">地址和通信层</h3>
+<p>先确认在正确的本地仓库中，再查看远程地址。路径拼错、仓库改名、网络连接失败和代理设置问题，通常不需要通过重写提交历史来解决。保留错误原文，并记录使用的协议与目标地址；分享日志前去除其中的凭据。</p>
+<p>远程地址存在不保证当前身份可见。平台可能把私有仓库的未授权访问表现为不存在，因此“找不到仓库”也要结合身份判断，不能只反复修改分支名。</p>
+<h3 id="h3-19">权限和平台策略层</h3>
+<p>如果能抓取却无法推送，要检查是否只有读取权限、是否选中了原项目而非个人副本、目标分支是否受保护，以及必需检查是否满足。分支保护、服务器钩子和组织规则可以拒绝一个历史上完全可快进的更新。因此，“只要快进，服务器一定接受”是不成立的。快进关系仅常见分支更新的一项条件，不是身份和治理规则的替代品。</p>
+<h3 id="h3-20">历史与引用选择层</h3>
+<p>遇到非快进拒绝，先抓取，再查看双方各自独有的提交。若两边都是需要保留的工作，通常进行合并或按团队约定变基；若发现目标分支选错，先修正目标，而非为错误目标强行整理历史。</p>
+<p>强制推送允许请求非快进引用更新，但仍受服务器权限和策略约束。它主要改变共享引用的入口，不意味着所有旧对象立即从服务器物理删除。由于同伴可能依赖原历史，决定替换前需要明确沟通、保护入口和后续同步方式。</p>
+<p><code>--force-with-lease</code> 可增加对远端预期值的检查，降低覆盖未预期变化的风险；其隐含预期值可能依赖本地跟踪记录，后台抓取等操作也可能影响这份记录。它不是“任何情况下都安全”的强推按钮。第 11 章结合历史整理解释这一边界。</p>
+<h2 id="h2-10">远程协作的状态推理</h2>
+<p>协作过程中，本地开发入口、观察记录与服务器入口会在不同时间更新。推理应先说明掌握的信息和通信时点，再解释领先、落后或拒绝意味着什么。</p>
+<h3 id="h3-21">把“远程最新”拆成三个位置</h3>
+<p>协作者需要同时区分自己的本地分支、本地保存的远程跟踪引用，以及服务器当前分支。远程跟踪引用是本地的一项观察记录；它的名称包含远端简称，并不意味着每次读取时都访问服务器。若另一位成员刚推送，而本地尚未获取，本地记录就可能落后。</p>
+<p>这也是为什么比较之前经常需要获取：抓取先更新可用于判断的信息，最终整合内容仍需依据项目目标决定。取得信息以后，再依据前后关系决定快进、合并、变基或暂缓。把这些步骤分开，能使协作决策具有明确依据。</p>
+<p>带预期旧值的推送保护可以拒绝部分过期更新，但不能判断业务内容是否完整（图 <a class="book-ref" href="../chapters/07.html#fig:scenario-07-04">7.12</a> ）。后台抓取等动作还可能改变本地观察记录，操作前应确认预期值的取得方式和实际范围。</p>
+<figure id="fig:scenario-07-04"><button aria-label="放大图7.12：远端旧值保护只约束更新条件" class="zoom-image"><img alt="图7.12 远端旧值保护只约束更新条件" height="298" loading="lazy" src="../assets/figure-7-12.webp" width="1177"/></button><figcaption><b>图 7.12</b> 远端旧值保护只约束更新条件</figcaption></figure>
+<h3 id="h3-22">跟踪关系提供默认值，不提供持续同步</h3>
+<p>上游设置帮助某些命令在缺少显式参数时确定比较或交换对象。它不建立持续运行的同步通道，也不会在后台自动完成冲突处理。没有设置上游时，显式写出远端和分支仍可以完成许多操作；设置了上游，也仍须判断目标是否正确。</p>
+<p>团队中可能同时存在作者仓库、个人 fork 和课程小组仓库。远端简称仅本地名称，<code>origin</code> 并不天然属于某个角色。报告协作问题时，应记录简称对应的地址以及获取、推送方向，必要时遮去地址中的敏感参数。</p>
+<h2 id="h2-11">实验拓展：用观察记录证明获取与整合的区别</h2>
+<p>本独立实验使用本地裸仓库模拟服务器，不要求联网或账号。两个克隆代表两位操作者，每个克隆的身份配置都仅写在本地。</p>
+<div class="code-block"><div class="code-bar"><span>建立服务器和两位协作者</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git init --bare --initial-branch=main center07.git
+git clone center07.git alice07
+cd alice07
+git config user.name "Alice Learner"
+git config user.email "alice@example.invalid"
+printf 'Course baseline\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the course"
+git push -u origin main
+cd ..
+git clone center07.git bob07
+cd bob07
+git config user.name "Bob Learner"
+git config user.email "bob@example.invalid"
+printf 'Exercise: compare local and remote state.\n' &gt; task.txt
+git add task.txt
+git commit -m "docs: add the comparison task"
+git push origin main
+cd ../alice07
+BEFORE07=$(git rev-parse main)
+OBSERVED07=$(git rev-parse origin/main)
+test "$BEFORE07" = "$OBSERVED07"</code></pre></div>
+<p>此时 Alice 的本地分支和本地远程跟踪引用仍相同，但服务器已因 Bob 的推送而前进。不能仅凭本地两个名称相同，就认定自己已经取得服务器最新内容。</p>
+<div class="code-block"><div class="code-bar"><span>获取后先比较，再明确整合</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git fetch origin
+test "$(git rev-parse main)" = "$BEFORE07"
+test "$(git rev-parse origin/main)" != "$OBSERVED07"
+test ! -e task.txt
+git log --oneline main..origin/main
+git merge --ff-only origin/main
+test -f task.txt
+test "$(git rev-parse main)" = "$(git rev-parse origin/main)"</code></pre></div>
+<p>获取更新了观察记录，却没有自动将 task.txt 写入当前工作区。随后快进整合才使 main 到达取得的提交，并更新工作文件。这个先后关系为理解 <code>pull</code> 提供基础：组合操作仍然包含信息获取与后续整合两个概念阶段。</p>
+<h2 id="h2-12">推送拒绝的判断顺序</h2>
+<p>拒绝可能来自目标选择、身份、权限、历史或规则。下面按层次检查，保留本地成果并找出具体条件，不把强制更新当成通用排错动作。</p>
+<h3 id="h3-23">先看目标，再看关系与权限</h3>
+<p>推送失败可能来自地址错误、权限不足、网络不可用、服务器规则或历史关系不满足要求。若输出说明是非快进拒绝，应先获取并比较双方独有提交；若是认证失败，则应检查凭据和授权。不同错误不能统一用强制推送处理。</p>
+<p>即使使用租约保护的强制更新，也需要明确期待的旧值与协作规则。租约只能保护其所表达的并发条件，不能判断被替换历史是否仍被其他成员依赖。共同使用的分支上，追加修正通常更便于保留协作记录。</p>
+<p>同一个推送失败可能来自不同层次（图 <a class="book-ref" href="../chapters/07.html#fig:scenario-07-03">7.13</a> ）。读取服务端的具体原因后，再选择处理措施；重建本地历史不能解决错误地址或身份授权问题。</p>
+<figure id="fig:scenario-07-03"><button aria-label="放大图7.13：协作失败沿通信与历史分层排查" class="zoom-image"><img alt="图7.13 协作失败沿通信与历史分层排查" height="588" loading="lazy" src="../assets/figure-7-13.webp" width="1178"/></button><figcaption><b>图 7.13</b> 协作失败沿通信与历史分层排查</figcaption></figure>
+<h3 id="h3-24">同步完成应由哪些证据支持</h3>
+<p>一次协作交接应确认：目标分支上的提交是否符合预期；必要内容是否已取得；本地草稿是否另行保留；平台检查与评审是否满足约定。推送退出成功只说明服务器接受了相应更新，不能证明部署已完成，也不能证明其他成员的工作区自动更新。</p>
+<p>迁移到 GitHub 时，本章的数据关系仍然适用，新增的是账号、权限、PR、规则和运行记录。第 <a class="book-ref" href="../chapters/13.html#ch:lookup-13">13</a> 章将把这些机制纳入工作流。读者应始终先解释仓库之间交换了什么，再解释平台怎样组织合作。</p>
+<h2 id="h2-13">交换范围：从远端简称到引用映射</h2>
+<h3 id="h3-25">refspec回答来源与去向</h3>
+<p>仓库之间交换提交时，不仅需要知道连接地址，还要决定哪些引用参与交换，以及在接收方使用什么名称。refspec 用于表达这种映射。理解映射以后，读者就能解释为什么服务器上的 <code>refs/heads/main</code> 在本地通常表现为 <code>refs/remotes/origin/main</code>，而非自动覆盖本地 main。</p>
+<p>常见获取配置采用通配映射，将一组服务器分支记录到对应的远程跟踪命名空间。前缀加号表示该映射允许特定非快进更新，并不意味着服务器上的所有引用都会被取得，也不意味着本地工作文件随之改变。具体语法与限制应结合 fetch、push 和相关协议手册阅读<span class="citation" data-cites="gitdocs2026">(Git Project 2026)</span>。</p>
+<h3 id="h3-26">独立实验：只获取一个明确分支</h3>
+<p>本实验先建立两个服务器分支，再让观察者仅获取其中一个。它把网络传输替换为本地路径，使读者专注于引用映射。</p>
+<p>refspec两侧的意义依赖通信方向（图 <a class="book-ref" href="../chapters/07.html#fig:scenario-07-01">7.14</a> ）。先确定是谁向谁取得或发送信息，再解释冒号两侧的引用，能够避免把抓取配置误认为服务器写入授权。</p>
+<figure id="fig:scenario-07-01"><button aria-label="放大图7.14：抓取映射与推送映射分开阅读" class="zoom-image"><img alt="图7.14 抓取映射与推送映射分开阅读" height="323" loading="lazy" src="../assets/figure-7-14.webp" width="1169"/></button><figcaption><b>图 7.14</b> 抓取映射与推送映射分开阅读</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>准备包含主线与实验分支的服务器</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git init --bare --initial-branch=main selective07.git
+mkdir producer07
+cd producer07
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Main course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the main course"
+git switch -c experiment
+printf 'Optional experiment\n' &gt; optional.txt
+git add optional.txt
+git commit -m "docs: add an optional experiment"
+git remote add origin ../selective07.git
+git push origin main experiment
+cd ..
+mkdir observer07
+cd observer07
+git init -b main
+git remote add origin ../selective07.git
+git fetch origin \
+  refs/heads/experiment:refs/remotes/origin/experiment</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>观察取得的入口，并显式创建工作分支</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git show-ref
+if git show-ref --verify --quiet refs/remotes/origin/main; then
+  echo "Unexpected remote main observation" &gt;&amp;2
+  exit 1
+fi
+git show origin/experiment:optional.txt
+git switch -c study --track origin/experiment
+test -f optional.txt
+test "$(git branch --show-current)" = study</code></pre></div>
+<p>观察者取得了 experiment 对应对象和远程跟踪入口，却没有因该命令自动创建 origin/main。随后创建 study 才形成可检出的本地工作分支。取得一条分支的历史，可能同时取得其祖先对象；引用范围与对象依赖范围也应分别理解。</p>
+<h3 id="h3-27">删除与清理同样需要明确范围</h3>
+<p>服务器分支删除后，本地远程跟踪入口可能继续保留，直到按相应规则清理。清理远程跟踪引用通常不等于删除自己的本地工作分支。涉及标签、镜像配置或自定义映射时，清理范围还可能不同，执行前应查询配置并预览影响。</p>
+<h2 id="h2-14">协议、服务与平台的分工</h2>
+<p>传输协议负责通信，Git服务提供相应对象与引用操作，平台另行提供权限和协作功能。分层说明有助于定位拒绝发生的位置，不把所有问题归为同一种连接故障。</p>
+<h3 id="h3-28">传输协议解决访问路径</h3>
+<p>本地路径、SSH 和 HTTPS 等方式提供不同连接与认证条件。它们不改变提交对象和父关系的基本含义，但会影响权限、代理、凭据管理与服务部署。学习协议时应先确认访问对象，再检查连接层问题，不要把网络失败误判为历史损坏。</p>
+<p>裸仓库常用于接收与提供仓库数据，因为它不具有普通检出工作区。一个本地裸仓库可以帮助理解交换机制，但不等于已经具备完整托管平台：账号管理、评审、审计、备份和规则仍需要其他服务与运维措施。</p>
+<h3 id="h3-29">只读发现与写入操作应区分</h3>
+<p><code>ls-remote</code> 可以用于观察服务器公开的引用，而不先建立完整克隆。它给出的仅查询时可见的入口，仍受权限与服务器设置约束。推送则尝试更新服务器引用，需要相应授权并满足服务器规则。</p>
+<p>实际接入新平台时，先核对地址与只读访问，再进行明确目标的写入，更容易定位问题。课程演练中使用自己的 fork 和任务分支，可以让协作记录保持清楚；不应把作者教材仓库的默认分支当作所有学生共享的实验草稿区。</p>
+<h2 id="h2-15">本章小结</h2>
+<p>远程名描述本地通信配置，远程跟踪引用描述本地掌握的来源位置，本地分支描述当前工作入口。抓取、整合和推送分别处理信息获取、历史结合与对方引用更新；领先和落后也只能基于当前已知的信息解释。</p>
+<p>上游关联提供默认整合与比较依据，默认推送还受目标选择和配置规则影响。清理本地跟踪引用、删除本地分支和删除服务器分支必须分别理解。迁移到 GitHub 后，还需加入身份、授权和评审规则，但底层提交关系保持一致。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-gitdocs2026" role="listitem">
+Git Project. 2026. <em>Git Reference Manual</em>. <a class="uri" href="https://git-scm.com/docs">Https://git-scm.com/docs</a>.
+</div>
+<div class="csl-entry" id="ref-githubflow" role="listitem">
+GitHub. 2026. <em>GitHub Flow</em>. <a class="uri" href="https://docs.github.com/en/get-started/using-github/github-flow">Https://docs.github.com/en/get-started/using-github/github-flow</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-16">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:7.1"><summary><span class="difficulty">基础</span><b>7.1</b><span>解释 main、origin、origin/main 和中心 main 的区别。指出每项属于哪个仓库、是配置名称还是引用。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 远程别名 / 本地分支 / 远程跟踪引用</p><p>main是本地开发分支；origin是本地远程配置名称；origin/main通常是本地记录远端位置的引用；中心main是另一个仓库中的分支。前两类名字即使相似，也不共享同一份可自动同步的状态。</p><p>建议画出两个独立仓库的边界，把origin放在本地配置区，把origin/main画为本地观察入口。中心main需要通过通信查询，不能与同名本地标签合并成一个节点，否则难以解释抓取前后的时间差。</p></div></details><details class="exercise" id="ex:7.2"><summary><span class="difficulty">应用</span><b>7.2</b><span>同伴刚推送了提交，本地 status 却显示已同步。这一定是 Git 出错吗？给出一个可复现的解释。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 跟踪信息 / 抓取时点 / 同步判断</p><p>不一定出错。甲先推送，乙尚未fetch时，本地main与旧origin/main可能仍相同，status因而显示同步。乙抓取后观察记录更新，比较结果才反映新掌握的信息；抓取不自动整合工作分支。</p><p>status依据本地已知引用比较，没有自动查询服务器的全部最新状态。先记录本地观察，再抓取并重复比较，可以证明信息为何变化。需要实时确认远端时，应使用明确的通信步骤并记录其结果。</p></div></details><details class="exercise" id="ex:7.3"><summary><span class="difficulty">应用</span><b>7.3</b><span>在双人实验中，为什么 Bob 被拒绝后不需要重新创建自己的提交？用可达关系说明整合后的推送为什么能被接受。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 非快进拒绝 / 共同历史 / 保留贡献</p><p>拒绝只阻止中心入口更新，Bob自己的提交仍可访问。抓取并整合后，新的本地头同时到达中心旧头与自己的变化；中心旧头成为新头祖先，常见非快进条件解除。仍需满足服务器其他规则。</p><p>Bob已有提交仍可在本地查询，抓取后可把双方变化整合进一个包含两端历史的后继。新的推送满足目标端点可快进的条件时可被接受；接受前还需通过服务器权限和规则，不能只检查本地图。</p></div></details><details class="exercise" id="ex:7.4"><summary><span class="difficulty">基础</span><b>7.4</b><span>解释本章抓取映射冒号两侧与星号的意义。它为什么不能被解释成向服务器强推的授权？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 抓取映射 / 引用命名空间 / 规则作用域</p><p>抓取映射冒号左侧选择远端引用，右侧指定本地记录位置，星号建立对应匹配。映射中的加号涉及本地抓取目标更新，不能解释为向服务器写入或授予强推权限；通信方向和授权是其他条件。</p><p>映射左侧描述来源名称，右侧指定本地更新位置，星号按相应模式匹配。抓取配置中的更新条件作用于该次本地记录维护，推送授权仍由通信身份、目标范围和服务器规则分别决定。</p></div></details><details class="exercise" id="ex:7.5"><summary><span class="difficulty">应用</span><b>7.5</b><span>本地 course-local 已有上游，为什么无参数 push 仍被拒绝？从上游配置和 push.default 两方面解释。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 上游配置 / push.default / 异名分支</p><p>上游提供比较与默认整合关系，push.default=simple在常见设置下还检查本地与上游分支同名。异名可能被拒绝。先核对远程、branch配置和push.default，再显式表达已确认的推送目标。</p><p>可分别查询branch.*.remote、branch.*.merge与push.default，再说明无参数命令怎样选择目标。需要异名推送时，显式写出本地与远端名称，并在操作后重新查询目标，减少默认约定造成的歧义。</p></div></details><details class="exercise" id="ex:7.6"><summary><span class="difficulty">应用</span><b>7.6</b><span>中心删除 course-notes 后，比较 Alice 的 course-local、Bob 的 review-notes 与 Bob 的 origin/course-notes 在抓取前后的变化。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 远端删除 / prune / 本地分支保留</p><p>服务器删除course-notes不删除Alice的course-local或Bob的review-notes。Bob抓取前的origin/course-notes可能仍保留旧位置；按相应映射prune以后该观察入口消失。两个本地开发分支继续存在。</p><p>应分别查询服务器名称、两个协作者的本地分支和远程跟踪记录。服务器删除名称以后，旧观察记录可能仍在；prune可清理相应失效记录，个人本地分支是否继续保留则是另一项管理决定。</p></div></details><details class="exercise" id="ex:7.7"><summary><span class="difficulty">应用</span><b>7.7</b><span>设计一个纯本地练习，让双方都修改同一文件的同一行。先产生非快进拒绝，再抓取并处理冲突，记录两个不同阶段的错误。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 推送竞争 / 内容冲突 / 协作整合</p><p>由共同基线克隆两份，双方分别修改同一行并提交；甲先推送，乙推送得到非快进拒绝。乙fetch后merge才可能产生内容冲突。两次记录分别说明服务器入口关系与文件整合问题，不能合称同一种错误。</p><p>保留两次不同阶段的输出：第一次由远端端点关系拒绝更新，第二次由本地整合发现内容冲突。处理后既要核对文件，也要确认双方提交仍可达，不能用覆盖推送替代对整合结果的解释。</p></div></details><details class="exercise" id="ex:7.8"><summary><span class="difficulty">应用</span><b>7.8</b><span>根据 GitEasy 个人副本模板，标明每条命令的通信对象。若 origin 误指原项目，应先检查和调整哪些信息？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · origin与upstream / 通信方向 / 权限</p><p>origin通常指个人副本，upstream通常指原项目，但以remote -v的实际地址为准。误指原项目时先确认已有提交、目标仓库和权限，再修正地址；不要向未知对象试推或以强推检查权限。</p><p>修正地址前先读取remote -v和相关配置，确认哪个仓库由自己维护。把源项目设为upstream、个人副本设为origin有助于表达约定，但名称本身不授予权限；报告应写清每条命令的实际URL及方向。</p></div></details><details class="exercise" id="ex:7.9"><summary><span class="difficulty">基础</span><b>7.9</b><span>列出“可以抓取但不能推送”的三种不同原因，说明每种原因应在哪个层次排查。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 身份验证 / 写权限 / 分支规则</p><p>可能只有读取权限而无写入权限；可能选错账户或凭据只覆盖读取；也可能目标分支规则拒绝当前更新。分别核对认证、仓库授权和分支治理，不把所有拒绝都归因于网络或提交分叉。</p><p>读权限、认证凭据和允许的引用更新条件可能分别失败。排查时先确认错误来自连接、认证还是规则拒绝，再查看当前身份和目标分支。不要因为能够浏览网页就认定已经拥有对任意分支的写入资格。</p></div></details><details class="exercise" id="ex:7.10"><summary><span class="difficulty">应用</span><b>7.10</b><span>为一份学习笔记拟定评审请求说明，包含背景、范围、验证和限制；不要求向原项目发送请求。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 评审请求 / 修改范围 / 验证说明</p><p>说明笔记哪里影响理解、拟修改的段落、相关提交和验证方法；例如已检查相对链接但未进行课堂试读。附原文位置、预期改善及未验证范围。提交到教学副本即可，不必向作者原项目发请求。</p><p>说明中列出问题背景、具体变化、实际测试和仍待确认事项，并指向确切提交。没有执行线上评审时，材料应标为练习草稿；自动测试结果与他人的审阅意见也应分别记录，便于后续接续。</p></div></details><details class="exercise" id="ex:7.11"><summary><span class="difficulty">应用</span><b>7.11</b><span>本地分支名为course-local，服务器目标名为course-notes。请解释显式推送映射、上游配置及push.default怎样分别参与目标选择；写出操作前后的查询要求，避免把已设置上游当作任意推送都会成功。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · refspec / 异名推送 / 上游与默认目标</p><p>映射应明确本地来源和服务器目标，操作前确认两端现有提交与通信地址。上游用于跟踪关系及相关默认查询，push.default还会影响无参数推送如何选择目标；异名情况不能只凭一个配置值判断结果。</p><p>完成显式推送以后，查询服务器名称与本地跟踪配置，确认其对应预期仓库。权限和分支规则仍需独立满足。报告应保留实际映射和目标解析，而不只截取“设置成功”的输出。</p></div></details><details class="exercise" id="ex:7.12"><summary><span class="difficulty">应用</span><b>7.12</b><span>同一GitHub项目能在浏览器访问，HTTPS推送和SSH推送却分别失败。请区分浏览器会话、令牌或凭据助手、SSH密钥以及仓库写权限，并设计不暴露凭据内容的检查与修正顺序。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · HTTPS与SSH / 认证 / 最小权限</p><p>浏览器会话不自动等同于命令行使用的身份。先确认remote URL和传输协议，再核对HTTPS实际选择的凭据来源或SSH实际使用的身份；之后检查该身份是否拥有目标仓库写权限及满足分支规则。</p><p>日志只保留必要的身份与错误类别，不展示密钥或令牌正文。修正针对已定位的通道和作用域，完成后分别验证读取与预期更新。能够认证成功仍不保证任何引用更新都被服务器接受。</p></div></details><details class="exercise" id="ex:7.13"><summary><span class="difficulty">综合</span><b>7.13</b><span>课程团队同时使用原项目、个人fork和本地中心。两人并行提交后，一人推送被拒绝，另一人误把origin指向原项目且没有写权限。请重新建立清晰的通信图，保留双方成果，完成抓取和整合，再说明PR的接收与来源、删除名称及prune分别作用于哪里。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 多远端 / 推送竞争 / 跨fork协作</p><p>先标出每个独立仓库及实际URL，区分读取来源、本人可写副本和本地中心；修正别名配置并核对，不因读取得到数据就假定拥有写权限。对非快进竞争，保留已有提交，抓取对方进展并按团队策略整合，再检查双方内容、父关系及测试。</p><p>平台贡献需另选正确的base仓库与分支、head仓库与分支，不能把本地中心称为已经建立真实PR。服务器删除名称、本地prune失效观察记录、个人本地分支清理各自执行并分别验证。交接图和记录应足以让第三人说明每条命令更新哪一端。</p><p>先画所有者与仓库位置图，并逐项读取每个克隆的远程地址和上游配置。错误地址应改为相应个人副本或授权中心，已有提交通过保护分支保留，权限问题按实际身份处理。对非快进拒绝先抓取，再阅读共同基线并整合双方修改。发起PR时明确原项目目标分支为base、贡献分支为head。最后分别核对服务器分支、本地远程跟踪引用与工作分支，记录删除和清理前后各自的状态。</p></div></details></section><section id="mindmap"><h2 id="review-17">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第7章复习导图" class="zoom-image"><img alt="第7章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-07.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="7">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="06.html"><small>← 上一章</small>合并原理与冲突处理</a><a href="08.html"><small>下一章 →</small>变更撤销与版本恢复</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">远程配置与独立仓库</a><a href="#h2-2">三个分支位置与两种方向</a><a href="#h2-3">实验一：建立真实的双人协作循环</a><a href="#h2-4">引导实验：不联网也能完成双人协作</a><a href="#h2-5">上游配置与默认推送规则</a><a href="#h2-6">实验二：读取配置并推送到异名分支</a><a href="#h2-7">删除远程分支与清理本地记录</a><a href="#h2-8">把同一个模型迁移到 GitHub</a><a href="#h2-9">按层次排查协作失败</a><a href="#h2-10">远程协作的状态推理</a><a href="#h2-11">实验拓展：用观察记录证明获取与整合的区别</a><a href="#h2-12">推送拒绝的判断顺序</a><a href="#h2-13">交换范围：从远端简称到引用映射</a><a href="#h2-14">协议、服务与平台的分工</a><a href="#h2-15">本章小结</a><a href="#review-16">本章习题与解析</a><a href="#review-17">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

@@ -1,0 +1,419 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>变基、拣选与历史整理 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="11" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>进阶篇<span>/</span>第11章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 11 · 进阶篇</div><h1>变基、拣选与历史整理</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 56 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-11"></span>
+<p>提交既是保存点，也是后来阅读项目的线索。开发时形成的记录可能包含补充、修正和试验；交付时则希望每项变化容易理解、验证与移植。本章解释怎样通过重放创建新的历史，怎样检查整理结果，以及为什么共享范围决定操作边界。</p>
+<p><strong>学习目标：</strong>能从父关系解释变基；能在暂停时判断当前操作并选择继续、中止或跳过；能通过交互式动作组织逻辑提交；能限定拣选与 <code>--onto</code> 的范围；能同时检查树内容和提交关系；能为共享历史迁移制定可协调的方案。</p>
+<p>重放模型 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 普通变基 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 冲突与暂停 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 交互式整理 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 范围移植 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 拣选 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 共享历史与迁移。</p>
+<h2 id="h2-1">重放改变什么，保留什么</h2>
+<p>变基把选定变化放到新的父链上，因而通常形成新的提交身份。图 <a class="book-ref" href="../chapters/11.html#fig:visual-11-a">11.1</a> 将原路线与重放结果分开绘制：即使目标修改相近，父项或其他提交字段改变后，新提交也应作为独立对象理解。原对象的保留与可达性另由引用、日志和维护条件决定。</p>
+<figure id="fig:visual-11-a"><button aria-label="放大图11.1：主题变化的重放与新提交身份" class="zoom-image"><img alt="图11.1 主题变化的重放与新提交身份" height="1024" loading="lazy" src="../assets/figure-11-1.webp" width="1536"/></button><figcaption><b>图 11.1</b> 主题变化的重放与新提交身份</figcaption></figure>
+<p>第 6 章的合并保留已有父链，通过移动引用或增加整合提交把成果接起来。变基采用另一种组织方式：选择一组提交，把它们表达的变化依次应用到指定基线上，再让目标分支指向整理后的结果（图 <a class="book-ref" href="../chapters/11.html#fig:principle-ch11-01">11.2</a> ）。</p>
+<figure id="fig:principle-ch11-01"><button aria-label="放大图11.2：重放保留意图改变关系（每行对照一组条件与解释）" class="zoom-image"><img alt="图11.2 重放保留意图改变关系（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-11-2.webp" width="1237"/></button><figcaption><b>图 11.2</b> 重放保留意图改变关系（每行对照一组条件与解释）</figcaption></figure>
+<p>“重放”不是把旧提交对象搬到另一个位置。提交对象已经记录父标识，修改父关系就需要创建新对象。新对象可以延续作者信息和变更意图，但提交者时间、父标识、说明或解决后的文件树可能改变。</p>
+<p>在最常见的线性例子中，B 是共同基线，main 到 M，topic 从 B 产生 F1、F2。把 topic 变基到 main 后，可能得到父链 M、F1’、F2’。图<a class="book-ref" href="../chapters/11.html#fig:rebase">11.4</a>分别画出两种关系，箭头均从子提交指向父提交。</p>
+<p>整理之前记录原主题末端和新基线，整理之后核对新主题末端（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-06">11.3</a> ）。明确三处入口，可以把新旧差异调查与恢复动作分开进行。</p>
+<figure id="fig:scenario-11-06"><button aria-label="放大图11.3：重放前后的保护入口分别保存" class="zoom-image"><img alt="图11.3 重放前后的保护入口分别保存" height="315" loading="lazy" src="../assets/figure-11-3.webp" width="1161"/></button><figcaption><b>图 11.3</b> 重放前后的保护入口分别保存</figcaption></figure>
+<figure id="fig:rebase"><button aria-label="放大图11.4：变基通过新父关系组织被选中的变化" class="zoom-image"><img alt="图11.4 变基通过新父关系组织被选中的变化" height="308" loading="lazy" src="../assets/figure-11-4.webp" width="1059"/></button><figcaption><b>图 11.4</b> 变基通过新父关系组织被选中的变化</figcaption></figure>
+<p>图是基本模型，不是对全部选项的穷尽。Git 可能识别已在上游出现的等价补丁并跳过，提交也可能变为空；合并提交是否重建与选项有关。若分支已经位于目标基线上，变基还可能无需创建任何新提交。因此不应记成“运行 rebase 后所有哈希必定改变”。</p>
+<h3 id="h3-1">文件相同与历史相同</h3>
+<p>两个提交可以具有同一棵树，却具有不同父提交或说明。比较最终树为空，只证明被比较路径的最终内容相同；它不证明每个中间提交都可用，也不证明贡献被分成了相同单元。</p>
+<p>另一方面，换了新基线后正确的结果树本来就可能不同于变基前，因为它应同时包含主线的新变化。此时不能要求变基前后的全部文件完全一致，而应确认自己的改动意图被保留，并与新基线兼容。</p>
+<h3 id="h3-2">先保存入口，再进行整理</h3>
+<p>整理前查看状态并处理未提交工作，确认目标分支、基线和共享范围。可以创建一个 backup 名称指向原位置，便于比较和恢复。它仅另一项引用，不是独立备份；仓库整体损坏时仍需要其他副本。</p>
+<p>不要用“尚未 push”作为唯一判断。通过邮件、bundle、补丁或共享文件系统传播的提交也可能被他人依赖。反过来，某些团队明确约定个人 PR 分支可以协调重写。真正要问的是谁依赖旧标识、如何通知、如何迁移以及服务端是否允许更新。</p>
+<h2 id="h2-2">完整实验一：在新基线上保留主题修改</h2>
+<p>本实验全部在新目录完成，主线与主题修改不同文件，先观察无冲突重放。保持同一个 shell 会话，以便变量保存的标识可用于后续核验。</p>
+<div class="code-block"><div class="code-bar"><span>建立主线与主题分叉</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab11-replay
+cd lab11-replay
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish course"
+git switch -c topic
+printf '# Exercise\n\nInspect the staged change.\n' &gt; exercise.md
+git add exercise.md
+git commit -m "docs: add inspection exercise"
+printf '\nExplain the result before continuing.\n' &gt;&gt; exercise.md
+git add exercise.md
+git commit -m "docs: add reflection prompt"
+git branch backup/topic-before
+git switch main
+printf '\nRead the course before practice.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: add reading prerequisite"
+git switch topic</code></pre></div>
+<p>此时 backup/topic-before 保存 F2，main 保存 M。topic 与 main 互不包含对方的新变化。主线的 README 修改不会因你身处 topic 就消失；它仍在对象库和 main 的父链中，仅当前检出的树尚未包含它。</p>
+<div class="code-block"><div class="code-bar"><span>执行重放并从两种角度核验</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>OLD_TOPIC=$(git rev-parse HEAD)
+git rebase main
+git log --oneline --graph --decorate --all
+git diff backup/topic-before topic -- exercise.md
+git diff main topic -- README.md
+git rev-parse HEAD
+git rev-parse backup/topic-before</code></pre></div>
+<p>两个限定路径的 diff 都应为空：主题自己的 exercise 内容没有丢失，主线的 README 也已完整纳入。新 topic 与旧主题标识不同，main 已经是新 topic 的祖先。旧主题仍被 backup 名称引用，并未因变基自动删除。</p>
+<p>现在可以将 main 快进到 topic，但本实验暂不执行，以保持两者的比较关系。变基结束不等于自动合入目标分支；改变的是被整理的 topic，main 原位置通常保持不动。</p>
+<h2 id="h2-3">完整实验二：冲突时辨认三方与当前步骤</h2>
+<p>变基重放中的冲突需要结合当前正在重放的提交解释，不能直接套用普通合并时对“我方”和“对方”的直觉。下面以具体文本、索引阶段与暂停位置核对角色，再决定继续、跳过或中止（图 <a class="book-ref" href="../chapters/11.html#fig:principle-ch11-03">11.5</a> ）。</p>
+<figure id="fig:principle-ch11-03"><button aria-label="放大图11.5：重放冲突的角色辨认（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图11.5 重放冲突的角色辨认（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-11-5.webp" width="1111"/></button><figcaption><b>图 11.5</b> 重放冲突的角色辨认（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-3">制造一个能解释的冲突</h3>
+<p>新实验单独建库。主线把地点改成 A102，主题把同一行改成 B201。最终需求规定保留主线教室，同时补充主题提出的线上答疑；这项需求必须由人决定，文本工具没有依据猜中。</p>
+<div class="code-block"><div class="code-bar"><span>建立具有同一行修改的两条历史</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab11-conflict
+cd lab11-conflict
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: record initial room"
+git switch -c topic
+printf 'Room: B201\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: propose another room"
+git branch backup/conflict-before
+git switch main
+printf 'Room: A102\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: confirm main lecture room"
+git switch topic
+git rebase main</code></pre></div>
+<p>最后一条预期因内容冲突暂停。此时先运行 status，阅读 Git 说明正在重放哪项变化，再查看索引阶段。不要紧接着启动新的 merge 或另一轮 rebase。</p>
+<div class="code-block"><div class="code-bar"><span>观察暂停现场的三份内容</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git status
+git ls-files -u
+git show :1:room.txt
+git show :2:room.txt
+git show :3:room.txt
+git rebase --show-current-patch</code></pre></div>
+<p>在此例中阶段 1 是 A101，阶段 2 是正在构建的新基线一侧 A102，阶段 3 是被重放的主题变化一侧 B201。通常说“变基时 ours/theirs 看起来反了”，原因就在这里：ours 对应当前构建结果，theirs 对应正在重放的提交。</p>
+<p>变基把主题变化应用到新的历史位置，冲突中的相对称谓也应随当前步骤解释（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-01">11.6</a> ）。先阅读正在重放的提交和索引来源，再决定采用哪些内容。</p>
+<figure id="fig:scenario-11-01"><button aria-label="放大图11.6：变基冲突需要结合当前重放步骤" class="zoom-image"><img alt="图11.6 变基冲突需要结合当前重放步骤" height="298" loading="lazy" src="../assets/figure-11-6.webp" width="1177"/></button><figcaption><b>图 11.6</b> 变基冲突需要结合当前重放步骤</figcaption></figure>
+<p>把 ours 机械翻译为“我的”、theirs 翻译为“同事的”会误导。人和目录不是固定对应，主线也可能包含自己写的提交。遇到冲突应以实际文件和当前操作解释两个阶段，再决定保留哪些含义。</p>
+<h3 id="h3-4">继续、中止与跳过是不同决定</h3>
+<p>本例先演示中止，再重新开始并解决。中止用于放弃这轮整理，返回开始前记录的位置；它不是永久保险，操作中另行创建的重要临时文件仍应主动保存。实验从干净状态开始，减少恢复时的不确定性。</p>
+<div class="code-block"><div class="code-bar"><span>中止后确认原主题，再重新启动</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git rebase --abort
+git diff backup/conflict-before topic
+git branch --show-current
+git rebase main</code></pre></div>
+<p>最后一条会再次暂停，属于预期重复。若第一次已经解决并继续，就不应再执行这组中止练习；各条路线需要清楚的前提。</p>
+<div class="code-block"><div class="code-bar"><span>把明确需求写成解决结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Room: A102\nSupport: online office hours.\n' &gt; room.txt
+git add room.txt
+git diff --cached
+git rebase --continue
+git status --short
+git log --oneline --graph --decorate --all</code></pre></div>
+<p>continue 表示当前冲突已经解决，请继续执行剩余计划；可能打开编辑器确认说明。skip 表示不再应用当前这项提交变化，应在确认该变化不再需要或已经有等价实现后采用。不能因为解决困难就跳过，再宣称所有主题成果都已保留。</p>
+<p>如果后续提交继续冲突，重复“理解当前补丁、编辑、检查、add、continue”。一轮变基可能比一次合并更频繁暂停，因为它依次应用多个提交；每次暂停对应一个待适配的变化，需按当前补丁逐项处理。</p>
+<h2 id="h2-4">交互式整理：以可理解变化为单位</h2>
+<span id="sec:rebase-i"></span>
+<p>普通变基主要调整基线。交互式变基进一步提供计划表，让人决定哪些提交保留、修改说明、合并、暂停编辑或丢弃。计划通常按从旧到新排列，和常见 log 的新到旧顺序相反；编辑前先确认每行对应哪项变化（图 <a class="book-ref" href="../chapters/11.html#fig:principle-ch11-04">11.7</a> ）。</p>
+<figure id="fig:principle-ch11-04"><button aria-label="放大图11.7：交互整理关注意图（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图11.7 交互整理关注意图（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-11-7.webp" width="1124"/></button><figcaption><b>图 11.7</b> 交互整理关注意图（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>表<a class="book-ref" href="../chapters/11.html#tab:rebase-actions">11.1</a>列出六个入门动作，它们并非全部功能。重排会改变依赖，drop 会改变最终内容，edit 可能需要重新拆分索引；所有动作都要在明确范围与保存原入口后进行。</p>
+<div class="table-scroll" id="tab:rebase-actions" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 11.1</b> 交互式整理的常用动作</caption><tr><th colspan="1">动作</th><th colspan="1">作用及检查重点</th></tr><tr><td colspan="1">pick</td><td colspan="1">尝试按计划应用变化，可能产生新提交</td></tr><tr><td colspan="1">reword</td><td colspan="1">修改说明，后续父链可能随之变化</td></tr><tr><td colspan="1">edit</td><td colspan="1">应用后暂停，允许修改、补充或拆分</td></tr><tr><td colspan="1">squash</td><td colspan="1">与前一项合并，并编辑合并后的说明</td></tr><tr><td colspan="1">fixup</td><td colspan="1">与前一项合并，通常采用前一项的说明</td></tr><tr><td colspan="1">drop</td><td colspan="1">从本次重放计划移除，需要核实丢弃影响</td></tr></table></div></div>
+<h3 id="h3-5">一个具体计划怎样形成</h3>
+<p>假设三次提交分别为“新增实验”“修复该实验笔误”“补充另一项独立练习”。合理计划可以是第一项 pick，第二项 fixup，第三项 pick。这形成两个逻辑提交；不应为了提交少而把不相关练习也全部合并。</p>
+<p>squash 与 fixup 都可以组合变化，但说明处理不同。若两项变化各自包含有用背景，squash 后整理说明更合适；若第二项仅修正前一项，fixup 可以减少说明噪声。最终仍应检查合成提交是否自足，而非只观察总条数。</p>
+<p>reword 不改文件，却会改变提交内容中的说明，从而可能改变它及后续提交的标识。drop 则不仅移除一行历史，后续补丁能否应用、最终功能是否完整都需要验证。</p>
+<h3 id="h3-6">完整实验三：用 fixup 与 autosquash 整理</h3>
+<p>为了让命令路线可重复，本例使用 <code>--fixup</code> 自动生成目标提示，再由 <code>--autosquash</code> 整理计划。真实交互学习还应打开编辑器观察计划；这里显式使用 true 作为计划编辑器，表示接受自动生成的计划，并不意味着所有交互任务都能跳过阅读。</p>
+<div class="code-block"><div class="code-bar"><span>创建两个意图和一个补充提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd ..
+mkdir lab11-organize
+cd lab11-organize
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish course"
+git tag organize-base
+printf '# Inspection\n\nInspect the change.\n' &gt; inspection.md
+git add inspection.md
+git commit -m "docs: add inspection exercise"
+FIRST=$(git rev-parse HEAD)
+printf '# Reflection\n\nExplain the observed state.\n' &gt; reflection.md
+git add reflection.md
+git commit -m "docs: add reflection exercise"
+printf '\nUse the staged diff.\n' &gt;&gt; inspection.md
+git add inspection.md
+git commit --fixup="$FIRST"
+git branch backup/organize-before</code></pre></div>
+<p>第三项补充依赖的是第一项实验，文件也独立于第二项。因此自动调整后并入第一项不会破坏本例依赖。复杂项目如果第三项同时修改第二项新建的接口，重排就可能失败，需要先理解补丁之间的关系。</p>
+<div class="code-block"><div class="code-bar"><span>接受自动计划并比较整理结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash organize-base
+git log --oneline organize-base..HEAD
+git diff backup/organize-before HEAD
+git rev-list --count organize-base..HEAD
+git cat-file -p HEAD</code></pre></div>
+<p>最终应有两次逻辑提交，整理前后的最终树相同。第一项提交现在包含 staged diff 的完整说明，第二项仍单独表达 reflection。没有差异不表示中间提交都正确；请额外读取第一项提交中的 inspection，确认它不依赖后续文件即可理解。</p>
+<h3 id="h3-7">edit 暂停时如何拆分一个大提交</h3>
+<p>若某次提交混入两项独立任务，可在计划中把它改为 edit。暂停后，先确认正在编辑哪项，再用不改工作文件的 reset 把该提交的变化放回候选外，按意图分批 add 和 commit，最后 continue。不能对根提交机械使用不存在的 HEAD~1；根历史需要不同处理。</p>
+<p>拆分时注意未跟踪文件和删除路径，检查每一批 cached diff。完成后比较原保存入口与新结果的树，再验证每项新提交。如果把某文件漏在工作区，最终状态不干净通常就是线索。拆分应重建目的明确、依赖完整的变化单元；文件数量的平均分配不能保证这种完整性。</p>
+<h2 id="h2-5">范围移植：–onto 回答三件事</h2>
+<p>普通 rebase 常把上游同时用作排除边界和新基线。<code>--onto</code> 允许将二者分开：新基线在哪里，旧范围从哪里排除，哪条分支接受整理。理解这三个位置，比记住参数顺序更重要（图 <a class="book-ref" href="../chapters/11.html#fig:principle-ch11-05">11.9</a> ）。</p>
+<p>范围变基需要同时确定新基线、排除边界和主题末端。图 <a class="book-ref" href="../chapters/11.html#fig:visual-11-b">11.8</a> 中，X是新基线，C是排除边界，主题末端是E，因此重放的是D、E对应的变化，结果形成<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>D</mi><mo>′</mo></msup><annotation encoding="application/x-tex">D'</annotation></semantics></math>、<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>E</mi><mo>′</mo></msup><annotation encoding="application/x-tex">E'</annotation></semantics></math>。图中箭头指向父提交，不能根据节点在纸面上的左右位置推断参数顺序。</p>
+<figure id="fig:visual-11-b"><button aria-label="放大图11.8：范围变基中的新基线、排除边界与主题末端" class="zoom-image"><img alt="图11.8 范围变基中的新基线、排除边界与主题末端" height="1024" loading="lazy" src="../assets/figure-11-8.webp" width="1536"/></button><figcaption><b>图 11.8</b> 范围变基中的新基线、排除边界与主题末端</figcaption></figure>
+<figure id="fig:principle-ch11-05"><button aria-label="放大图11.9：onto明确三件事（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图11.9 onto明确三件事（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-11-9.webp" width="1083"/></button><figcaption><b>图 11.9</b> onto明确三件事（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>假设 main 上有 B，topic-a 在其后增加 A，topic-b 又基于 A 增加独立的 B1。现在发现 topic-b 的变化不需要 A，希望直接基于 main。概念命令为 rebase <code>--onto</code> main topic-a topic-b：排除 topic-a 已包含的历史，把 topic-b 剩余部分放到 main 上。</p>
+<p>若 topic-b 实际引用了 A 中的接口，操作可能补丁成功却语义失败。<code>--onto</code> 不会自动解除真实依赖。移植后应检查范围、最终树、测试结果和主题说明，必要时改写变化而非强行应用。</p>
+<h2 id="h2-6">拣选：移植一项变化而非接入整条历史</h2>
+<p>cherry-pick 将指定提交相对所选父提交表达的变化应用到当前位置，通常生成新提交。它适用于把一个独立修复带到维护分支。它不会因为原提交位于某条主题分支，就自动把该分支全部依赖一起带来（图 <a class="book-ref" href="../chapters/11.html#fig:principle-ch11-06">11.10</a> ）。</p>
+<figure id="fig:principle-ch11-06"><button aria-label="放大图11.10：定向移植的判断（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图11.10 定向移植的判断（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-11-10.webp" width="1111"/></button><figcaption><b>图 11.10</b> 定向移植的判断（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>新提交与原提交可能共享祖先，不能简单说“没有血缘”；准确说法是新提交不会仅因拣选就把原提交本身记录为父提交。补丁的重复出现也不意味着以后合并必然冲突，Git 会依据祖先和实际文件整合。工程代价在于需要追踪同一修复的多个落点与语义差异。</p>
+<h3 id="h3-8">完整实验四：修复进入维护线，功能留在主线</h3>
+<div class="code-block"><div class="code-bar"><span>建立维护起点并在主线分别提交功能和修复</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c maintenance organize-base
+git switch main
+printf '\nA new course feature.\n' &gt;&gt; reflection.md
+git add reflection.md
+git commit -m "docs: extend reflection feature"
+printf '\nUse a clean practice directory.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: fix missing environment prerequisite"
+PATCH=$(git rev-parse HEAD)
+git switch maintenance
+git cherry-pick -x "$PATCH"
+git log -1 --format=full
+cat README.md
+test ! -e reflection.md
+git switch main</code></pre></div>
+<p>maintenance 从 organize-base 出发，原本没有两项实验。修复只修改 README，因此本例可独立移植。-x 在常规无冲突拣选的提交说明中加入来源标识，便于维护者追踪；它不是签名或语义等价证明。</p>
+<p>拣选冲突时，同样先识别当前补丁和维护线环境，解决后 add，再 cherry-pick <code>--continue</code>；决定取消时用相应 abort。不要把 rebase 与 cherry-pick 的 continue 混用。拣选合并提交还需要明确以哪个父为主线解释变化，不能不加判断地把普通单亲规则套上去。</p>
+<h2 id="h2-7">比较策略：从团队约束作决定</h2>
+<p>表<a class="book-ref" href="../chapters/11.html#tab:merge-vs-rebase">11.2</a>比较的是操作性质，不是给工具贴安全等级。合并也可能错误解决内容冲突，变基也可以在可控的个人历史上可靠完成。风险取决于改动对象、共享范围与验证。</p>
+<div class="table-scroll" id="tab:merge-vs-rebase" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 11.2</b> 根据历史用途选择整合与整理方式</caption><tr><th colspan="1">关注点</th><th colspan="1">合并</th><th colspan="1">变基</th></tr><tr><td colspan="1">已有父链</td><td colspan="1">通常保留已有提交关系</td><td colspan="1">可能以重放结果替代选定父链</td></tr><tr><td colspan="1">主题边界</td><td colspan="1">可由合并提交保留整合点</td><td colspan="1">需要说明、PR 等补充主题线索</td></tr><tr><td colspan="1">冲突处理</td><td colspan="1">针对一次整合结果判断</td><td colspan="1">可能逐项适配多个提交</td></tr><tr><td colspan="1">典型使用</td><td colspan="1">共享主线整合、记录两侧来源</td><td colspan="1">协调后的主题同步与本地整理</td></tr><tr><td colspan="1">共同要求</td><td colspan="1">内容和历史检查</td><td colspan="1">内容和历史检查</td></tr></table></div></div>
+<p>已经共享的主线通常采用追加方式修正。个人主题分支若有明确重写约定，也应在更新前检查远端预期位置。<code>--force-with-lease</code> 仅对远端引用施加某种期望条件，不验证别人是否依赖旧提交，也不证明新的内容更正确（图 <a class="book-ref" href="../chapters/11.html#fig:principle-ch11-07">11.12</a> ）。</p>
+<p>历史整理既改变本地记录，也可能影响其他参与者的入口（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-04">11.11</a> ）。共享前明确允许整理的范围，操作后交代新旧对应关系，能够减少重复重放与误合入。</p>
+<figure id="fig:scenario-11-04"><button aria-label="放大图11.11：共享历史整理需要两类约定" class="zoom-image"><img alt="图11.11 共享历史整理需要两类约定" height="298" loading="lazy" src="../assets/figure-11-11.webp" width="1178"/></button><figcaption><b>图 11.11</b> 共享历史整理需要两类约定</figcaption></figure>
+<figure id="fig:principle-ch11-07"><button aria-label="放大图11.12：整合策略与团队约束（每行对照一组条件与解释）" class="zoom-image"><img alt="图11.12 整合策略与团队约束（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-11-12.webp" width="1237"/></button><figcaption><b>图 11.12</b> 整合策略与团队约束（每行对照一组条件与解释）</figcaption></figure>
+<p>如果需要重写共享分支，应先协商冻结范围、保存旧标识、说明新旧映射、更新规则，并指导协作者迁移尚未共享的工作。不能把“大家重新 clone”当成无需考虑本地未提交工作和独有提交的简便口号。</p>
+<h2 id="h2-8">大范围历史清理与协作迁移</h2>
+<p>小范围整理与全库清理目标不同。清理长期误入的大文件、调整批量身份或移除敏感路径，通常需要专门工具，例如单独安装的 git-filter-repo。它不是 Git 内置子命令，使用前应核对版本、官方说明和新克隆要求。</p>
+<p>这里不给出可在当前教材项目上直接连续执行的破坏性命令链。练习应在独立的新克隆和假数据上完成：明确目标路径，保存可恢复副本，列出待处理的引用，执行一种清理，再检查提交、分支、标签及目标内容。不同清理任务不应在没有解释的情况下串在同一个仓库中。</p>
+<p>凭据已泄露时，清理仓库历史不能使凭据自动失效（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-05">11.13</a> ）。应先处理实际访问能力，再规划历史清理、缓存与协作副本的迁移。</p>
+<figure id="fig:scenario-11-05"><button aria-label="放大图11.13：清理历史与处置有效凭据分别完成" class="zoom-image"><img alt="图11.13 清理历史与处置有效凭据分别完成" height="298" loading="lazy" src="../assets/figure-11-13.webp" width="1177"/></button><figcaption><b>图 11.13</b> 清理历史与处置有效凭据分别完成</figcaption></figure>
+<p>清除一个历史路径并不自动匹配它过去的所有别名；删去 Git blob 也不自动清除 LFS 服务端对象；改写标签目标还会影响旧签名与发布记录。实际清理需要依据目标和平台机制逐项确认。</p>
+<p>若涉及凭据，先撤销或轮换，再减少历史传播。已被其他人取得的副本无法因本地重写而消失。处置结果应区分“凭据已失效”“本仓库历史已清理”“其他副本与平台事项已协调”，不将它们合并为一句“已彻底删除”。图<a class="book-ref" href="../chapters/11.html#fig:guide-11-rewrite-proof">11.14</a>概括一次整理的验证闭环。比较树用于核对内容，比较父链用于核对历史；两项都需要与原定意图对应。</p>
+<figure id="fig:guide-11-rewrite-proof"><button aria-label="放大图11.14：历史整理需要内容证据和关系证据" class="zoom-image"><img alt="图11.14 历史整理需要内容证据和关系证据" height="143" loading="lazy" src="../assets/figure-11-14.webp" width="1101"/></button><figcaption><b>图 11.14</b> 历史整理需要内容证据和关系证据</figcaption></figure>
+<h2 id="h2-9">案例研读：把修复移植到维护版本</h2>
+<p>维护者希望引入一项修复，同时保留旧版本的范围与接口。案例从依赖和验证出发选择移植方式，说明为什么不能为省事直接接入整个开发主线。</p>
+<h3 id="h3-9">相同意图不保证相同补丁结果</h3>
+<p>主线已增加新功能，而稳定版本只允许修复错误。把主线上的修复提交拣选到维护分支，可以避免接入整条功能历史，但仍须检查修复依赖。例如修复可能调用仅存在于主线的新函数；文本补丁即使顺利应用，也可能无法在维护版运行。</p>
+<p>因此移植应包括三步判断：这项变化是否属于维护范围；它依赖哪些先前变化；在旧基线上的验证是否成立。提交标识通常会改变，因为父关系与提交元数据可能不同。应通过说明和验证记录关联原修复，而非要求两条维护线具有相同提交标识。</p>
+<p>拣选把变化放到另一上下文中，目标项目不一定具备来源的全部依赖（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-03">11.15</a> ）。应检查差异、构建和测试，不能以来源通过验证作为目标自动正确的依据。</p>
+<figure id="fig:scenario-11-03"><button aria-label="放大图11.15：拣选带来变化但不接入原父链" class="zoom-image"><img alt="图11.15 拣选带来变化但不接入原父链" height="426" loading="lazy" src="../assets/figure-11-15.webp" width="1169"/></button><figcaption><b>图 11.15</b> 拣选带来变化但不接入原父链</figcaption></figure>
+<h3 id="h3-10">历史整理应先确定保留目标</h3>
+<p>交互式变基可以合并、重排或拆分提交，但计划不能只围绕“减少数量”。有些中间提交解释了设计选择，有些修复应与引入问题的提交结合，有些变化则应保留独立撤销边界。整理的目标是让读者能够理解和验证变化过程。</p>
+<p>若主题分支已被他人使用，改写还涉及协作交接。应明确谁依赖旧历史、如何保留旧入口、何时更新远端以及其他成员怎样迁移。历史看起来更短，并不自动抵消迁移成本。</p>
+<h2 id="h2-10">实验拓展：用内容与祖先关系解释拣选</h2>
+<p>本独立实验在主线上依次加入新功能和一项独立修复，再把修复移植到维护线。两个变化使用不同文件，便于核对范围。</p>
+<div class="code-block"><div class="code-bar"><span>建立主线与维护线</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir transplant11
+cd transplant11
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: establish the stable baseline"
+git branch maintenance
+printf 'New optional experiment\n' &gt; new-feature.txt
+git add new-feature.txt
+git commit -m "feat: add an optional experiment"
+printf 'Room: B202\n' &gt; room.txt
+git add room.txt
+git commit -m "fix: correct the room assignment"
+FIX11=$(git rev-parse HEAD)
+git switch maintenance
+git cherry-pick -x "$FIX11"</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>核对修复范围与历史边界</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>grep -q 'Room: B202' room.txt
+test ! -e new-feature.txt
+test "$(git rev-parse HEAD)" != "$FIX11"
+git log -1 --format=%B
+git diff HEAD^ HEAD --name-only
+if git merge-base --is-ancestor "$FIX11" HEAD; then
+  echo "Original fix unexpectedly became an ancestor" &gt;&amp;2
+  exit 1
+fi
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>维护线具备修复后的地点内容，但未取得新功能文件。原修复提交也没有因拣选直接成为维护线的祖先；这里复制的是变化意图及其在新基线上的应用结果。<code>-x</code> 将来源信息写入说明，便于追溯，但该文字本身不是合并关系。</p>
+<h2 id="h2-11">重写之后怎样证明结果</h2>
+<p>历史整理改变身份与关系以后，仍需说明哪些内容与意图得到保留。验证既比较最终树，也检查必要的中间版本、共享边界和协作者后续取得方式。</p>
+<h3 id="h3-11">树比较只能覆盖最终内容</h3>
+<p>整理前后最终树相同，是一项有用的检查，说明所比较端点的文件状态一致。但它不能证明每个中间提交都可构建，也不能证明父关系、说明和签名仍符合要求。若项目要求逐提交验证，就应检查整理后的整个序列。</p>
+<p><code>range-diff</code> 可帮助比较两个提交序列的变化对应关系，适合审阅变基后的主题修订。其输出仍需结合补丁理解；在大幅拆分、合并或语义改写时，对应关系可能不再简单。工具提供线索，作者需要解释哪些变化是预期的。</p>
+<h3 id="h3-12">空提交与跳过不能机械处理</h3>
+<p>重放时发现某项变化已经存在，可能出现空结果。应判断该提交的目的是否已由新基线满足，还是因冲突处理遗漏了内容。只有确认意图已经实现，才可以按当前操作提示选择合适处理。为了继续流程而直接跳过，可能把真正需要的修复丢掉。</p>
+<h2 id="h2-12">迁移练习：为一组混合提交制定整理计划</h2>
+<p>某主题分支包含：功能主体、拼写修正、无关格式化、功能测试和一次调试输出删除。请说明各项变化应怎样组织。参考分析应先识别依赖与目的，再决定是否合并。功能主体与对应测试通常应形成可验证单元；无关格式化可独立处理；调试输出若从未应进入最终功能，可以在发布前与相关变化整理，但需遵守共享历史约定。评价时关注“每项提交是否可解释、可评审、可验证”，而非单纯比较提交数量。整理是一种面向读者的工程工作，不能只为日志外观服务。</p>
+<h2 id="h2-13">补丁协作：在仓库连接之外交换变化</h2>
+<h3 id="h3-13">补丁为什么仍然有用</h3>
+<p>协作者未必总能直接访问同一托管平台。代码评审、邮件协作或受限环境中，变化可以先表示为补丁文件，再由接收者检查并应用。补丁的价值在于交换变化，而非提供仓库的完整备份。接收者仍需知道补丁针对什么基线、按什么顺序应用，以及应用以后怎样验证。</p>
+<p>普通差异补丁主要描述内容变化；由 <code>format-patch</code> 导出的邮件格式补丁还包含用于重建提交的作者、说明等信息。<code>apply</code> 与 <code>am</code> 因此服务于不同层次：前者应用补丁内容，后者从邮件格式材料形成提交序列。具体选项、失败状态和三方应用前提应查阅官方手册<span class="citation" data-cites="gitapply gitam">(Git Project 2026b, 2026a)</span>。</p>
+<h3 id="h3-14">独立实验一：检查补丁，再应用内容</h3>
+<p>本例先从一次未提交编辑导出普通补丁，再恢复工作文件，最后检查并应用同一补丁。恢复动作只发生在专用实验目录，目的是让输入基线保持一致。</p>
+<div class="code-block"><div class="code-bar"><span>导出一项尚未提交的变化</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir patch11
+cd patch11
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf 'Room: A101\n' &gt; room.txt
+git add room.txt
+git commit -m "docs: establish the patch baseline"
+printf 'Room: B202\n' &gt; room.txt
+git diff --binary &gt; ../room11.patch
+git restore -- room.txt
+git apply --stat ../room11.patch
+git apply --check ../room11.patch
+git apply ../room11.patch</code></pre></div>
+<p><code>--stat</code> 帮助观察变化范围，<code>--check</code> 先判断补丁能否按当前条件应用，真正的应用随后才发生。检查通过不保证项目语义正确，也不能保证在检查与应用之间发生其他修改时结果仍然相同。</p>
+<div class="code-block"><div class="code-bar"><span>验证内容变化没有自动形成提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>grep -q 'Room: B202' room.txt
+test "$(git rev-list --count HEAD)" = 1
+test -z "$(git diff --cached)"
+git diff -- room.txt
+git add room.txt
+git commit -m "fix: apply the corrected room patch"</code></pre></div>
+<p>普通应用后，工作文件改变，索引仍需按目标选择，提交也需要明确创建。读者不能因为补丁文件中包含完整路径和差异，就把它当作已经进入历史的一项提交。</p>
+<h3 id="h3-15">独立实验二：用邮件格式交换一个提交</h3>
+<p>接续本节实验，以当前主线建立主题分支，创建一个新说明提交，再导出邮件格式。接收分支从同一基线开始，以 <code>am</code> 接收这项变化。</p>
+<p>能够应用补丁只说明相应文本条件满足（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-08">11.16</a> ）。接收方仍需确认来源、许可、目标依赖及实际行为；邮件元信息也不能单独证明主体身份。</p>
+<figure id="fig:scenario-11-08"><button aria-label="放大图11.16：补丁应用与邮件提交分别处理" class="zoom-image"><img alt="图11.16 补丁应用与邮件提交分别处理" height="426" loading="lazy" src="../assets/figure-11-16.webp" width="1169"/></button><figcaption><b>图 11.16</b> 补丁应用与邮件提交分别处理</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>导出主题提交，并在另一分支接收</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git branch receive-base
+git switch -c mail-topic
+printf 'Inspect the patch before applying it.\n' &gt; review.txt
+git add review.txt
+git commit -m "docs: add a patch review reminder"
+SOURCE11=$(git rev-parse HEAD)
+git format-patch -1 --stdout HEAD &gt; ../lesson11.mbox
+git switch -c mail-receiver receive-base
+git am ../lesson11.mbox
+git show HEAD:review.txt
+git log -1 --format='%an &lt;%ae&gt;%n%s'
+test -z "$(git diff mail-topic mail-receiver)"
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>这里验证的是接收后文件树与主题结果一致，并观察作者及说明。新提交的标识可能与源提交相同，也可能因提交者时间等元数据不同而变化，不能把“必须不同”作为本例的通用断言。真正需要检查的是内容、顺序、来源信息和适用基线。</p>
+<h3 id="h3-16">失败时保留操作语境</h3>
+<p>补丁应用失败可能来自基线差异、路径变化或上下文不匹配。应先查看失败位置和当前状态，再决定手工调整、使用满足前提的三方处理，或中止接收。不要为了消除报错而删除不理解的补丁片段。</p>
+<p><code>am</code> 的继续、跳过和中止分别具有不同含义。继续表示已经处理当前问题并准备形成相应提交；跳过表示不接收当前项；中止则返回操作前的相应状态。选择前应确认当前项的业务目的是否仍需要保留。</p>
+<h3 id="h3-17">来源、许可与签署说明</h3>
+<p>接收补丁不仅要检查技术效果，还要遵守项目贡献规则和许可要求。作者字段描述提交元数据，签署说明可能表达项目约定，密码学签名又属于另一种验证机制。三者不能仅因都包含姓名或邮箱就相互替代。</p>
+<p>迁移练习：将课程资料的一项修正导出为普通补丁和邮件格式补丁，说明接收者分别需要做哪些动作。报告应指出哪种材料直接支持重建提交、哪些内容仍须人工审核，以及何时应选择完整仓库或 bundle 进行交换。</p>
+<h2 id="h2-14">范围重放实训：移除已经不再需要的中间依赖</h2>
+<h3 id="h3-18">先画清楚原有关系</h3>
+<p>一个主题最初从另一个试验分支开始，后来发现自己的变化并不依赖该试验功能，准备直接提交给主线。这时要同时回答三个问题：以哪里作为新基线，排除到哪个旧边界，以及移动哪条任务分支。<code>--onto</code> 的价值在于把这些角色分别表达，而非让一个参数承担全部含义。</p>
+<p>本例中，main 是稳定起点；helper 增加一份无关试验说明；topic 从 helper 继续增加练习。最终希望 topic 只把自己的练习重放到 main，避免让 helper 的说明进入主题结果。实验特意使用互不依赖的文件，使排除中间变化具有合理业务前提。</p>
+<div class="code-block"><div class="code-bar"><span>构造具有中间基线的主题</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir onto11
+cd onto11
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Stable course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the stable course"
+git switch -c helper
+printf 'Optional helper material\n' &gt; helper.txt
+git add helper.txt
+git commit -m "docs: add the helper material"
+git switch -c topic
+printf 'Exercise: inspect the staged content.\n' &gt; exercise.txt
+git add exercise.txt
+git commit -m "docs: add an independent exercise"
+git branch backup/topic-with-helper
+git log --oneline --graph --all</code></pre></div>
+<p>此时 topic 的历史包含 helper 提交，因此若直接快进主线，就会同时接收中间说明。只比较 topic 最新提交的说明不足以识别范围；应查看从主线到主题的整个可达差异。</p>
+<div class="code-block"><div class="code-bar"><span>选择主题独有范围，在主线基线上重放</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git log --oneline helper..topic
+git rebase --onto main helper topic
+git log --oneline --graph --all
+test -f exercise.txt
+test ! -e helper.txt
+git merge-base --is-ancestor main topic
+if git merge-base --is-ancestor helper topic; then exit 1; fi
+test -z "$(git diff backup/topic-with-helper topic -- exercise.txt)"
+test "$(git rev-list --count main..topic)" = 1</code></pre></div>
+<p>本例所选择的是 topic 中排除 helper 可达部分后的提交。新结果仍有练习文件，却没有 helper 文件；main 是新主题的祖先，而 helper 不是。备份入口保留原关系，便于比较与恢复。相关选项与选择范围的复杂情形，应结合官方变基手册核对<span class="citation" data-cites="gitrebasemanual">(Git Project 2026c)</span>。</p>
+<h3 id="h3-19">范围正确仍需检查依赖</h3>
+<p>如果练习实际引用 helper 文件中的内容，机械排除 helper 就会得到不完整成果。文本重放可能成功，但语义已经破坏。因此重放以后必须检查文件关系、链接和测试，不能只看“成功变基”的提示。</p>
+<p>范围变基的三个角色不能只按命令中的左右次序记忆（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-07">11.17</a> ）。先画出保留与排除范围，再写参数，并在重放后检查父链及内容。</p>
+<figure id="fig:scenario-11-07"><button aria-label="放大图11.17：范围选择与新位置是不同参数" class="zoom-image"><img alt="图11.17 范围选择与新位置是不同参数" height="298" loading="lazy" src="../assets/figure-11-17.webp" width="1177"/></button><figcaption><b>图 11.17</b> 范围选择与新位置是不同参数</figcaption></figure>
+<p>复杂历史含合并提交、等价补丁或其他特殊条件时，选择和重放行为还会受到相应选项影响。初学者应先在简单线性例子中建立范围模型，再处理复杂图。不要把本例的三个名称替换到任意历史，就期待保持同样效果。</p>
+<h3 id="h3-20">怎样审阅重放结果</h3>
+<p>审阅分为范围、内容和连接三个层次。范围检查确认只重放预期提交；内容检查确认主题意图保留且无缺失依赖；连接检查确认新基线和父关系符合要求。必要时比较原、新提交序列，并解释冲突处理所引入的变化。</p>
+<p>迁移练习：让 helper 成为 topic 的真实依赖，再思考是否仍应排除它。参考分析应根据需求重新选择：保留依赖、拆出必要部分，或先完成独立化改造。<code>--onto</code> 提供历史变换能力，是否应该这样变换仍由项目约束决定。</p>
+<h2 id="h2-15">提交拆分实训：让两项任务分别接受评审</h2>
+<p>拆分目标是让每项变化可以独立解释和检验。需要在保留编辑的前提下重新组织候选，并检查接口依赖，不能只以提交数量增加判断成功。</p>
+<h3 id="h3-21">拆分的目标与限制</h3>
+<p>一个尚未共享的提交同时增加了地点说明和阅读建议，维护者希望分别评审。拆分需要让两项变化成为独立提交，同时保持最终文件树。若该提交后面还有其他提交，通常应通过交互式整理在指定位置暂停；下面先研究“最近提交尚未共享”的最小情形。</p>
+<p>操作前保存原入口并确认工作区干净。使用 mixed 重置以后，分支与索引回到父位置，工作文件仍保留原最终内容。随后按任务重新选择候选，形成两项提交。该路线需要理解保留目标，不能作为处理任意共享历史的通用步骤。</p>
+<div class="code-block"><div class="code-bar"><span>建立含两项任务的最近提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir split11
+cd split11
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Course baseline\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the baseline"
+printf 'Room: A101\n' &gt; room.txt
+printf 'Read the candidate diff.\n' &gt; reading.txt
+git add room.txt reading.txt
+git commit -m "docs: add room and reading information"
+git branch backup/before-split
+ORIGINAL_TREE11=$(git rev-parse HEAD^{tree})
+test -z "$(git status --porcelain)"</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>保留文件内容，重新组织两项提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git reset --mixed HEAD^
+git status --short
+git add room.txt
+git diff --cached --name-only
+git commit -m "docs: record the course room"
+git add reading.txt
+git diff --cached --name-only
+git commit -m "docs: add the reading reminder"
+test "$(git rev-parse HEAD^{tree})" = "$ORIGINAL_TREE11"
+test "$(git rev-list --count HEAD)" = 3
+test "$(git diff HEAD~2 HEAD~1 --name-only)" = room.txt
+test "$(git diff HEAD~1 HEAD --name-only)" = reading.txt
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>两项新提交替代原混合提交，但备份入口仍保留旧版本。最终树相同，证明端点内容没有因拆分遗漏；逐项补丁范围不同，证明评审边界已经形成。若两项任务实际必须同时生效，则还要考虑中间版本是否合理，不能机械追求拆分。</p>
+<h3 id="h3-22">把方法放入交互式整理</h3>
+<p>对较早的混合提交，可在交互式变基计划中标记 edit，暂停后按相同模型拆分，再继续重放后续提交。此时还应验证后续变化在新序列中仍可应用且保持意图。暂停位置、当前提交与整个操作的起点必须分别记录。</p>
+<p>交互式整理服务于可理解的历史（图 <a class="book-ref" href="../chapters/11.html#fig:scenario-11-02">11.18</a> ）。每一步都应保持依赖和候选的完整性，不能只追求提交数量减少或说明形式整齐。</p>
+<figure id="fig:scenario-11-02"><button aria-label="放大图11.18：整理动作与提交身份变化" class="zoom-image"><img alt="图11.18 整理动作与提交身份变化" height="426" loading="lazy" src="../assets/figure-11-18.webp" width="1169"/></button><figcaption><b>图 11.18</b> 整理动作与提交身份变化</figcaption></figure>
+<p>如果拆分发生冲突或发现依赖，应保留现场重新分析。中止与继续对应不同决定，不能为了让流程走完而跳过无法理解的变化。公共历史的整理还需要协作迁移，不因本地实验成功而自动获得适用性。</p>
+<h3 id="h3-23">拆分之后的说明与验证</h3>
+<p>每项新提交应表达完整目的，并附带相应测试或资料核对。若第一项暂时不能运行，只能依赖第二项才成立，应重新考虑边界，或在项目约定允许时明确中间状态。历史整理应服务于后续阅读、回退和排查，而非仅满足形式上的细分。</p>
+<p>本节任务是把一个包含三类无关修改的教学提交拆分，并写出最终树和每项补丁的证据。报告还应说明原提交是否共享、旧入口保留在哪里，以及哪些检查只能证明端点内容、哪些能够证明中间序列。</p>
+<h2 id="h2-16">本章小结</h2>
+<p>变基与拣选通过重放组织变化；提交对象的父关系决定了为何它们可能生成新身份。交互式计划进一步调整表达单元。操作完成以后，需要确认预期变化、依赖和历史结构，再决定如何共享。使用历史整理工具，应能说明所解决的问题、受影响的协作者、验证方法及恢复路径。保留清楚的决策依据，历史才真正便于后来的人使用。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-gitam" role="listitem">
+Git Project. 2026a. <em>Git-Am Manual Page</em>. <a class="uri" href="https://git-scm.com/docs/git-am">Https://git-scm.com/docs/git-am</a>.
+</div>
+<div class="csl-entry" id="ref-gitapply" role="listitem">
+Git Project. 2026b. <em>Git-Apply Manual Page</em>. <a class="uri" href="https://git-scm.com/docs/git-apply">Https://git-scm.com/docs/git-apply</a>.
+</div>
+<div class="csl-entry" id="ref-gitrebasemanual" role="listitem">
+Git Project. 2026c. <em>Git-Rebase Manual Page</em>. <a class="uri" href="https://git-scm.com/docs/git-rebase">Https://git-scm.com/docs/git-rebase</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-17">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:11.1"><summary><span class="difficulty">应用</span><b>11.1</b><span>用树和父标识解释为什么重放通常生成新提交，并举出一次运行 rebase 可能不创建新提交的情况。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 补丁重放 / 新父项 / 提交身份</p><p>重放把补丁应用于新上下文并通常记录新父项，提交正文改变使标识改变。若目标已经符合要求、没有需要重放的提交或操作判定无需变化，rebase可能不建立新提交；应检查实际输出与历史。</p><p>当主题已经满足目标关系、无需重放时，操作可以直接结束；其他优化也可能使某些提交无需重建。应根据实际对象与父关系判断，避免把“运行过rebase”直接等同于“所有标识都改变”。</p></div></details><details class="exercise" id="ex:11.2"><summary><span class="difficulty">应用</span><b>11.2</b><span>完成实验一，证明主线内容与主题内容均保留，说明为何不能要求全部文件与变基前相同。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 新基线 / 主题内容 / 组合验证</p><p>比较新基线包含的主线变化与主题变化，检查最终树、测试和父链。新基线本来就引入额外内容，因此不能要求整个最终树与变基前主题头相同；需要保留的是任务语义及应有整合结果。</p><p>比较时应核对主题意图仍存在，以及新主线的独立变化被保留。若主题依赖主线接口，还需运行相关测试。新树可以与重放前不同，保持某一意图不要求冻结整个项目的旧内容。</p></div></details><details class="exercise" id="ex:11.3"><summary><span class="difficulty">应用</span><b>11.3</b><span>完成冲突实验，用具体文本解释阶段 1、2、3，而不使用“我的”“别人的”代替对象关系。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 重放冲突 / 索引阶段 / 当前补丁</p><p>逐项读取冲突基线与两侧文本，结合当前正在重放的提交解释角色。stage 2常对应已形成的新基线上下文，stage 3对应当前重放来源，具体以实际操作核对，不把所有冲突都套用固定人称。</p><p>逐次记录当前正在应用的提交和目标基线，再解释阶段内容。冲突后检查文件、索引及管理状态，选择符合当前需求的结果，继续以后再核对后续补丁，避免用固定人物称谓处理每一步。</p></div></details><details class="exercise" id="ex:11.4"><summary><span class="difficulty">基础</span><b>11.4</b><span>说明 continue、skip、abort 各自表达哪种决定；给出不应使用 skip 的情境。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · continue / skip / abort / 变化保留</p><p>continue表示已完成当前解决并继续，skip表示放弃当前待重放变化，abort尝试回到操作前入口。若当前变化仍是业务必需部分，不能为消除提示而skip；应处理依赖或冲突并重新验证。</p><p>continue表示解决当前步骤后继续，skip会放弃当前待应用变化，abort尝试回到开始前状态。若补丁仍包含必要功能，不能因冲突麻烦就跳过；应先判断其意图是否已由其他变化实现并记录依据。</p></div></details><details class="exercise" id="ex:11.5"><summary><span class="difficulty">应用</span><b>11.5</b><span>完成 autosquash 实验，检查两个中间提交是否分别自足，再比较最终树。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · fixup / autosquash / 中间可用性</p><p>中间提交是否自足需要逐个检出构建与检查，不只查看最后状态。autosquash按约定把fixup与目标组织；完成后比较最终树和说明，确认必要修改未丢失。整理质量不能仅用提交数量评价。</p><p>先检查主题各提交的目的及依赖，再确认整理后的最终树与预期相符。将修补信息归入对应提交有利于评审，但若原历史已被他人依赖，仍需先按团队约定处理共享问题。</p></div></details><details class="exercise" id="ex:11.6"><summary><span class="difficulty">应用</span><b>11.6</b><span>在独立副本中用 reword 修改说明，观察该提交及后继标识，解释变化原因。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · reword / 元数据 / 后继重建</p><p>reword更改提交说明，通常建立新对象；后继若接入新身份，其父字段也需改变而可能连带改变标识。使用cat-file和父项列表验证，原对象未被原地编辑。</p><p>只改说明也会改变对象输入，相关后继为了连接替代父项需要新对象。报告可并列整理前后标识与补丁，说明内容保持而身份变化。清理后应确认旧依赖者如何迁移，不能只看本地结果正常。</p></div></details><details class="exercise" id="ex:11.7"><summary><span class="difficulty">应用</span><b>11.7</b><span>画出 <code>--onto</code> 的新基线、排除边界与目标分支，并构造一个补丁可应用但业务依赖未满足的例子。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · onto边界 / 补丁范围 / 业务依赖</p><p>标记新基线、排除边界和被整理分支，说明选择了哪些提交再放到哪里。例：主题调用由被排除分支引入的新接口，补丁虽能应用到另一树，构建或行为仍可能缺少该依赖；补丁可应用不等于业务自足。</p><p>图中分别标明排除边界、新基线和被处理分支。可构造函数调用补丁能够文本应用、目标却缺少函数定义的例子，证明补丁应用与业务依赖检查各有职责；范围选择正确以后仍需构建测试。</p></div></details><details class="exercise" id="ex:11.8"><summary><span class="difficulty">基础</span><b>11.8</b><span>解释拣选是否自动把原提交作为父，是否必然导致以后合并冲突。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 拣选 / 父链 / 重复改动</p><p>通常cherry-pick把所选提交表达的变化应用到当前头，并以当前头为父创建新提交，不自动把原提交作为父。以后是否冲突取决于具体内容与历史关系，不能从“曾经拣选”推出必然冲突。</p><p>比较新旧提交的父项和差异，说明来源提交提供变化而非自动成为新父。以后是否冲突取决于两侧内容、上下文和合并条件；应检查实际历史，避免从“发生过拣选”推导必然结果。</p></div></details><details class="exercise" id="ex:11.9"><summary><span class="difficulty">应用</span><b>11.9</b><span>为允许整理个人 PR 分支的团队写出共享约定，说明 lease 检查的边界。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 共享约定 / lease / 远端竞争</p><p>约定哪些分支可整理、谁可能基于它开发、整理前如何通知与保全、推送后如何迁移。lease检查给定预期入口，隐含预期可能受后台fetch影响；它不验证全部协作者意图，也不替代共享约定。</p><p>约定应说明哪些分支允许整理、何时通知协作者，以及更新远端前核对什么。lease可限制预期目标值，不能证明已经正确整合他人贡献；显式记录期望旧值有助于减少后台抓取等因素造成的误解。</p></div></details><details class="exercise" id="ex:11.10"><summary><span class="difficulty">应用</span><b>11.10</b><span>拟定一次假凭据历史清理演练，区分失效、仓库清理与协作者迁移三类工作。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 历史清理 / 凭据失效 / 协作者迁移</p><p>使用合成令牌演练。先说明真实事件需要使凭据失效，再减少仓库历史传播并核查其他入口，最后协调克隆、缓存及备份。删除当前文件不消除所有旧副本，历史清理也不会自动撤销已泄露凭据。</p><p>演练使用假值，先说明真实事件应优先失效凭据，再规划清理范围与副本协调。重写历史会影响相关标识，旧克隆与平台缓存仍需按实际服务处理；交接材料应写清已完成与待完成环节。</p></div></details><details class="exercise" id="ex:11.11"><summary><span class="difficulty">应用</span><b>11.11</b><span>从一个主题导出邮件补丁，在新基线应用并核对作者、说明、提交身份与最终内容。说明format-patch、apply和am的职责差别，以及range-diff怎样辅助检查整理前后的补丁序列。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 补丁导出 / am / range-diff</p><p>format-patch导出所选提交变化及相应邮件信息，apply主要检查或应用补丁，am可以据邮件信息形成提交。新基线应用以后，父项与提交者等字段可能改变，因此不能要求所有提交标识保持相同。</p><p>核对时同时检查作者与说明、变化范围、依赖和业务测试。range-diff可辅助比较两组补丁的对应和变化，但不能代替最终树与功能验收。补丁包也不自动覆盖全部历史、外部资源和平台讨论，应按交付目的说明范围。</p></div></details><details class="exercise" id="ex:11.12"><summary><span class="difficulty">应用</span><b>11.12</b><span>一个私有提交同时包含接口、文档和临时调试。请提出拆分与整理方案，说明如何保持每个提交自足、使用fixup与autosquash归并后检查什么，以及同一方案为何不能直接套到已被多人依赖的公开分支。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 提交拆分 / fixup / 共享约定</p><p>先识别接口与调用方的必要依赖，将文档按其实际耦合安排，并移除未打算交付的调试内容。拆分以后逐项检查候选与中间版本，归并后比较最终树及提交说明，确认没有丢失或夹带变化。</p><p>公开分支的替代对象会改变相关身份与父链，已依赖者需要协调迁移。是否允许整理由团队约定和实际依赖决定，不能单凭“历史更整齐”进行覆盖更新；即使使用lease，也要先确认他人的贡献已经正确处理。</p></div></details><details class="exercise" id="ex:11.13"><summary><span class="difficulty">综合</span><b>11.13</b><span>个人PR分支准备变基时，另一位协作者已推送新提交；主题又依赖尚未进入目标基线的接口。请设计保全、范围确认、重放或保留历史的决策流程，检查冲突角色、最终依赖和远端更新条件，并将一项独立修复移植到旧维护线。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 重放依赖 / 远端竞争 / 维护移植</p><p>先记录本地与远端当前入口，取得并检查协作者新增内容，确认分支是否仍允许整理。显式画出主题范围、新基线和接口依赖；依赖未满足时，应调整接收顺序或方案，不能以补丁能应用替代构建检查。重放冲突按当前补丁和目标基线解释两侧。</p><p>完成后比较补丁序列、最终树和测试，再按已确认的远端旧值条件更新，拒绝时重新调查而不直接强推。维护移植只选择独立修复及必要测试，并在旧基线重新验证。交付应说明哪些提交身份被替代、哪些协作者需要接续，以及保全入口在哪里。</p><p>先抓取并为本地、远端主题末端各建保护记录，比较新增提交和接口依赖，再决定是否适合重放。若整理会覆盖同伴成果或依赖尚未满足，应先协调或保留现有历史。重放暂停时按当前步骤读取来源，完成后检查新旧变化对应和目标构建。更新远端前重新确认预期入口；即使使用旧值保护，也不能省略贡献范围检查。移植旧维护线时只选择独立修复及必要依赖，并在维护环境重新运行回归测试。</p></div></details></section><section id="mindmap"><h2 id="review-18">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第11章复习导图" class="zoom-image"><img alt="第11章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-11.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="11">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="10.html"><small>← 上一章</small>引用管理与索引机制</a><a href="12.html"><small>下一章 →</small>版本标记、签名与发布</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">重放改变什么，保留什么</a><a href="#h2-2">完整实验一：在新基线上保留主题修改</a><a href="#h2-3">完整实验二：冲突时辨认三方与当前步骤</a><a href="#h2-4">交互式整理：以可理解变化为单位</a><a href="#h2-5">范围移植：–onto 回答三件事</a><a href="#h2-6">拣选：移植一项变化而非接入整条历史</a><a href="#h2-7">比较策略：从团队约束作决定</a><a href="#h2-8">大范围历史清理与协作迁移</a><a href="#h2-9">案例研读：把修复移植到维护版本</a><a href="#h2-10">实验拓展：用内容与祖先关系解释拣选</a><a href="#h2-11">重写之后怎样证明结果</a><a href="#h2-12">迁移练习：为一组混合提交制定整理计划</a><a href="#h2-13">补丁协作：在仓库连接之外交换变化</a><a href="#h2-14">范围重放实训：移除已经不再需要的中间依赖</a><a href="#h2-15">提交拆分实训：让两项任务分别接受评审</a><a href="#h2-16">本章小结</a><a href="#review-17">本章习题与解析</a><a href="#review-18">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

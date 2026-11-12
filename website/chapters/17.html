@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>校园一卡通系统版本管理实训 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="17" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>实践篇<span>/</span>第17章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 17 · 实践篇</div><h1>校园一卡通系统版本管理实训</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 78 分钟</span><span>15 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-17"></span>
+<p>校园软件团队需要把“能够运行的程序”发展为“能够持续维护的项目”。本章以校园一卡通业务管理系统为载体，组织需求、C++实现、Qt界面、双人协作、GitHub评审、回归修复、版本发布与独立交接。每项Git操作都对应明确的工程问题，并要求说明结果证据。</p>
+<p><strong>学习目标：</strong>能按业务需求拆分主题与提交；能分别验证核心与界面；能处理推送竞争与内容冲突；能组织Issue和PR贡献；能整理私有历史、定位回归并移植维护修复；能验证候选、标记发布并从备份重建项目。</p>
+<p>业务边界 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 可构建基线 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 核心与界面并行开发 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 协作与评审 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 问题定位与修复 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 维护发布 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 验证与交接。</p>
+<h2 id="h2-1">项目背景、角色与迭代目标</h2>
+<p>高校校园服务台希望用一个桌面程序处理演示卡业务：开卡、充值、消费、挂失、解挂及流水导出。这个场景学生容易理解，同时包含状态、不变量和协作接口，足以展示企业项目中常见的版本管理约束。课程使用合成账户，不接入真实支付或学生信息系统。</p>
+<h3 id="h3-1">从业务陈述形成验收条件</h3>
+<p>“支持消费”不能直接成为完整验收条件。应继续询问：卡不存在时如何处理，挂失后能否消费，余额不足是否改变流水，同一请求重复提交是否再次扣款。将这些问题写成可观察断言，才能判断程序是否完成需求，也才能在后续合并与维护中发现回归。</p>
+<p>本项目把金额存为整数分，演示学生卡单日消费限额500.00元、教工卡1000.00元，账户余额上限1000000.00元。这些是课程设定，不代表任何学校政策。业务拒绝要求余额与流水保持原状态；幂等重试要求相同请求返回原回执，参数冲突则拒绝。表<a class="book-ref" href="../chapters/17.html#tab:campus-requirements">17.1</a>把功能与版本管理证据联系起来。学生在实现之前就应看到验收要求，避免最后才补写与代码无关的报告。</p>
+<div class="table-scroll" id="tab:campus-requirements" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 17.1</b> 校园一卡通需求与验收证据</caption><tr><th colspan="1">编号</th><th colspan="1">业务目标</th><th colspan="1">必须保留的证据</th></tr><tr><td colspan="1">CC-01</td><td colspan="1">学生与教工开卡</td><td colspan="1">重复卡号、空白身份拒绝；类别可通过接口查询</td></tr><tr><td colspan="1">CC-02</td><td colspan="1">充值与流水</td><td colspan="1">正金额与上限测试；金额和余额同时进入回执</td></tr><tr><td colspan="1">CC-03</td><td colspan="1">消费规则</td><td colspan="1">余额、挂失、当日限额与重复请求的成功和失败测试</td></tr><tr><td colspan="1">CC-04</td><td colspan="1">挂失与解挂</td><td colspan="1">原有流水不删除；新业务按状态允许或拒绝</td></tr><tr><td colspan="1">CC-05</td><td colspan="1">请求重试</td><td colspan="1">同一请求返回既有回执；参数冲突时拒绝新业务</td></tr><tr><td colspan="1">CC-06</td><td colspan="1">Qt业务界面</td><td colspan="1">按钮调用领域服务；账户与流水显示一致</td></tr><tr><td colspan="1">CC-07</td><td colspan="1">CSV报告</td><td colspan="1">字段转义、金额和币种完整；不修改业务状态</td></tr><tr><td colspan="1">CC-08</td><td colspan="1">可重复构建</td><td colspan="1">基础库、服务库、核心与Qt目标分别验证</td></tr><tr><td colspan="1">CC-09</td><td colspan="1">交付与维护</td><td colspan="1">需求、提交、PR、检查、标签及恢复记录对应</td></tr></table></div></div>
+<h3 id="h3-2">团队角色与责任</h3>
+<p>维护者确认需求、评审规则与发布范围；领域开发者实现业务与测试；界面开发者连接输入、服务和显示；测试与发布角色从干净目录重建并检查交付。小组人数有限时可以轮换角色，但报告明确每一阶段由谁承担哪种责任。</p>
+<p>项目任务应沿需求、实现和验证建立对应关系（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-01">17.1</a> ）。围绕同一条规则安排分支与提交，使评审者能够定位实现位置，并判断测试是否覆盖了验收条件。</p>
+<figure id="fig:scenario-17-01"><button aria-label="放大图17.1：需求、实现和验证形成对应" class="zoom-image"><img alt="图17.1 需求、实现和验证形成对应" height="527" loading="lazy" src="../assets/figure-17-1.webp" width="1169"/></button><figcaption><b>图 17.1</b> 需求、实现和验证形成对应</figcaption></figure>
+<p>本地双人实验用两个克隆模拟独立现场，其价值是可重复地观察对象传输和整合。它不等于拥有两个真实平台账户，也不能产生真实的第三方批准。在线任务再加入权限、PR及评审证据，两部分结果分别记录。</p>
+<h3 id="h3-3">最低交付与可选拓展</h3>
+<p>最低交付包含完整核心源码、Qt界面源、自动测试、清楚的构建说明、版本历史及交接报告。具备Qt环境时运行界面与交互测试；没有Qt时先完成核心路线，再登记界面待验收状态。不能用“已提供GUI文件”替代“GUI已运行”。</p>
+<p>数据库持久化、并发事务、统一身份认证、设备通信及清结算作为进一步设计课题。本例的CSV是运行期间流水导出，不是完整状态备份；关闭程序后内存账户不会自动恢复。项目应明确这些边界，使版本管理实训接近真实工程中的范围控制。</p>
+<h2 id="h2-2">企业研发中的规划、任务与交付</h2>
+<p>企业研发方法首先体现为对需求、边界和证据的组织。本项目把需求说明、模块设计、任务开发、评审检查和维护交付联系起来，使一次修改能够沿着任务编号追溯到实现、测试及发布版本。图 <a class="book-ref" href="../chapters/17.html#fig:campus-enterprise-flow">17.2</a> 给出主要环节；每个环节都应形成可以继续检查的材料，后续迭代也可以据此返回并修订既有决定。</p>
+<figure id="fig:campus-enterprise-flow"><button aria-label="放大图17.2：需求、设计、开发与交付相互衔接的研发过程" class="zoom-image"><img alt="图17.2 需求、设计、开发与交付相互衔接的研发过程" height="179" loading="lazy" src="../assets/figure-17-2.webp" width="1203"/></button><figcaption><b>图 17.2</b> 需求、设计、开发与交付相互衔接的研发过程</figcaption></figure>
+<h3 id="h3-4">从需求进入条件到任务完成标准</h3>
+<p>需求进入开发前，应回答使用者是谁、在什么条件下触发操作、成功后能观察到什么，以及哪些情况必须拒绝。例如，CSV币种任务的目标是让报告脱离窗口仍能被正确解释；验收既检查表头，也检查数据行，同时确认导出没有改变账户状态。若只写“增加导出功能”，开发者和评审者容易对完成范围形成不同理解。</p>
+<p>任务卡还应列出涉及的模块、依赖的接口和验证方法。金额解析属于基础模块，余额变更属于业务服务，保存对话框属于Qt适配层。先确定这些责任，能够使开发分支围绕一项工作展开，并减少多个成员在同一文件中混合实现无关需求。配套项目的<code>docs/enterprise-project-plan.md</code>与<code>docs/iterations.md</code>分别提供总体方案和任务拆分。</p>
+<p>完成标准同时约束代码和过程：候选差异应只包含本任务；实现、必要测试和说明共同提交；相关构建通过；评审意见得到回应；合入后的目标分支重新检查。CI能够证明特定提交在指定环境执行了哪些检查，却不能自行决定业务需求是否完整满足。涉及界面的任务还需要实际交互证据，不能用核心测试代替。</p>
+<h3 id="h3-5">按迭代建立可以验收的增量</h3>
+<p>表 <a class="book-ref" href="../chapters/17.html#tab:campus-enterprise-iterations">17.2</a> 把完整工程拆为渐进增量。教学中先完成个人闭环，再引入双人并行、推送竞争和维护回移；每一阶段都保留能够运行和解释的基线。阶段名称用于组织学习，实际项目可依据规模和依赖调整节奏。</p>
+<div class="table-scroll" id="tab:campus-enterprise-iterations" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 17.2</b> 校园一卡通项目的迭代与Git工作包</caption><tr><th colspan="1">阶段</th><th colspan="1">工程增量</th><th colspan="1">主要验收与版本管理工作</th></tr><tr><td colspan="1">M0</td><td colspan="1">范围、目录与构建基线</td><td colspan="1">需求编号、忽略及属性规则、根提交、重建说明</td></tr><tr><td colspan="1">M1</td><td colspan="1">金额、日期与持卡人模块</td><td colspan="1">接口与实现分离、边界测试、候选差异与小步提交</td></tr><tr><td colspan="1">M2</td><td colspan="1">账户服务与业务规则</td><td colspan="1">余额、限额、状态与幂等测试；分支整合</td></tr><tr><td colspan="1">M3</td><td colspan="1">Qt与CSV并行开发</td><td colspan="1">独立主题、远程交换、推送拒绝、组合验证</td></tr><tr><td colspan="1">M4</td><td colspan="1">回归、诊断与候选检查</td><td colspan="1">失败复现、修复、二分定位、索引快照验证</td></tr><tr><td colspan="1">M5</td><td colspan="1">私有历史整理与维护</td><td colspan="1">fixup、变基、差异复核、维护修复回移</td></tr><tr><td colspan="1">M6</td><td colspan="1">发布、备份与交接</td><td colspan="1">附注标签、归档、bundle恢复、多工作树核对</td></tr><tr><td colspan="1">M7</td><td colspan="1">GitHub团队协作</td><td colspan="1">Issue、PR、评审、CI、规则及Release实际记录</td></tr></table></div></div>
+<p>连续演练把CSV与Qt分别交给两个工作现场，说明功能并行如何发生；姓名边界修复展示先复现失败、再改变实现；维护线则检验修复能否用于既有版本。不同任务具有各自的变更范围和验收条件，不能把一次巨大的混合提交当成所有功能的开发记录。</p>
+<h3 id="h3-6">设计决定应随项目一起保存</h3>
+<p>模块拆分、金额单位、日期来源和持久化范围都属于设计决定。配套项目用简短的架构决策记录说明背景、选择、替代方案与影响。例如，选择整数分以后，输入解析、计算和展示都应遵守同一单位；选择进程内存储以后，CSV报告便不能被描述为完整数据库备份。决定有了版本，后来的维护者才能知道某项限制源于当前范围，还是源于未完成的实现。</p>
+<p>接口变更应在实现之前与依赖方确认。若业务服务改变返回视图，Qt和CLI需要共同核对；若只修改报告字段，则应尽量把变化限制在导出模块及相应测试。评审不仅检查最终文件，也检查变化是否符合原先约定的边界。出现新的业务要求时，可以修订架构记录，再安排有依据的迁移和验证。</p>
+<h3 id="h3-7">把Git知识落实到工作证据</h3>
+<p>本章连续路线覆盖共同基线、分支开发、远程交换、合并冲突、回归修复、维护回移、历史整理、二分定位、候选检查、标签和恢复。其余专题通过明确的工程任务衔接：换行规则用于统一C++源文件；对象与引用用于解释历史和冲突现场；补丁与附注用于受限交换和补充说明；LFS、子模块、稀疏检出和部分克隆用于依赖与规模演进；钩子、凭据和历史清理用于工程治理。</p>
+<p>配套<code>docs/git-skill-matrix.md</code>列出45项技能工作包，区分连续演练、章节专项与人工平台任务。读者应按第1至16章的模型完成相应实验，并回到校园项目说明应用理由。大文件服务、真实权限和人工评审需要各自的环境与证据，离线路线通过不能代替这些结果。</p>
+<p>个人实践时，可依次承担需求、开发、评审和发布角色，并注明哪些记录属于自检；团队实践时，应由不同成员对主要业务变化进行复核。最终报告用实际任务编号、提交、PR和测试相互连接，不填写虚构的Issue、审批人或成功截图。这样的过程训练，才有助于把一个教学项目中的方法迁移到后续大型工程。</p>
+<h2 id="h2-3">阅读工程目录与构建入口</h2>
+<p>进入源码后，先理解文件职责，再开始修改。清晰目录使任务可以分工、差异能够评审，也使接手者能够判断某项变化应在哪一层发生。目录结构不是装饰，它承担了降低协作成本的作用（图 <a class="book-ref" href="../chapters/17.html#fig:principle-ch17-02">17.3</a> ）。</p>
+<figure id="fig:principle-ch17-02"><button aria-label="放大图17.3：工程分层支持并行（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图17.3 工程分层支持并行（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-17-3.webp" width="1148"/></button><figcaption><b>图 17.3</b> 工程分层支持并行（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-8">源码、测试、界面和工具分层</h3>
+<p>GitEasy中的<code>projects/campus-card</code>为完整项目。<code>include/campus/</code>提供领域接口，<code>src/</code>实现核心与命令行演示，<code>tests/</code>保存业务断言，<code>gui/</code>连接Qt界面，<code>docs/</code>登记需求和协作约定，<code>tools/</code>提供候选检查及教学辅助程序。构建结果写入单独目录，不与源码混放。</p>
+<p>核心与界面分层使不同环境能够验证相应目标（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-05">17.4</a> ）。基础业务测试不应依赖窗口是否成功显示，界面检查则补充按钮、输入与结果展示的交互证据。</p>
+<figure id="fig:scenario-17-05"><button aria-label="放大图17.4：构建目标保持业务与界面分层" class="zoom-image"><img alt="图17.4 构建目标保持业务与界面分层" height="426" loading="lazy" src="../assets/figure-17-4.webp" width="1169"/></button><figcaption><b>图 17.4</b> 构建目标保持业务与界面分层</figcaption></figure>
+<p><code>.gitignore</code>排除构建缓存，<code>.gitattributes</code>统一文本规则。忽略不等于删除历史中的文件，属性也不代替代码格式约定。提交前检查候选列表，确认工程能够在另一个目录从源码重建，而非依赖本机已有产物。</p>
+<h3 id="h3-9">头文件、实现文件与构建目标</h3>
+<p>多文件编程的关键在于职责和依赖的明确。头文件说明其他模块可以使用的类型与接口，实现文件保存具体算法和状态处理；CMake再把若干编译单元组成库或程序。不要通过包含<code>.cpp</code>文件拼接工程，也不要为了减少文件数量而把窗口、金额算法与账户容器集中到一个入口中。</p>
+<p>图 <a class="book-ref" href="../chapters/17.html#fig:campus-multifile">17.5</a> 呈现本项目的依赖方向。CLI与Qt调用业务服务，服务组合金额、日期、持卡人与报告模块；基础模块不引用Qt类型。这样既能在没有图形环境时验证规则，也能让界面与业务沿不同任务分支推进。</p>
+<figure id="fig:campus-multifile"><button aria-label="放大图17.5：多文件工程的依赖方向：入口调用服务，服务组合独立基础模块" class="zoom-image"><img alt="图17.5 多文件工程的依赖方向：入口调用服务，服务组合独立基础模块" height="703" loading="lazy" src="../assets/figure-17-5.webp" width="1203"/></button><figcaption><b>图 17.5</b> 多文件工程的依赖方向：入口调用服务，服务组合独立基础模块</figcaption></figure>
+<p>表 <a class="book-ref" href="../chapters/17.html#tab:campus-module-files">17.3</a> 列出文件与责任。读取源码时，先从头文件确定可调用接口，再进入实现和测试；准备修改时，则从需求判断应改变哪一个模块，避免沿着文件名随意增加代码。</p>
+<div class="table-scroll" id="tab:campus-module-files" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 17.3</b> 多文件工程中的接口与实现分工</caption><tr><th colspan="1">模块</th><th colspan="1">主要文件</th><th colspan="1">职责</th></tr><tr><td colspan="1">基本类型</td><td colspan="1"><code>types.hpp</code></td><td colspan="1">整数分、枚举、查询视图、交易回执</td></tr><tr><td colspan="1">金额</td><td colspan="1"><code>money.hpp/.cpp</code></td><td colspan="1">解析、上限和格式化，保持统一单位</td></tr><tr><td colspan="1">业务日期</td><td colspan="1"><code>business_date.hpp/.cpp</code></td><td colspan="1">真实日历校验、系统日期与可注入依赖</td></tr><tr><td colspan="1">持卡人</td><td colspan="1"><code>card_holder.hpp/.cpp</code></td><td colspan="1">私有身份、虚接口与类别限额策略</td></tr><tr><td colspan="1">流水报告</td><td colspan="1"><code>ledger_export.hpp/.cpp</code></td><td colspan="1">CSV字段、转义和展示，不修改业务状态</td></tr><tr><td colspan="1">业务服务</td><td colspan="1"><code>card_service.hpp/.cpp</code></td><td colspan="1">开卡、状态、余额、限额、回执与一致性</td></tr><tr><td colspan="1">命令行</td><td colspan="1"><code>src/main.cpp</code></td><td colspan="1">最小调用示例，不重复业务规则</td></tr><tr><td colspan="1">Qt窗口</td><td colspan="1"><code>campus_window.hpp/.cpp</code></td><td colspan="1">输入、事件、服务调用与视图刷新</td></tr><tr><td colspan="1">界面入口</td><td colspan="1"><code>gui/main.cpp</code></td><td colspan="1">组装应用、窗口及启动参数</td></tr><tr><td colspan="1">交互检查</td><td colspan="1"><code>gui/smoke_scenario.cpp</code></td><td colspan="1">验证实际按钮、业务和表格一致</td></tr></table></div></div>
+<p>表中<code>.hpp/.cpp</code>表示对应的声明与实现文件，实际头文件位于<code>include/campus/</code>，实现位于<code>src/</code>；Qt文件统一位于<code>gui/</code>。每个实现文件先包含自己的接口，减少对偶然包含顺序的依赖。头文件使用包含保护，命名空间用于约束类型与函数的归属。</p>
+<h3 id="h3-10">让模块边界形成可测的契约</h3>
+<p><code>campus_domain</code>保存不依赖Qt的基础模块，<code>campus_core</code>保存业务服务，并通过公开依赖取得基础接口。单元测试可直接链接基础库，服务集成测试再验证多个模块共同完成业务的结果。一个模块有了独立测试，其他成员就可以依据稳定接口工作，而不必先打开完整窗口。</p>
+<p>日期是一个容易被忽略的依赖。若测试总是读取执行当天，同一请求在不同日期运行便可能具有不同语义。本项目通过<code>DayProvider</code>传入可调用对象：普通运行使用系统日期，测试使用lambda固定业务日。代码 <a class="book-ref" href="../chapters/17.html#lst:campus-clock">17.1</a> 节选实际测试，显示日期、请求和余额如何共同进入可重复判断。</p>
+<div class="code-block" id="lst:campus-clock"><div class="code-bar"><span>注入业务日期并检验充值重试</span><button class="copy-code">复制</button></div><pre><code>        std::string day = "2026-11-12";
+        campus::CardService service([&amp;day] { return day; });
+        service.openStudent("S1", "student-1", "Demo");
+        const auto first = service.topUp("S1", 10000, "R1");
+        check.require(first.day == day, "topup must use injected date");
+        service.topUp("S1", 10000, "R1");
+        check.require(service.history().size() == 1 &amp;&amp; service.card("S1").balance == 10000,
+                      "topup retry duplicated");</code></pre></div>
+<p>可注入依赖有明确的使用边界。它使测试能够控制条件，却不自动解决生产系统的时区、跨日重试或永久幂等问题。接口改变后仍须更新需求与测试，不能把一个方便替换的函数当成完整业务协议。</p>
+<h3 id="h3-11">用注释表达原因、单位与不变量</h3>
+<p>项目注释重点说明金额以分保存、基类为何需要虚析构、所有权何时移动、拒绝路径应保持哪些状态，以及报告为什么不承担恢复。函数名已经清楚表达的逐行操作，无需再重复一次；跨模块约定和容易误用的边界，则应放在接口附近。</p>
+<p>代码统一格式，格式性变化与业务变化分开组织。教学辅助脚本使用明确定位标记构造基线、回归和币种任务，不依赖空格数量；这些标记只服务于复现实验，不参与业务运行。学生仍须阅读<code>git diff</code>与测试，说明改变了什么、为什么改变以及结果如何验证。</p>
+<h3 id="h3-12">C++11核心与Qt6界面的标准边界</h3>
+<p><code>campus_domain</code>、<code>campus_core</code>与命令行、核心测试目标按C++11构建。Qt6要求支持C++17或更新标准的编译器，因此<code>campus_gui</code>目标单独采用C++17<span class="citation" data-cites="qtcmake">(The Qt Company 2026)</span>。这并不把核心代码中的C++11特性改称为C++17，也不承诺Qt6能够按C++11模式编译。</p>
+<p>默认关闭GUI，使没有Qt的学生仍能完成Git主线。启用GUI后，CMake会明确查找Qt6 Widgets；找不到组件时停止配置，而不悄悄跳过目标后报告“全部通过”。依赖错误应作为环境问题记录，与业务测试失败区分。</p>
+<div class="code-block"><div class="code-bar"><span>在独立目录构建完整项目核心</span><button class="copy-code">复制</button></div><pre><code>cmake -S projects/campus-card -B build-campus -DCMAKE_BUILD_TYPE=Release
+cmake --build build-campus --parallel 2
+ctest --test-dir build-campus --output-on-failure</code></pre></div>
+<p>这些命令从GitEasy根目录执行。<code>-S</code>指定源码，<code>-B</code>指定构建目录；后续构建与测试都指向同一目录。Windows采用多配置生成器时，构建增加<code>--config Release</code>，测试增加<code>-C Release</code>。测试结果应注明实际生成器，不用不同平台路径的细微差异判断程序错误。</p>
+<h2 id="h2-4">领域模型：封装、继承与多态</h2>
+<p>读懂领域模型有助于形成有意义的提交和评审。无需在这里重新完成一门C++课程，但应能说明每个类保存什么、谁负责校验以及界面为何不直接修改余额。否则，Git记录的仅文件变化，而非可以解释的工程决定（图 <a class="book-ref" href="../chapters/17.html#fig:principle-ch17-03">17.7</a> ）。</p>
+<p>综合项目把业务规则与界面操作分开组织，便于在版本管理过程中独立验证。图 <a class="book-ref" href="../chapters/17.html#fig:visual-17-a">17.6</a> 概括持卡人、校园卡、服务和界面的协作关系，类名与工程保持一致。左侧界面为示意绘制，实际Qt程序的运行截图另见本章，二者不应混作运行证据。</p>
+<figure id="fig:visual-17-a"><button aria-label="放大图17.6：校园一卡通的领域对象、服务与界面分层" class="zoom-image"><img alt="图17.6 校园一卡通的领域对象、服务与界面分层" height="1024" loading="lazy" src="../assets/figure-17-6.webp" width="1536"/></button><figcaption><b>图 17.6</b> 校园一卡通的领域对象、服务与界面分层</figcaption></figure>
+<figure id="fig:principle-ch17-03"><button aria-label="放大图17.7：多态服务的调用关系（箭头表示所说明的对象或访问关系）" class="zoom-image"><img alt="图17.7 多态服务的调用关系（箭头表示所说明的对象或访问关系）" height="171" loading="lazy" src="../assets/figure-17-7.webp" width="1177"/></button><figcaption><b>图 17.7</b> 多态服务的调用关系（箭头表示所说明的对象或访问关系）</figcaption></figure>
+<h3 id="h3-13">让余额与状态留在服务内部</h3>
+<p><code>CardService</code>保存卡对象与交易记录，提供开卡、充值、消费和状态变更接口。外部得到的是<code>CardView</code>，用于读取卡号、姓名、类别、余额和状态，而非直接获取可任意赋值的内部账户。这样可以把业务约束集中到明确入口。</p>
+<p>消费先检查金额、请求标识和日期，再处理重复请求，随后核对卡状态、余额与单日额度。只有检查和记录准备成功以后，才更新余额。测试不仅捕获异常，还核对拒绝前后余额和流水数量一致，从而约束失败路径的效果。</p>
+<p>不同持卡人类别可以通过统一接口提供策略，业务服务按接口使用结果（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-02">17.8</a> ）。测试应同时覆盖各具体实现和服务的边界行为，不能只验证类型能够构造。</p>
+<figure id="fig:scenario-17-02"><button aria-label="放大图17.8：多态用于选择不同持卡人策略" class="zoom-image"><img alt="图17.8 多态用于选择不同持卡人策略" height="323" loading="lazy" src="../assets/figure-17-8.webp" width="1169"/></button><figcaption><b>图 17.8</b> 多态用于选择不同持卡人策略</figcaption></figure>
+<h3 id="h3-14">用抽象持卡人接口表达类别差异</h3>
+<p><code>CardHolder</code>定义类别与单日限额的虚接口；<code>StudentHolder</code>和<code>StaffHolder</code>覆盖它们。<code>CardService</code>通过基类指针调用接口，不需要在每次消费中重复编写“如果是学生，否则如果是教工”的类别分支。</p>
+<p>基类具有虚析构函数，<code>std::unique_ptr&lt;CardHolder&gt;</code>管理派生对象生命周期。这里的继承用于表达稳定接口下的规则差异，多态由运行时对象决定调用。若以后增加访客卡，仍需明确新类别的业务规则并添加测试，不能只增加一个界面选项。图 <a class="book-ref" href="../chapters/17.html#fig:campus-classes">17.9</a> 区分继承与所有权。两个派生类实现共同接口；服务通过内部Card对象持有账户及其持卡人，不把界面与业务继承关系混画成同一种连接。</p>
+<figure id="fig:campus-classes"><button aria-label="放大图17.9：校园项目的领域类关系：空心三角表示继承，实心菱形表示独占组合" class="zoom-image"><img alt="图17.9 校园项目的领域类关系：空心三角表示继承，实心菱形表示独占组合" height="989" loading="lazy" src="../assets/figure-17-9.webp" width="1203"/></button><figcaption><b>图 17.9</b> 校园项目的领域类关系：空心三角表示继承，实心菱形表示独占组合</figcaption></figure>
+<p>代码 <a class="book-ref" href="../chapters/17.html#lst:campus-polymorphism">17.2</a> 直接节选自配套可编译头文件。两个覆盖函数虽简短，却使调用方能够通过同一接口取得不同规则；测试再分别选择学生卡与教工卡验证效果。</p>
+<div class="code-block" id="lst:campus-polymorphism"><div class="code-bar"><span>持卡人派生类的实际实现</span><button class="copy-code">复制</button></div><pre><code>class StudentHolder : public CardHolder {
+  public:
+    using CardHolder::CardHolder;
+    std::string category() const override {
+        return "Student";
+    }
+    Cents dailyLimit() const override {
+        return 50000;
+    }
+};
+class StaffHolder : public CardHolder {
+  public:
+    using CardHolder::CardHolder;
+    std::string category() const override {
+        return "Staff";
+    }
+    Cents dailyLimit() const override {
+        return 100000;
+    }
+};</code></pre></div>
+<h3 id="h3-15">辨认实际使用的C++11特性</h3>
+<p>项目使用<code>enum class</code>区分卡状态与业务类型，使用<code>override</code>检查虚函数覆盖；<code>auto</code>与范围for简化遍历，lambda用于排序和界面连接，<code>std::move</code>与独占智能指针表达所有权转移。代码以<code>new</code>直接构造交给智能指针，不把C++14才提供的<code>make_unique</code>写成C++11内容。</p>
+<p>这些特性影响评审重点。移动之后的所有权需要明确，引用返回不能越过对象生命周期，异常发生后不能留下部分更新。规范的PR说明应解释相关不变量，而非仅罗列“使用了继承与多态”。</p>
+<h2 id="h2-5">金额、请求与业务不变量</h2>
+<p>版本管理需要能够判定结果的业务基础。选择金额处理与请求重试作为重点，是因为它们能够展示“程序运行结束”与“业务结果正确”的区别，并使测试成为合并和维护时真正有用的证据（图 <a class="book-ref" href="../chapters/17.html#fig:principle-ch17-04">17.11</a> ）。</p>
+<p>同一请求的重试需要避免重复扣款。图 <a class="book-ref" href="../chapters/17.html#fig:visual-17-b">17.10</a> 以余额100.00为观察起点，流水数仅统计本组请求新增的消费记录。R1首次消费20.00后，合法重试返回原回执，参数冲突被拒绝；挂失后的新请求R2也被拒绝。工程先查询已有请求记录，已完成R1的合法重试不受后来挂失影响；此前充值仍保留在完整流水中。</p>
+<figure id="fig:visual-17-b"><button aria-label="放大图17.10：请求幂等、参数冲突与挂失拒绝的状态约束" class="zoom-image"><img alt="图17.10 请求幂等、参数冲突与挂失拒绝的状态约束" height="1024" loading="lazy" src="../assets/figure-17-10.webp" width="1536"/></button><figcaption><b>图 17.10</b> 请求幂等、参数冲突与挂失拒绝的状态约束</figcaption></figure>
+<figure id="fig:principle-ch17-04"><button aria-label="放大图17.11：消费业务的不变量（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图17.11 消费业务的不变量（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-17-11.webp" width="1123"/></button><figcaption><b>图 17.11</b> 消费业务的不变量（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-16">为什么按整数分保存金额</h3>
+<p>十进制金额若先转为二进制浮点数，再乘以100转换，可能引入不适合财务语义的舍入问题。本例直接解析字符：整数部分、至多两位小数和边界检查分别处理。<code>12.3</code>得到1230分，<code>0.05</code>得到5分，超过两位小数、负数和不完整输入被拒绝。</p>
+<p>业务核心使用最小货币单位保存金额，界面负责格式化显示（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-03">17.12</a> ）。图示以100.00元余额和20.00元消费说明计算与显示的对应，重试不再次改变余额。</p>
+<figure id="fig:scenario-17-03"><button aria-label="放大图17.12：金额以最小货币单位参与计算" class="zoom-image"><img alt="图17.12 金额以最小货币单位参与计算" height="316" loading="lazy" src="../assets/figure-17-12.webp" width="1161"/></button><figcaption><b>图 17.12</b> 金额以最小货币单位参与计算</figcaption></figure>
+<p>整数存储也不自动消除全部问题。充值前检查余额上限，消费前检查是否足额，累计金额仍有范围要求。测试覆盖边界与拒绝后的状态，避免只用一个正常金额证明解析和记账都正确。</p>
+<p>代码 <a class="book-ref" href="../chapters/17.html#lst:campus-payment">17.3</a> 节选实际消费路径。先检查可用余额，再累计当日消费并读取多态限额，最后只计算下一余额；真正的记账与余额写入在后续统一处理。评审时应顺着这个先后关系检查，不把其中任意一行孤立当作全部业务保证。</p>
+<div class="code-block" id="lst:campus-payment"><div class="code-bar"><span>消费路径中的余额与限额检查</span><button class="copy-code">复制</button></div><pre><code>        if (amount &gt; next)
+            throw std::logic_error("Insufficient balance");
+        Cents spent = 0;
+        for (const auto &amp;item : transactions_)
+            if (item.cardId == id &amp;&amp; item.operation == Operation::Payment &amp;&amp; item.day == day)
+                spent += item.amount;
+        if (amount &gt; target.holder-&gt;dailyLimit() - spent)
+            throw std::logic_error("Daily payment limit exceeded");
+        next -= amount;</code></pre></div>
+<h3 id="h3-17">重复请求为何不重复扣款</h3>
+<p>界面或调用者可能因不确定结果而重试。<code>requestId</code>使服务能够识别已经处理的业务：卡号、业务类型、金额与日期相同，返回原回执；同一标识对应不同参数，则作为冲突拒绝。回执中的余额是原来记账后的余额，不一定等于账户此刻余额。</p>
+<p>状态变化和消费处理应分别验证（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-04">17.13</a> ）。挂失后的新请求需要被拒绝；恢复卡片状态后，消费仍受余额、限额与请求规则约束，不能跳过其他检查。</p>
+<figure id="fig:scenario-17-04"><button aria-label="放大图17.13：挂失与解挂只在明确状态间转换" class="zoom-image"><img alt="图17.13 挂失与解挂只在明确状态间转换" height="426" loading="lazy" src="../assets/figure-17-13.webp" width="1169"/></button><figcaption><b>图 17.13</b> 挂失与解挂只在明确状态间转换</figcaption></figure>
+<p>本例把日期纳入请求语义，默认日期由可注入的<code>DayProvider</code>提供，普通运行读取本机日期，测试固定业务日；跨日重试或跨系统时区需要进一步设计明确协议。项目没有把内存幂等表称为永久防重数据库，交接报告也应说明退出程序后该表不会保存。这些边界应在需求中写清，再决定未来迭代如何增强。</p>
+<h2 id="h2-6">Qt界面与可验证交互</h2>
+<p>图形界面把输入、业务结果和状态变化放到同一窗口，适合课堂演示。但可视化并不意味着可以复制一套独立的业务规则；界面应调用核心服务，并把结果重新读取到表格中（图 <a class="book-ref" href="../chapters/17.html#fig:principle-ch17-05">17.14</a> ）。</p>
+<figure id="fig:principle-ch17-05"><button aria-label="放大图17.14：Qt界面不是另一套账本（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图17.14 Qt界面不是另一套账本（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-17-14.webp" width="1109"/></button><figcaption><b>图 17.14</b> Qt界面不是另一套账本（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-18">输入表单、按钮与模型</h3>
+<p>窗口提供卡号、姓名、账户类型和金额输入，按钮分别对应开卡、充值、消费、挂失、解挂与导出。选择账户行可以填写卡号。事件通过lambda调用<code>CardService</code>，捕获业务拒绝后显示提示；成功后刷新账户和流水。</p>
+<p>刷新从<code>CardView</code>与交易列表取得数据，因此余额计算集中在核心层。界面显示“操作完成”以前需要真正完成服务调用，业务抛出异常时不应继续执行成功提示。学生修改按钮文案时，应确认没有改变业务入口或错误处理顺序。图<a class="book-ref" href="../chapters/17.html#fig:campus-qt">17.16</a>为配套程序实际生成的高分辨率界面视图，完成充值、两次消费及挂失拒绝演练以后，账户余额为53.00元，流水只记录三次成功资金业务。拒绝操作没有增加一条扣款流水。界面说明明确标识合成账户和内存保存边界。</p>
+<p>界面测试需要比较操作前后的可观察结果，并核对其对应的业务状态（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-06">17.15</a> ）。只截取一张窗口图片，不能说明全部按钮和拒绝路径已经验证。</p>
+<figure id="fig:scenario-17-06"><button aria-label="放大图17.15：界面交互与业务状态对应验证" class="zoom-image"><img alt="图17.15 界面交互与业务状态对应验证" height="425" loading="lazy" src="../assets/figure-17-15.webp" width="1169"/></button><figcaption><b>图 17.15</b> 界面交互与业务状态对应验证</figcaption></figure>
+<figure id="fig:campus-qt"><button aria-label="放大图17.16：校园一卡通Qt界面的实际运行结果（合成数据，程序导出视图）" class="zoom-image"><img alt="图17.16 校园一卡通Qt界面的实际运行结果（合成数据，程序导出视图）" height="1219" loading="lazy" src="../assets/figure-17-16.webp" width="1700"/></button><figcaption><b>图 17.16</b> 校园一卡通Qt界面的实际运行结果（合成数据，程序导出视图）</figcaption></figure>
+<h3 id="h3-19">核心测试与界面冒烟测试</h3>
+<p>核心测试覆盖金额解析、重复账户、空白姓名、限额、挂失、重复请求、日期和拒绝一致性。Qt冒烟测试则实际触发按钮路径：开卡、充值100.00元、消费23.50元、挂失拒绝、解挂后再次消费，并核对模型与表格状态。</p>
+<p>界面测试使用无屏幕平台可在受支持环境执行，不能替代所有系统的外观与辅助功能审查。课程报告分别记录核心测试、Qt构建、按钮路径和人工界面检查，使“通过”对应清楚范围。</p>
+<div class="code-block"><div class="code-bar"><span>具备Qt6开发环境时构建界面</span><button class="copy-code">复制</button></div><pre><code>cmake -S projects/campus-card -B build-campus-qt -DCAMPUS_BUILD_GUI=ON
+cmake --build build-campus-qt --parallel 2
+ctest --test-dir build-campus-qt --output-on-failure</code></pre></div>
+<p>如果找不到Qt，按安装位置设置<code>CMAKE_PREFIX_PATH</code>，或使用安装器提供的Qt CMake入口。不要把另一台计算机的绝对路径照抄到项目仓库，也不要通过提交整个Qt安装目录解决依赖问题。</p>
+<h2 id="h2-7">开始连续实训的准备</h2>
+<p>先在GitEasy根目录确认完整项目位于<code>projects/campus-card</code>。下列模板把项目源位置保存为环境变量，再进入一个全新的实验目录；目录名已存在时改用其他名称，不覆盖已有成果。</p>
+<div class="code-block"><div class="code-bar"><span>从GitEasy根目录进入新的连续实训目录</span><button class="copy-code">复制</button></div><pre><code>export GITEASY_CAMPUS="$PWD/projects/campus-card"
+mkdir ../campus-card-study
+cd ../campus-card-study</code></pre></div>
+<p>随后依次执行本章各迭代的命令块。自动运行器为每次演练建立临时目录，保留日志并在结束后清理实验现场；手动学习者则保留自己的目录以便查看历史。每次切换角色都明确当前文件夹，<code>cd ..</code>仅返回共同上级，不代表切换平台身份。</p>
+<h2 id="h2-8">迭代一：建立可重复构建的基线</h2>
+<p>本节开始一条连续实训路线。每个命令块承接上一个命令块的目录与仓库状态；只有明确说明“独立任务”的部分才另起目录。先从GitEasy取得项目源码，再在全新的实验目录操作。变量<code>GITEASY_CAMPUS</code>指向完整项目源，用于复制教学基线和后续实现，不能指向正在被实验修改的克隆。</p>
+<h3 id="h3-20">取得种子并建立本地协作中心</h3>
+<p><code>make_lab_seed.py</code>只接受不存在的目标目录。它从完整项目复制出明确标注的教学起点：业务核心可构建，Qt界面实现尚未加入，空白姓名的回归测试与修复留待后续迭代。这个起点不是最终交付版，也不声称实现了全部需求。</p>
+<div class="code-block"><div class="code-bar"><span>建立教学基线、中心仓库与开发者甲</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>python3 "$GITEASY_CAMPUS/tools/make_lab_seed.py" seed
+git init --bare -b main center.git
+git clone center.git team-a
+cp -R seed/. team-a/
+cd team-a
+git config user.name 'Developer A'
+git config user.email 'a@example.invalid'
+git add .
+git diff --cached --stat
+git commit -m 'build: establish campus card core baseline'
+git push -u origin main
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+cd ..</code></pre></div>
+<p>本章连续演练会在短时间内反复修改、检出与测试同一源文件。为避免某些构建工具的时间戳精度或既有对象缓存影响验证，命令中的<code>--clean-first</code>先清理该构建目录的生成产物，再重新编译。它不删除源码和Git历史，但会增加构建时间。二分测试同样须让每次结果来自当前检出的版本，不能把上一次生成的程序当作本次证据。</p>
+<p>两个工作现场应各自执行构建与测试（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-12">17.17</a> ）。独立克隆获得Git数据，但本地构建目录、身份配置和未提交文件不随另一现场的操作自动同步。</p>
+<figure id="fig:scenario-17-12"><button aria-label="放大图17.17：独立克隆分别构建和核对" class="zoom-image"><img alt="图17.17 独立克隆分别构建和核对" height="426" loading="lazy" src="../assets/figure-17-17.webp" width="1169"/></button><figcaption><b>图 17.17</b> 独立克隆分别构建和核对</figcaption></figure>
+<p>裸仓库只作为本地通信中心，不在其中编辑源文件。第一次克隆时的空仓库提示与实验起点一致；根提交建立以后，中心main才拥有可供同伴取得的历史。构建目录被忽略，提交对象应包含源码、规则与必要说明，而非本机缓存和编译产物。</p>
+<h3 id="h3-21">建立第二个独立工作现场</h3>
+<p>开发者乙从中心取得相同基线。两个目录各有工作区、索引和分支，因此甲的未提交编辑不会自动出现在乙处。身份字段分别配置，通信仍使用本地路径；真实GitHub账户权限将在后续平台任务另行核验。</p>
+<div class="code-block"><div class="code-bar"><span>开发者乙克隆并确认起点</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git clone center.git team-b
+cd team-b
+git config user.name 'Developer B'
+git config user.email 'b@example.invalid'
+git status --short
+git log --oneline -1
+cd ..</code></pre></div>
+<p>报告记录两个克隆的起点提交应相同，同时说明这只能证明已取得同一历史入口，不能证明双方磁盘上的未跟踪文件永远相同。后续每次开始任务，都先确认当前目录与分支。</p>
+<h2 id="h2-9">迭代二：并行开发导出与界面</h2>
+<p>团队将一次交付拆为两个可以分别验证的主题：甲为流水增加明确币种，乙接入Qt界面。两项任务从同一基线出发，操作不同文件，先观察无文本冲突的并行开发，再进入存在内容分歧的协作场景。</p>
+<h3 id="h3-22">甲实现流水币种列</h3>
+<p>流水金额若离开应用单独传递，只有数值会使接收者难以确认业务单位。课程设定在CSV中增加<code>currency</code>列，并把本项目币种写为CNY。它是需求范围明确的输出变化，相关测试应检查表头和至少一条数据，而不能只验证函数仍然返回字符串。</p>
+<p>双人开发需要划分可以独立说明的任务，同时保留共同接口与验收约定（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-07">17.18</a> ）。两条分支分别通过检查后，还要验证组合结果，才能完成整合。</p>
+<figure id="fig:scenario-17-07"><button aria-label="放大图17.18：并行开发先约定接口与验收" class="zoom-image"><img alt="图17.18 并行开发先约定接口与验收" height="426" loading="lazy" src="../assets/figure-17-18.webp" width="1169"/></button><figcaption><b>图 17.18</b> 并行开发先约定接口与验收</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>在甲的主题分支增加CSV币种</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git switch -c feature/csv-currency
+python3 "$GITEASY_CAMPUS/tools/lab_scenario.py" currency
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+git add src/ledger_export.cpp tests/test_card_service.cpp tests/test_ledger_export.cpp
+git diff --cached --stat
+git commit -m 'feat: include currency in exported transactions'
+git push -u origin feature/csv-currency
+cd ..</code></pre></div>
+<p>这里使用随项目提供的教学辅助脚本定位币种列与对应测试，便于所有学生得到一致的练习输入。真实开发可以使用编辑器完成相同修改。关键在于提交前阅读候选差异：表头增加了一列，数据行也增加同一列，测试对新行为提出要求。只有修改测试而未改变实现，或只改表头而未改数据，都不能视为完整需求。</p>
+<h3 id="h3-23">乙接入已有Qt实现</h3>
+<p>界面任务从完整项目复制<code>gui/</code>内的入口、窗口实现、头文件和交互检查，它们通过业务服务处理按钮事件，不直接修改私有余额。基线CMake已经提供显式GUI开关；默认构建仍只检查核心。复制后先检查差异与依赖，再执行本机具备条件的Qt构建。</p>
+<div class="code-block"><div class="code-bar"><span>乙在独立主题分支加入Qt界面源文件</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-b
+git switch -c feature/qt-console
+cp -R "$GITEASY_CAMPUS/gui" gui
+printf '\nQt console is enabled with CAMPUS_BUILD_GUI=ON.\n' &gt;&gt; README.md
+git add gui README.md
+git diff --cached --stat
+git commit -m 'feat: add Qt campus card service console'
+git push -u origin feature/qt-console
+cd ..</code></pre></div>
+<p>核心构建通过不能代替GUI编译。安装Qt 6后，应按项目README另建<code>build-qt</code>目录，启用GUI并运行包含界面冒烟测试的CTest。环境尚未准备时，在报告中登记待验证事项，不能把界面文件已经纳入Git当作界面功能已经通过。</p>
+<h2 id="h2-10">迭代三：处理推送竞争与正常整合</h2>
+<p>甲乙可以各自推送新主题分支，因为它们更新不同的服务器入口；竞争出现在都准备更新main时。先让甲合入导出主题，再由乙尝试共享自己的整合结果，观察本地完成与服务器接受之间的区别。</p>
+<h3 id="h3-24">甲先完成一次主题合入</h3>
+<p>采用<code>--no-ff</code>是本次课程约定，用于保留主题整合节点。它不是所有项目的强制选项；若团队选择压缩合入，应按相应历史结果重新说明证据。</p>
+<p>推送竞争使两个独立现场的历史差异变得可见（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-13">17.19</a> ）。处理时先取得服务器进展，再按约定整合，不能以强制覆盖省略对同伴成果的核对。</p>
+<figure id="fig:scenario-17-13"><button aria-label="放大图17.19：竞争推送以后先取得服务器进展" class="zoom-image"><img alt="图17.19 竞争推送以后先取得服务器进展" height="587" loading="lazy" src="../assets/figure-17-19.webp" width="1177"/></button><figcaption><b>图 17.19</b> 竞争推送以后先取得服务器进展</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>甲将导出主题合入main并共享</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git switch main
+git merge --no-ff feature/csv-currency -m 'merge: deliver CSV currency'
+git push origin main
+cd ..</code></pre></div>
+<p>甲的main现在包含主题提交及合并提交，中心main随推送更新。乙若尚未抓取，自己的origin/main仍只反映之前掌握的位置。此时status显示的领先或落后，应按本地信息解释。</p>
+<h3 id="h3-25">乙遇到非快进拒绝后整合</h3>
+<p>下面条件语句把“应当被拒绝”登记为实验要求：若推送反而成功，脚本以非零状态停止，提醒检查是否遗漏前提。它不是为了绕过拒绝，而是为了使自动演练能够辨认预期结果。</p>
+<div class="code-block"><div class="code-bar"><span>乙保留自己的提交，抓取并整合甲的进展</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-b
+git switch main
+git merge --no-ff feature/qt-console -m 'merge: deliver Qt console'
+if git push origin main; then exit 1; fi
+git fetch origin
+git log --oneline --left-right main...origin/main
+git merge origin/main -m 'merge: integrate parallel deliveries'
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+git push origin main
+cd ..</code></pre></div>
+<p>拒绝时乙的提交仍在本地，不需要重新创建。抓取取得甲的对象与入口，随后合并使乙的main能够到达中心已经拥有的提交，因此再次推送满足常见快进要求。真实GitHub还可能施加评审或保护规则，这些不会被提交关系自动替代。</p>
+<h2 id="h2-11">迭代四：解决明确的内容分歧</h2>
+<p>没有文本冲突的整合已经通过，但团队还需要处理两位开发者对同一说明作出不同决定的情况。本节用服务台安排制造可见冲突，重点是把业务决定、文件编辑和索引接受分成三个步骤。</p>
+<h3 id="h3-26">双方分别修改同一行</h3>
+<p>甲先同步，安排北校区服务台并共享；乙仍从之前的共同起点安排南校区服务台。两项修改都能在各自本地提交，只有交换与整合时才需要协调。</p>
+<p>内容分歧需要回到需求解释（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-14">17.20</a> ）。双方意图都应在解决决定中得到回应；最终候选必须能够说明保留、调整或放弃各项内容的理由。</p>
+<figure id="fig:scenario-17-14"><button aria-label="放大图17.20：冲突解决保持双方有效需求" class="zoom-image"><img alt="图17.20 冲突解决保持双方有效需求" height="426" loading="lazy" src="../assets/figure-17-20.webp" width="1169"/></button><figcaption><b>图 17.20</b> 冲突解决保持双方有效需求</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>甲提交北校区安排</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git fetch origin
+git merge --ff-only origin/main
+git switch -c feature/desk-north
+printf 'Service desk: north campus\n' &gt; docs/demo-policy.md
+git add docs/demo-policy.md
+git commit -m 'docs: propose north campus service desk'
+git switch main
+git merge --no-ff feature/desk-north -m 'merge: record north desk proposal'
+git push origin main
+cd ..</code></pre></div>
+<p>乙的安排并非因为“保存得更晚”就天然优先。Git能够提示文字分歧，却不能知道课程实际上需要一个服务台还是两个服务台；最终选择应由任务负责人依据需求确认。</p>
+<div class="code-block"><div class="code-bar"><span>乙提交另一安排并观察冲突现场</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-b
+git switch -c feature/desk-south
+printf 'Service desk: south campus\n' &gt; docs/demo-policy.md
+git add docs/demo-policy.md
+git commit -m 'docs: propose south campus service desk'
+git switch main
+git merge --no-ff feature/desk-south -m 'merge: record south desk proposal'
+git fetch origin
+if git merge origin/main; then exit 1; fi
+git status --short
+git ls-files -u -- docs/demo-policy.md</code></pre></div>
+<p><code>git ls-files -u</code>显示未合并索引阶段，为冲突两侧及共同基提供证据。文件中的标记方便编辑，但索引阶段才明确告诉我们操作尚未完成。不要在此时反复发起新的合并。</p>
+<h3 id="h3-27">依据需求形成共同结果</h3>
+<p>本次教学决定同时保留南北两个服务台。编辑结果不采用简单的“全部保留当前方”或“全部采用对方”，而是写出新的业务表述。暂存以后再检查候选，提交说明记录决定，最后推送。</p>
+<div class="code-block"><div class="code-bar"><span>形成共同说明并完成合并</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>printf 'Service desks: north and south campuses\n' &gt; docs/demo-policy.md
+git add docs/demo-policy.md
+git diff --cached --check
+git commit -m 'merge: support both campus service desks'
+git push origin main
+git rev-list --parents -n 1 HEAD
+cd ..</code></pre></div>
+<p>报告应同时交付最终行、合并节点的父关系与决策依据。只提交一个没有冲突标记的文件，不足以说明是否保留了双方需要的内容。对源代码冲突，还应增加业务测试；文本整合成功与程序语义正确需要分别判断。</p>
+<h2 id="h2-12">迭代五：发布基线并建立回归修复</h2>
+<p>团队先标记已经通过现有检查的版本，再通过一个新输入暴露旧测试未覆盖的条件：只有空格的姓名不应成为有效持卡人。这个过程展示测试为何需要随需求和问题证据增长，而非把第一次绿色结果当作永久保证。</p>
+<h3 id="h3-28">标记课程发布起点</h3>
+<p>附注标签记录发布意图；它没有让代码自动获得某种质量等级。发布说明中应列出现有功能与尚未覆盖的业务条件。</p>
+<p>回归修复需要保留发布起点、失败版本和修复结果（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-15">17.21</a> ）。把能够稳定暴露问题的测试与修复放在同一条可追查链上，有助于以后定位和维护。</p>
+<figure id="fig:scenario-17-15"><button aria-label="放大图17.21：发布基线为回归调查提供入口" class="zoom-image"><img alt="图17.21 发布基线为回归调查提供入口" height="587" loading="lazy" src="../assets/figure-17-21.webp" width="1177"/></button><figcaption><b>图 17.21</b> 发布基线为回归调查提供入口</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>甲取得共同成果并标记首个课程发布</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git fetch origin
+git merge --ff-only origin/main
+git tag -a campus-v0.1.0 -m 'Campus core and Qt source teaching baseline'
+git push origin campus-v0.1.0
+git switch -c fix/nonblank-holder
+python3 "$GITEASY_CAMPUS/tools/name_validation_patch.py" --tests-only
+cmake --build build --clean-first --parallel 2
+if ctest --test-dir build --output-on-failure &gt; build/regression-before.log 2&gt;&amp;1; then exit 1; fi
+cat build/regression-before.log
+grep -q 'FAIL blank holder name' build/regression-before.log</code></pre></div>
+<p>回归测试先失败，说明它确实能够识别基线缺陷。还要阅读失败信息，确认失败来自空白姓名被接受，而非编译器、路径或其他无关原因。未经定位的失败不能直接作为本次问题的证明。</p>
+<h3 id="h3-29">修复实现并保留测试</h3>
+<p>修复检查标识和姓名中是否存在非空白字符；测试保留该输入作为以后变更的约束。实现与回归测试在同一修复提交中交付，便于维护分支一起移植。</p>
+<div class="code-block"><div class="code-bar"><span>实现非空白校验并合入修复</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>python3 "$GITEASY_CAMPUS/tools/name_validation_patch.py" --implementation-only
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+git add src/card_holder.cpp tests/test_card_service.cpp
+git diff --cached --check
+git commit -m 'fix: reject whitespace-only holder identity'
+fix_commit=$(git rev-parse HEAD)
+git switch main
+git merge --no-ff fix/nonblank-holder -m 'merge: validate nonblank holder identity'
+git push origin main
+cd ..</code></pre></div>
+<p><code>fix_commit</code>保存的是本次实际运行产生的标识，不是教材中的固定哈希。后续移植依据这个标识选择修复，而非按相似提交说明猜测。若重新打开终端，应从历史重新取得并核对该值。</p>
+<h2 id="h2-13">迭代六：维护分支与定向移植</h2>
+<p>已发布版本的维护需要控制范围。维护者希望引入姓名校验修复及其测试，不希望顺便带入未来尚未发布的实验功能。由发布标签建立维护分支，再对比拣选前后的路径范围，是一种清晰的操作路径。</p>
+<h3 id="h3-30">从发布标签建立维护现场</h3>
+<p>新克隆模拟维护人员的独立现场。它通过当前中心取得对象后，从<code>campus-v0.1.0</code>建立维护分支；因此开始位置由标签决定，而非由克隆时的最新main决定。</p>
+<p>主线修复移植到维护分支后，目标的依赖与接口可能不同（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-10">17.22</a> ）。维护发布需要在该分支重新构建和测试，不能沿用主线结论覆盖目标版本。</p>
+<figure id="fig:scenario-17-10"><button aria-label="放大图17.22：维护修复需要重新验证目标上下文" class="zoom-image"><img alt="图17.22 维护修复需要重新验证目标上下文" height="587" loading="lazy" src="../assets/figure-17-22.webp" width="1177"/></button><figcaption><b>图 17.22</b> 维护修复需要重新验证目标上下文</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>将指定修复移植到维护分支</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git clone center.git maintainer
+cd maintainer
+git config user.name 'Release Maintainer'
+git config user.email 'maintainer@example.invalid'
+git switch -c maintenance/0.1 campus-v0.1.0
+git cherry-pick "$fix_commit"
+git diff --name-only campus-v0.1.0..HEAD
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+python3 - &lt;&lt;'PYVERSION'
+from pathlib import Path
+p=Path('CMakeLists.txt');p.write_text(p.read_text().replace('VERSION 0.1.0','VERSION 0.1.1'))
+PYVERSION
+git add CMakeLists.txt
+git commit -m 'build: identify maintenance release 0.1.1'
+git tag -a campus-v0.1.1 -m 'Maintenance fix for nonblank holder identity'
+git push -u origin maintenance/0.1
+git push origin campus-v0.1.1
+cd ..</code></pre></div>
+<p>维护分支另用一次构建元数据提交把版本号从0.1.0更新为0.1.1，使CMake版本与维护标签对应。拣选通常建立新的提交身份，原修复与维护修复可以表达相近变化，却拥有不同父项。验收既比较业务效果，也比较维护范围。若补丁依赖目标版本不存在的接口，应分析依赖并改写适配，不能为让命令成功而直接合入整个开发主线。</p>
+<h2 id="h2-14">迭代七：整理尚未共享的工作提交</h2>
+<p>开发过程中可以先记录局部进展，交付前再把需要共同解释的变化组织起来。本节只整理未推送的主题，不修改已被同伴依赖的共享main。目标是形成一项完整意图，不是单纯减少提交数量。</p>
+<p>尚未共享的提交便于按完整意图整理，但仍需保存起点和验证结果（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-16">17.23</a> ）。整理后重新阅读差异与父链，确认补充内容没有遗漏，也没有混入无关修改。</p>
+<figure id="fig:scenario-17-16"><button aria-label="放大图17.23：未共享提交按完整意图整理" class="zoom-image"><img alt="图17.23 未共享提交按完整意图整理" height="426" loading="lazy" src="../assets/figure-17-23.webp" width="1169"/></button><figcaption><b>图 17.23</b> 未共享提交按完整意图整理</figcaption></figure>
+<h3 id="h3-31">使用fixup表达补充关系</h3>
+<p>第一条提交建立升级说明，第二条提交补充同一说明并明确标记为修正前一提交。随后以交互式变基的自动压缩规则把两者组织为一次可解释变化。</p>
+<div class="code-block"><div class="code-bar"><span>对未共享的说明提交进行自动压缩</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git switch -c feature/upgrade-guide
+printf '# Upgrade guide\n' &gt; docs/upgrade.md
+git add docs/upgrade.md
+git commit -m 'docs: describe campus card upgrade'
+printf '\nRun the core tests before deployment.\n' &gt;&gt; docs/upgrade.md
+git add docs/upgrade.md
+git commit --fixup HEAD
+GIT_SEQUENCE_EDITOR=true git rebase -i --autosquash HEAD~2
+git rev-list --count main..HEAD
+git show --stat HEAD
+git switch main
+cd ..</code></pre></div>
+<p><code>GIT_SEQUENCE_EDITOR=true</code>只用于让本次脚本接受Git自动生成的整理计划；日常交互可以使用自己熟悉的编辑器。整理后检查内容两部分均保留，提交数量为1，再决定是否推送这一主题。</p>
+<h2 id="h2-15">迭代八：用二分定位业务回归</h2>
+<p>当多次变化以后出现问题，逐个猜测容易遗漏证据。二分需要一个已知通过的版本、一个已知失败的版本，以及能够区分两者的检查。本节只在未共享的故障演练分支注入缺陷，不向中心推送故意破坏的历史。</p>
+<h3 id="h3-32">构造可辨认的失败范围</h3>
+<p>演练把挂失检查条件替换为恒假，使挂失卡继续进入资金操作。由于已有测试检查挂失拒绝，业务回归能够被自动识别。前后加入无关文档提交，模拟实际调查中并非每个提交都触及故障的情况。</p>
+<p>自动二分要求判定脚本稳定且含义明确（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-17">17.24</a> ）。业务失败与运行异常应使用不同结果处理，定位完成后还要阅读候选差异，说明证据支持的因果范围。</p>
+<figure id="fig:scenario-17-17"><button aria-label="放大图17.24：回归定位区分业务判定与运行异常" class="zoom-image"><img alt="图17.24 回归定位区分业务判定与运行异常" height="587" loading="lazy" src="../assets/figure-17-24.webp" width="1178"/></button><figcaption><b>图 17.24</b> 回归定位区分业务判定与运行异常</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>在独立演练分支注入挂失校验回归</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git switch -c drill/lost-card-regression
+good_commit=$(git rev-parse HEAD)
+printf 'Investigation starts from a known passing baseline.\n' &gt; docs/investigation.md
+git add docs/investigation.md
+git commit -m 'docs: record investigation baseline'
+python3 "$GITEASY_CAMPUS/tools/lab_scenario.py" disable-lost-check
+git add src/card_service.cpp
+git commit -m 'test: inject lost-card regression for bisect drill'
+bad_commit=$(git rev-parse HEAD)
+printf 'Keep evidence for each tested revision.\n' &gt;&gt; docs/investigation.md
+git add docs/investigation.md
+git commit -m 'docs: explain investigation evidence'</code></pre></div>
+<h3 id="h3-33">运行判定并恢复工作入口</h3>
+<p>判定脚本对当前检出的版本构建并测试：通过返回0，测试失败返回1，无法构建返回125表示暂时跳过。跳过可能使定位结果不唯一，报告应如实记录。本例各候选均可构建，因此能够定位实际注入缺陷的提交。</p>
+<div class="code-block"><div class="code-bar"><span>二分定位并回到正常主线</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git bisect start HEAD "$good_commit"
+git bisect run python3 "$GITEASY_CAMPUS/tools/bisect_check.py"
+test "$(git rev-parse refs/bisect/bad)" = "$bad_commit"
+git bisect log
+git bisect reset
+git switch main
+cd ..</code></pre></div>
+<p>“第一个失败提交”是相对于当前判定条件与边界而言，不等于作者主观上最早犯错的位置。若测试不稳定，或业务在中间版本暂时恢复，二分的推理前提会受影响。真实问题中应先稳定判定，再决定如何修复。</p>
+<h2 id="h2-16">迭代九：验证索引中的候选内容</h2>
+<p>在工作区运行测试只说明当前磁盘内容符合检查，而提交使用索引选定的内容。本节故意让两者不同，说明为什么自动提交检查不能简单运行一次工作区测试便宣布候选通过。</p>
+<h3 id="h3-34">建立工作区正确、索引错误的反例</h3>
+<p>先把错误的挂失检查暂存，再仅恢复工作区中的正确版本。此时文件显示同时具有暂存与未暂存变化；两个版本不同是实验要求，不是Git状态损坏。</p>
+<p>部分暂存可能使磁盘文件与候选不同（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-08">17.25</a> ）。综合实训应分别验证实际检查的输入，并在独立目录重新构建提交，防止把工作现场的成功误作候选完整的证明。</p>
+<figure id="fig:scenario-17-08"><button aria-label="放大图17.25：候选检查与工作目录检查分开" class="zoom-image"><img alt="图17.25 候选检查与工作目录检查分开" height="298" loading="lazy" src="../assets/figure-17-25.webp" width="1178"/></button><figcaption><b>图 17.25</b> 候选检查与工作目录检查分开</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>制造候选与工作文件不一致</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+python3 "$GITEASY_CAMPUS/tools/lab_scenario.py" disable-lost-check
+git add src/card_service.cpp
+git restore --source=HEAD --worktree -- src/card_service.cpp
+git status --short
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+if python3 tools/check_candidate.py; then exit 1; fi</code></pre></div>
+<p><code>check_candidate.py</code>把索引中的受跟踪文件检出到独立临时目录，再进行构建测试。因此它应识别已暂存的错误，即使工作区中的测试通过。未跟踪文件不会被悄悄补进候选，这正是检查提交内容所需要的范围。</p>
+<h3 id="h3-35">修正候选并确认状态</h3>
+<p>本例工作文件已经是正确版本，只需要取消错误的暂存选择，再检查干净候选。恢复命令应明确目标层，避免为了取消暂存而同时覆盖工作文件。</p>
+<div class="code-block"><div class="code-bar"><span>恢复正确候选并重新验证</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git restore --staged -- src/card_service.cpp
+python3 tools/check_candidate.py
+git status --short
+cd ..</code></pre></div>
+<p>团队可以把候选检查接入本地钩子以提供早期反馈，同时在服务器运行受控检查。本地钩子可以被绕过，也不会因为普通clone自动成为强制规则。两种检查相互补充，不能以其中一种的存在代替另一种的职责。</p>
+<h2 id="h2-17">迭代十：独立恢复发布与并行维护</h2>
+<p>交付不是把开发目录压缩后交给下一位同学。需要明确发布位置、依赖、检查与数据覆盖，使接收者可以从新目录取得相同源码并完成验证。本节分别处理源码归档、Git历史备份和工作树现场。</p>
+<h3 id="h3-36">形成归档与Git历史备份</h3>
+<p>先取得维护标签，再创建对应源码归档与覆盖当前引用的bundle。归档只保存所选版本的文件；bundle保存命令所选Git历史，不含全部平台资料。两者用途不同，文件名也分别表达。</p>
+<p>交付资料应与接收者的任务对应（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-11">17.26</a> ）。只需要运行某一版本与需要继续维护历史，是不同恢复目标；完成交接前应在独立位置逐项验收。</p>
+<figure id="fig:scenario-17-11"><button aria-label="放大图17.26：源码交付与历史交付分别验收" class="zoom-image"><img alt="图17.26 源码交付与历史交付分别验收" height="426" loading="lazy" src="../assets/figure-17-26.webp" width="1169"/></button><figcaption><b>图 17.26</b> 源码交付与历史交付分别验收</figcaption></figure>
+<div class="code-block"><div class="code-bar"><span>创建并恢复校园项目交付材料</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git fetch origin --tags
+git archive --format=zip --output=../campus-v0.1.1-source.zip campus-v0.1.1
+git bundle create ../campus-history.bundle --all
+git bundle verify ../campus-history.bundle
+cd ..
+git clone campus-history.bundle restored
+cd restored
+git switch -c verify/release campus-v0.1.1
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build --clean-first --parallel 2
+ctest --test-dir build --output-on-failure
+git describe --tags --exact-match
+git status --short
+cd ..</code></pre></div>
+<p>恢复后的克隆从指定标签建立验证分支，避免把bundle默认分支误当作要验收的发布。报告记录实际构建环境与结果，并另外列出Qt开发组件、未提交草稿、外部数据以及GitHub讨论和附件的保全方式。</p>
+<h3 id="h3-37">使用工作树同时维护不同版本</h3>
+<p>维护版本与开发主线可以通过两个工作树并行检出，共享对象库却保留各自工作文件与索引。为减少目录清理时的混淆，本次把构建目录放到工作树外部；完成验证后正常移除该工作树。</p>
+<div class="code-block"><div class="code-bar"><span>在独立工作树验证维护标签</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cd team-a
+git worktree add -b verify/maintenance ../maintenance-tree campus-v0.1.1
+git worktree list
+cmake -S ../maintenance-tree -B ../maintenance-build -DCMAKE_BUILD_TYPE=Release
+cmake --build ../maintenance-build --parallel 2
+ctest --test-dir ../maintenance-build --output-on-failure
+git worktree remove ../maintenance-tree
+cd ..</code></pre></div>
+<p>工作树不是完整备份，也不隔离共享引用的所有变化。团队成员应始终说明当前目录、分支和构建输入。通过这条路线，学生已经把对象与状态模型用于需求实现、协作整合、问题定位、维护发布和独立交接。</p>
+<h2 id="h2-18">将本地协作迁移到GitHub</h2>
+<p>本地路线已经证明提交、整合和恢复的模型，线上任务再加入实际身份、平台规则和人工评审。不要在这一步把本地中心地址机械替换为作者仓库后直接推送；应使用自己的课程仓库或获得明确维护权限的项目（图 <a class="book-ref" href="../chapters/17.html#fig:principle-ch17-07">17.27</a> ）。</p>
+<figure id="fig:principle-ch17-07"><button aria-label="放大图17.27：本地模型进入真实平台（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图17.27 本地模型进入真实平台（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-17-27.webp" width="1136"/></button><figcaption><b>图 17.27</b> 本地模型进入真实平台（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-38">建立需求与里程碑</h3>
+<p>建议建立“核心基线”“Qt界面”“维护修复”三个交付阶段，把CC-01至CC-06登记为实际Issue。每条任务写明范围、验收与依赖，再由小组认领。题目中的CC编号是课程需求标识，不是GitHub已经存在的Issue编号。</p>
+<p>对空白姓名缺陷，报告原版本、输入与实际结果，再补充回归测试。Issue关联修复PR，合入和发布以后记录验收位置。若课程只允许本地模拟，则保存同样结构的Markdown任务表，并明确未建立线上记录。</p>
+<p>迁移到GitHub后，本地的提交与引用模型仍然成立（图 <a class="book-ref" href="../chapters/17.html#fig:scenario-17-09">17.28</a> ）。平台记录补充请求方向、讨论和检查依据；展示时应标明真实记录，教学模板不填入虚构批准。</p>
+<figure id="fig:scenario-17-09"><button aria-label="放大图17.28：真实PR对应明确的方向与版本" class="zoom-image"><img alt="图17.28 真实PR对应明确的方向与版本" height="588" loading="lazy" src="../assets/figure-17-28.webp" width="1178"/></button><figcaption><b>图 17.28</b> 真实PR对应明确的方向与版本</figcaption></figure>
+<h3 id="h3-39">提交可评审的核心与界面PR</h3>
+<p>核心PR说明业务规则及成功、拒绝测试；界面PR说明输入流程、依赖、核心复用和界面验收。把大范围无关格式调整从功能PR中分开，避免评审者在噪声中寻找真正变化。提交列表与文件差异均应与标题所称范围一致。</p>
+<p>PR的base指向准备接收变化的课程主线，head指向自己的主题分支。来自fork时同时核对所有者。至少完成一轮具体意见与响应；若没有其他评审者，不编造批准记录，可由教师安排交叉评审或在报告中标注自检范围。</p>
+<p>本书配套工程于2026年11月11日建立了实际的<a href="https://github.com/tsingke/GitEasy/pull/1">拉取请求#1</a>，将校园一卡通源码和第16、17章材料提交到<code>main</code>。读者可在Files changed查看差异，在Commits定位提交，在Checks核对自动化结果。该记录由作者工作区提交，不能据此认定已获得独立评审；访问私有项目还需要相应权限。课堂任务应使用自己的主题分支，记录同样的证据关系。</p>
+<h3 id="h3-40">配置并验证工程检查</h3>
+<p>配套工作流分别执行核心构建与Qt构建，默认使用只读源码权限。必需检查名称应与实际作业匹配；规则效果在练习仓库验证，不直接更改作者项目权限。失败时先读取提交、作业、步骤和输出，再判断需要修改代码还是环境配置。</p>
+<p>对于外来PR，基础构建测试不需要真实支付或学生系统凭据。真实生产集成若在后续课程加入，应有独立权限与受控环境。学习项目不能因为一个自动化模板能执行脚本，就被表述为已经具备完整企业部署能力。</p>
+<h2 id="h2-19">发布与交接验收</h2>
+<p>交接应使另一位同学能够从新目录取得指定版本、运行检查并继续维护。报告围绕需求、操作、证据和限制组织，避免把大量无说明截图堆在一起。图像用于定位界面，文本和提交标识用于复现事实（图 <a class="book-ref" href="../chapters/17.html#fig:principle-ch17-08">17.29</a> ）。</p>
+<figure id="fig:principle-ch17-08"><button aria-label="放大图17.29：交接能在新目录继续（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图17.29 交接能在新目录继续（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-17-29.webp" width="1109"/></button><figcaption><b>图 17.29</b> 交接能在新目录继续（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-41">建立可核验的交付清单</h3>
+<p>交付清单包括确切提交与附注标签、源码与构建命令、核心和Qt测试结果、真实Issue/PR入口或未执行说明、维护修复范围、备份恢复记录与已知限制。构建产物按系统说明来源，不以“可以双击”代替可重复构建。</p>
+<p>GitHub Release记录用户可理解的变化、兼容性和取得方式；归档、Git历史和平台记录分别保全。未提交草稿不能期待从标签恢复，内存业务状态不能期待从源码恢复。交接者应能指出每类材料的保存位置。</p>
+<h3 id="h3-42">按结果、过程与解释共同评价</h3>
+<p>结果评价关注程序与检查是否满足验收；过程评价关注分支、提交、评审与发布是否可追踪；解释评价关注是否理解冲突、范围与恢复前提。三个方面相互支持，不能以最终余额正确掩盖丢失同伴提交，也不能以图形历史整齐替代业务正确。</p>
+<p>建议教师抽取一个未在报告中预先固定的变式，例如新增访客卡规则、调整合成限额或更换导出字段，要求学生先预测影响范围，再组织实现与验证。能够迁移到新任务，才说明学生已经把命令知识转化为工程能力。</p>
+<h2 id="h2-20">本章小结</h2>
+<p>校园一卡通实训把领域规则、程序实现与协作历史共同组织为可交接成果。需求形成可观察断言，核心与界面分别验证；提交表达独立意图，分支承载任务，整合保留需要的成果。非快进拒绝、文本冲突、业务回归和候选失败来自不同条件，需要使用相应证据分析。</p>
+<p>维护与发布继续约束变化范围：未共享工作可以整理，已分发版本需要可追溯修订；定向移植同时验证内容与依赖；归档、Git历史、平台记录和业务数据分别说明覆盖。掌握这些判断后，Git命令才成为能够迁移到真实项目的工程方法。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-qtcmake" role="listitem">
+The Qt Company. 2026. <em>Getting Started with CMake</em>. <a class="uri" href="https://doc.qt.io/qt-6/cmake-get-started.html">Https://doc.qt.io/qt-6/cmake-get-started.html</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-21">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:17.1"><summary><span class="difficulty">应用</span><b>17.1</b><span>把“挂失后禁止消费”分解为需求、成功与拒绝测试、提交和PR验收，说明每项证据的职责。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 需求分解 / 挂失规则 / 验收关系</p><p>需求写明挂失只限制新的资金业务而保留旧记录；测试包含正常消费成功、挂失消费拒绝及余额流水不变。提交交付实现和回归测试，PR再核对范围、环境和评审结果。不同证据分别支持行为与协作结论。</p><p>成功路径和拒绝路径应分别指定输入与状态。挂失拒绝除了产生错误提示，还应确认余额及流水不变。提交链接实现与测试，PR再说明验证环境和范围，需求编号使这些材料能够互相定位。</p></div></details><details class="exercise" id="ex:17.2"><summary><span class="difficulty">基础</span><b>17.2</b><span>解释CardHolder、StudentHolder、StaffHolder与CardService的关系，指出封装、继承、多态和独占所有权的实际位置。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 封装 / 继承 / 多态 / 独占所有权</p><p>CardHolder提供类别与限额接口，学生和教工派生类覆盖；CardService封装余额、状态和交易。基类虚析构配合unique_ptr管理派生对象，调用虚函数实现类别规则。界面读取视图并调用服务，不直接给余额赋值。</p><p>应从实际头文件指出虚函数和override，从服务内部指出unique_ptr的持有位置，再说明界面只读取视图并调用业务接口。业务规则集中以后，新增类别可通过同一接口表达差异，但仍需补充需求与测试。</p></div></details><details class="exercise" id="ex:17.3"><summary><span class="difficulty">应用</span><b>17.3</b><span>说明多文件工程中<code>campus_domain</code>、<code>campus_core</code>、CLI与Qt目标的依赖关系，解释核心C++11与Qt界面C++17为何分别设置。给出独立构建与测试证据，并用日期注入说明如何使业务检查可以重复。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 多文件模块 / 构建目标 / C++语言标准 / 日期依赖注入 / 可重复测试</p><p>基础模块分别声明金额、日期、持卡人与流水接口，由campus_domain库保存实现；campus_core组合这些模块并实施账户业务。CLI和Qt依赖服务，基础模块不包含Qt类型。每个头文件应明确依赖，实现文件只包含自身职责，构建由CMake组织编译和链接，不能通过包含源文件拼接程序。</p><p>分别在新目录构建核心和启用Qt的工程，保留实际编译标准、CTest结果及确切提交。核心目标按C++11检查，Qt目标按依赖要求采用C++17。测试向服务注入返回固定业务日的lambda，验证充值日期、消费日期和重复请求结果，再改变日期检查冲突或拒绝后的状态；普通运行仍可使用系统日期适配器。</p></div></details><details class="exercise" id="ex:17.4"><summary><span class="difficulty">应用</span><b>17.4</b><span>完成并行导出与界面任务，比较推送前后本地main、origin/main与中心main。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 并行开发 / 观察引用 / 中心端点</p><p>甲先推送后中心main更新，乙未fetch时origin/main仍可能旧；乙本地main已含自己的主题而与中心分叉。fetch更新观察记录，合并建立共同可达历史后再推送。每个位置分别用查询记录，不能以一个名字替代三个入口。</p><p>建议在每次抓取、合并和推送前后记录三个位置的提交标识，再解释哪些动作更新哪一端。非快进拒绝保留了本地成果，后续整合应让两项功能及其测试共同成立，而非以覆盖方式消除提示。</p></div></details><details class="exercise" id="ex:17.5"><summary><span class="difficulty">应用</span><b>17.5</b><span>提交服务台冲突的索引阶段、最终文本和父关系，并解释为什么选择共同结果。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 内容冲突 / 索引阶段 / 合并父项</p><p>冲突时保存ls-files -u与双方文本；最终写明南北服务台共同安排，暂存后完成合并并核对两个父项。选择依据来自业务要求，而不是文件标记的左右顺序。工作文件、索引和提交证据应对应同一次解决。</p><p>保留基线与双方文本，再说明共同服务方案的业务依据。完成后检查未合并条目清空、最终文件符合要求且提交具有预期父项。删除冲突标记只完成文件编辑，尚需候选选择与整合验证。</p></div></details><details class="exercise" id="ex:17.6"><summary><span class="difficulty">应用</span><b>17.6</b><span>先用回归测试证明空白姓名问题，再交付实现与测试；说明原测试通过为何不能排除该缺陷。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 回归测试 / 预期失败 / 修复验证</p><p>先只加入空白姓名断言，应观察它因旧实现接受输入而失败；修复后同一断言及既有测试通过。原检查没有覆盖这一输入，因此其绿色结果并不能排除缺陷。报告区分真正业务失败与环境失败。</p><p>应核对修复前失败信息确实指向空白姓名被接受，再应用实现修复并重新编译。连续快速修改时清理旧生成产物，避免缓存二进制影响判断。修复后原功能及新增拒绝条件都应继续通过。</p></div></details><details class="exercise" id="ex:17.7"><summary><span class="difficulty">应用</span><b>17.7</b><span>在维护分支拣选修复，核对路径范围与业务结果，说明新旧修复的提交身份关系。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 维护分支 / 拣选 / 修复范围</p><p>维护分支从指定标签开始，cherry-pick只选择修复提交，比较变化路径并运行回归。新提交通常以维护头为父，身份与主线修复不同；相近补丁效果不代表父链相同，依赖也需重新验证。</p><p>先确认维护基线及所需依赖，再拣选实现和回归测试，检查没有夹带新主线的无关功能。新提交通常具有不同父项和标识，应通过差异、测试与任务记录说明它移植了相同修复意图。</p></div></details><details class="exercise" id="ex:17.8"><summary><span class="difficulty">应用</span><b>17.8</b><span>完成未共享提交整理与二分演练，分别说明内容不变量和判定条件的边界。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 私有整理 / 二分 / 稳定判定</p><p>未共享整理应保留需要的最终内容与可解释意图；二分需要明确好坏边界及稳定判定，构建不了的版本按策略跳过。记录实际首个失败标识与条件，不把当前检出位置机械视为最终结论。</p><p>autosquash以后检查最终树和提交意图；二分以前验证好坏边界及判定程序。每个候选版本均重新构建，构建失败与业务失败分别处理。整理与定位解决不同任务，报告不宜只展示最后一张历史图。</p></div></details><details class="exercise" id="ex:17.9"><summary><span class="difficulty">应用</span><b>17.9</b><span>重现工作区通过而候选失败的情况，再修正索引；说明候选检查为何需要独立目录。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 索引物化 / 候选构建 / 工作区差异</p><p>把错误实现暂存，再只恢复工作区正确内容，工作区测试通过而索引检出测试失败。修正索引后重测。独立目录避免未暂存文件、未跟踪依赖或已有构建产物悄悄补齐候选，保证检查对象就是拟提交内容。</p><p>把待提交内容检出到独立目录，防止未暂存的修正混入测试。先观察坏候选失败，再重新暂存修正并复测，核对拒绝确实来自预期业务断言；这比仅检查当前编辑器中的程序更能约束交付。</p></div></details><details class="exercise" id="ex:17.10"><summary><span class="difficulty">应用</span><b>17.10</b><span>在自己的GitHub项目完成一次可核验贡献，记录base、head、检查和评审状态；没有实际评审时如实说明。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 真实贡献 / 检查提交 / 评审范围</p><p>使用自己的仓库与主题分支，记录base/head、提交、测试和真实PR地址。评审意见及响应只能记录实际发生内容；没有他人批准时说明自检范围与等待状态，不把本地双人模拟称为真实平台评审。</p><p>记录接收和来源位置、确切head、实际检查链接及意见处理过程。平台自动运行不产生独立人工批准，作者自己的检查也应准确说明。来源更新以后，重新确认旧运行和旧讨论是否仍适用。</p></div></details><details class="exercise" id="ex:17.11"><summary><span class="difficulty">应用</span><b>17.11</b><span>从bundle恢复发布标签并构建，列出未被bundle覆盖的资料与业务状态。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · bundle / 标签 / 独立恢复</p><p>从bundle克隆后切到维护标签，独立构建与测试并核对版本。bundle不自动含平台Issue/PR、附件、Qt安装、未提交草稿及程序内存中的账户数据；每项缺口分别安排保存与恢复。</p><p>在新目录从历史包取得发布标签，验证标签和源码后构建，并记录依赖来源。业务账户保存在本例内存中，不随源码历史恢复；Issue、评审与外部附件也需另列保存方式，不能由clone成功推断已经具备。</p></div></details><details class="exercise" id="ex:17.12"><summary><span class="difficulty">应用</span><b>17.12</b><span>提交完整交接报告，并设计一项新需求，说明将如何拆分分支、测试、评审和维护范围。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 交接报告 / 新需求 / 维护责任</p><p>交接包含确切版本、环境、构建、检查、协作与恢复记录和限制。新增访客卡可先登记规则与断言，再分别实现核心、界面和测试，评审确认兼容性；若需回移旧版，另查接口依赖与维护范围。</p><p>报告至少包含需求清单、确切版本、构建入口、实际测试、依赖、已知限制和恢复记录。新需求应拆成可评审任务并说明兼容性，特别考虑已有维护线是否接收修复，以及界面与领域模型如何保持一致。</p></div></details><details class="exercise" id="ex:17.13"><summary><span class="difficulty">应用</span><b>17.13</b><span>针对金额小数位、重复请求、跨日重试、挂失状态和学生或教工限额设计测试。要求成功结果符合规则，拒绝以后余额与流水均保持原状，并说明内存幂等记录与持久化服务的区别。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 金额解析 / 幂等 / 限额 / 失败不变</p><p>金额直接解析为整数分，测试正常小数、过多小数、负数和上限；同一请求标识及相同业务参数返回原回执，参数冲突拒绝。跨日语义按项目约定核对，不能简单把当前余额与原回执余额等同。</p><p>分别构造两类持卡人、当日累计限额及挂失拒绝，记录拒绝前后余额和流水数量。内存保存的回执在退出后不自动存在，生产持久化与并发事务需要进一步设计。本题验收既检查正确返回，也检查失败路径未留下部分更新。</p></div></details><details class="exercise" id="ex:17.14"><summary><span class="difficulty">应用</span><b>17.14</b><span>从实际源码指出封装、继承、多态、移动语义和unique_ptr的使用；再说明Qt界面怎样复用业务服务。设计界面显示与模型一致性测试，并解释为何重复检出后应重新构建、候选验证应使用独立目录。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 领域与界面 / 所有权 / 构建隔离</p><p>CardService将账户与流水留在受控入口内，持卡人基类提供类别和限额接口，派生类通过override表达差异；独占智能指针和移动表达生命周期与所有权。Qt按钮调用同一服务，再从视图刷新，不能另建一套不受校验的余额。</p><p>测试应覆盖成功与拒绝交互后表格同服务内容一致。核心和GUI分别核对语言标准与依赖；连续快速编辑、检出后清理旧生成产物，防止测试旧二进制。候选验证从索引物化内容，避免工作区未暂存修正混入待交付版本的结论。</p></div></details><details class="exercise" id="ex:17.15"><summary><span class="difficulty">综合</span><b>17.15</b><span>为校园卡系统增加“访客卡”并规定独立限额与有效期，小组同时修改领域、Qt界面和文档。请完成需求分解、接口与测试设计、并行分支及PR、至少一次真实冲突处理、回归定位、旧维护线修复与新版本发布；交付独立恢复报告，明确持久化、时区和真实支付等未实现范围。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 新类别迭代 / 协作 / 维护 / 交付 / 企业迭代规划 / 模块接口与任务追踪 / 日期策略与回归测试</p><p>先把访客卡类别、限额、有效期和失败不变条件写成验收断言，再决定哪些差异适合通过现有多态接口扩展、哪些需要新增明确校验。领域与GUI按依赖拆成可评审变化，文档记录构建和数据范围；并行整合要保留来源、冲突决定及内容和父关系检查。</p><p>构造回归并以稳定测试定位，维护线只移植需要的独立修复及测试。发布固定确切提交和标签，从新目录取得源码、依赖与备份后构建验证，另列平台材料和未提交草稿。交接如实说明内存状态、日期规则、并发持久化与真实支付集成的限制，不把教学原型扩展任务写成已具备生产保障。</p><p>先定义访客身份、限额与有效期的边界，明确时间由何处提供，以及过期、余额不足和重复请求的预期结果。领域、界面和文档分别建立主题任务，并约定抽象接口；每条分支包含对应测试。整合时保留冲突来源及解决理由，用稳定判定定位一次回归，再把适用修复移植到维护线。发布前从确定标签独立构建核心与Qt目标，验证拒绝路径不改变余额或流水，并在新目录恢复交付。持久化、时区政策和支付网络接入若未实现，必须列入明确的范围说明。</p><p>实施前先用任务卡明确访客卡限额、有效期边界和拒绝条件，登记接口及数据变化。将策略放入持卡人或明确的新规则模块，日期检查通过可控制依赖测试；Qt仅增加输入和展示，不复制过期判断。分开提交契约、实现与测试、界面及文档，PR连接需求与证据。发布后从旧标签建立维护线，只回移适用修复，并由独立目录核对标签、构建、行为和未被源码备份覆盖的数据。</p></div></details></section><section id="mindmap"><h2 id="review-22">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第17章复习导图" class="zoom-image"><img alt="第17章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-17.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="17">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="16.html"><small>← 上一章</small>GitHub平台与图形化工具</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">项目背景、角色与迭代目标</a><a href="#h2-2">企业研发中的规划、任务与交付</a><a href="#h2-3">阅读工程目录与构建入口</a><a href="#h2-4">领域模型：封装、继承与多态</a><a href="#h2-5">金额、请求与业务不变量</a><a href="#h2-6">Qt界面与可验证交互</a><a href="#h2-7">开始连续实训的准备</a><a href="#h2-8">迭代一：建立可重复构建的基线</a><a href="#h2-9">迭代二：并行开发导出与界面</a><a href="#h2-10">迭代三：处理推送竞争与正常整合</a><a href="#h2-11">迭代四：解决明确的内容分歧</a><a href="#h2-12">迭代五：发布基线并建立回归修复</a><a href="#h2-13">迭代六：维护分支与定向移植</a><a href="#h2-14">迭代七：整理尚未共享的工作提交</a><a href="#h2-15">迭代八：用二分定位业务回归</a><a href="#h2-16">迭代九：验证索引中的候选内容</a><a href="#h2-17">迭代十：独立恢复发布与并行维护</a><a href="#h2-18">将本地协作迁移到GitHub</a><a href="#h2-19">发布与交接验收</a><a href="#h2-20">本章小结</a><a href="#review-21">本章习题与解析</a><a href="#review-22">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

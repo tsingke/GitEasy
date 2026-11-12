@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>团队工作流与代码评审 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="13" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link active" data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>实践篇<span>/</span>第13章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 13 · 实践篇</div><h1>团队工作流与代码评审</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 40 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-13"></span>
+<p>两个人能够交换提交，还不等于团队已经形成稳定协作。谁能修改主线，什么时候请求评审，怎样决定合入与发布，出错后按什么单位回退，都需要共同约定。本章从一次课程资料改动出发，解释工作流如何连接需求、历史和责任。</p>
+<p><strong>学习目标：</strong>能按发布与权限需求选择工作流；能区分 fork、分支和 PR；能写出便于验证的变更说明与评审意见；能通过同一实例比较三种合入结果；能识别平台规则的覆盖范围，并形成可交接的协作约定。</p>
+<p>协作约束 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 工作流选择 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> fork 与贡献方向 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 需求和 PR <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 评审与修订 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 合入对照实验 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 规则与交接。</p>
+<h2 id="h2-1">工作流中的角色、分支与交付</h2>
+<p>同样叫 main 和 feature 的两个项目，可能有完全不同的协作规则：一个允许直接推主线，另一个要求审批；一个每次合入立即部署，另一个每学期发布固定资料包。只复制分支命名，不能复制这些约束。</p>
+<p>设计工作流先回答四个问题：成果多久交付一次；是否同时维护多个已发布版本；贡献者是否共享写权限；每项变化由谁验证和批准。再决定分支寿命、整合方式、评审前提和回退单位。</p>
+<p>Git 的分支、提交与合并提供机制，托管平台提供评审、权限与检查记录，团队约定将它们连起来。即使不用平台，也可以用邮件和文本记录完成评审；即使开了 PR，也不代表需求与验证已自动清楚。</p>
+<h3 id="h3-1">集中式协作</h3>
+<p>集中式协作通常让团队围绕一个共同远端交换成果。小组可以使用很少的长期分支，通过短任务分支或有约定的主线提交完成工作。它容易开始，但仍需要处理非快进拒绝、冲突与质量规则。</p>
+<p>这里的“集中”描述交换与组织方式，不改变 Git 每个克隆可以本地提交的分布式机制。共同远端是协作约定的中心，不能因此推断本机所有编辑都实时存在于中心。</p>
+<h3 id="h3-2">GitHub Flow 与短任务分支</h3>
+<p>GitHub Flow 以短任务分支和评审整合组织变化<span class="citation" data-cites="githubflow">(GitHub 2026b)</span>。可以把它理解为：从合适基线开始一项任务，持续提交并请求反馈，完成必要验证后合入主线，再按项目规则发布或部署。资料、政策和文档项目也可以采用这类流程。图<a class="book-ref" href="../chapters/13.html#fig:githubflow">13.1</a>用任务状态画出基本闭环，箭头表示流程，不是对象父引用。流程顺畅依赖小范围需求、及时评审与可靠检查，而非依赖分支名字必须叫 feature。</p>
+<figure id="fig:githubflow"><button aria-label="放大图13.1：短任务分支工作流以明确验收连接修改与交付" class="zoom-image"><img alt="图13.1 短任务分支工作流以明确验收连接修改与交付" height="143" loading="lazy" src="../assets/figure-13-1.webp" width="1135"/></button><figcaption><b>图 13.1</b> 短任务分支工作流以明确验收连接修改与交付</figcaption></figure>
+<h3 id="h3-3">Git Flow 与并行版本维护</h3>
+<p>Git Flow 设计较明确的长期开发线和发布维护分支，适合讨论“新功能继续开发，当前版本准备发布，旧版还需修复”的场景<span class="citation" data-cites="driessen2010gitflow">(Driessen 2010)</span>。它为不同阶段命名，但也增加跨线同步与分支维护成本。图<a class="book-ref" href="../chapters/13.html#fig:gitflow">13.2</a>只表示职责关系，不是要求所有项目照搬全部分支。发布修复进入维护线后，往往还要确认主开发线是否需要相同修复；若只处理一侧，缺陷可能在后续版本再次出现。</p>
+<figure id="fig:gitflow"><button aria-label="放大图13.2：多版本工作流需要安排发布与修复的同步责任" class="zoom-image"><img alt="图13.2 多版本工作流需要安排发布与修复的同步责任" height="293" loading="lazy" src="../assets/figure-13-2.webp" width="1075"/></button><figcaption><b>图 13.2</b> 多版本工作流需要安排发布与修复的同步责任</figcaption></figure>
+<h3 id="h3-4">主干开发</h3>
+<p>主干开发强调短周期集成，避免长期隔离的主题逐渐偏离共同基线。它可以使用很短的分支与评审，并不等于所有人不经检查直接修改主线。未完成的功能可能借助配置、分阶段实现或功能开关控制可见性。</p>
+<p>它对自动检查、变化拆分和快速修复提出要求。仅要求“每天合并一次”，却没有能力验证小变化，可能把长期分支风险转成主线不稳定。工作流应和团队的验证能力一起设计。</p>
+<h2 id="h2-2">依据项目约束选择工作流</h2>
+<p>表<a class="book-ref" href="../chapters/13.html#tab:workflow-choice">13.1</a>给出课程项目的选择问题。一个项目也可以组合机制，例如短任务分支配合学期发布标签，必要时只为上一学期保留一条维护线。</p>
+<div class="table-scroll" id="tab:workflow-choice" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 13.1</b> 工作流选择应先回答的约束问题</caption><tr><th colspan="1">约束</th><th colspan="1">需要考虑的安排</th></tr><tr><td colspan="1">持续小步交付</td><td colspan="1">短任务分支、及时评审、主线持续可用</td></tr><tr><td colspan="1">固定周期发布</td><td colspan="1">版本范围、冻结规则与发布检查</td></tr><tr><td colspan="1">并行维护旧版</td><td colspan="1">修复落点、维护分支寿命和回填责任</td></tr><tr><td colspan="1">外部贡献者无写权限</td><td colspan="1">fork、来源分支与维护者合入</td></tr><tr><td colspan="1">检查耗时较长</td><td colspan="1">分层验证、排队与合入时状态核对</td></tr><tr><td colspan="1">跨模块变化紧密</td><td colspan="1">需求拆分、依赖顺序与原子交付边界</td></tr></table></div></div>
+<p>不要为每个职责都创建永久分支。分支越多，需解释的同步关系也越多。相反，也不要把“保持简单”作为忽略旧版本维护责任的理由。好的约定应让新成员能回答改哪里、如何验证、谁来合入以及如何发布（图 <a class="book-ref" href="../chapters/13.html#fig:principle-ch13-02">13.3</a> ）。</p>
+<figure id="fig:principle-ch13-02"><button aria-label="放大图13.3：按约束选择流程（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图13.3 按约束选择流程（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-13-3.webp" width="1121"/></button><figcaption><b>图 13.3</b> 按约束选择流程（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h2 id="h2-3">fork、远端与 PR 是不同层次</h2>
+<p>fork 通常是托管平台为贡献协作建立的仓库关系，每个 fork 仍是一个仓库。branch 是仓库内指向提交的引用；PR 是平台上讨论某个来源向某个目标整合的请求。它们不是同一种对象，也不能用一个名称替代另外两个（图 <a class="book-ref" href="../chapters/13.html#fig:principle-ch13-03">13.4</a> ）。</p>
+<figure id="fig:principle-ch13-03"><button aria-label="放大图13.4：平台副本与本地别名（每行对照一组条件与解释）" class="zoom-image"><img alt="图13.4 平台副本与本地别名（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-13-4.webp" width="1237"/></button><figcaption><b>图 13.4</b> 平台副本与本地别名（每行对照一组条件与解释）</figcaption></figure>
+<p>对 GitEasy 的个人贡献路线，作者仓库为 <a class="uri" href="https://github.com/tsingke/GitEasy">https://github.com/tsingke/GitEasy</a>。在自己的账户创建 fork 后，本地 origin 通常指个人副本，upstream 通常指作者仓库。这两个别名可以改名，实际权限来自账户、凭据与服务端规则。</p>
+<p>从作者仓库直接 clone 得到读取副本，不自动取得推送权限。学习者应先确认自己准备向哪个仓库写入。课程模拟可以完全在个人课程副本内完成，不需要把每次练习请求都发送给作者。</p>
+<h3 id="h3-5">创建请求前核对三项方向</h3>
+<p>第一项是目标仓库和目标分支，决定变化准备进入哪里；第二项是来源仓库和来源分支，决定比较哪一组提交；第三项是基线与同步状态，决定当前差异是否仍符合任务范围。</p>
+<p>选错目标可能把课程练习送到不相关项目，选错来源可能夹入其他任务。创建前先在本地查看提交范围和文件差异，再在页面核对。页面按钮位置会变化，仓库和分支方向的含义保持可解释。</p>
+<p>如果来源分支在评审期间继续前进，PR 的候选内容也会改变。原先通过的检查和评审是否仍适用，要按平台与团队规则判断；不能将“曾经有人批准过”理解为任何后续版本都已获批准。</p>
+<h2 id="h2-4">把需求写成可检验的变化</h2>
+<p>以 GitEasy 新增一份索引观察实验为例，笼统需求“完善实验内容”缺少边界。更好的需求是：“让零基础读者观察 add 后再次编辑的三份内容，包含操作、预期结果和自检；从新目录按步骤可以复现。”（图 <a class="book-ref" href="../chapters/13.html#fig:principle-ch13-04">13.6</a> ）</p>
+<p>一项团队任务需要从需求逐步落实到可检查的差异。图 <a class="book-ref" href="../chapters/13.html#fig:visual-13-a">13.5</a> 将问题说明、主题分支、评审和检查连接起来，使每次合入能够回到明确的验收依据。图中的卡片是协作过程示意，真实平台页面在第16章另行展示。</p>
+<figure id="fig:visual-13-a"><button aria-label="放大图13.5：需求、主题修改、评审与验证的关联" class="zoom-image"><img alt="图13.5 需求、主题修改、评审与验证的关联" height="1024" loading="lazy" src="../assets/figure-13-5.webp" width="1536"/></button><figcaption><b>图 13.5</b> 需求、主题修改、评审与验证的关联</figcaption></figure>
+<figure id="fig:principle-ch13-04"><button aria-label="放大图13.6：把需求转为可评审变化（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图13.6 把需求转为可评审变化（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-13-6.webp" width="1119"/></button><figcaption><b>图 13.6</b> 把需求转为可评审变化（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>这项需求限定学习目标与验收。作者可以据此决定哪些文件必要，评审者也能判断是否遗漏。顺便统一全书标点、重排所有目录或更换配色，会扩大范围，应该独立安排，而不夹入本项内容实验。</p>
+<h3 id="h3-6">变更说明的一个教学情境</h3>
+<p>下面是尚未提交到平台的说明示例，不代表作者仓库已有对应 PR。标题可写“补充暂存后继续编辑的观察实验”。正文先说明读者目前难以区分工作区与索引，再说明新增步骤与输出判读，最后写明实际验证环境、起点和限制。</p>
+<p>验证部分应具体，例如“在空目录运行，第一次 add 后继续编辑；普通 diff 显示后续编辑，cached diff 显示首次候选；提交后历史只含已暂存内容”。若只验证 macOS，应如实写出 Windows 尚未实测，而不使用泛称“全平台通过”。这种说明让评审者能从问题理解变化，再从步骤核对结果。只写“优化体验”“完善逻辑”“修复若干问题”，无法提供同等判断依据。</p>
+<h2 id="h2-5">评审关注内容、证据与可维护性</h2>
+<p>评审既可以审程序，也可以审教材。优先检查需求是否实现、关键假设是否成立、失败如何处理、后来的人能否维护。措辞和格式有价值，但不应让无关偏好遮住真实错误（图 <a class="book-ref" href="../chapters/13.html#fig:principle-ch13-05">13.7</a> ）。</p>
+<figure id="fig:principle-ch13-05"><button aria-label="放大图13.7：具体评审推动改进（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图13.7 具体评审推动改进（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-13-7.webp" width="1097"/></button><figcaption><b>图 13.7</b> 具体评审推动改进（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>一条可执行意见包含位置、具体问题、影响和建议。例如：“步骤三没有说明当前目录。初学者可能在上一实验的仓库中执行 init。请在步骤前增加新目录说明，并从空目录复验。”它比“这里再详细一点”更容易落实。</p>
+<h3 id="h3-7">讨论意见与阻断问题分别表达</h3>
+<p>如果是可选建议，注明它不阻断本次交付；如果是错误命令或缺少验证，说明为什么必须先修复。作者可以接受建议，也可以用证据解释另一种做法。讨论应围绕项目目标，避免把个人偏好写成普遍规则。</p>
+<p>教学情境中的一次来回可以是：评审发现作者用工作区检查给索引候选背书；作者补上 <code>--index</code> 模式与部分暂存反例；评审从新目录复跑，确认错误候选确实被拒绝，再批准。批准依据是修订后的证据，不是作者回复“已改”。</p>
+<h3 id="h3-8">修订以后重新确认什么</h3>
+<p>检查新的提交范围是否仍只包含本项任务，原先反馈是否被实际处理，新增改动是否需要重新运行实验。若整理了历史，旧评论的行位置可能变化，应提供新标识或更新说明；不要只用“历史已清理”掩盖实际内容变动。</p>
+<p>维护者合入前再核对目标分支、当前主线、检查结果与尚未解决的讨论。多个 PR 分别通过不意味着组合后必然正确，尤其当它们影响相同接口或目录结构时，需要整合状态的验证。</p>
+<h2 id="h2-6">完整实验：同一变化的三种合入历史</h2>
+<p>最终文件树相同，提交关系仍可以不同。本实验在一个新仓库中从相同主线和主题分别建立三个结果分支，比较 merge commit、squash 与本地 rebase 的性质。它展示 Git 机制，不声称逐字复制平台全部实现（图 <a class="book-ref" href="../chapters/13.html#fig:principle-ch13-06">13.9</a> ）。</p>
+<p>合入方式影响提交父关系以及后续查询的入口。图 <a class="book-ref" href="../chapters/13.html#fig:visual-13-b">13.8</a> 固定同一个分叉起点，对比保留双亲连接、压缩形成单个新提交和重放形成新父链三种结果。图中仅比较历史结构；最终文件是否符合要求，仍应通过内容审查和测试确认。</p>
+<figure id="fig:visual-13-b"><button aria-label="放大图13.8：同一分叉起点上的合并、压缩合并与变基" class="zoom-image"><img alt="图13.8 同一分叉起点上的合并、压缩合并与变基" height="556" loading="lazy" src="../assets/figure-13-8.webp" width="1186"/></button><figcaption><b>图 13.8</b> 同一分叉起点上的合并、压缩合并与变基</figcaption></figure>
+<figure id="fig:principle-ch13-06"><button aria-label="放大图13.9：合入方式分别验收（每行对照一组条件与解释）" class="zoom-image"><img alt="图13.9 合入方式分别验收（每行对照一组条件与解释）" height="358" loading="lazy" src="../assets/figure-13-9.webp" width="1237"/></button><figcaption><b>图 13.9</b> 合入方式分别验收（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-9">建立可比较的共同起点</h3>
+<div class="code-block"><div class="code-bar"><span>创建主线与两次主题提交</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir lab13-integration
+cd lab13-integration
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Course\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish course"
+git tag workflow-base
+git switch -c topic
+printf '# Index exercise\n\nEdit, stage, then edit again.\n' &gt; index.md
+git add index.md
+git commit -m "docs: add index observation"
+printf '\nCompare working tree, index and HEAD.\n' &gt;&gt; index.md
+git add index.md
+git commit -m "docs: explain the three contents"
+git switch main
+printf '\nRead prerequisites before practice.\n' &gt;&gt; README.md
+git add README.md
+git commit -m "docs: explain the prerequisite"</code></pre></div>
+<p>main 与 topic 修改不同文件，避免冲突干扰关系比较。main 一次新提交，topic 两次新提交，共同基线有一次提交。操作前可以画出 M 和 F1、F2 的分叉。</p>
+<h3 id="h3-10">保留双亲整合点</h3>
+<div class="code-block"><div class="code-bar"><span>建立保留主题祖先的结果分支</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c result/merge main
+git merge --no-ff topic -m "merge: integrate index exercise"
+git rev-list --parents -n 1 HEAD
+git log --oneline --first-parent
+git merge-base --is-ancestor topic HEAD</code></pre></div>
+<p>双亲整合提交连接原 main 与原 topic，topic 的原始提交成为结果的祖先。<code>--first-parent</code> 便于观察主线视角的整合节点。这个结构便于追踪一次主题如何接入，但最终文件和测试仍要检查。</p>
+<h3 id="h3-11">把主题变化作为一项新提交</h3>
+<div class="code-block"><div class="code-bar"><span>从同一 main 建立 squash 结果</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c result/squash main
+git merge --squash topic
+git status --short
+git diff --cached --stat
+git commit -m "docs: add the complete index exercise"
+git rev-list --parents -n 1 HEAD
+git merge-base --is-ancestor topic HEAD</code></pre></div>
+<p>最后一条预期返回非零：squash 的新提交只有当前主线父提交，原 topic 不会因为补丁被合入就自动成为它的祖先。文件内容可以完整，但来源关联需由说明、PR 和其他记录补充。不要把范围内容相同误写成父链相同。</p>
+<h3 id="h3-12">重放主题后形成线性结果</h3>
+<div class="code-block"><div class="code-bar"><span>从原 topic 建立重放结果并比较文件树</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git switch -c result/rebase topic
+git rebase main
+git log --oneline --graph --decorate --all
+git diff result/merge result/squash
+git diff result/merge result/rebase
+git rev-list --parents -n 1 HEAD
+git merge-base --is-ancestor topic HEAD</code></pre></div>
+<p>两项 diff 应为空，最后的祖先判断在本例中应失败。新父链包含 main 与重放后的两项主题提交，原 topic 仍指旧父链。平台的 rebase 类合入还有其具体元数据处理，应按平台说明理解，不把本地命令所有细节都套到网页按钮上。</p>
+<h3 id="h3-13">依据回退与检索需要选择</h3>
+<p>表<a class="book-ref" href="../chapters/13.html#tab:merge-strategy">13.2</a>比较三种方式。决定时需要问：未来希望按主题整体回退，还是逐项理解；是否保留主题内部的逻辑提交；来源和讨论在哪里追踪；团队怎样处理后续重复同步。</p>
+<div class="table-scroll" id="tab:merge-strategy" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 13.2</b> 同一内容的三种历史表达</caption><tr><th colspan="1">方式</th><th colspan="1">实验中的关系</th><th colspan="1">主要维护关注点</th></tr><tr><td colspan="1">合并提交</td><td colspan="1">两个父，原主题是祖先</td><td colspan="1">整合边界清楚，需理解合并回退</td></tr><tr><td colspan="1">squash</td><td colspan="1">新的单亲提交，原主题非祖先</td><td colspan="1">主题成为一项变化，来源另行关联</td></tr><tr><td colspan="1">rebase 类</td><td colspan="1">重放变化接到新基线</td><td colspan="1">逻辑提交可保留，身份与依赖需核验</td></tr></table></div></div>
+<p>三种结果在本例中文件相同，不意味着复杂冲突场景一定同样相同。每一种方式都可能因为人工解决或选错范围而产生不同结果。合入策略是历史表达约定，不能替代内容判断。</p>
+<h2 id="h2-7">把规则落到可验证的协作约定</h2>
+<p>团队约定至少应包含：主线用途、任务分支起点、请求说明要求、必需检查、评审责任、合入方式、发布与回退策略。对于 GitEasy 课程副本，可以先采用短任务分支、一名同伴评审、资料检查与明确版本标签，再按课程需要增加旧版维护（图 <a class="book-ref" href="../chapters/13.html#fig:principle-ch13-07">13.10</a> ）。</p>
+<figure id="fig:principle-ch13-07"><button aria-label="放大图13.10：规则需要允许和拒绝验证（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图13.10 规则需要允许和拒绝验证（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-13-10.webp" width="1124"/></button><figcaption><b>图 13.10</b> 规则需要允许和拒绝验证（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<p>平台保护设置可以帮助实施部分规则，但应按实际可用功能核对。规则是否覆盖管理员、机器人、特定分支或直接推送，需要在测试仓库用故意失败任务验证。仅在文档中写“主线已保护”不足以证明所有路径都受约束。</p>
+<p>权限分配遵循任务需要。自动检查只需要读取时，不额外赋予发布能力；负责发布的身份也不应因此默认获得无关管理权。仓库权限、凭据和运行代码的信任级别应一起考虑。</p>
+<h3 id="h3-14">一个完成周期如何交接</h3>
+<p>合入后记录实际提交，确认主线检验结果，再关闭相应任务或发布。删除主题分支主要清理活跃名称，不自动擦除已经成为主线祖先的历史，也不自动删除平台讨论。</p>
+<p>对下一位维护者，交接说明应能回答：版本在哪里，怎样运行检查，依赖怎样取得，哪些工作仍未完成，发生问题先看哪些证据。评审链接对平台协作有价值，离线交付也应有文本摘要，避免重要背景只能存在于个人记忆中。</p>
+<h2 id="h2-8">案例研读：让评审形成可执行的决定</h2>
+<p>评审意见应指出问题所在、影响条件和可检验的改进方向。案例从含混反馈逐步形成可执行任务，再说明作者如何用变化和结果回应。</p>
+<h3 id="h3-15">从需求到验收条件</h3>
+<p>某小组准备把实验报告提交方式由邮件改为仓库提交。如果需求只有“优化提交流程”，作者可能只修改一处说明，而评审者却期待同时更新命名规则、截止时间和评分依据。需求范围不明确使参与者对交付内容形成不同预期，需要先澄清验收条件。</p>
+<p>需求应写成读者可以验证的行为：学生能找到提交入口；报告命名具有示例；截止时间含时区；教师能按固定位置取得材料；旧方式停用时间明确。每一项都应能在补丁或验证结果中找到依据。这样评审讨论便围绕任务是否满足，而非围绕个人偏好反复修改。</p>
+<p>具体意见应使作者能够复现问题并判断修改方向（图 <a class="book-ref" href="../chapters/13.html#fig:scenario-13-02">13.11</a> ）。处理线程之后仍需核对实际变化，不能将平台状态按钮替代对内容的检查。</p>
+<figure id="fig:scenario-13-02"><button aria-label="放大图13.11：评审意见从现象落实到验证" class="zoom-image"><img alt="图13.11 评审意见从现象落实到验证" height="587" loading="lazy" src="../assets/figure-13-11.webp" width="1178"/></button><figcaption><b>图 13.11</b> 评审意见从现象落实到验证</figcaption></figure>
+<h3 id="h3-16">评审意见需要包含理由与影响</h3>
+<p>“这里不好”难以执行，“请将截止时间写明时区，否则异地读者可能产生不同理解”则说明了问题、后果和修改方向。对可以接受但尚有取舍的设计，应区分建议与阻断项，避免作者把所有偏好都当作必须满足的要求。</p>
+<p>作者回应时应说明已修改的位置、验证方式，或保留原设计的依据。简单回复“已改”无法帮助评审者判断新版本解决了什么。若补丁发生较大变化，应重新核对范围，不能沿用旧版本的通过结论。</p>
+<h2 id="h2-9">协作练习：建立一份可审阅的变更说明</h2>
+<p>下面的独立实验用本地分支模拟提交评审前的材料准备。它不创建线上 PR，但将作者必须解释的内容组织成实际文件，后续可直接迁移到 GitHub。</p>
+<div class="code-block"><div class="code-bar"><span>准备具有明确验收范围的主题变化</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>mkdir review13
+cd review13
+git init -b main
+git config user.name "Git Learner"
+git config user.email "learner@example.invalid"
+printf '# Course guide\n' &gt; README.md
+git add README.md
+git commit -m "docs: establish the course guide"
+git switch -c docs/submission
+mkdir docs
+cat &gt; docs/submission.md &lt;&lt;'EOF'
+# Report submission
+
+- Location: reports/student-id/
+- File name: lab-number.md
+- Deadline: Friday 18:00, Asia/Shanghai.
+- Required sections: method, evidence, and explanation.
+EOF
+git add docs/submission.md
+git commit -m "docs: define the report submission contract"
+git diff --check main...HEAD
+git diff --stat main...HEAD
+git log --oneline main..HEAD</code></pre></div>
+<div class="code-block"><div class="code-bar"><span>按问题、变化与验证组织交接说明</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>cat &gt; ../review13-summary.md &lt;&lt;'EOF'
+# Submission contract
+
+Problem: students need one unambiguous report location.
+Change: define location, file naming, deadline, and report sections.
+Validation: inspect the new guide and run git diff --check.
+Follow-up: the instructor confirms the deadline before merging.
+EOF
+test "$(git diff --name-only main...HEAD)" = docs/submission.md
+grep -q 'Asia/Shanghai' docs/submission.md
+test -z "$(git status --porcelain)"</code></pre></div>
+<p>交接说明保存在仓库外，是为了在本实验中区分待评审的产品内容与评审描述。真实平台上的 PR 正文承担类似沟通职责，但其本身不是普通提交对象的一部分。需要长期保存的设计理由，可以进一步写入项目文档，而不能只依赖某个临时讨论入口。</p>
+<h2 id="h2-10">合入策略与长期维护</h2>
+<p>合入方式会影响以后调查、回退和维护的便利程度。选择时应同时考虑内容结果与历史结构，并将决定写成团队能够持续执行的约定。</p>
+<h3 id="h3-17">一项策略同时影响哪些工作</h3>
+<p>保留合并提交有助于识别整合点，压缩合入有助于把主题作为一项主线变化，重放合入则可能形成线性序列。选择时要考虑回退、逐提交测试、来源追踪和团队习惯，而不能只依据日志是否简短。</p>
+<p>无论选择哪种策略，都应检查最终主线内容，并确认评审所依据的版本与实际合入结果相匹配。自动化合入还可能在新的主线基线上执行，因此需要理解平台检查绑定的是哪个提交或合并候选。</p>
+<h3 id="h3-18">完成任务还包括关闭反馈循环</h3>
+<p>合入以后，应说明目标版本、相关文档和后续事项。若需求仅部分完成，不能因 PR 已合入就关闭全部讨论。教学小组可以将任务分为已完成、需另行处理和明确不采用三类结论，并为每项结论保留理由。</p>
+<p>迁移练习：评审通过以后，主线发生了相关修改。作者应怎样处理？参考分析是先取得新信息，判断主题是否仍满足需求，必要时整合并重新验证。过去的通过说明适用于当时审阅的内容，不能自动延伸到所有后续版本。</p>
+<h2 id="h2-11">GitHub实践：从自己的派生仓库提交一项改进</h2>
+<p>平台贡献把本地变化放入真实所有权、评审和规则之中。下面选择范围明确的文档任务，逐步核对来源、目标和证据；无法访问私有原项目时使用授权教学副本。</p>
+<h3 id="h3-19">学习目标与前置条件</h3>
+<p>本节把本地工作流迁移到真实平台。任务是在自己的 GitEasy 派生仓库中修正一项资料问题，并准备可评审的变更。需要可用账号、合法访问方式和网络。没有这些条件时，可先完成本章离线练习，再将未执行步骤如实登记。</p>
+<p>本节不要求为练习而向作者仓库发送无实际价值的修改。可以在课程指定仓库内互评，也可以只在个人仓库形成完整任务记录；若确有教材勘误，再依据贡献说明提交真实请求。学习过程的真实性比制造一条公开记录更重要。</p>
+<h3 id="h3-20">第一步：确认原项目与个人副本</h3>
+<p>浏览作者仓库时，先阅读 README、许可和贡献说明，明确项目用途。平台上的 fork 建立派生仓库关系，本地 clone 则取得可操作副本。两者不是同一个动作：创建 fork 不会自动在本机生成目录，克隆作者仓库也不会自动赋予写入作者仓库的权限。</p>
+<p>在个人副本中取得本地仓库后，核对远端地址。通常 origin 指向个人可写副本，另设 upstream 指向作者仓库；这些简称是约定，最终以实际 URL 为准。账户切换或多协议并存时，还应确认推送使用的身份和地址。</p>
+<div class="code-block"><div class="code-bar"><span>线上练习模板：占位账号必须先替换</span><button class="copy-code">复制</button></div><pre><code>git clone https://github.com/YOUR_ACCOUNT/GitEasy.git
+cd GitEasy
+git remote add upstream https://github.com/tsingke/GitEasy.git
+git remote -v
+git fetch upstream</code></pre></div>
+<p>以上是需要替换参数的模板，不属于离线自动路线。若 upstream 已存在，应先查询配置，不要重复添加。获取只更新相关对象与观察记录，接下来的分支选择仍须由读者明确决定。</p>
+<h3 id="h3-21">第二步：把问题限制在能够审阅的范围</h3>
+<p>选择一项具体问题，例如某章辅导材料的路径说明不清楚。先复现并记录现象，再写出修正后的读者行为：从仓库根目录能够定位正确文件，命令中的占位参数不会被误当成实际路径，验证方法清楚。</p>
+<p>创建任务分支后，只修改与此问题有关的内容。不要把全篇格式重排、无关措辞调整或自动生成目录同时混入。若发现其他问题，可另行登记。范围清晰可以降低评审成本，也方便在需要时独立撤销。</p>
+<h3 id="h3-22">第三步：提交前核对内容和证据</h3>
+<p>先查看工作区差异，再选择候选，最后检查候选补丁与说明。适用时运行本项目的材料检查和相关章节实验。自动路线通过以后，仍应人工阅读修改后的解释，确认没有改变原本正确的技术含义。</p>
+<div class="code-block"><div class="code-bar"><span>线上练习模板：仅推送个人任务分支</span><button class="copy-code">复制</button></div><pre><code>git switch -c docs/clarify-example-path
+# Edit the relevant guide, then inspect and stage selected paths.
+git diff
+git add PATH_TO_THE_CHANGED_GUIDE
+git diff --cached
+git commit -m "docs: clarify the example path"
+git push -u origin docs/clarify-example-path</code></pre></div>
+<p>模板中的路径必须替换为实际修改文件。若推送被拒绝，先看地址、权限、分支关系与规则；不要因为“仅文档”就跳过范围判断。成功推送只表示相应服务器接受了引用更新。</p>
+<p>合入判断不能由单个绿色标记代替（图 <a class="book-ref" href="../chapters/13.html#fig:scenario-13-01">13.12</a> ）。需求、历史结构和过程规则分别回答不同问题，团队应为每一项保留可核对的依据。</p>
+<figure id="fig:scenario-13-01"><button aria-label="放大图13.12：合入前分别核对三类条件" class="zoom-image"><img alt="图13.12 合入前分别核对三类条件" height="298" loading="lazy" src="../assets/figure-13-12.webp" width="1177"/></button><figcaption><b>图 13.12</b> 合入前分别核对三类条件</figcaption></figure>
+<h3 id="h3-23">第四步：确认请求方向并撰写说明</h3>
+<p>创建请求时，接收仓库和目标分支表示变化希望进入的位置；来源仓库和比较分支表示作者提供的变化。跨 fork 请求尤其应逐项确认方向，并在提交前阅读平台展示的文件差异<span class="citation" data-cites="githubforkpr">(GitHub 2026a)</span>。</p>
+<p>标题描述具体问题或结果。正文说明触发条件、修改后的表现和实际验证，必要时附图或链接。不要把作者与评审者的聊天过程写成项目长期说明，也不要将未执行的测试列为通过。证据不足时应写明限制，方便评审者安排后续检查。</p>
+<h3 id="h3-24">第五步：理解检查结果和人工反馈</h3>
+<p>持续集成结果需要与实际提交对应。观察工作流名称、触发事件、检出版本与失败步骤，区分环境准备失败和内容规则失败。绿色状态只覆盖该工作流已经检查的范围，不能代替人工对需求和表述的判断。</p>
+<p>来自派生仓库的贡献具有特定权限和运行条件，工作流不应为了方便检查而向不可信变化暴露高权限凭据。维护者应按最小权限组织检查，并审阅自动化文件的变化<span class="citation" data-cites="githubactionssecure">(GitHub 2026c)</span>。学习者则只记录自己实际观察到的结果，不尝试绕过课程或平台规则。</p>
+<h3 id="h3-25">第六步：修订、合入与交接</h3>
+<p>响应反馈时说明修改位置和依据。若不同意建议，围绕需求、证据与维护成本解释，不把讨论简化为个人偏好。新增提交或整理历史以后，应重新检查请求范围与验证结果；较大变化可能需要重新评审。</p>
+<p>合入以后，确认实际接收位置、合入方式和结果内容。删除个人任务分支前，先确认所需成果已有清晰入口。随后获取新的主线信息，按团队约定更新个人副本。关闭请求不是学习终点，能够解释最终内容怎样进入共享历史，才完成了本节的协作闭环。</p>
+<h3 id="h3-26">实验报告的最低要求</h3>
+<p>报告应包含个人派生关系、两个远端地址的角色说明、实际任务分支、变化范围、验证记录和评审结论。若只完成到推送，就说明停止位置；若在课程内模拟评审，就标明模拟范围。不要编造他人的评审意见或公开记录。</p>
+<p>本节迁移任务是把一项真实可复现的文档问题修正为可接续成果。评价依据是方向正确、变化集中、证据真实和反馈闭环，而非请求数量或页面装饰程度。</p>
+<h2 id="h2-12">本章小结</h2>
+<p>工作流把项目的发布、权限和验证需求转成共同规则。fork、分支与 PR 分属不同层次，评审把需求与实际变化联系起来，合入方式决定历史如何表达。机制与约定配合，才能形成可以持续维护的协作。</p>
+<p>对一个小任务把范围、证据和交接完整做清楚，比先引入复杂分支体系更有教学价值。之后再根据版本维护和团队规模增加约束，每项约束都应解释其要解决的问题。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-driessen2010gitflow" role="listitem">
+Driessen, Vincent. 2010. <em>A Successful Git Branching Model</em>. <a class="uri" href="https://nvie.com/posts/a-successful-git-branching-model/">Https://nvie.com/posts/a-successful-git-branching-model/</a>.
+</div>
+<div class="csl-entry" id="ref-githubforkpr" role="listitem">
+GitHub. 2026a. <em>Creating a Pull Request from a Fork</em>. <a class="uri" href="https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork">Https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request-from-a-fork</a>.
+</div>
+<div class="csl-entry" id="ref-githubflow" role="listitem">
+GitHub. 2026b. <em>GitHub Flow</em>. <a class="uri" href="https://docs.github.com/en/get-started/using-github/github-flow">Https://docs.github.com/en/get-started/using-github/github-flow</a>.
+</div>
+<div class="csl-entry" id="ref-githubactionssecure" role="listitem">
+GitHub. 2026c. <em>Secure Use Reference</em>. <a class="uri" href="https://docs.github.com/en/actions/reference/security/secure-use">Https://docs.github.com/en/actions/reference/security/secure-use</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-13">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:13.1"><summary><span class="difficulty">应用</span><b>13.1</b><span>为一个每周更新资料、每学期发行定稿的课程选择工作流，解释是否需要长期发布分支。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 工作流选择 / 发布节奏 / 维护成本</p><p>可采用短期主题加main持续更新，并用标签标记学期定稿；若旧学期需独立修订或长期支持，再建立维护分支。长期发布分支应解决明确并行维护需求，而不是为了满足流程图而创建。</p><p>按交付频率、团队规模和支持版本数量比较短期主题与长期维护分支。每周资料更新未必需要复杂发布线，学期定稿可用标签固定；有持续维护责任时再安排相应分支与移植规则。</p></div></details><details class="exercise" id="ex:13.2"><summary><span class="difficulty">基础</span><b>13.2</b><span>区分集中式协作与 Git 的分布式机制，说明共同远端承担什么角色。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 分布式机制 / 共同远端 / 协作约定</p><p>集中式协作是团队围绕共同远端组织共享和规则，并不改变Git各仓库可本地保存与操作历史的分布式机制。共同远端承担约定的交换与整合入口，不是所有对象天然唯一的物理来源。</p><p>共同远端为团队提供共享入口和规则执行位置，各协作者仍可独立建立本地提交。集中采用一个协作入口属于组织选择，与Git的数据机制可以同时成立；两者不宜被写成互斥分类。</p></div></details><details class="exercise" id="ex:13.3"><summary><span class="difficulty">应用</span><b>13.3</b><span>画出 GitEasy 作者仓库、个人 fork、本地克隆与两个远端别名，标出读取和推送方向。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · fork / clone / 别名 / 通信方向</p><p>原项目与个人fork分别属于不同所有者，本地克隆配置origin指个人副本、upstream指原项目。fetch从所选来源读入，push向有权限的目标写入，PR在平台提出跨分支整合。名称可自定，以实际地址为准。</p><p>图中保留四个位置的独立边界，并对每个箭头写出实际来源与目标。fork属于平台侧仓库关系，clone建立本地副本，origin与upstream属于本地别名。来源名称本身不构成写入授权。</p></div></details><details class="exercise" id="ex:13.4"><summary><span class="difficulty">应用</span><b>13.4</b><span>为新增索引实验写需求与 PR 说明，包含可观察验收和实际验证范围。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 需求验收 / PR范围 / 提交可评审性</p><p>需求写明索引实验要让读者观察什么以及通过条件；PR列出新增路径、示例命令、断言和文档入口。说明只在某系统执行过，是否运行其他平台和线上流程；未执行范围明确保留。</p><p>可把需求写成能够观察的行为，再列出相应文件、提交及测试。说明应围绕最终变化组织，避免把无关格式修改夹入功能任务；明确哪些结果已经运行，哪些还需要环境或他人验证。</p></div></details><details class="exercise" id="ex:13.5"><summary><span class="difficulty">应用</span><b>13.5</b><span>把“这里不清楚”改成一条包含位置、影响和可落实建议的评审意见。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 评审意见 / 位置 / 影响 / 建议</p><p>例如：第三段把fetch描述为修改当前文件，读者可能误把抓取当作整合；建议分别说明跟踪引用更新与工作区状态，并增加抓取前后status和show-ref对照。意见包含位置、影响与可验证建议。</p><p>有效意见应指出具体语句或路径，解释它怎样影响理解或行为，并提出能够核验的修改方向。作者响应时补充修订与测试位置，使讨论能够闭合；笼统评价或单纯表达喜好难以推动代码改进。</p></div></details><details class="exercise" id="ex:13.6"><summary><span class="difficulty">应用</span><b>13.6</b><span>完成三种合入实验，同时比较树、父标识和祖先关系，不以提交图外观代替验证。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · merge / squash / rebase合入</p><p>分别建立merge、squash与rebase方式结果，比较最终树、rev-list --parents和merge-base祖先判断。可相同内容而不同父链；应提交实际标识与查询，而不是只提交一张看起来相似的图。</p><p>三种策略应从同一起点在独立副本实验。最终树可以一致，但提交数量、父关系和来源主题的祖先地位不同。选型应结合维护与追溯要求，不能以历史图是否整齐作为唯一依据。</p></div></details><details class="exercise" id="ex:13.7"><summary><span class="difficulty">基础</span><b>13.7</b><span>解释 squash 后为什么来源主题不一定成为结果祖先；这与最终文件是否完整有什么关系？</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 压缩合入 / 来源祖先 / 任务完成</p><p>squash以组合变化形成新提交，但通常不把原主题头接成父链，因此来源头不一定是结果祖先。内容完整由树、差异和测试核对，祖先归属由提交关系核对，两者并不矛盾。</p><p>squash将变化形成接收分支的新提交，通常不把来源头接为父。任务可已完成而祖先查询仍显示来源独有提交，清理时应同时检查最终内容与任务记录，避免再次重复合入同一意图。</p></div></details><details class="exercise" id="ex:13.8"><summary><span class="difficulty">应用</span><b>13.8</b><span>讨论来源分支修订后，先前评审与检查是否仍适用，需要核对哪些规则。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 检查时效 / 批准状态 / 来源更新</p><p>新推送可能改变已经检查的文件、提交或依赖。需要核对检查针对哪个提交、旧评审是否失效、是否要求重新批准及是否允许例外。不能把先前的绿色和批准无条件移用到后续版本。</p><p>将检查结果与确切head或平台合并测试提交关联。来源发生变化以后，旧评审和旧运行是否仍有效需要依据规则与差异判断。新的功能、依赖或安全相关修改应重新评估，而不是继承一个脱离版本的绿色标记。</p></div></details><details class="exercise" id="ex:13.9"><summary><span class="difficulty">应用</span><b>13.9</b><span>为课程副本制定最小协作约定，并设计一项故意失败来验证合入限制。线上未执行时如实标明。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 合入规则 / 允许与拒绝 / 最小权限</p><p>最小约定明确主题范围、提交说明、测试、评审和合入条件。设计一个能确实违反要求的候选，观察平台拒绝，再修正观察允许；记录身份和例外。仅编写规则模板时应称为设计，不能称强制规则已验证。</p><p>在练习仓库分别验证正常提交通过、故意失败被拒绝以及权限例外的条件。若没有实际运行平台规则，应交付配置草案与待验步骤，不能仅凭规则页面截图就断言保护已经覆盖全部入口。</p></div></details><details class="exercise" id="ex:13.10"><summary><span class="difficulty">应用</span><b>13.10</b><span>提交一份合入后交接说明，涵盖实际版本、检查入口、依赖和未完成事项。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 交接 / 确切版本 / 后续责任</p><p>交接列出目标提交与合入方式，提供运行检查入口、依赖和实际结果，说明未完成事项和后续位置。删除主题之前核对保留入口；让接手者从干净目录重建，而不是依赖作者现有工作区。</p><p>交接说明应让接手者从新目录取得指定版本，定位依赖和检查入口，并识别仍未完成的事项。把源码、平台记录和运行状态分别列出，能够减少“文件拿到却无法继续维护”的情况。</p></div></details><details class="exercise" id="ex:13.11"><summary><span class="difficulty">应用</span><b>13.11</b><span>比较短期主题、主干开发和多版本维护的使用条件。为“每周课程资料更新、每学期定稿、旧学期仅修错”的项目选择流程，说明哪些分支长期存在、标签何时建立及修复如何在各线传播。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 主干开发 / 长期维护 / 发布约束</p><p>日常变化可通过短期主题进入主线，学期定稿用标签固定；需要继续修正的旧学期可以建立受控维护线。是否长期保留更多分支，取决于并行支持责任、验证成本和发布节奏，不能套用固定数量。</p><p>修复从适合的基线形成独立变化及测试，再按需要移植并分别发布。流程说明应明确接收者、检查与结束条件，使历史能够服务维护，而非只形成外观复杂的分支图。对不再支持的版本，还需写清停止维护约定。</p></div></details><details class="exercise" id="ex:13.12"><summary><span class="difficulty">应用</span><b>13.12</b><span>某PR的head未变，但接收分支已经升级依赖；另一个PR在批准后追加了功能提交。请分析原有检查和批准能否沿用，说明基线变化、合并测试提交、必需检查与人工意见之间的关系。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 规则与检查 / base变化 / 评审时效</p><p>head未变也可能与新的base形成不同组合，是否需要重新构建与测试应结合实际集成目标和规则判断。追加功能提交则改变了受审范围，旧检查对应的版本与旧意见是否仍适用，都需要重新核对。</p><p>记录检查所用提交、基线和目标，而不只记录一项永久绿色状态。自动化验证与人工审阅各有覆盖范围；规则可以要求更新后的检查和批准，但其实际效果仍需在练习仓库验证允许与拒绝路径。</p></div></details><details class="exercise" id="ex:13.13"><summary><span class="difficulty">综合</span><b>13.13</b><span>校园卡一次PR同时修改支付接口、Qt界面和大量格式，评审期间又更新了base。请拆分任务并给出验收，比较merge、squash与rebase合入对追溯和后续维护的影响，处理失效检查与意见，最后交付接手者可复现的版本及未完成事项。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 评审拆分 / 合入策略 / 交接维护</p><p>先把功能必要依赖与无关格式变化分离，领域接口和界面接入按能独立验证的阶段组织；每个PR说明背景、影响和实际测试。base或head变化后，核对原意见与运行所对应的版本，必要时重新检查，避免继承脱离当前组合的批准。</p><p>合入策略依据团队对祖先追溯、提交粒度和维护的要求选择，并分别检查结果树与父关系。交接给出确切合入版本、依赖、构建与测试入口、维护移植计划及未完成事项。另一位同学从新目录复现，才能检验报告是否足以支撑接续。</p><p>可将接口及必要调用调整、界面接入、格式规范化拆成各自可解释的变化，同时明确跨任务依赖。base更新后重新检查比较范围，并针对新的head和适用整合输入执行检查，逐条回应原评审意见。若采用压缩合入，应在说明中保存任务与原提交的联系；若采用变基合入，明确新身份及维护定位方式。最终从交付标签独立构建，提供需求清单、测试结果和未完成事项，不能以线程已处理代表所有意见已获认可。</p></div></details></section><section id="mindmap"><h2 id="review-14">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第13章复习导图" class="zoom-image"><img alt="第13章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-13.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="13">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="12.html"><small>← 上一章</small>版本标记、签名与发布</a><a href="14.html"><small>下一章 →</small>仓库规模、依赖与工作树</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">工作流中的角色、分支与交付</a><a href="#h2-2">依据项目约束选择工作流</a><a href="#h2-3">fork、远端与 PR 是不同层次</a><a href="#h2-4">把需求写成可检验的变化</a><a href="#h2-5">评审关注内容、证据与可维护性</a><a href="#h2-6">完整实验：同一变化的三种合入历史</a><a href="#h2-7">把规则落到可验证的协作约定</a><a href="#h2-8">案例研读：让评审形成可执行的决定</a><a href="#h2-9">协作练习：建立一份可审阅的变更说明</a><a href="#h2-10">合入策略与长期维护</a><a href="#h2-11">GitHub实践：从自己的派生仓库提交一项改进</a><a href="#h2-12">本章小结</a><a href="#review-13">本章习题与解析</a><a href="#review-14">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>GitHub平台与图形化工具 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="16" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link active" data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><div class="breadcrumb"><a href="../index.html">学习总览</a><span>/</span>实践篇<span>/</span>第16章</div><header class="chapter-header"><div class="section-kicker">CHAPTER 16 · 实践篇</div><h1>GitHub平台与图形化工具</h1><div class="chapter-meta"><span>张庆科 编著</span><span>约 51 分钟</span><span>13 道分层习题</span></div></header><article class="prose">
+<span id="ch:lookup-16"></span>
+<p>Git解决提交、引用和对象交换，GitHub在这些能力之上组织需求、讨论、评审、检查与发布。前面已经能够在本地完成协作，本章进一步把这些行为放回真实平台，并说明图形化客户端如何呈现同一套Git模型。</p>
+<p><strong>学习目标：</strong>能识别账户、仓库和组织的边界；能从项目页面定位源码、历史、Issue、PR与Actions；能建立适合课程项目的设置与协作约定；能用命令行与图形界面交叉核对状态；能依据系统、任务和团队约束选择客户端。</p>
+<p>账户与仓库 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 页面与权限 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 需求与PR <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 检查与发布 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 设置与治理 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 客户端对照 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>→</mo><annotation encoding="application/x-tex">\rightarrow</annotation></semantics></math> 独立贡献。</p>
+<h2 id="h2-1">从Git仓库到协作平台</h2>
+<p>一个提交能够说明文件状态及父关系，却不会自动回答谁来评审、任务何时验收以及构建产物放在哪里。平台把这些工程活动联系到提交，使团队既能讨论未来要做什么，也能追踪已经做了什么。理解这一区别，是避免把网页按钮当作另一套版本控制原理的起点。</p>
+<h3 id="h3-1">Git与GitHub分别负责什么</h3>
+<p>Git可以在没有GitHub账户时初始化仓库、提交、分支和合并；也可以通过本地路径与其他仓库交换对象。GitHub是托管和协作平台，其仓库包含Git数据，同时关联Issue、PR、Actions运行、Release及权限等平台信息<span class="citation" data-cites="githubplatform">(GitHub 2026j)</span>。克隆取得的是按选项提供的Git对象与引用，不会把讨论区和账户设置自动变为本地文件。</p>
+<p>以校园一卡通需求为例，“挂失卡拒绝消费”可以登记为Issue；实现代码保存在主题分支；PR组织差异与评审；Actions执行测试；附注标签标记发布提交，Release补充交付说明。它们围绕同一项变化协作，但各自有独立的存储与权限范围。备份和交接也应分别列出这些范围。</p>
+<h3 id="h3-2">账户、组织、仓库与个人副本</h3>
+<p>账户对应平台身份；组织用于管理共同拥有的资源与成员关系；仓库保存某个项目及其协作记录。<code>tsingke/GitEasy</code>中的前半段是所有者，后半段是仓库名，不能仅凭仓库名判断所有权。个人副本通常称为fork，它有自己的所有者与分支，并保留平台识别的来源关系；本地clone则是计算机上的另一个Git仓库。图<a class="book-ref" href="../chapters/16.html#fig:github-profile">16.1</a>展示作者主页的实际截取。主页可用于发现项目与查看公开活动，但贡献数量、星标或关注关系都不能单独证明代码质量或维护责任。读者查看同一页面时，只有相应身份才会看到编辑入口；教材不要求通过修改自己的资料来完成Git概念练习。</p>
+<figure id="fig:github-profile"><button aria-label="放大图16.1：作者GitHub主页的资料与置顶项目（2026年11月11日截取，页面随身份与时间变化）" class="zoom-image"><img alt="图16.1 作者GitHub主页的资料与置顶项目（2026年11月11日截取，页面随身份与时间变化）" height="1020" loading="lazy" src="../assets/figure-16-1.webp" width="1700"/></button><figcaption><b>图 16.1</b> 作者GitHub主页的资料与置顶项目（2026年11月11日截取，页面随身份与时间变化）</figcaption></figure>
+<h2 id="h2-2">账户准备与身份验证</h2>
+<p>能够在浏览器中看到页面、能够通过Git取得代码、能够向某条分支推送，是三个不同判断。准备账户时应先建立这种分层认识，再按自己的课程仓库配置验证方式。不要因为一次推送被拒绝，就立即重建仓库或改写本地历史（图 <a class="book-ref" href="../chapters/16.html#fig:principle-ch16-02">16.2</a> ）。</p>
+<figure id="fig:principle-ch16-02"><button aria-label="放大图16.2：身份验证有不同通道（每行对照一组条件与解释）" class="zoom-image"><img alt="图16.2 身份验证有不同通道（每行对照一组条件与解释）" height="357" loading="lazy" src="../assets/figure-16-2.webp" width="1237"/></button><figcaption><b>图 16.2</b> 身份验证有不同通道（每行对照一组条件与解释）</figcaption></figure>
+<h3 id="h3-3">公开资料、邮箱与提交归属</h3>
+<p>用户名用于平台路径，显示名称用于阅读体验；Git提交中的姓名和邮箱由本地配置写入，二者不会因为登录了浏览器而自动一致。需要将提交关联到平台账户时，核对该邮箱的账户验证状态与隐私选项。选择平台提供的隐私邮箱时，应从自己的设置页复制，不能照抄他人的示例值。</p>
+<p>设置提交身份只影响之后创建的提交，不会自动改写旧历史。若课程要求保留原始协作记录，应在新的提交中修正配置，并在报告说明原因。不要为了让网页头像一致而批量重写已共享历史；头像仅平台展示线索，真正的贡献说明还需要差异、讨论与验证记录。</p>
+<h3 id="h3-4">浏览器登录、HTTPS与SSH</h3>
+<p>浏览器登录用于网页会话；命令行访问可以采用HTTPS凭据或SSH密钥，客户端也可能通过授权流程使用凭据管理器。GitHub官方说明区分了这些访问方式<span class="citation" data-cites="githubauthentication">(GitHub 2026a)</span>。浏览器已登录，不代表当前终端已经获得相同权限；反过来，SSH连通也不保证对所有仓库都有写入权限。</p>
+<p>使用HTTPS时，按官方支持的凭据管理流程完成授权，令牌不要写进远程地址或提交文件。使用SSH时，公钥登记到相应账户，私钥保留在本机并由合适的代理使用。主机身份核验、账号权限与分支规则仍是不同环节。本书不把修改远程URL视为授予权限的动作。</p>
+<div class="code-block"><div class="code-bar"><span>在已有克隆中核对通信对象与提交身份</span><button aria-label="复制命令" class="copy-code">复制</button></div><pre><code>git remote -v
+git config --show-origin --get user.name
+git config --show-origin --get user.email
+git branch -vv</code></pre></div>
+<p>这里首先确认“准备向谁通信”，再确认“新提交将写入什么身份”，最后查看本地分支的上游关系。命令输出中的地址并不包含完整授权判断；若读取失败，结合服务器提示、仓库可见性和当前使用的身份继续排查。</p>
+<h3 id="h3-5">双因素验证与权限最小化</h3>
+<p>按照平台当前提供的方式配置双因素验证或通行密钥，并妥善保存恢复方法。对课程任务，应使用能够完成该任务的最小授权范围；组织还可能要求额外的单点登录授权。恢复方法、密钥和令牌属于个人凭据，不能为了提交作业而放入截图、Issue或仓库。</p>
+<p>账户级设置控制身份与安全；仓库级设置控制项目规则。二者名称相近时，先检查页面路径和标题。后续介绍的Settings均会明确作用对象，避免在“解决一个项目问题”时误改整个账户的行为。</p>
+<h2 id="h2-3">读懂GitEasy仓库首页</h2>
+<p>项目首页是查找信息的起点，阅读时应把当前分支、文件树、提交和协作入口一起看。相同文件名在不同分支可能有不同内容；网页显示的README也依赖当前选择的位置。先识别页面的上下文，才能正确解释某个按钮或差异。</p>
+<h3 id="h3-6">Code页面的四个观察位置</h3>
+<p>图<a class="book-ref" href="../chapters/16.html#fig:github-code">16.3</a>为GitEasy首页实拍。顶部导航连接Code、Issues、Pull requests、Actions等功能；分支选择器确定当前查看的分支或标签；文件列表展示该版本的目录；最近提交与历史入口帮助定位变化。右侧About和Releases提供项目说明与发布入口。</p>
+<figure id="fig:github-code"><button aria-label="放大图16.3：GitEasy仓库首页：分支、文件、提交与协作导航（实际截图中的仓库为私有，访问需要相应权限）" class="zoom-image"><img alt="图16.3 GitEasy仓库首页：分支、文件、提交与协作导航（实际截图中的仓库为私有，访问需要相应权限）" height="1175" loading="lazy" src="../assets/figure-16-3.webp" width="1700"/></button><figcaption><b>图 16.3</b> GitEasy仓库首页：分支、文件、提交与协作导航（实际截图中的仓库为私有，访问需要相应权限）</figcaption></figure>
+<p>本次截图显示Private，这是核对时的实际可见性，不表示教学资料只能采用私有方式。没有访问权限的读者可能看到404或无法fork；此时应使用随书资源包、课程授权副本或自己创建的练习仓库。公开仓库、私有仓库与课程分发包是不同交付方式，本书不要求为了复现截图而改变作者仓库的可见性。</p>
+<h3 id="h3-7">查看文件、历史与行批注</h3>
+<p>打开一个文本文件后，先确认分支与路径，再阅读内容。History用于追踪该路径相关的历史，Blame把当前行与提交记录联系起来；两者都是调查线索，不能仅凭某行的最后修改者认定现实责任。需要理解设计原因时，继续查看完整差异、提交说明及关联讨论。</p>
+<p>为了给同伴指出准确位置，可使用指向确切提交的永久链接。指向main的链接会随分支移动，适合“始终查看最新内容”；指向提交标识的链接适合评审、勘误和教材证据。描述问题时同时给出路径、版本与预期行为，比只贴一张截断的图片更便于复现。</p>
+<h3 id="h3-8">克隆、下载归档与网页编辑</h3>
+<p>Code菜单通常提供HTTPS、SSH或其他获取入口。应从当前页面复制实际地址，核对所有者与仓库名。Download ZIP得到一个版本的文件归档，不包含可直接继续本地Git操作的完整仓库历史；若需要分支、提交和推送，应进行clone<span class="citation" data-cites="githubremoteurls">(GitHub 2026c)</span>。</p>
+<p>网页编辑适合小范围文字修订，但保存到平台通常意味着产生提交或提出变更请求。修改前仍要选择目标分支、提供说明并检查差异。批量代码实现更适合在本地完成编译测试后推送，避免把编辑器能保存文件误认为业务已经通过验证。</p>
+<h2 id="h2-4">建立自己的课程仓库</h2>
+<p>拥有一个练习仓库后，读者才能把配置、贡献与合入过程完整执行。创建方式要与起点匹配：新项目从空仓库开始；已有本地历史需要接入远程；参与他人项目则通常使用授权分支或个人副本。三种起点不应混用同一套复制命令（图 <a class="book-ref" href="../chapters/16.html#fig:principle-ch16-04">16.5</a> ）。</p>
+<p>个人副本、本地克隆与拉取请求承担不同职责。图 <a class="book-ref" href="../chapters/16.html#fig:visual-16-a">16.4</a> 把个人修改从取得项目到提交评审的过程展开，帮助读者将网页动作与本地Git操作对应。该图用于说明关系，具体按钮位置和访问条件以本章实拍页面及平台当前界面为准。</p>
+<figure id="fig:visual-16-a"><button aria-label="放大图16.4：个人副本、本地修改与平台贡献过程" class="zoom-image"><img alt="图16.4 个人副本、本地修改与平台贡献过程" height="1024" loading="lazy" src="../assets/figure-16-4.webp" width="1536"/></button><figcaption><b>图 16.4</b> 个人副本、本地修改与平台贡献过程</figcaption></figure>
+<figure id="fig:principle-ch16-04"><button aria-label="放大图16.5：按起点建立个人实践（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图16.5 按起点建立个人实践（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-16-5.webp" width="1147"/></button><figcaption><b>图 16.5</b> 按起点建立个人实践（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-9">从空项目开始</h3>
+<p>在自己的账户下创建练习仓库，先选择名称和可见性，再决定是否初始化README、许可证和忽略文件。若本地已经存在需要保留的历史，远程空仓库能减少首次接入时的历史整合问题；若由平台初始化，则先clone后开始修改，操作路径通常更清楚。</p>
+<p>许可证表达使用与分发条件，不能只因为页面提供选项就随意代替团队作出决定。课程作业也应说明代码、教材文字、图像和第三方依赖各自适用的条件。仓库可见并不等于其中所有材料均可任意再版。</p>
+<h3 id="h3-10">已有本地项目接入平台</h3>
+<p>下面给出操作模板。先在自己的账户建立空仓库，并把地址替换为实际路径；示例不指向作者仓库，也不提供直接可执行的写入授权。</p>
+<div class="code-block"><div class="code-bar"><span>将已有仓库连接到自己确认的空远程</span><button class="copy-code">复制</button></div><pre><code>git remote add origin https://github.com/YOUR_ACCOUNT/campus-card-lab.git
+git remote -v
+git push -u origin main</code></pre></div>
+<p>若origin已经存在，先读取它的地址，不要重复添加。推送被拒绝时，检查远程是否已经有初始化提交、当前账户是否具备权限以及目标是否受保护。不能把拒绝统一解释为“本地提交太旧”，更不能以强推替代原因分析。</p>
+<h3 id="h3-11">fork与双远程关系</h3>
+<p>参与原项目时，通常把个人副本记为origin，把原项目记为upstream。名称仅约定；真正决定通信对象的是配置地址。抓取upstream取得原项目进展，将自己的主题分支推送到origin，然后在平台选择原项目的目标分支提出PR。</p>
+<p>私有项目是否允许fork及其可见范围受项目和组织规则约束。没有fork入口时，先核对授权方案；课程也可以在独立练习仓库完成相同的Git模型训练。报告应说明采用了哪种路径，避免把两个本地目录称为两个真实平台账户。</p>
+<h2 id="h2-5">用Issue把问题写成可验收任务</h2>
+<p>Issue的价值不在于保存一句“请修复”，而在于使团队对问题与完成条件形成共同理解。校园一卡通中的“挂失后仍能消费”应说明当前行为、触发步骤、预期行为及影响范围，再决定实现和测试如何拆分。</p>
+<h3 id="h3-12">创建一条可复现的问题记录</h3>
+<p>在练习仓库的Issues页选择New issue；如果项目提供模板，先选择相应类型，再填写具体内容<span class="citation" data-cites="githubissuecreate">(GitHub 2026f)</span>。错误报告至少包含使用版本、操作步骤、实际结果和期望结果。日志保留足以复现的部分，合成测试数据与真实个人资料要区分。</p>
+<p>Issue需要把现象写成可重复验证的条件（图 <a class="book-ref" href="../chapters/16.html#fig:scenario-16-01">16.6</a> ）。示例聚焦挂失后的新请求；已完成请求的合法重试由幂等规则另行判断，不能混作同一失败路径。</p>
+<figure id="fig:scenario-16-01"><button aria-label="放大图16.6：从问题描述到可验收任务" class="zoom-image"><img alt="图16.6 从问题描述到可验收任务" height="587" loading="lazy" src="../assets/figure-16-6.webp" width="1177"/></button><figcaption><b>图 16.6</b> 从问题描述到可验收任务</figcaption></figure>
+<p>例如，先开学生卡、充值100.00元、执行挂失，再尝试消费1.00元。预期是拒绝且余额与流水数量不变；若账户余额改变，就说明失败路径实际改变了业务状态，需要检查记账与异常处理顺序。这样写出的Issue已经为自动测试提供了明确断言。</p>
+<h3 id="h3-13">标签、负责人、里程碑与看板</h3>
+<p>标签用于分类，例如缺陷、增强或文档；负责人说明当前推进者；里程碑聚合某次交付目标；Projects可以按状态或其他字段组织任务。工具提供组织能力，团队仍需约定“进行中”“待评审”“已完成”分别要求什么证据。</p>
+<p>不要把Issue关闭当作代码自动正确。实现已合入但部署尚未验收时，可以分别记录代码完成与交付完成；需要重新打开问题时，说明出现了什么新证据。阶段状态应帮助团队判断下一步，而非仅使看板看起来整齐。</p>
+<h2 id="h2-6">提出并评审拉取请求</h2>
+<p>PR（pull request，拉取请求）把一条来源分支的变化提交给目标分支讨论和整合。它不是Git的pull命令，也不是请求对方立即下载整个项目。创建之前，应能准确说明base与head分别是什么，以及提出的差异是否只包含本次任务（图 <a class="book-ref" href="../chapters/16.html#fig:principle-ch16-06">16.7</a> ）。</p>
+<figure id="fig:principle-ch16-06"><button aria-label="放大图16.7：PR组织完整贡献（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图16.7 PR组织完整贡献（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-16-7.webp" width="1145"/></button><figcaption><b>图 16.7</b> PR组织完整贡献（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-14">选择比较对象并检查范围</h3>
+<p>先推送自己的主题分支，再从Pull requests入口选择New pull request。base是准备接收变化的分支，head是提供变化的分支；跨fork贡献还要检查两侧所有者。创建前核对提交列表与文件差异，避免把同伴尚未合入的主题或无关格式变化带入<span class="citation" data-cites="githubprcreate">(GitHub 2026e)</span>。图<a class="book-ref" href="../chapters/16.html#fig:github-pull-list">16.8</a>保留GitEasy在首个PR建立前的列表局部。空列表表示当前查询没有匹配记录，不能推导账户没有权限或功能失效。教材中的校园项目PR说明为教学模板；没有真实提交发生时，不填入虚构编号和“已经批准”的评审结果。</p>
+<figure id="fig:github-pull-list"><button aria-label="放大图16.8：拉取请求列表、查询条件与创建入口（2026年11月11日15:46的历史局部，首个PR尚未建立）" class="zoom-image"><img alt="图16.8 拉取请求列表、查询条件与创建入口（2026年11月11日15:46的历史局部，首个PR尚未建立）" height="536" loading="lazy" src="../assets/figure-16-8.webp" width="1700"/></button><figcaption><b>图 16.8</b> 拉取请求列表、查询条件与创建入口（2026年11月11日15:46的历史局部，首个PR尚未建立）</figcaption></figure>
+<h3 id="h3-15">写清变化、测试和未完成事项</h3>
+<p>标题表达可观察结果，例如“挂失账户拒绝新的消费请求”。正文说明关联需求、修改范围、验证方法和限制。对于界面变化，可附运行截图并说明构建环境；对于业务规则，提供成功与失败输入的结果。尚需讨论的问题应明确列出，避免用“全部完成”替代具体事实。</p>
+<p>草稿PR适合提前讨论设计与接口，表示当前不要求立即合入。进入正式评审前，补齐测试并清理无关变化。对大任务可以先提交接口和最小路径，再逐步增加能力；拆分依据应是每个阶段能否独立理解和验证。</p>
+<h3 id="h3-16">逐行意见、评审结论与响应</h3>
+<p>Files changed用于核对差异并在相关行提出意见。评论应指出具体条件、可能后果与建议验证方式，例如“余额不足分支抛出异常后，请断言流水数量仍保持不变”。只有“看起来可以”的评价无法解释检查了什么，也不能指导作者改进。</p>
+<p>作者响应时区分已修改、需要讨论和暂不采用，并给出依据。处理线程不等于自动获得批准；修改后是否需要重新评审取决于项目规则。评审者也应在版本变化后重新检查自己关注的内容，不沿用旧结论覆盖新的差异。</p>
+<h3 id="h3-17">合入方式与删除主题分支</h3>
+<p>合并提交、压缩合入和变基合入对应不同的历史组织结果。选择时结合第13章说明的需求、提交粒度和团队追踪方式。绿色检查、评审满足和无冲突都是可能的前提，最终还要确认目标分支与即将合入的内容。</p>
+<p>合入后可按约定删除远程主题分支，并在本地抓取清理观察记录；自己的本地分支不会因此自动消失。个人副本贡献者也应同步目标分支，重新建立后续任务的起点，而非继续把新需求追加到已经合入的旧分支。</p>
+<h2 id="h2-7">理解Actions检查与运行证据</h2>
+<p>自动检查把可重复的命令移到明确环境执行，使团队能对同一提交获得相同类别的验证。它减少重复劳动，但检查能力取决于输入范围、运行步骤与断言。一个绿色标记不能证明未编写的业务规则已经被测试（图 <a class="book-ref" href="../chapters/16.html#fig:principle-ch16-07">16.10</a> ）。</p>
+<p>检查记录总是针对具体输入版本形成。图 <a class="book-ref" href="../chapters/16.html#fig:visual-16-b">16.9</a> 中，H1上的成功结果在主题分支前进到H2后仍是历史证据，不能据此认定H2已经通过同一组检查。团队应对新输入执行适用的检查，并将人工评审与自动化结果分别记录。</p>
+<figure id="fig:visual-16-b"><button aria-label="放大图16.9：提交前进后检查证据的版本对应关系" class="zoom-image"><img alt="图16.9 提交前进后检查证据的版本对应关系" height="400" loading="lazy" src="../assets/figure-16-9.webp" width="1186"/></button><figcaption><b>图 16.9</b> 提交前进后检查证据的版本对应关系</figcaption></figure>
+<figure id="fig:principle-ch16-07"><button aria-label="放大图16.10：Actions从事件到证据（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图16.10 Actions从事件到证据（沿连线依次阅读操作及检查步骤）" height="154" loading="lazy" src="../assets/figure-16-10.webp" width="1110"/></button><figcaption><b>图 16.10</b> Actions从事件到证据（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-18">工作流、运行、作业与步骤</h3>
+<p>工作流通常保存于<code>.github/workflows/</code>下，由事件触发；一次触发产生运行，运行内包含作业，作业再按步骤执行。矩阵可在不同系统或参数组合上重复作业。阅读失败时，应先定位运行所对应的提交，再进入失败作业和步骤查看日志。图<a class="book-ref" href="../chapters/16.html#fig:github-actions">16.11</a>为GitEasy的一次真实运行。截图中矩阵作业成功，说明该提交在所列环境执行了相应脚本；它不代表未来提交、未启用的Qt目标或真实平台权限也自动通过。操作系统镜像、编译器和依赖版本应在日志与报告中保留。</p>
+<figure id="fig:github-actions"><button aria-label="放大图16.11：GitEasy实际Actions运行：提交标识、状态、矩阵与日志入口" class="zoom-image"><img alt="图16.11 GitEasy实际Actions运行：提交标识、状态、矩阵与日志入口" height="776" loading="lazy" src="../assets/figure-16-11.webp" width="1700"/></button><figcaption><b>图 16.11</b> GitEasy实际Actions运行：提交标识、状态、矩阵与日志入口</figcaption></figure>
+<h3 id="h3-19">候选输入、权限与外来贡献</h3>
+<p>PR检查的目标通常是候选变化，不能用开发者目录中未提交的文件替代。工作流应从所选提交取得源码，使用明确的工具链执行构建与测试。缓存是提高速度的手段，不应成为缺失依赖说明或漏检变化的理由。</p>
+<p>来自外部贡献的代码属于尚待审查的输入。保持工作流所需的最小权限，谨慎处理脚本插值与第三方Action来源；不要为了让fork检查获得全部凭据而任意扩大权限。GitHub官方安全参考对这些边界提供进一步说明<span class="citation" data-cites="githubactionssecure">(GitHub 2026h)</span>。本书校园项目的基础测试不需要生产凭据。</p>
+<h2 id="h2-8">发布、文档与项目展示</h2>
+<p>仓库能够保存代码，但可交付项目还需要明确说明如何取得、如何运行以及当前限制。README、文档站点和Release分别服务于不同阅读时机：初次接触、持续学习与取得某次发布。把入口安排清楚，比在首页堆积徽章更有帮助。</p>
+<h3 id="h3-20">README与贡献说明</h3>
+<p>README先解释项目用途，再给最短的成功运行路径，随后说明目录、功能、验证和限制。命令应在干净目录核验，依赖需要明确；图片使用相对路径并提供可读的说明。GitEasy按教材章节建立目录，读者应能从章名找到辅导、实验、练习和答案。</p>
+<p>CONTRIBUTING描述贡献方式和验收条件，Issue与PR模板帮助补齐上下文。CODEOWNERS可表达评审责任，但文件本身的存在不保证所有规则已经强制执行；实际效果还要结合平台设置。开源许可证、图文来源和依赖声明也应从首页可达。</p>
+<h3 id="h3-21">标签、Release与附件</h3>
+<p>标签标记Git对象，Release在平台组织某次交付的说明和附件。两者可以关联，但不是同一种数据。发布校园项目时，应写明核心版或Qt版、适用系统、构建方法、测试范围与已知限制；不要把某台机器编译出的程序无说明地称为通用安装包。</p>
+<p>源码归档便于阅读一个版本，bundle用于转移所选Git历史；平台附件、Issue与PR又是其他范围。发布后的更正应形成可追溯记录。若已分发的标签需要变化，应先遵循项目政策，不把移动标签当作无需协调的普通整理。</p>
+<h3 id="h3-22">Pages、讨论与其他服务</h3>
+<p>Pages可用于项目文档或静态内容展示，Discussions适合开放式讨论，Packages用于制品分发。Codespaces提供远程开发环境，相关使用范围和计费条件需要结合账户方案核对。课程项目不必为了“功能齐全”启用所有服务；先完成源码、测试和协作闭环，再按教学目标增加工具。</p>
+<p>对于AI辅助功能，生成建议仍需进入正常评审和测试流程。无论代码来自手工输入、复制样例还是辅助工具，提交者都应能解释变化、确认来源和说明验证依据。平台工具改变工作方式，并不取消工程责任。</p>
+<h2 id="h2-9">仓库设置与规则治理</h2>
+<p>Settings处理项目范围的默认行为和约束，只有相应权限的用户才能修改。页面栏目与可用功能可能因可见性、账户方案和组织策略而不同，因此本节按目标说明设置，而不要求所有读者看到完全相同的按钮（图 <a class="book-ref" href="../chapters/16.html#fig:principle-ch16-09">16.12</a> ）。</p>
+<figure id="fig:principle-ch16-09"><button aria-label="放大图16.12：设置先明确作用对象（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图16.12 设置先明确作用对象（沿连线依次阅读操作及检查步骤）" height="155" loading="lazy" src="../assets/figure-16-12.webp" width="1111"/></button><figcaption><b>图 16.12</b> 设置先明确作用对象（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-23">默认分支、功能与合入选项</h3>
+<p>General中通常可以管理名称、默认分支、Issues等功能和允许的合入方式。默认分支影响初次进入项目、默认比较和克隆后的起点，但不意味着本地每条分支都要自动改名。调整前应检查文档链接、自动化条件和团队约定是否需要同步。</p>
+<p>允许某种合入方式与要求使用它是两件事。若课程要求保留主题分支合并记录，应在规则、说明和实际操作中保持一致。更改仓库名称或可见性也会影响协作者和外部链接，应在拥有权限且确有任务需要时处理，不能作为普通练习随意操作原项目。</p>
+<h3 id="h3-24">规则集、必需检查与评审</h3>
+<p>规则集可以针对分支或标签施加约束，例如阻止强制推送、要求评审或检查通过。哪些规则可用与仓库方案、可见性及权限有关<span class="citation" data-cites="githubrulesets">(GitHub 2026d)</span>。配置时先明确目标分支，再选择能够产生实际证据的要求；必需检查的名称应与工作流实际作业对应。</p>
+<p>设置规则后，需要在受控教学副本验证允许与拒绝两条路径。例如未满足检查时不能合入，满足要求后能够完成正常贡献。管理员绕过、例外角色和组织规则可能影响结果；报告应记录实际条件，不能仅凭“设置页勾选了选项”认定强制执行已经得到证明。</p>
+<h3 id="h3-25">协作者、Secrets与可见性</h3>
+<p>协作者或团队权限决定谁能读取、贡献和维护。学生练习应按角色分配必要能力，避免所有人共享同一个账户。Secrets与Variables用于工作流等场景的配置；前者不应出现在源码和日志中，后者适合非敏感参数，两者不能仅按“字符串是否很长”区分。</p>
+<p>截图、日志与作业材料中只保留理解问题所需的信息。本章对作者仓库只进行读取与截图，未为了演示改变权限、密钥或可见性。读者应在自己的教学副本设置规则；遇到404时，先核对路径、登录身份和私有访问权限，再判断项目是否真的不存在。</p>
+<h2 id="h2-10">图形化客户端与共同的Git模型</h2>
+<p>图形界面把状态、历史和差异可视化，能降低初学者的操作负担；命令行则提供精确的对象与参数表达。两者可以互相验证。选择客户端之前，先明确需要观察和改变的对象，才能判断某个按钮实际代表什么动作（图 <a class="book-ref" href="../chapters/16.html#fig:principle-ch16-10">16.13</a> ）。</p>
+<figure id="fig:principle-ch16-10"><button aria-label="放大图16.13：界面与命令共同验证（沿连线依次阅读操作及检查步骤）" class="zoom-image"><img alt="图16.13 界面与命令共同验证（沿连线依次阅读操作及检查步骤）" height="157" loading="lazy" src="../assets/figure-16-13.webp" width="1124"/></button><figcaption><b>图 16.13</b> 界面与命令共同验证（沿连线依次阅读操作及检查步骤）</figcaption></figure>
+<h3 id="h3-26">用同一项任务比较界面</h3>
+<p>建议在同一个临时仓库比较工具：修改文件的两处内容，仅选择其中一处暂存，检查候选差异并提交；随后抓取远程信息，观察跟踪引用，最后检查历史图。比较依据是是否清楚显示工作区与索引、能否辨认分支位置、操作前是否明确目标以及结果能否用Git查询重现。</p>
+<p>不要同时在两个工具中启动合并或变基。多个界面可以读取同一仓库，但索引锁、编辑器、凭据和后台抓取可能影响操作现场。切换工具前结束当前任务并读取状态，特别注意后台fetch可能更新本地跟踪记录，从而改变某些基于记录的判断前提。</p>
+<h3 id="h3-27">六种客户端的定位比较</h3>
+<p>选择客户端时，需要同时回答“本机能否运行”“许可是否适合课程或团队”“常用任务是否有清楚的入口”三个问题。表 <a class="book-ref" href="../chapters/16.html#tab:git-clients">16.1</a> 比较系统与许可条件，表 <a class="book-ref" href="../chapters/16.html#tab:git-client-capabilities">16.2</a> 再按任务说明主要能力与使用局限。免费、开源和功能覆盖是不同的判断维度；商业软件可以提供免费试用或教育许可，免费软件也不必然为全部Git命令提供图形入口。</p>
+<div class="table-scroll" id="tab:git-clients" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 16.1</b> 主流Git客户端的系统与许可比较（2026年11月核对）</caption><tr><th colspan="1">客户端</th><th colspan="1">官方支持系统</th><th colspan="1">许可与费用形式</th><th colspan="1">选用时应核对的条件</th></tr><tr><td colspan="1">Sourcetree</td><td colspan="1">Windows、macOS</td><td colspan="1">免费使用；按厂商条款授权</td><td colspan="1">免费不等于开源；部署时核对系统、账户及组件要求</td></tr><tr><td colspan="1">Fork</td><td colspan="1">Windows、macOS</td><td colspan="1">商业许可；免费评估</td><td colspan="1">免费评估不等于长期免费；长期使用需购买许可</td></tr><tr><td colspan="1">GitKraken Desktop</td><td colspan="1">Windows、macOS、Linux</td><td colspan="1">Community免费，另有付费方案</td><td colspan="1">免费方案面向本地仓库和公开远程仓库；私有远程仓库及高级集成按方案授权</td></tr><tr><td colspan="1">Tower</td><td colspan="1">Windows、macOS</td><td colspan="1">商业订阅；提供试用</td><td colspan="1">符合条件的学生、教师及教育机构可申请免费教育使用；团队功能依方案区分</td></tr><tr><td colspan="1">GitHub Desktop</td><td colspan="1">Windows、macOS</td><td colspan="1">免费、开源；MIT许可</td><td colspan="1">官方支持系统不含Linux；托管服务本身的费用与客户端许可分别判断</td></tr><tr><td colspan="1">TortoiseGit</td><td colspan="1">Windows</td><td colspan="1">免费、开源；GPL许可</td><td colspan="1">可用于商业环境；与Git for Windows、SSH及外部工具的配置需一并核对</td></tr></table></div></div>
+<p>上述许可信息依据各客户端及其定价、授权页面<span class="citation" data-cites="sourcetreeofficial forklicense gitkrakenpricing towerpricing githubdesktopabout githubdesktoplicense tortoisegitabout">(Atlassian 2026; Fork 2026b; GitKraken 2026b; Tower 2026b; GitHub 2026b, 2026g; TortoiseGit 2026a)</span>。本表不固定促销价格；试用期、教育资格、订阅层级和授权范围以实际申请时的官方说明为准。尤其在私有课程仓库中开展协作时，应先确认免费方案是否允许相应远程访问，再安排全班统一安装。</p>
+<div class="table-scroll" id="tab:git-client-capabilities" tabindex="0"><div class="table-scroll" tabindex="0"><table><caption><b>表 16.2</b> 主流Git客户端的功能侧重、优势与使用局限</caption><tr><th colspan="1">客户端</th><th colspan="1">主要功能覆盖</th><th colspan="1">优势与适用任务</th><th colspan="1">局限与补充方式</th></tr><tr><td colspan="1">Sourcetree</td><td colspan="1">逐行暂存、历史图、变基、拣选、LFS和子模块</td><td colspan="1">无需购买客户端许可；适合结合文件状态讲解分支与提交</td><td colspan="1">官方不支持Linux；不同系统界面与外部合并工具需分别核对</td></tr><tr><td colspan="1">Fork</td><td colspan="1">逐行暂存、交互式变基、冲突处理、reflog及子模块</td><td colspan="1">差异、历史与候选内容衔接紧凑；适合频繁整理本地修改</td><td colspan="1">长期使用需商业许可；官方不支持Linux，平台治理仍需托管服务配合</td></tr><tr><td colspan="1">GitKraken Desktop</td><td colspan="1">提交图、分支与冲突处理、托管和任务集成</td><td colspan="1">支持三类桌面系统；适合围绕图与协作任务组织工作</td><td colspan="1">私有远程访问和高级协作能力受方案约束；不能以安装成功代替授权核验</td></tr><tr><td colspan="1">Tower</td><td colspan="1">暂存与历史整理、撤销辅助、仓库和PR集成</td><td colspan="1">桌面交互连贯；适合规范日常操作与分支维护</td><td colspan="1">需核对订阅或教育许可；部分工作流及自托管集成只在相应方案提供</td></tr><tr><td colspan="1">GitHub Desktop</td><td colspan="1">变更选择、提交、分支同步及GitHub贡献入口</td><td colspan="1">免费开源，平台路径清楚；适合首次克隆、提交与贡献实践</td><td colspan="1">不覆盖全部Git参数和底层对象操作；专题实验可转入终端</td></tr><tr><td colspan="1">TortoiseGit</td><td colspan="1">资源管理器菜单、日志与差异、分支、补丁和合并工具</td><td colspan="1">免费开源，直接从路径进入任务；适合Windows机房</td><td colspan="1">官方限Windows；操作入口受所选目录影响，需确认仓库范围与工具配置</td></tr></table></div></div>
+<p>表 <a class="book-ref" href="../chapters/16.html#tab:git-client-capabilities">16.2</a> 的“适用任务”和“补充方式”是基于已核对功能作出的教学判断，不代表运行性能测评结果。六种工具均可服务于日常版本管理，功能覆盖更广也不意味着更适合初学者。客户端通常优先呈现高频任务；对象检查、精细引用更新、复杂恢复和自动化脚本仍适合与命令行配合。</p>
+<p>选型可以用同一任务验证：在课程资料中同时修改标题和邮箱，只将标题变化纳入提交，随后检查<code>git diff</code>、<code>git diff --cached</code>和<code>git show HEAD</code>。比较两款客户端是否清楚呈现候选、分支和推送目标，再考虑许可与教学成本；这样得到的结论比仅凭界面截图或功能数量更可靠。</p>
+<h2 id="h2-11">Sourcetree：从文件状态进入历史图</h2>
+<p>Sourcetree的教学价值在于把文件列表、暂存选择和提交图放在可以来回核对的界面中。安装应从官方渠道开始，并确认本机Git实现、外部差异工具与凭据方式。不同系统版本的菜单组织可能不同，下面按任务说明观察位置<span class="citation" data-cites="sourcetreeofficial">(Atlassian 2026)</span>。</p>
+<h3 id="h3-28">打开仓库并形成第一次提交</h3>
+<p>先添加已有的练习目录，确认客户端识别的仓库根目录与终端<code>git rev-parse --show-toplevel</code>一致。在文件状态区域查看尚未暂存与已经暂存的内容，再阅读差异。第一次练习只暂存一个文件，填写能说明意图的提交说明，提交后到历史图定位新节点。</p>
+<p>接着在同一文件中做两项独立修改，通过界面提供的差异选择能力组织候选内容。提交前以<code>git diff --cached</code>核对，提交后用<code>git show --stat HEAD</code>检查范围。若客户端设置为自动暂存或采用不同的提交选择方式，应先理解该模式，再判断是否符合本次教学任务。</p>
+<h3 id="h3-29">分支、抓取与冲突观察</h3>
+<p>建立主题分支后记录当前分支标识，在主题上提交，再切换回main观察文件与图中入口。抓取以后先看远程跟踪位置，避免直接把同步按钮等同于单一的fetch。若界面把多个步骤组织为一个按钮，应展开说明或查看操作日志。</p>
+<p>冲突发生后，阅读文件差异并按业务要求编辑，再将解决结果加入索引。外部合并工具给出的左右顺序可能取决于当前操作，不能机械地把“左边”理解为永远正确的一方。完成后运行测试并检查父关系，界面显示“无冲突”仅其中一项结果。</p>
+<h2 id="h2-12">Fork：围绕差异与历史整理工作</h2>
+<p>Fork提供Windows和macOS客户端<span class="citation" data-cites="forkofficial">(Fork 2026a)</span>。在教学中可以用它观察一次变化如何经历工作文件、候选内容和提交，再比较历史整理前后的节点。选择它的依据应是实际任务中的可读性和操作确认程度，而非只看界面截图。</p>
+<h3 id="h3-30">检查修改范围与提交粒度</h3>
+<p>打开练习仓库后，先阅读本地修改视图，确认所有未跟踪或已修改文件。对于一次包含业务修复和文档更新的编辑，先决定两者是否属于同一意图，再选择候选内容。提交说明表达结果与理由，文件列表本身不能说明设计背景。</p>
+<p>重复“暂存后继续编辑”的实验：比较界面中的候选差异与未暂存差异，再用终端查询索引内容。这个练习能够判断使用者是否真正理解所选内容，而非仅记住复选框的外观。操作日志和命令行输出共同用于核对，不要求二者展示完全相同的排版。</p>
+<p>客户端可以同时呈现多个观察位置（图 <a class="book-ref" href="../chapters/16.html#fig:scenario-16-02">16.14</a> ）。遇到不熟悉的按钮时，先确认它对应的状态与组合动作，再用Git查询核对结果，避免仅根据界面颜色作出判断。</p>
+<figure id="fig:scenario-16-02"><button aria-label="放大图16.14：图形操作仍应回到三份内容核对" class="zoom-image"><img alt="图16.14 图形操作仍应回到三份内容核对" height="588" loading="lazy" src="../assets/figure-16-14.webp" width="1177"/></button><figcaption><b>图 16.14</b> 图形操作仍应回到三份内容核对</figcaption></figure>
+<h3 id="h3-31">使用历史图前先保护工作</h3>
+<p>执行变基、重排或压缩前，确认分支是否共享、工作区是否需要保全以及能否说明整理目标。界面使拖动或右键操作变得方便，却不会取消历史身份改变的后果。整理完成以后比较最终树、提交说明和父关系，不能只看节点数量减少了多少。</p>
+<p>遇到工具提示正在进行某项操作时，先回到Git状态检查，再选择继续或中止。不要在另一客户端中重复发起同一任务。对尚未熟悉的菜单，可以先在临时分支复现第11章实验，理解它对应的模型以后再用于真实主题。</p>
+<h2 id="h2-13">GitKraken：结合提交图与团队任务</h2>
+<p>GitKraken Desktop提供跨Windows、macOS和Linux的图形界面与终端相关能力<span class="citation" data-cites="gitkrakenofficial">(GitKraken 2026a)</span>。对混合系统的小组，它可作为统一观察历史关系的一种选择；具体托管平台集成和许可范围应在使用时核对，不默认所有功能对所有账户开放。</p>
+<h3 id="h3-32">从图上辨认入口与关系</h3>
+<p>导入仓库以后，先找当前分支、远程跟踪分支和标签，再选择一个提交阅读差异。图形颜色用于区分路线，不代表某条线天然更重要，也不保证每一种颜色永久对应同一个分支名。父关系与提交标识才是稳定依据。</p>
+<p>用第6章实验生成一条快进路线和一个双亲合并节点，再比较图中的不同。若启用了简化显示或过滤，说明当前隐藏了什么；不应因为图上暂时看不到一个提交，就认定对象已经从仓库删除。搜索、过滤和排序是视图设置，不是历史改写。</p>
+<h3 id="h3-33">平台集成与本地操作的边界</h3>
+<p>客户端可能把Issue、PR或托管服务放进同一工作空间。建立连接时先确认授权对象与范围，随后区分本地Git操作和平台请求。推送主题分支成功并不等于PR已经创建，PR创建也不等于评审完成。</p>
+<p>小组演示时可将同一个任务分别用终端与界面完成，但报告按需求、提交、检查和评审组织，避免只记录“点击某图标”。当成员更换工具时，这样的报告仍然能够被理解和复现。</p>
+<h2 id="h2-14">Tower：形成稳定的桌面工作流程</h2>
+<p>Tower面向Windows与macOS桌面环境<span class="citation" data-cites="towerofficial">(Tower 2026a)</span>。教学使用应以日常变化的组织为中心：先选择仓库与分支，再检查差异、暂存、提交、抓取和整合。工具中的便利动作必须放回这些步骤解释。</p>
+<h3 id="h3-34">为一次修改建立检查顺序</h3>
+<p>首先读取当前仓库和分支，确认没有遗留的合并或变基现场；接着检查文件差异，并选择本次候选；提交后核对历史；通信之前再次检查远程与目标。使用界面并不意味着这些前提可以省略，仅前提可能分布在不同面板。</p>
+<p>将“单击即可撤销”的界面提示视为入口，继续确认它恢复的是工作文件、索引还是引用。对于会覆盖内容的动作，先在练习仓库观察操作前后状态。这样能够把工具的保护能力和Git本身的恢复条件分别理解。</p>
+<h3 id="h3-35">团队约定与个人偏好</h3>
+<p>团队可以统一提交说明、检查和合入政策，而不必强制所有成员使用同一个客户端。需要统一的是可检验的成果和共享边界，例如候选内容必须通过检查、维护分支只接收对应修复；窗口主题和快捷键可以保留个人偏好。</p>
+<p>若课程采用Tower演示，应同时给出对应Git任务和验证命令。学生在其他系统使用不同工具时，仍能依据相同模型完成作业。客户端选择不应成为理解版本控制的先决条件。</p>
+<h2 id="h2-15">GitHub Desktop：完成第一次平台贡献</h2>
+<p>GitHub Desktop的官方支持系统为Windows与macOS<span class="citation" data-cites="githubdesktopos">(GitHub 2026i)</span>。它把本地变化与GitHub仓库操作联系起来，适合第一次接触贡献流程的读者；未提供某个高级命令入口时，可以回到终端完成相应任务。</p>
+<h3 id="h3-36">克隆、修改与推送</h3>
+<p>登录自己的账户后，从客户端选择有访问权限的仓库并克隆到明确目录。读取当前仓库与当前分支，在编辑器修改文件并保存，再到Changes检查差异。提交后观察History，之后才执行发布分支或推送。</p>
+<p>Changes中的文件选择决定本次候选范围，但其具体交互不一定与其他客户端的独立暂存视图相同。学习时应在提交前后使用<code>git diff</code>与<code>git show</code>核验结果。还应区分“本地已有提交”和“该提交已经传到GitHub”两种状态。</p>
+<h3 id="h3-37">从分支进入PR</h3>
+<p>使用主题分支完成修改并推送以后，通过客户端提供的PR入口进入平台比较页面，继续检查base、head与文件范围。浏览器中仍需填写完整说明并完成所需评审；不要把打开页面的动作描述为已经发出或批准了请求。</p>
+<p>同步按钮的文字可能随状态变化。执行前先理解当前将抓取、拉取还是推送，并在完成后核对本地与远程入口。对于冲突或需要更细参数的历史整理，依照教材的模型转入相应工具处理，完成后再回到Desktop查看状态。</p>
+<h2 id="h2-16">TortoiseGit：从目录位置理解仓库操作</h2>
+<p>TortoiseGit将Git操作集成到Windows资源管理器的上下文菜单，并通过图标覆盖等方式提示状态<span class="citation" data-cites="tortoisegitofficial">(TortoiseGit 2026b)</span>。这种交互适合从文件夹进入任务，但更需要确认当前选择的是仓库根目录、子目录还是某个文件。</p>
+<h3 id="h3-38">上下文菜单与路径范围</h3>
+<p>克隆时选择明确的目标目录；已有仓库中，通过相应上下文菜单查看日志、差异和提交候选。对子目录发起操作时，注意选择范围可能与仓库根目录不同。图标用于提示状态，不能替代最终提交前的完整候选检查。</p>
+<p>通过设置确认使用的Git程序、SSH客户端及外部差异工具。不同SSH工具可能使用不同代理或密钥配置，因此“终端中能连接”与“资源管理器操作能连接”需要分别检查。不要把凭据问题误判为提交图损坏。</p>
+<h3 id="h3-39">冲突处理与提交验证</h3>
+<p>打开冲突文件时，先辨认当前操作和双方内容，再按业务规则编辑合并结果。将文件标记为已解决仅在索引中接受一个候选，仍需运行测试。提交完成后在日志中确认结果，再使用命令行核对父关系或标签。</p>
+<p>Windows上的换行、大小写和文件锁定也会影响观察。问题应分别归因：文本规范交给属性规则，名称冲突检查路径，编辑器占用检查文件使用情况。没有必要把所有差异都归结为客户端“显示不正确”。</p>
+<h2 id="h2-17">独立贡献与工具选择练习</h2>
+<p>本章最后将平台与客户端合在一个可验收任务中。以自己的GitEasy副本或独立练习仓库为载体，修订一条确实不清楚的说明；先登记问题，再建立主题分支、提交、推送并提出PR，最后记录评审或明确说明尚未得到评审。</p>
+<p>选择一款适合本机的客户端完成变化检查，同时用命令行验证当前分支、候选差异和提交内容。报告说明哪些步骤在本地执行、哪些发生于平台、采用了什么权限，以及界面名称与教材截图有哪些差异。工具选择结论应对应实际任务证据。</p>
+<h2 id="h2-18">本章小结</h2>
+<p>GitHub将Git历史与任务、评审、检查、发布和治理相联系。理解平台时应分别检查对象、访问身份、权限和规则：网页可见、Git通信成功与允许合入并不是同一项条件。真实截图说明核对时的界面，教程步骤还需要结合自己的账户和当前功能执行。</p>
+<p>图形化客户端通过不同交互呈现相同的工作区、索引、提交和引用模型。有效学习要求能够说明每次选择改变了什么，并用独立证据验证。下一章将这些能力应用于校园一卡通系统，把软件功能与版本管理过程共同组织为可交接成果。</p>
+<div class="references csl-bib-body hanging-indent" id="refs" role="list">
+<div class="csl-entry" id="ref-sourcetreeofficial" role="listitem">
+Atlassian. 2026. <em>Sourcetree</em>. <a class="uri" href="https://www.sourcetreeapp.com/">Https://www.sourcetreeapp.com/</a>.
+</div>
+<div class="csl-entry" id="ref-forkofficial" role="listitem">
+Fork. 2026a. <em>Fork Git Client</em>. <a class="uri" href="https://git-fork.com/">Https://git-fork.com/</a>.
+</div>
+<div class="csl-entry" id="ref-forklicense" role="listitem">
+Fork. 2026b. <em>Fork Software License Agreement</em>. <a class="uri" href="https://git-fork.com/license">Https://git-fork.com/license</a>.
+</div>
+<div class="csl-entry" id="ref-githubauthentication" role="listitem">
+GitHub. 2026a. <em>About Authentication to GitHub</em>. <a class="uri" href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github">Https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github</a>.
+</div>
+<div class="csl-entry" id="ref-githubdesktopabout" role="listitem">
+GitHub. 2026b. <em>About GitHub Desktop</em>. <a class="uri" href="https://docs.github.com/en/desktop/overview/about-github-desktop">Https://docs.github.com/en/desktop/overview/about-github-desktop</a>.
+</div>
+<div class="csl-entry" id="ref-githubremoteurls" role="listitem">
+GitHub. 2026c. <em>About Remote Repositories</em>. <a class="uri" href="https://docs.github.com/en/get-started/git-basics/about-remote-repositories">Https://docs.github.com/en/get-started/git-basics/about-remote-repositories</a>.
+</div>
+<div class="csl-entry" id="ref-githubrulesets" role="listitem">
+GitHub. 2026d. <em>About Rulesets</em>. <a class="uri" href="https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets">Https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/about-rulesets</a>.
+</div>
+<div class="csl-entry" id="ref-githubprcreate" role="listitem">
+GitHub. 2026e. <em>Creating a Pull Request</em>. <a class="uri" href="https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request">Https://docs.github.com/en/pull-requests/how-tos/create-pull-requests/creating-a-pull-request</a>.
+</div>
+<div class="csl-entry" id="ref-githubissuecreate" role="listitem">
+GitHub. 2026f. <em>Creating an Issue</em>. <a class="uri" href="https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue">Https://docs.github.com/en/issues/tracking-your-work-with-issues/using-issues/creating-an-issue</a>.
+</div>
+<div class="csl-entry" id="ref-githubdesktoplicense" role="listitem">
+GitHub. 2026g. <em>GitHub Desktop MIT License</em>. <a class="uri" href="https://github.com/desktop/desktop/blob/development/LICENSE">Https://github.com/desktop/desktop/blob/development/LICENSE</a>.
+</div>
+<div class="csl-entry" id="ref-githubactionssecure" role="listitem">
+GitHub. 2026h. <em>Secure Use Reference</em>. <a class="uri" href="https://docs.github.com/en/actions/reference/security/secure-use">Https://docs.github.com/en/actions/reference/security/secure-use</a>.
+</div>
+<div class="csl-entry" id="ref-githubdesktopos" role="listitem">
+GitHub. 2026i. <em>Supported Operating Systems for GitHub Desktop</em>. <a class="uri" href="https://docs.github.com/en/desktop/overview/supported-operating-systems-for-github-desktop">Https://docs.github.com/en/desktop/overview/supported-operating-systems-for-github-desktop</a>.
+</div>
+<div class="csl-entry" id="ref-githubplatform" role="listitem">
+GitHub. 2026j. <em>What Is GitHub?</em> <a class="uri" href="https://docs.github.com/en/get-started/start-your-journey/what-is-github">Https://docs.github.com/en/get-started/start-your-journey/what-is-github</a>.
+</div>
+<div class="csl-entry" id="ref-gitkrakenofficial" role="listitem">
+GitKraken. 2026a. <em>GitKraken Desktop</em>. <a class="uri" href="https://www.gitkraken.com/git-client">Https://www.gitkraken.com/git-client</a>.
+</div>
+<div class="csl-entry" id="ref-gitkrakenpricing" role="listitem">
+GitKraken. 2026b. <em>GitKraken Plans and Pricing</em>. <a class="uri" href="https://www.gitkraken.com/pricing">Https://www.gitkraken.com/pricing</a>.
+</div>
+<div class="csl-entry" id="ref-tortoisegitabout" role="listitem">
+TortoiseGit. 2026a. <em>About TortoiseGit</em>. <a class="uri" href="https://tortoisegit.org/about/">Https://tortoisegit.org/about/</a>.
+</div>
+<div class="csl-entry" id="ref-tortoisegitofficial" role="listitem">
+TortoiseGit. 2026b. <em>TortoiseGit Windows Shell Interface</em>. <a class="uri" href="https://tortoisegit.org/">Https://tortoisegit.org/</a>.
+</div>
+<div class="csl-entry" id="ref-towerofficial" role="listitem">
+Tower. 2026a. <em>Tower Git Client</em>. <a class="uri" href="https://www.git-tower.com/">Https://www.git-tower.com/</a>.
+</div>
+<div class="csl-entry" id="ref-towerpricing" role="listitem">
+Tower. 2026b. <em>Tower Plans and Pricing</em>. <a class="uri" href="https://www.git-tower.com/pricing">Https://www.git-tower.com/pricing</a>.
+</div>
+</div>
+<section class="exercises" id="exercises"><div class="section-kicker">LEARN · PRACTISE · REFLECT</div><h2 id="review-19">本章习题与解析</h2><p>先独立作答，再展开解析核对思路。答案与教材同源，知识点随题列出。</p><details class="exercise" id="ex:16.1"><summary><span class="difficulty">基础</span><b>16.1</b><span>区分Git提交、GitHub账户、仓库、fork、clone和PR，说明哪些数据不会随普通克隆取得。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 本地历史 / 平台账户 / fork与PR</p><p>提交保存快照与父项等Git信息，账户是平台身份，仓库是项目及关联记录的容器；fork是平台识别的副本，clone是本地仓库复制，PR组织提议的整合。Issue、PR讨论、权限及多数平台附件不随普通clone取得。</p><p>可把一个普通clone能得到的提交对象，与平台独有的Issue、讨论、规则和运行记录分别列出。fork创建平台侧仓库关系，PR组织拟接收变化的讨论；二者不能由本地创建一个同名分支直接替代。</p></div></details><details class="exercise" id="ex:16.2"><summary><span class="difficulty">应用</span><b>16.2</b><span>页面能打开但推送失败，列出身份验证、仓库权限和分支规则三个层次的不同原因。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 认证通道 / 写权限 / 规则拒绝</p><p>浏览器会话与终端凭据可能不同；当前凭据可能只具读取能力或对应另一账户；目标分支又可能要求评审与检查。分别核对认证、仓库授权与规则，不用强推作为诊断账户权限的方法。</p><p>同一账号可通过不同SSH密钥或HTTPS凭据访问，应确认实际通信身份。网页可见、能够抓取和允许更新目标分支分别需要相应条件；排查报告应引用具体拒绝位置，不要求修改原项目权限。</p></div></details><details class="exercise" id="ex:16.3"><summary><span class="difficulty">应用</span><b>16.3</b><span>针对校园卡挂失后仍能消费的问题，撰写包含成功与拒绝断言的Issue，不使用真实学生资料。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · Issue / 复现输入 / 业务断言</p><p>Issue说明版本与合成账户：开卡、充值、挂失、尝试消费。正常卡余额足时应成功；挂失后应拒绝且余额和流水均不变。附实际结果、预期、最小步骤和测试入口，不包含真实姓名或学号。</p><p>示例报告应给出合成卡、余额、挂失步骤及预期拒绝，再指出当前实际结果和影响。验收包括余额及流水不变，不宜只要求弹出提示。没有真实平台编号时使用课程需求编号并说明性质。</p></div></details><details class="exercise" id="ex:16.4"><summary><span class="difficulty">应用</span><b>16.4</b><span>绘制base与head对应关系，解释跨forkPR中两个所有者与两个分支如何选择。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · base与head / 所有者 / 跨fork贡献</p><p>base为接收变化的仓库及分支，head为提供变化的仓库及分支。跨fork时核对原项目所有者与个人副本所有者，再比较提交与文件；分支名相同也可能属于两个不同仓库，不能只检查main这一个词。</p><p>图中同时标出接收仓库与分支、来源仓库与分支，避免只写两个相同的main。提交前比较差异和提交列表，确认方向与任务一致；访问不到私有fork时应采用授权课程副本或明确的模拟材料。</p></div></details><details class="exercise" id="ex:16.5"><summary><span class="difficulty">应用</span><b>16.5</b><span>拟定PR说明并提出两条可以验证的评审意见，区分草稿、等待检查和等待评审。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 草稿PR / 自动检查 / 人工评审</p><p>PR说明背景、范围、验证与限制。意见可要求验证挂失拒绝后余额不变，以及Qt按钮是否真正调用核心。草稿表示仍在准备；等待检查指自动作业未满足；等待评审指人工结论未满足，三者不相互替代。</p><p>草稿表达准备状态，检查表达指定版本的自动结果，评审表达审阅意见及处理。三者可同时存在但互不替代。回应意见时应指向具体修订和复测结果，无第三方审阅则如实记录自检范围。</p></div></details><details class="exercise" id="ex:16.6"><summary><span class="difficulty">应用</span><b>16.6</b><span>从图<a data-reference="fig:github-actions" data-reference-type="ref" href="#fig:github-actions">[fig:github-actions]</a>说明工作流、运行、矩阵作业和提交的关系，指出绿色标记不能证明什么。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 工作流 / 运行 / 作业 / 步骤</p><p>工作流文件定义触发与作业，一次事件对应运行，矩阵为所列系统生成作业，各步骤针对所选提交执行。绿色仅证明相应检查通过，不证明未测试规则、全部系统、真实权限和未来提交都正确。</p><p>从页面依次定位触发事件、提交、矩阵作业和失败步骤，能够说明一次结果覆盖哪些系统和目标。绿色状态只对该次实际执行成立；未运行的目标、平台权限和人工判断不能据此填写通过。</p></div></details><details class="exercise" id="ex:16.7"><summary><span class="difficulty">应用</span><b>16.7</b><span>为教学main设计规则与验收步骤，分别记录允许、拒绝和管理员例外的前提。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 规则作用域 / 必需检查 / 例外权限</p><p>可要求主题PR、明确测试与必要评审，并阻止不期望的共享历史替换。验证未满足条件时拒绝、满足后允许，记录操作者身份与管理员绕过。规则是否可用及如何执行应结合当前方案核对。</p><p>在练习仓库先验证允许路径，再用故意失败验证拒绝，最后核对例外的适用身份。检查名称必须与实际作业匹配，规则变更也需记录版本和范围，避免将管理员可合入误认为所有协作者都可绕过。</p></div></details><details class="exercise" id="ex:16.8"><summary><span class="difficulty">应用</span><b>16.8</b><span>选择两种客户端完成部分提交实验，使用相同Git查询核对，说明交互差异是否改变了底层模型。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 图形客户端 / 部分暂存 / 底层核对</p><p>在同一练习仓库制造两项修改，各工具只选择一项提交，用git diff --cached与git show核对。记录工具的选择方式和后台行为；只要结果对应同一模型，界面位置或按钮名称不同不改变Git对象含义。</p><p>先构造同一文件中的两项独立修改，在两个客户端各选择一部分，再用相同的cached diff和show读取候选。交互差异影响操作位置与确认方式，Git的内容、提交和引用关系仍应给出相同解释。</p></div></details><details class="exercise" id="ex:16.9"><summary><span class="difficulty">应用</span><b>16.9</b><span>设计项目README的最短成功路径，并区分源码归档、bundle与Release附件的覆盖范围。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · README / 源码归档 / 历史与平台资料</p><p>README先给用途、依赖和最短构建测试命令，再给目录与限制。源码归档提供一个版本的文件，bundle提供所选Git历史，Release附件是平台另存的交付文件；交接分别列出，不能互称完整项目备份。</p><p>最短成功路径应说明需要什么、如何取得、执行什么以及怎样看到成功结果。归档适合所选树文件，bundle保存所选历史，Release还承载发布说明与附件；交付范围需要逐项列明。</p></div></details><details class="exercise" id="ex:16.10"><summary><span class="difficulty">应用</span><b>16.10</b><span>无法访问教材截图中的私有GitEasy时，给出不改变原项目权限的学习与复现方案。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 私有访问 / 授权副本 / 离线学习</p><p>使用随书资源包、教师授权副本或自建仓库重建相同目录与本地路线；平台任务在自己的仓库完成。记录原项目不可访问是权限条件，不擅自改变作者可见性，也不把404直接写成项目不存在。</p><p>课程可以分发经授权的资源包，学生在自己的仓库复现本地与平台任务。报告需标明哪些真实页面可访问、哪些采用离线材料，不能为了复现截图就要求公开作者仓库或编造线上批准。</p></div></details><details class="exercise" id="ex:16.11"><summary><span class="difficulty">应用</span><b>16.11</b><span>比较Sourcetree、Fork、GitKraken、Tower、GitHub Desktop与TortoiseGit的系统支持及主要交互特点。为Windows机房、Linux开发者和首次学习者分别提出有依据的选择，并设计同一部分暂存任务验证工具中的Git模型。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 客户端选型 / 六种工具 / 可迁移理解</p><p>依据官方页面核对本机系统和当前许可、功能范围，再结合任务选择。Sourcetree、Fork、Tower和GitHub Desktop面向Windows与macOS，GitKraken也覆盖Linux，TortoiseGit集成Windows资源管理器；界面便利性还需在实际环境试用。</p><p>以相同文件的两项修改构造部分暂存，分别用客户端组织候选，再用cached diff及show核对。选型报告说明操作可读性、可达性和课程支持成本，不以一次漂亮截图代替任务验证。价格和高级集成功能不作永久不变承诺。</p></div></details><details class="exercise" id="ex:16.12"><summary><span class="difficulty">应用</span><b>16.12</b><span>在自己的练习仓库规划默认分支、协作权限、必需检查与资源入口。区分账户设置、仓库设置和分支规则，设计正常贡献与故意失败两条验收路径，并说明怎样向无访问权限的读者分发离线材料。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 设置作用域 / 规则 / 权限 / README</p><p>账户设置影响个人身份与偏好，仓库设置管理项目层条件，分支规则约束特定入口的更新；配置之前先确定作用对象与授权身份。正常路径验证允许的贡献完成，失败路径验证所需检查或规则确实拒绝，并记录例外条件。</p><p>README给出取得、依赖、运行和成功结果，私有项目另提供经授权的资源包。报告不要求更改作者仓库可见性，也不将配置截图直接视作所有保护有效。平台记录与离线操作应分别登记，避免混淆真实贡献和本地演练。</p></div></details><details class="exercise" id="ex:16.13"><summary><span class="difficulty">综合</span><b>16.13</b><span>课程使用私有GitEasy示例，部分学生没有fork权限。请为小组设计授权学习与贡献路径，完成有实际base和head的PR、自动检查及具体评审响应；若缺少独立评审者，应准确登记。最后比较一种GUI与命令行的结果，并交付可离线使用的材料。</span><span aria-hidden="true" class="disclosure">＋</span></summary><div class="answer"><p class="knowledge">考查知识点 · 受限平台 / 真实PR / 检查时效</p><p>先确认可读取和可写的项目范围；没有fork权限时，使用授权课程副本或自己的练习仓库实现同类任务，不改变原项目权限。明确来源与接收仓库及分支，提交范围清晰的变化，记录实际head、检查链接及意见响应，来源更新后重新核对结果适用性。</p><p>GUI与命令行分别读取相同候选、提交和引用，确认界面差异没有改变底层判断。无独立审阅时记录作者自检，不编造批准。离线材料包括所需源码、依赖、运行方法和实际验证范围；平台讨论和权限条件另作说明。验收关注任务闭环及记录真实性。</p><p>没有fork权限时，可使用课程授权副本或离线资源包建立自己的练习项目，在实际具备权限的仓库中完成协作。请求记录应写出所有者、base、head和确切提交，并保存自动检查链接及具体意见的响应。缺少独立评审者时，只能登记作者自检及其范围。选定一种客户端后，对照命令行检查候选、分支和提交标识，说明二者观察的是同一状态。离线交付应能在没有作者私有仓库访问权的目录中完成规定实验。</p></div></details></section><section id="mindmap"><h2 id="review-20">本章知识结构</h2><p>按六个模块回顾本章，在概念、操作与验证之间建立联系。</p><figure><button aria-label="放大第16章复习导图" class="zoom-image"><img alt="第16章完整复习导图" class="mindmap" loading="lazy" src="../assets/mindmap-16.webp"/></button></figure></section></article><div class="lesson-actions"><button id="complete-chapter" data-number="16">标记本章已学</button><span>学习记录仅保存在本浏览器</span></div><nav class="lesson-pager" aria-label="相邻章节"><a href="15.html"><small>← 上一章</small>自动化、安全与备份恢复</a><a href="17.html"><small>下一章 →</small>校园一卡通系统版本管理实训</a></nav></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">本章目录</div><a href="#h2-1">从Git仓库到协作平台</a><a href="#h2-2">账户准备与身份验证</a><a href="#h2-3">读懂GitEasy仓库首页</a><a href="#h2-4">建立自己的课程仓库</a><a href="#h2-5">用Issue把问题写成可验收任务</a><a href="#h2-6">提出并评审拉取请求</a><a href="#h2-7">理解Actions检查与运行证据</a><a href="#h2-8">发布、文档与项目展示</a><a href="#h2-9">仓库设置与规则治理</a><a href="#h2-10">图形化客户端与共同的Git模型</a><a href="#h2-11">Sourcetree：从文件状态进入历史图</a><a href="#h2-12">Fork：围绕差异与历史整理工作</a><a href="#h2-13">GitKraken：结合提交图与团队任务</a><a href="#h2-14">Tower：形成稳定的桌面工作流程</a><a href="#h2-15">GitHub Desktop：完成第一次平台贡献</a><a href="#h2-16">TortoiseGit：从目录位置理解仓库操作</a><a href="#h2-17">独立贡献与工具选择练习</a><a href="#h2-18">本章小结</a><a href="#review-19">本章习题与解析</a><a href="#review-20">本章知识结构</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>

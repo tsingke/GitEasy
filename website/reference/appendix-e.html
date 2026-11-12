@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="从零理解Git的版本控制思想，学习分支协作、对象原理与工程实践。"><meta name="author" content="张庆科">
+<meta name="theme-color" content="#173e3a"><meta name="color-scheme" content="light dark">
+<title>综合诊断与学习评价 · GitEasy</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../style.css">
+<script src="../search-data.js" defer></script><script src="../app.js" defer></script>
+</head>
+<body data-page="appendix-e" data-prefix="../">
+<a class="skip-link" href="#main">跳至正文</a>
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="topbar">
+<a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">g<span>·</span></span><strong>GitEasy</strong><span class="brand-tag">一本可以实践的 Git 教材</span></a>
+<div class="top-actions"><button class="search-trigger" aria-label="搜索全书"><span>⌕</span><span>搜索知识、命令…</span><kbd>⌘ K</kbd></button><button id="theme-toggle" class="icon-button" aria-label="切换深色模式">◐</button><a class="github-link" href="https://github.com/tsingke/GitEasy">GitHub ↗</a><button id="menu-toggle" class="icon-button" aria-label="打开章节导航" aria-expanded="false">☰</button></div>
+</header>
+<div class="sidebar-backdrop" hidden></div>
+<aside class="sidebar" aria-label="全书导航"><div class="sidebar-heading">Git 版本控制<br><b>原理与实践</b><span>张庆科 编著</span></div><nav><a class="nav-home " href="../index.html">学习总览<span>↗</span></a><div class="nav-group"><span>01</span>基础篇</div><a class="chapter-link " data-chapter="1" href="../chapters/01.html"><span class="nav-num">01</span><span>版本控制与Git基础</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="2" href="../chapters/02.html"><span class="nav-num">02</span><span>环境配置与仓库初始化</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="3" href="../chapters/03.html"><span class="nav-num">03</span><span>工作区、索引与提交</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="4" href="../chapters/04.html"><span class="nav-num">04</span><span>历史查询与版本溯源</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>02</span>核心篇</div><a class="chapter-link " data-chapter="5" href="../chapters/05.html"><span class="nav-num">05</span><span>分支与HEAD</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="6" href="../chapters/06.html"><span class="nav-num">06</span><span>合并原理与冲突处理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="7" href="../chapters/07.html"><span class="nav-num">07</span><span>远程仓库与协作</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="8" href="../chapters/08.html"><span class="nav-num">08</span><span>变更撤销与版本恢复</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>03</span>进阶篇</div><a class="chapter-link " data-chapter="9" href="../chapters/09.html"><span class="nav-num">09</span><span>对象模型与内容寻址</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="10" href="../chapters/10.html"><span class="nav-num">10</span><span>引用管理与索引机制</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="11" href="../chapters/11.html"><span class="nav-num">11</span><span>变基、拣选与历史整理</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="12" href="../chapters/12.html"><span class="nav-num">12</span><span>版本标记、签名与发布</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group"><span>04</span>实践篇</div><a class="chapter-link " data-chapter="13" href="../chapters/13.html"><span class="nav-num">13</span><span>团队工作流与代码评审</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="14" href="../chapters/14.html"><span class="nav-num">14</span><span>仓库规模、依赖与工作树</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="15" href="../chapters/15.html"><span class="nav-num">15</span><span>自动化、安全与备份恢复</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="16" href="../chapters/16.html"><span class="nav-num">16</span><span>GitHub平台与图形化工具</span><i class="completion-dot" aria-hidden="true"></i></a><a class="chapter-link " data-chapter="17" href="../chapters/17.html"><span class="nav-num">17</span><span>校园一卡通系统版本管理实训</span><i class="completion-dot" aria-hidden="true"></i></a><div class="nav-group">学习工具</div><a href="../reference/commands.html">⌘ &nbsp; Git命令速查</a><a href="../reference/preface.html">序 &nbsp; 前言与阅读说明</a><a href="../reference/resources.html">↗ &nbsp; 实训与参考资料</a><a href="../reference/appendix-b.html">B &nbsp; 配置与检查模板</a><a href="../reference/appendix-c.html">C &nbsp; 常见故障排查</a><a href="../reference/appendix-d.html">D &nbsp; 术语中英对照</a><a href="../reference/appendix-e.html">E &nbsp; 综合诊断与评价</a></nav><div class="learning-progress"><div><span>你的学习进度</span><b id="progress-count">0 / 17</b></div><progress id="chapter-progress" max="17" value="0">0 / 17</progress><small>循序渐进，每一章都算数。</small></div></aside>
+<div class="page-shell"><main id="main" tabindex="-1"><header class="chapter-header"><div class="section-kicker">APPENDIX E</div><h1>综合诊断与学习评价</h1></header><article class="prose">
+<span id="app:assessment"></span>
+<p>本附录提供跨章节的诊断题。每题先给出现场，再要求选择证据和解释方案。学习者应先独立作答，随后阅读解析。答案允许因项目约束不同而有所变化，但必须明确前提，不能只写一条命令。</p>
+<h2 id="appendix-section-1">案例一：提交以后仍有一行没有记录</h2>
+<p>这个案例检验读者能否把保存、暂存与提交三项事实分开。调查应从候选选择和后续编辑顺序入手，用实际文本解释为什么部分变化仍留在工作区。</p>
+<h3 class="unnumbered" id="appendix-section-2">现场与问题</h3>
+<p>学生先在 notes.txt 中写入第一段，暂存后又增加第二段，随后提交。历史只包含第一段，学生认为 Git 丢失了第二段。请说明应查询哪些状态，怎样判断第二段是否仍在，今后如何避免误判。</p>
+<h3 class="unnumbered" id="appendix-section-3">解析与评价依据</h3>
+<p>首先检查工作文件、索引与当前提交中的内容。若第二段仍在工作区，普通差异应能显示它相对索引的变化。提交记录暂存时选择的内容，未自动纳入后续编辑，这是符合模型的结果。应避免立刻恢复文件，因为那可能覆盖尚需保留的第二段。</p>
+<p>修正方式取决于任务边界：第二段属于后续独立工作时，可另作提交；若它本来属于尚未共享的同一任务，可以在明确历史整理条件后补入。评价重点不是是否使用某个快捷选项，而是能否解释候选内容的形成时刻，并在提交前核对实际补丁。</p>
+<h2 id="appendix-section-4">案例二：本地显示与远端一致，仍然漏了同伴成果</h2>
+<p>本地同步提示依据已经掌握的引用，而非持续读取服务器。案例要求比较通信前后的信息范围，并区分取得新对象与完成内容整合。</p>
+<h3 class="unnumbered" id="appendix-section-5">现场与问题</h3>
+<p>学生查询 main 和 origin/main，发现标识相同，便认为已经取得同伴最新成果。同伴确认刚刚推送了新提交。请解释两种陈述为何可能同时成立，并设计验证路线。</p>
+<h3 class="unnumbered" id="appendix-section-6">解析与评价依据</h3>
+<p>origin/main 是本地保存的观察记录，不是每次读取时都即时查询服务器。同伴推送以后，本地尚未获取，两项本地名称仍然相同完全可能。应先核对远端地址和分支，再获取，比较本地分支与更新后的观察记录，最后选择符合关系的整合方式。</p>
+<p>验收应区分获取和整合：获取后本地分支可以仍保持原位置，工作文件也可能尚无同伴新增内容；整合后再核对文件与引用。若远端地址本来就指向另一仓库，则还应修正访问目标，而非仅重复获取。</p>
+<h2 id="appendix-section-7">案例三：删除分支以后，任务文件仍然存在</h2>
+<p>引用名称与检出文件不是同一种对象。案例需要指出被删除的是哪个入口、当前仍从哪里访问内容，再判断是否存在需要保全的独立工作。</p>
+<h3 class="unnumbered" id="appendix-section-8">现场与问题</h3>
+<p>主题分支已经合入 main。学生删除主题分支后，发现相关文件仍可从 main 读取，认为删除没有成功。请解释分支名称、提交对象与文件树的关系。</p>
+<h3 class="unnumbered" id="appendix-section-9">解析与评价依据</h3>
+<p>删除的是主题引用，不是把这一主题曾经改过的所有文件从项目中移除。只要 main 仍可到达相应历史和结果树，文件就能继续访问。应查询分支列表确认名称删除，再查询 main 内容确认成果保留。</p>
+<p>若任务是从当前版本移除某项功能，需要形成相应内容变化；若任务仅清理已完成的临时名称，删除分支即可。把两种任务分开，是理解引用与内容的基础。答案不应承诺任何无入口对象都永久保留。</p>
+<h2 id="appendix-section-10">案例四：没有冲突标记，却保留了未合并条目</h2>
+<p>编辑工作文件和接受解决候选是两个步骤。案例通过工作区与索引的不一致，检验读者是否会使用状态与阶段查询，而非只搜索可见标记。</p>
+<h3 class="unnumbered" id="appendix-section-11">现场与问题</h3>
+<p>学生编辑冲突文件并删除标记，随后发现 Git 仍提示冲突。请说明工作文件内容与索引状态如何分别检查，为什么不能只凭文件外观确认完成。</p>
+<h3 class="unnumbered" id="appendix-section-12">解析与评价依据</h3>
+<p>编辑只改变工作区，不自动把冲突条目替换为正常候选。应检查状态和未合并索引条目，确认最终内容正确后明确暂存，再按当前操作继续。某些冲突没有文本标记，某些机制还可能复用解决内容，因此“没有标记”从来不是完整的完成条件。</p>
+<p>评价时还要检查语义：双方需求是否被理解，测试是否覆盖关键约束。把标记去掉但误删必要内容，依旧属于错误解决。继续命令成功仅说明状态允许推进，不能证明选择正确。</p>
+<h2 id="appendix-section-13">案例五：两个端点文件相同，历史却无法快进</h2>
+<p>内容相同不决定祖先包含关系。案例要求同时读取树差异与父链，用两组证据解释为何不能仅凭文件看起来一致请求替换共享入口。</p>
+<h3 class="unnumbered" id="appendix-section-14">现场与问题</h3>
+<p>主题分支经过压缩整理后，最终文件与原主题完全一致，但原主题不能作为新历史的祖先。学生认为只要文件相同就应允许快进。请解释判断依据。</p>
+<h3 class="unnumbered" id="appendix-section-15">解析与评价依据</h3>
+<p>文件树相同只说明所比较端点的内容一致。快进要求旧端点沿父关系可到达目标提交，即存在相应祖先关系。压缩或重放可能形成不同提交连接，因此内容相同与历史可快进之间没有必然等价关系。</p>
+<p>应分别用树比较和祖先查询提供证据，再依据协作规则选择整合或更新方案。若历史已共享，不能仅因结果文件相同就强行替换公共入口。答案应同时考虑其他成员是否依赖原序列。</p>
+<h2 id="appendix-section-16">案例六：撤销以后，错误提交仍可检索</h2>
+<p>追加反向修改保留原有历史，因此旧错误可以继续被检索。案例要求区分撤销业务效果与删除历史记录，并说明后续独立工作是否保留。</p>
+<h3 class="unnumbered" id="appendix-section-17">现场与问题</h3>
+<p>小组在共享分支追加了撤销提交，当前内容已恢复，但历史仍能找到原错误。请解释这是否说明撤销失败，以及怎样验证后续正确成果未被破坏。</p>
+<h3 class="unnumbered" id="appendix-section-18">解析与评价依据</h3>
+<p>追加反向变化的目标是改变当前结果，同时保留既有历史。原错误仍是祖先并不表示撤销失败。应检查相关路径的结果、后续独立成果以及新提交的补丁范围。若后续变化与错误交织，还需要人工判断，不能假设反向应用必然没有冲突。</p>
+<p>若错误涉及有效凭据，内容恢复也不代表风险解除，应另行撤销或轮换凭据。评价应区分版本结果、历史保留与安全处置，不能把三种完成条件混成一个“回滚成功”。</p>
+<h2 id="appendix-section-19">案例七：压缩包可以运行，却不能查历史</h2>
+<p>可运行源码和可查询历史是不同交付范围。案例从文件归档出发，要求为后续协作补齐仓库来源、版本标识及需要的历史资料。</p>
+<h3 class="unnumbered" id="appendix-section-20">现场与问题</h3>
+<p>教师分发一个从标签导出的资料包。学生解压后能够阅读全部材料，但运行历史查询失败。请解释压缩包与仓库备份的不同，并选择适合教学任务的分发形式。</p>
+<h3 class="unnumbered" id="appendix-section-21">解析与评价依据</h3>
+<p>归档通常提供所选树的文件，而不包含完整对象库与引用管理数据，因此不能据此查询提交历史。需要学习历史时，应提供可克隆仓库或适当 bundle；只需要阅读发布内容时，归档可能更方便。</p>
+<p>外部大文件、子模块和生成产物仍需按实际分发方式核对。文件包“可打开”只能支持有限结论。交付说明应让读者知道包对应哪个版本、是否含依赖、是否允许复现构建，以及怎样取得历史材料。</p>
+<h2 id="appendix-section-22">案例八：工作区检查通过，提交检查失败</h2>
+<p>两次检查可能读取不同输入。案例要求构造并解释工作文件与索引中的两种版本，再根据候选内容的实际失败修正选择。</p>
+<h3 class="unnumbered" id="appendix-section-23">现场与问题</h3>
+<p>学生已经修正标题，本地检查工作区通过，但 pre-commit 检查仍失败。请提出能够验证的解释，并说明为什么不宜立即关闭钩子。</p>
+<h3 class="unnumbered" id="appendix-section-24">解析与评价依据</h3>
+<p>可能是修正尚未重新暂存，索引仍保留错误标题。应分别读取工作区和索引中的目标文件，确认检查器实际输入。修正后重新暂存并检查候选，才使下一次提交反映正确内容。</p>
+<p>钩子也可能因路径或环境问题失败，仍应依据原始输出判断。关闭钩子可能让提交继续，却没有证明候选符合规则。客户端检查可被绕过，因此团队还应通过适当服务端或 CI 机制约束接收条件。</p>
+<h2 id="appendix-section-25">案例九：新克隆中的子模块不是最新版本</h2>
+<p>固定依赖强调可重复，而不等于总跟随来源最新提交。案例应先判断项目要求的是固定版本还是主动升级，再核对父子两个提交步骤。</p>
+<h3 class="unnumbered" id="appendix-section-26">现场与问题</h3>
+<p>依赖项目已经发布新功能，但父项目的新克隆仍检出旧依赖提交。学生认为子模块更新失败。请说明父项目记录的作用，并设计有意升级的流程。</p>
+<h3 class="unnumbered" id="appendix-section-27">解析与评价依据</h3>
+<p>父项目固定依赖提交有助于复现，不应把“自动取得依赖最新主线”作为默认正确目标。先核对父项目记录与子模块检出是否一致；若一致，当前复现可能完全正确。</p>
+<p>有意升级时，应在依赖可访问且工作区已保护的条件下选择目标提交，验证兼容性，再在父项目提交新记录。依赖对象尚未推送到可访问来源时，仅更新父项目标识会给新成员造成取得失败。评价应覆盖两层仓库和获取前提。</p>
+<h2 id="appendix-section-28">案例十：备份可以验证，却缺少现场草稿</h2>
+<p>验证历史包说明相应对象和前提满足要求，不代表所有编辑现场已经覆盖。案例需要单独登记草稿、外部内容与平台资料，并执行对应恢复检查。</p>
+<h3 class="unnumbered" id="appendix-section-29">现场与问题</h3>
+<p>学生用完整 bundle 恢复了发布分支，却找不到备份时仍未提交的草稿。请判断备份是否一定损坏，并为今后的保全方案补充范围说明。</p>
+<h3 class="unnumbered" id="appendix-section-30">解析与评价依据</h3>
+<p>bundle 保存的是所选择引用及其相关对象范围，不自动保存全部工作区文件。未提交草稿缺失不必然说明 bundle 损坏。应检查草稿是否曾进入对象库、是否另有编辑器或系统副本，以及原现场是否仍可访问。</p>
+<p>备份方案应列出提交历史、未提交内容、外部对象、配置和平台资料的保存位置与验证方式。恢复演练从独立目录开始，并以实际任务验收。只检查备份文件存在，无法证明现场整体可恢复。</p>
+<h2 id="appendix-section-31">案例十一：签名有效，内容仍然有错误</h2>
+<p>签名验证与业务验收回答不同问题。案例要求分别说明密钥、对象和功能的证据，避免把密码学结果误用为程序正确性结论。</p>
+<h3 class="unnumbered" id="appendix-section-32">现场与问题</h3>
+<p>某次发布的签名能够验证，但实验步骤中存在错误。请说明签名验证支持什么结论，以及内容质量还需要哪些证据。</p>
+<h3 class="unnumbered" id="appendix-section-33">解析与评价依据</h3>
+<p>签名建立特定数据与密钥之间的验证关系，身份可信度还依赖密钥绑定。它不证明需求正确、测试充分或依赖安全。发布质量需要内容审阅、测试、环境复现和适用范围说明。</p>
+<p>若发现错误，应依据发布约定形成勘误或修订版本，保留可追溯入口。评价应避免两个极端：既不能因签名通过就放弃内容检查，也不能因内容存在缺陷就认定签名机制失效。</p>
+<h2 id="appendix-section-34">案例十二：同一实验在另一平台失败</h2>
+<p>跨平台失败可能发生在路径、shell、文件规则、依赖或权限等环节。案例先保留原始提示和输入，再逐层缩小条件，不直接归因于Git历史损坏。</p>
+<h3 class="unnumbered" id="appendix-section-35">现场与问题</h3>
+<p>一份脚本在作者计算机成功，在新成员计算机失败。请设计最小问题报告，区分 Git 行为、终端语法和环境前提。</p>
+<h3 class="unnumbered" id="appendix-section-36">解析与评价依据</h3>
+<p>报告应包含操作系统、终端类型、Git 与 Python 版本、当前目录、原始命令和完整错误。路径、换行、可执行权限、工具可用性与配置来源都可能影响结果。不能只给一张截图或把不同终端的语法混用。</p>
+<p>先用最小步骤确认失败层次，再决定是修改脚本、补充前提还是修正文档。未实测平台应明确标注，不能把某个平台的一次成功写成全面兼容声明。课程评价可以奖励准确定位和清晰报告，而非只以“是否一次运行成功”评分。</p>
+<h2 id="appendix-section-37">形成个人能力档案</h2>
+<p>请选择三项最能反映自己认知变化的案例，为每项保存起始状态、预测、实际证据和修正解释。课程结束时，应能够用新情境检验同一模型，而非只复现书中固定命令。</p>
+<p>教师可以结合实验报告、仓库成果、评审记录和口头解释评价学习效果。所有证据都应来自真实执行；缺少环境或未完成的扩展任务，应如实写明。能力档案的目的在于呈现可迁移的理解，不以提交数量、日志长度或截图数量替代质量判断。</p>
+</article></main><aside class="page-toc" aria-label="本页目录"><div class="toc-label">附录目录</div><a href="#appendix-section-1">案例一：提交以后仍有一行没有记录</a><a href="#appendix-section-4">案例二：本地显示与远端一致，仍然漏了同伴成果</a><a href="#appendix-section-7">案例三：删除分支以后，任务文件仍然存在</a><a href="#appendix-section-10">案例四：没有冲突标记，却保留了未合并条目</a><a href="#appendix-section-13">案例五：两个端点文件相同，历史却无法快进</a><a href="#appendix-section-16">案例六：撤销以后，错误提交仍可检索</a><a href="#appendix-section-19">案例七：压缩包可以运行，却不能查历史</a><a href="#appendix-section-22">案例八：工作区检查通过，提交检查失败</a><a href="#appendix-section-25">案例九：新克隆中的子模块不是最新版本</a><a href="#appendix-section-28">案例十：备份可以验证，却缺少现场草稿</a><a href="#appendix-section-31">案例十一：签名有效，内容仍然有错误</a><a href="#appendix-section-34">案例十二：同一实验在另一平台失败</a><a href="#appendix-section-37">形成个人能力档案</a><a class="back-top" href="#main">返回顶部 ↑</a><div class="toc-note">先理解，再操作。<br>用结果验证你的判断。</div></aside></div>
+<footer class="site-footer"><a href="../index.html">GitEasy</a><p>《Git版本控制原理与实践》· 张庆科 编著<br>未出版学习交流稿 · 教材内容非商业使用 · 程序代码依各自许可</p><a href="https://github.com/tsingke/GitEasy/issues">勘误与建议 ↗</a></footer>
+<dialog id="search-dialog" aria-label="全书搜索"><div class="search-head"><span aria-hidden="true">⌕</span><input id="global-search" type="search" placeholder="搜索全书：如 索引、冲突、git reset" aria-label="搜索全书内容" autocomplete="off"><button class="close-dialog" aria-label="关闭搜索">Esc</button></div><div id="search-results" aria-live="polite"><p>输入关键词，查找概念、实验与命令。</p></div><div class="search-foot">支持中文与命令检索 · 点击结果定位到对应小节</div></dialog>
+<dialog id="image-dialog" aria-label="查看高清插图"><button class="close-dialog" aria-label="关闭图片">关闭 ×</button><img alt=""><p></p></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript><p class="noscript">正文与导航可直接阅读。搜索、学习进度和交互实验需要启用JavaScript。</p></noscript>
+</body></html>
