@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="three-diff-boundaries" name="三种diff比较：旧侧到新侧">
+    <mxGraphModel page="1" pageWidth="800" pageHeight="450" adaptiveColors="auto">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="r0c0" value="git diff --cached" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#155DA6;fontColor=#155DA6;">
+          <mxGeometry as="geometry" x="40" y="40" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r0c1" value="HEAD：1行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#155DA6;fontColor=#155DA6;">
+          <mxGeometry as="geometry" x="220" y="40" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r0c2" value="索引：2行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#155DA6;fontColor=#155DA6;">
+          <mxGeometry as="geometry" x="400" y="40" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r0c3" value="新增第2行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#155DA6;fontColor=#155DA6;">
+          <mxGeometry as="geometry" x="580" y="40" width="140" height="60" />
+        </mxCell>
+        <mxCell id="compare0" parent="1" edge="1" source="r0c1" target="r0c2" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#155DA6;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="r1c0" value="git diff" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#087F78;fontColor=#087F78;">
+          <mxGeometry as="geometry" x="40" y="160" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r1c1" value="索引：2行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#087F78;fontColor=#087F78;">
+          <mxGeometry as="geometry" x="220" y="160" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r1c2" value="工作区：3行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#087F78;fontColor=#087F78;">
+          <mxGeometry as="geometry" x="400" y="160" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r1c3" value="新增第3行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#087F78;fontColor=#087F78;">
+          <mxGeometry as="geometry" x="580" y="160" width="140" height="60" />
+        </mxCell>
+        <mxCell id="compare1" parent="1" edge="1" source="r1c1" target="r1c2" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#087F78;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+        <mxCell id="r2c0" value="git diff HEAD" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#7350AC;fontColor=#7350AC;">
+          <mxGeometry as="geometry" x="40" y="280" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r2c1" value="HEAD：1行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#7350AC;fontColor=#7350AC;">
+          <mxGeometry as="geometry" x="220" y="280" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r2c2" value="工作区：3行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#7350AC;fontColor=#7350AC;">
+          <mxGeometry as="geometry" x="400" y="280" width="140" height="60" />
+        </mxCell>
+        <mxCell id="r2c3" value="新增第2、3行" parent="1" vertex="1" style="rounded=1;arcSize=12;whiteSpace=wrap;html=0;fontSize=16;fillColor=#F5F8FC;strokeColor=#7350AC;fontColor=#7350AC;">
+          <mxGeometry as="geometry" x="580" y="280" width="140" height="60" />
+        </mxCell>
+        <mxCell id="compare2" parent="1" edge="1" source="r2c1" target="r2c2" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.5;strokeColor=#7350AC;">
+          <mxGeometry as="geometry" relative="1" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
